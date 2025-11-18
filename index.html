@@ -1,164 +1,487 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="zh-TW">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    span.s1 {font-kerning: none}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家庭網站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #fce4ec 0%, #fff9e6 50%, #e8f5e9 100%);
+            min-height: 100vh;
+        }
+
+        /* 登入頁面樣式 */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-box h1 {
+            color: #f48fb1;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            color: #555;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #f48fb1;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #f48fb1 0%, #f8bbd0 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* 主頁面樣式 */
+        .main-container {
+            display: none;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .main-container.active {
+            display: flex;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            width: 280px;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+            overflow-y: auto;
+            transition: transform 0.3s;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            background: linear-gradient(135deg, #f48fb1 0%, #f8bbd0 100%);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-header h2 {
+            font-size: 20px;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid white;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .menu-item {
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .menu-title {
+            padding: 16px 20px;
+            background: #f8fdf9;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .menu-title:hover {
+            background: #e8f5e9;
+        }
+
+        .menu-title span {
+            color: #f48fb1;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .menu-arrow {
+            transition: transform 0.3s;
+        }
+
+        .menu-item.active .menu-arrow {
+            transform: rotate(180deg);
+        }
+
+        .submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #fafafa;
+        }
+
+        .menu-item.active .submenu {
+            max-height: 200px;
+        }
+
+        .submenu-item {
+            padding: 12px 20px 12px 40px;
+            cursor: pointer;
+            color: #666;
+            font-size: 14px;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .submenu-item:hover {
+            background: #fff9e6;
+            border-left-color: #ffeb3b;
+            color: #333;
+        }
+
+        /* 內容區域 */
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+        }
+
+        .content-box {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            min-height: 400px;
+        }
+
+        .content-box h2 {
+            color: #f48fb1;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .content-box p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        /* 手機版樣式 */
+        .mobile-header {
+            display: none;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #f48fb1 0%, #f8bbd0 100%);
+            color: white;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .mobile-header {
+                display: flex;
+            }
+
+            .sidebar {
+                position: fixed;
+                left: 0;
+                top: 0;
+                height: 100vh;
+                z-index: 1000;
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .sidebar-header {
+                padding-top: 60px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .content-box {
+                padding: 20px;
+            }
+
+            .overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+            }
+
+            .overlay.active {
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1">&lt;!DOCTYPE html&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1">&lt;html lang="zh-Hant"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1">&lt;head&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;title&gt;柔和風格示例頁面&lt;/title&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;style&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>:root {</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>--primary: #f7b3c0; /* 柔和藍 */</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>--primary-light: #fde1e6;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>--text: #3a3a3a;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>--bg: #f9fafb;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>--white: #ffffff;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 34.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>body {</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>margin: 0;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>font-family: "Noto Sans TC", sans-serif;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>background: var(--bg);</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>color: var(--text);</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>display: flex;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>height: 100vh;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 34.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>/* 左側選單 */</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>.sidebar {</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>width: 260px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>background: var(--white);</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>box-shadow: 2px 0 8px rgba(0,0,0,0.05);</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>padding: 20px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>overflow-y: auto;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 34.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>.menu-item {</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>margin-bottom: 15px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 34.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>.menu-title {</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>background: var(--primary);</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>color: #fff;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>padding: 12px 14px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 10px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>cursor: pointer;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>transition: 0.25s;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>font-weight: 600;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 34.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>.menu-title:hover {</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>background: var(--primary-light);</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>color: var(--text);</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 34.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>.submenu {</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>margin-top: 6px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>padding-left: 10px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>display: none;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 34.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>.submenu a {</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>display: block;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>padding: 8px 12px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>margin: 4px 0;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>background: var(--primary-light);</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>text-decoration: none;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>color: var(--text);</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 8px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>transition: 0.25s;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 34.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>.submenu a:hover {</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>background: var(--primary);</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>color: #fff;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 34.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>/* 右側主內容 */</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>.content {</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>flex: 1;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>padding: 20px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>overflow-y: auto;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 34.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>/* RWD */</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>@media (max-width: 768px) {</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>body {</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>flex-direction: column;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>.sidebar {</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>width: 100%;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>box-shadow: none;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>border-bottom: 1px solid #eee;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1">&lt;/head&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1">&lt;body&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;!-- 左側選單 --&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="sidebar"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="menu-item"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="menu-title" onclick="toggleMenu(1)"&gt;選項一&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="submenu" id="menu1"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="#"&gt;子項 1-1&lt;/a&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="#"&gt;子項 1-2&lt;/a&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="#"&gt;子項 1-3&lt;/a&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 34.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="menu-item"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="menu-title" onclick="toggleMenu(2)"&gt;選項二&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="submenu" id="menu2"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="#"&gt;子項 2-1&lt;/a&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="#"&gt;子項 2-2&lt;/a&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="#"&gt;子項 2-3&lt;/a&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 34.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="menu-item"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="menu-title" onclick="toggleMenu(3)"&gt;選項三&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="submenu" id="menu3"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="#"&gt;子項 3-1&lt;/a&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="#"&gt;子項 3-2&lt;/a&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="#"&gt;子項 3-3&lt;/a&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 34.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="menu-item"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="menu-title" onclick="toggleMenu(4)"&gt;選項四&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="submenu" id="menu4"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="#"&gt;子項 4-1&lt;/a&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="#"&gt;子項 4-2&lt;/a&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="#"&gt;子項 4-3&lt;/a&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 34.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;!-- 右側內容 --&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="content"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h2&gt;右側內容區&lt;/h2&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p&gt;這裡放你的 HTML 內容。&lt;/p&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 34.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;script&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>function toggleMenu(num) {</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>const menu = document.getElementById(`menu${num}`);</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>menu.style.display = menu.style.display === "block" ? "none" : "block";</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1">&lt;/body&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000"><span class="s1">&lt;/html&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 18.8px 0.0px; font: 28.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 34.0px"><span class="s1"></span><br></h1>
+    <!-- 登入頁面 -->
+    <div class="login-container" id="loginPage">
+        <div class="login-box">
+            <h1>🏠 家庭網站</h1>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">帳號</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">密碼</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div id="errorMessage" style="color: #f44336; font-size: 14px; margin-bottom: 15px; display: none; text-align: center;"></div>
+                <button type="submit" class="login-btn">登入</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 主頁面 -->
+    <div class="main-container" id="mainPage">
+        <!-- 手機版頂部 -->
+        <div class="mobile-header">
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <h2>家庭網站</h2>
+            <button class="logout-btn" onclick="logout()">登出</button>
+        </div>
+
+        <!-- 遮罩層 -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- 側邊欄 -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>選單</h2>
+                <button class="logout-btn" onclick="logout()">登出</button>
+            </div>
+            
+            <div class="menu-item">
+                <div class="menu-title" onclick="toggleMenu(this)">
+                    <span>📸 相簿</span>
+                    <span class="menu-arrow">▼</span>
+                </div>
+                <div class="submenu">
+                    <div class="submenu-item" onclick="loadPage('家庭照片')">家庭照片</div>
+                    <div class="submenu-item" onclick="loadPage('旅遊回憶')">旅遊回憶</div>
+                    <div class="submenu-item" onclick="loadPage('節日慶祝')">節日慶祝</div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-title" onclick="toggleMenu(this)">
+                    <span>📝 記事本</span>
+                    <span class="menu-arrow">▼</span>
+                </div>
+                <div class="submenu">
+                    <div class="submenu-item" onclick="loadPage('日常筆記')">日常筆記</div>
+                    <div class="submenu-item" onclick="loadPage('重要事項')">重要事項</div>
+                    <div class="submenu-item" onclick="loadPage('待辦清單')">待辦清單</div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-title" onclick="toggleMenu(this)">
+                    <span>🍳 食譜</span>
+                    <span class="menu-arrow">▼</span>
+                </div>
+                <div class="submenu">
+                    <div class="submenu-item" onclick="loadPage('家常菜')">家常菜</div>
+                    <div class="submenu-item" onclick="loadPage('甜點')">甜點</div>
+                    <div class="submenu-item" onclick="loadPage('節日料理')">節日料理</div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-title" onclick="toggleMenu(this)">
+                    <span>💰 財務</span>
+                    <span class="menu-arrow">▼</span>
+                </div>
+                <div class="submenu">
+                    <div class="submenu-item" onclick="loadPage('收支記錄')">收支記錄</div>
+                    <div class="submenu-item" onclick="loadPage('預算規劃')">預算規劃</div>
+                    <div class="submenu-item" onclick="loadPage('投資理財')">投資理財</div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-title" onclick="toggleMenu(this)">
+                    <span>📅 行事曆</span>
+                    <span class="menu-arrow">▼</span>
+                </div>
+                <div class="submenu">
+                    <div class="submenu-item" onclick="loadPage('家庭活動')">家庭活動</div>
+                    <div class="submenu-item" onclick="loadPage('重要日期')">重要日期</div>
+                    <div class="submenu-item" onclick="loadPage('提醒事項')">提醒事項</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 內容區域 -->
+        <div class="content">
+            <div class="content-box" id="contentBox">
+                <h2>歡迎回來！</h2>
+                <p>請從左側選單選擇您要查看的項目。</p>
+                <p>這是一個為家人設計的簡約網站，您可以在這裡管理照片、記事、食譜等內容。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 帳號密碼設定檔（您可以修改這裡的帳號密碼）
+        const credentials = {
+            users: [
+                { username: "admin", password: "123456" },
+                { username: "family", password: "password" },
+                { username: "user1", password: "user123" }
+            ]
+        };
+
+        // 登入功能
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // 驗證帳號密碼
+            const validUser = credentials.users.find(
+                user => user.username === username && user.password === password
+            );
+            
+            if (validUser) {
+                // 登入成功
+                errorMessage.style.display = 'none';
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('mainPage').classList.add('active');
+            } else {
+                // 登入失敗
+                errorMessage.textContent = '❌ 帳號或密碼錯誤，請重新輸入';
+                errorMessage.style.display = 'block';
+                document.getElementById('password').value = '';
+            }
+        });
+
+        // 登出功能
+        function logout() {
+            document.getElementById('loginPage').style.display = 'flex';
+            document.getElementById('mainPage').classList.remove('active');
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        // 選單切換
+        function toggleMenu(element) {
+            const menuItem = element.parentElement;
+            const wasActive = menuItem.classList.contains('active');
+            
+            // 關閉所有選單
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // 如果原本是關閉的，則打開
+            if (!wasActive) {
+                menuItem.classList.add('active');
+            }
+        }
+
+        // 載入頁面內容
+        function loadPage(pageName) {
+            const contentBox = document.getElementById('contentBox');
+            contentBox.innerHTML = `
+                <h2>${pageName}</h2>
+                <p>這是「${pageName}」的內容頁面。</p>
+                <p>您可以在這裡添加相關的內容，或連結到獨立的 HTML 檔案。</p>
+                <p style="margin-top: 20px; color: #999; font-size: 14px;">
+                    提示：在實際使用時，您可以將每個小項連結到對應的 HTML 檔案。
+                </p>
+            `;
+            
+            // 手機版：點擊後關閉側邊欄
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.remove('active');
+                document.getElementById('overlay').classList.remove('active');
+            }
+        }
+
+        // 手機版選單控制
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.add('active');
+            document.getElementById('overlay').classList.add('active');
+        });
+
+        document.getElementById('overlay').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+        });
+    </script>
 </body>
 </html>
