@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學測國寫快速解題分析</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Microsoft JhengHei", "微軟正黑體", Arial, sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .section-title {
+            font-size: 22px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
+        
+        .section-title::before {
+            content: "📌";
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        .technique-box {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .technique-box h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .technique-box h3::before {
+            content: "⚡";
+            margin-right: 8px;
+        }
+        
+        .step {
+            background: rgba(255,255,255,0.2);
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .step strong {
+            display: inline-block;
+            margin-right: 8px;
+        }
+        
+        .color-legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .legend-item {
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid;
+            text-align: center;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        
+        .legend-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .legend-red {
+            border-color: #e74c3c;
+            background: #fee;
+            color: #c0392b;
+        }
+        
+        .legend-green {
+            border-color: #27ae60;
+            background: #efe;
+            color: #1e8449;
+        }
+        
+        .legend-blue {
+            border-color: #3498db;
+            background: #eef;
+            color: #2471a3;
+        }
+        
+        .article-title {
+            font-size: 24px;
+            color: #2c3e50;
+            text-align: center;
+            margin: 25px 0;
+            padding: 15px;
+            background: linear-gradient(90deg, transparent, #e8f4f8, transparent);
+            border-radius: 10px;
+        }
+        
+        .text-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+            line-height: 2.2;
+            font-size: 17px;
+        }
+        
+        .text-content p {
+            margin-bottom: 20px;
+            text-indent: 2em;
+        }
+        
+        .red { color: #e74c3c; font-weight: bold; }
+        .green { color: #27ae60; font-weight: bold; }
+        .blue { color: #3498db; font-weight: bold; }
+        
+        .strategy-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .strategy-item {
+            margin: 15px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .strategy-item::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .question-box {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        .question-box strong {
+            color: #2471a3;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .section {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 22px;
+            }
+            
+            .color-legend {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 學測國寫快速解題分析</h1>
+            <p>三色標記系統 × 30秒掃描法 × 實戰答題策略</p>
+        </div>
+        
+        <div class="content">
+            <!-- 考試實戰技巧 -->
+            <div class="section">
+                <div class="section-title">考試實戰技巧（30秒快速掃描法）</div>
+                
+                <div class="technique-box">
+                    <h3>文體判定：議論文（對比論證型）</h3>
+                    <div class="step">
+                        <strong>第1步（5秒）</strong> 先看題目 → 確認要比較「甲文」vs「乙文」的沉默結果
+                    </div>
+                    <div class="step">
+                        <strong>第2步（10秒）</strong> 快速定位 → 找「路易十四」段落 + 「合群的人」段落
+                    </div>
+                    <div class="step">
+                        <strong>第3步（10秒）</strong> 抓關鍵詞 → 紅色=核心概念（沉默、溝通、壓制）、綠色=具體例子、藍色=因果結果
+                    </div>
+                    <div class="step">
+                        <strong>第4步（5秒）</strong> 建立對比框架 → 正面效果 vs 負面效果
+                    </div>
+                </div>
+                
+                <div class="color-legend">
+                    <div class="legend-item legend-red">
+                        🔴 紅色：核心概念<br>（沉默、溝通、壓制等）
+                    </div>
+                    <div class="legend-item legend-green">
+                        🟢 綠色：具體事實<br>（路易十四、大臣、房間大象）
+                    </div>
+                    <div class="legend-item legend-blue">
+                        🔵 藍色：邏輯關係<br>（因此、但是、當⋯時）
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 文章標題 -->
+            <div class="article-title">
+                📄 古德曼定律：沉默的雙面刃
+            </div>
+            
+            <!-- 標示後的文章 -->
+            <div class="section">
+                <div class="section-title">標示後的文章內容</div>
+                
+                <div class="text-content">
+                    <p>「<span class="red">古德曼定律</span>」，又稱「<span class="red">沉默效應</span>」。提出此定律的學者認為：<span class="red">沉默</span>可以調節說話和聽講的節奏。<span class="red">沉默</span>在談話中的作用，就相當於<span class="blue">零</span>在數學中的作用。<span class="blue">儘管是零，卻很關鍵</span>。沒有<span class="red">沉默</span>，一切交流都無法進行。</p>
+                    
+                    <p><span class="green">法國國王路易十四</span>就是最好的例子。<span class="blue">當</span><span class="green">大臣們</span>各抒己見、爭論不休時，<span class="green">路易十四</span>表情漠然地聆聽著，最後只說了一句：「我會考慮的。」便轉身離開了。<span class="green">路易十四</span>的緘默寡言使<span class="green">大臣們</span>猜不透他的真實意圖，只好誠惶誠恐地聽從命令。<span class="blue">他的王權因此而鞏固，威望也因此而提升</span>。</p>
+                    
+                    <p style="text-align: center; color: #888; font-size: 14px;">（改寫自網路資料）</p>
+                    
+                    <p>人們常用「<span class="red">沉默是金</span>」來告誡自己：言多必失，禍從口出。<span class="blue">但是</span><span class="green">馬丁．路德</span>卻說：「社會轉變的最大悲劇不是壞人的喧囂，<span class="blue">而是</span>好人的<span class="red">沉默</span>。」</p>
+                    
+                    <p><span class="blue">當</span>越來越多的人捲入<span class="red">沉默</span>的漩渦，從漩渦中掙脫出來所需的力氣就越大。<span class="green">歷史上的先知</span>往往命運悲慘。面對<span class="green">第一個站出來大喊「房間裡有大象」的人</span>，人們往往不會順著他的手指去看有沒有一隻大象，<span class="blue">而是</span>怒斥他為什麼吵醒了自己。<span class="blue">甚至</span>，他們會<span class="blue">因為</span>那個人的勇氣映照出自己的怯懦而惱羞成怒，「<span class="green">房間裡的大象</span>」就這樣在「<span class="red">合群</span>」的人們的相互擁抱中越長越大。直視<span class="red">沉默</span>就是直視生活中不被陽光照耀的角落、<span class="red">被壓迫者的痛苦</span>和我們自己的軟弱。人們習慣於用政治或社會的<span class="red">壓制</span>來為自己的<span class="red">沉默</span>辯護，<span class="blue">卻忘記了</span>正是自己的<span class="red">沉默</span>在為這種<span class="red">壓制</span>添磚加瓦。我們盡可以堵上自己的耳朵或者捂上自己的嘴巴，<span class="blue">但是當</span><span class="green">房間裡有一隻大象</span>時，牠隨時可能抬起腳來，踩碎我們天下太平的幻覺。</p>
+                    
+                    <p style="text-align: center; color: #888; font-size: 14px;">（改寫自劉瑜《房間裡的大象—生活中的沉默和否認•序言》）</p>
+                </div>
+            </div>
+            
+            <!-- 題目分析 -->
+            <div class="section">
+                <div class="section-title">題目分析</div>
+                
+                <div class="question-box">
+                    <strong>問題（一）分析：</strong>
+                    依據上文，分別說明甲文中的路易十四和乙文中「合群」的人們，選擇沉默後的結果。文長限80字以內（至多4行）。（占4分）
+                </div>
+                
+                <div class="question-box">
+                    <strong>問題（二）分析：</strong>
+                    沉默可以是一種溝通策略，沉默也可能放任「房間裡的大象」更加強壯。對於以上兩種不同的觀點，請檢視個人相關經驗或見聞，擇一說明你的看法。文長限400字以內（至多19行）。（占21分）
+                </div>
+            </div>
+            
+            <!-- 答題策略 -->
+            <div class="section">
+                <div class="section-title">答題策略</div>
+                
+                <div class="strategy-box">
+                    <h3 style="margin-bottom: 20px; font-size: 20px;">✨ 問題（一）快速答題法（4分題）</h3>
+                    
+                    <div class="strategy-item">
+                        <strong>答題結構：</strong>主詞 + 沉默行為 + 結果（正面/負面）
+                    </div>
+                    
+                    <div class="strategy-item">
+                        <strong>甲文重點：</strong>找藍色「<span class="blue">因此</span>」後的結果 → 「王權鞏固、威望提升」
+                    </div>
+                    
+                    <div class="strategy-item">
+                        <strong>乙文重點：</strong>找藍色「<span class="blue">因為</span>」的因果鏈 → 「沉默→壓制→大象變大→幻覺被踩碎」
+                    </div>
+                    
+                    <div class="strategy-item">
+                        <strong>字數配置：</strong>甲文35字 + 乙文35字 = 約70字（留10字緩衝）
+                    </div>
+                    
+                    <div class="strategy-item">
+                        <strong>參考答案框架：</strong><br>
+                        「路易十四以沉默掌控大臣，使其猜不透意圖而順從，因此鞏固王權、提升威望。（33字）<br>
+                        合群者選擇沉默，放任問題擴大，最終使壓制加劇、危機成真，自身也難逃傷害。（32字）」
+                    </div>
+                </div>
+                
+                <div class="strategy-box" style="background: linear-gradient(135deg, #a8e6cf 0%, #56ab91 100%); margin-top: 20px;">
+                    <h3 style="margin-bottom: 20px; font-size: 20px;">🎯 問題（二）論述策略（21分題）</h3>
+                    
+                    <div class="strategy-item">
+                        <strong>立場選擇：</strong>必須「擇一」明確表態（支持沉默策略 OR 反對放任沉默）
+                    </div>
+                    
+                    <div class="strategy-item">
+                        <strong>段落架構（建議4段）：</strong><br>
+                        第1段：破題表明立場（50字）<br>
+                        第2段：舉例說明個人經驗/見聞（150字）<br>
+                        第3段：分析該例子如何支持你的立場（120字）<br>
+                        第4段：總結呼應（80字）
+                    </div>
+                    
+                    <div class="strategy-item">
+                        <strong>例子選擇建議：</strong><br>
+                        • 支持「沉默策略」→ 職場溝通、談判協商、避免衝突升級<br>
+                        • 反對「放任沉默」→ 校園霸凌、社會議題、職場性騷擾、環境破壞
+                    </div>
+                    
+                    <div class="strategy-item">
+                        <strong>高分關鍵：</strong><br>
+                        ① 必須有「個人」色彩（親身經歷 > 新聞見聞 > 歷史案例）<br>
+                        ② 扣回文章概念（古德曼定律、房間大象隱喻）<br>
+                        ③ 思辨深度（不只是「好/不好」，要說明「為什麼」「有何影響」）
+                    </div>
+                    
+                    <div class="strategy-item">
+                        <strong>時間分配：</strong>審題2分鐘 + 構思3分鐘 + 書寫12分鐘 + 檢查2分鐘 = 19分鐘
+                    </div>
+                </div>
+                
+                <div class="strategy-box" style="background: linear-gradient(135deg, #ffd3a5 0%, #fd6585 100%); margin-top: 20px; color: white;">
+                    <h3 style="margin-bottom: 20px; font-size: 20px;">⚠️ 避雷指南</h3>
+                    
+                    <div class="strategy-item">
+                        <strong>問題（一）常見錯誤：</strong><br>
+                        ❌ 只寫行為不寫結果：「路易十四保持沉默」（缺結果）<br>
+                        ❌ 混淆甲乙文：把路易十四寫成負面結果<br>
+                        ❌ 超過字數：會被扣分
+                    </div>
+                    
+                    <div class="strategy-item">
+                        <strong>問題（二）常見錯誤：</strong><br>
+                        ❌ 兩種立場都寫：題目要求「擇一」<br>
+                        ❌ 沒有個人經驗：純理論討論會失分<br>
+                        ❌ 例子與立場不符：舉了霸凌案例卻支持沉默<br>
+                        ❌ 沒扣回文章：完全不提古德曼或大象隱喻
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 總結提示 -->
+            <div class="section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none;">
+                <div class="section-title" style="color: white;">💡 考前提醒</div>
+                <div style="font-size: 16px; line-height: 2;">
+                    ✓ <strong>三色筆記法</strong>：紅色畫核心概念、綠色圈人事物、藍色標邏輯詞<br>
+                    ✓ <strong>先看題目再讀文</strong>：知道要找什麼，閱讀更有效率<br>
+                    ✓ <strong>對比型文章</strong>：建立表格對比正反觀點<br>
+                    ✓ <strong>字數掌控</strong>：問題一留10字緩衝、問題二每段字數要平均<br>
+                    ✓ <strong>時間管理</strong>：總答題時間35分鐘，留5分鐘檢查
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
