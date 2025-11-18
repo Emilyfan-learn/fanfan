@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>gsat_114_classical_1.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="114%E5%AD%B8%E6%B8%AC%E5%9C%8B%E6%96%87%E9%96%B1%E8%AE%80%E6%B8%AC%E9%A9%97%E5%AE%8C%E6%95%B4%E5%88%86%E6%9E%90">114學測國文閱讀測驗完整分析</h1>
+<blockquote>
+<p><strong>製作對象:</strong> 高三學測考生<br>
+<strong>製作目的:</strong> 協助學生掌握114學測國文閱讀重點<br>
+<strong>使用說明:</strong> 核心主旨標紅色,關鍵字句分色標註,並附心智圖視覺化呈現</p>
+</blockquote>
+<hr>
+<h2 id="%F0%9F%93%91-%E7%9B%AE%E9%8C%84%E5%B0%8E%E8%A6%BD">📑 目錄導覽</h2>
+<h3 id="%F0%9F%93%96-%E7%99%BD%E8%A9%B1%E6%96%87%E9%96%B1%E8%AE%80">📖 白話文閱讀</h3>
+<ol>
+<li><a href="#%E7%99%BD%E8%A9%B1%E6%96%871">第4題 丘成桐〈數學和中國文學的比較〉</a></li>
+<li><a href="#%E7%99%BD%E8%A9%B1%E6%96%872">第6-8題 林文月〈山笑〉</a></li>
+<li><a href="#%E7%99%BD%E8%A9%B1%E6%96%873">第9-10題 臺灣甘蔗與糖業的發展</a></li>
+<li><a href="#%E7%99%BD%E8%A9%B1%E6%96%874">第13-14題 MBTI與中國哲學思想</a></li>
+<li><a href="#%E7%99%BD%E8%A9%B1%E6%96%875">第15-19題 田曉菲《赤壁之戟》</a></li>
+<li><a href="#%E7%99%BD%E8%A9%B1%E6%96%876">第22-24題 錢乙《小兒藥證直訣》</a></li>
+<li><a href="#%E7%99%BD%E8%A9%B1%E6%96%877">第27題 博物館的社會不平等</a></li>
+<li><a href="#%E7%99%BD%E8%A9%B1%E6%96%878">第28題 〈移動的桃花源〉</a></li>
+</ol>
+<h3 id="%F0%9F%93%9C-%E6%96%87%E8%A8%80%E6%96%87%E9%96%B1%E8%AE%80">📜 文言文閱讀</h3>
+<ol>
+<li><a href="#%E6%96%87%E8%A8%80%E6%96%871">第5題 王安石〈材論〉</a></li>
+<li><a href="#%E6%96%87%E8%A8%80%E6%96%872">第11-12題 魏禧《魏叔子日錄》</a></li>
+<li><a href="#%E6%96%87%E8%A8%80%E6%96%873">第20-21題 李漁《閒情偶寄·廳壁》</a></li>
+<li><a href="#%E6%96%87%E8%A8%80%E6%96%874">第30-31題 袁宏道〈晚遊六橋待月記〉</a></li>
+</ol>
+<h3 id="%F0%9F%8E%AD-%E6%B7%B7%E5%90%88%E9%A1%8C%E7%B5%84%E5%90%AB%E6%96%87%E8%A8%80%E6%96%87">🎭 混合題組(含文言文)</h3>
+<ol>
+<li><a href="#%E6%B7%B7%E5%90%88%E9%A1%8C">第32-36題 杜光庭〈虬髯客傳〉與身分框架</a></li>
+</ol>
+<hr>
+<p><a name="文言文2"></a></p>
+<h2 id="%F0%9F%93%9C-%E6%96%87%E8%A8%80%E6%96%87%E9%96%B1%E8%AE%80%E4%B8%80%E9%AD%8F%E7%A6%A7%E9%AD%8F%E5%8F%94%E5%AD%90%E6%97%A5%E9%8C%84">📜 文言文閱讀(一):魏禧《魏叔子日錄》</h2>
+<h3 id="%E9%A1%8C%E7%B5%84%E8%B3%87%E8%A8%8A%E7%AC%AC11-12%E9%A1%8C">【題組資訊】第11-12題</h3>
+<hr>
+<h3 id="%E4%B8%80%F0%9F%93%96-%E5%AE%8C%E6%95%B4%E5%8E%9F%E6%96%87">一、📖 完整原文</h3>
+<blockquote>
+<p>論小人者,<strong>必論其心</strong>。小人庸多善事,<strong>其心未有無所為而為者</strong>。若徒論外事人品真偽,學術邪正,<strong>幾不可辨矣</strong>。論君子者,<strong>又不當徒論其心</strong>,心雖純正,<strong>而行事偶失,亦即是過</strong>。故<strong>論小人以心者,所以防閑小人之法;論君子以事者,所以造就君子之方</strong>。</p>
+</blockquote>
+<hr>
+<h3 id="%E4%BA%8C%F0%9F%94%B4-%E6%A0%B8%E5%BF%83%E4%B8%BB%E6%97%A8%E7%B4%85%E8%89%B2%E6%A8%99%E8%A8%BB">二、🔴 核心主旨(紅色標註)</h3>
+<p><strong>「論小人以心者,所以防閑小人之法;論君子以事者,所以造就君子之方。」</strong></p>
+<p><strong>主旨解析:</strong></p>
+<ul>
+<li>判斷小人要觀其<strong>動機</strong>(論心) → 目的:防範小人</li>
+<li>成就君子要看其<strong>行為</strong>(論事) → 目的:培養君子</li>
+</ul>
+<hr>
+<h3 id="%E4%B8%89%F0%9F%8E%A8-%E9%97%9C%E9%8D%B5%E5%AD%97%E5%8F%A5%E5%88%86%E8%89%B2%E6%A8%99%E8%A8%BB">三、🎨 關鍵字句分色標註</h3>
+<h4 id="%F0%9F%9F%A1-%E9%97%9C%E9%8D%B5%E6%A6%82%E5%BF%B5%E4%B8%80%E8%AB%96%E5%B0%8F%E4%BA%BA%E4%B9%8B%E6%B3%95">🟡 <strong>關鍵概念一:論小人之法</strong></h4>
+<ul>
+<li>「<strong>必論其心</strong>」→ 判斷小人要看動機</li>
+<li>「<strong>庸多善事</strong>」→ 小人表面常行善</li>
+<li>「<strong>其心未有無所為而為者</strong>」→ 但動機不純,必有所圖</li>
+<li>「<strong>幾不可辨矣</strong>」→ 只看表面無法辨別</li>
+</ul>
+<h4 id="%F0%9F%9F%A2-%E9%97%9C%E9%8D%B5%E6%A6%82%E5%BF%B5%E4%BA%8C%E8%AB%96%E5%90%9B%E5%AD%90%E4%B9%8B%E6%B3%95">🟢 <strong>關鍵概念二:論君子之法</strong></h4>
+<ul>
+<li>「<strong>不當徒論其心</strong>」→ 不能只看動機</li>
+<li>「<strong>心雖純正,而行事偶失,亦即是過</strong>」→ 行為有失仍是過錯</li>
+<li>「<strong>論君子以事者</strong>」→ 要從具體行事要求</li>
+</ul>
+<h4 id="%F0%9F%94%B5-%E5%B0%8D%E6%AF%94%E7%B5%90%E6%A7%8B">🔵 <strong>對比結構</strong></h4>
+<table>
+<thead>
+<tr>
+<th>判斷對象</th>
+<th>依據</th>
+<th>原因</th>
+<th>目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>小人</td>
+<td>論其「心」</td>
+<td>表面行善,難辨真偽</td>
+<td>防範之法</td>
+</tr>
+<tr>
+<td>君子</td>
+<td>論其「事」</td>
+<td>動機純正但行為需盡善</td>
+<td>造就之方</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="%E5%9B%9B%F0%9F%92%AD-%E5%BF%83%E6%99%BA%E5%9C%96%E5%91%88%E7%8F%BE">四、💭 心智圖呈現</h3>
+<pre><code class="language-mermaid"><div class="mermaid">mindmap
+  root((魏禧<br/>論小人與君子))
+    🔴核心主旨
+      論小人論心
+        防範小人之法
+      論君子論事
+        造就君子之方
+    🟡論小人之法
+      必論其心
+        動機不純
+        必有所圖
+      表面善事
+        庸多善事
+        易被蒙蔽
+      不可只看外在
+        人品難辨
+        學術難分
+    🟢論君子之法
+      不當徒論其心
+        動機要純正
+        但不足夠
+      必須論其事
+        行事偶失
+        亦即是過
+      造就君子
+        行為無失
+        盡善盡美
+    📊文章結構
+      起:論小人必論心
+      承:表面難辨
+      轉:論君子不徒論心
+      合:總結兩者之法
+</div></code></pre>
+<hr>
+<h3 id="%E4%BA%94%F0%9F%93%9D-%E7%99%BD%E8%A9%B1%E8%AA%9E%E8%AD%AF">五、📝 白話語譯</h3>
+<blockquote>
+<p>判斷一個人是否為<strong>小人</strong>,必須觀察他的<strong>動機</strong>。小人平常也許做很多善事,但他行為背後的動機,從來不是單純無私的。如果只從表面的行為來判斷人品真假、學術正邪,幾乎無法分辨。</p>
+<p>但判斷一個人是否為<strong>君子</strong>,卻不能只看動機。即使動機純正,但行為上若有疏失,仍然是過錯。所以,<strong>從動機來論斷小人,是防範小人的方法;從行為來論斷君子,是培養君子的方法</strong>。</p>
+</blockquote>
+<hr>
+<h3 id="%E5%85%AD%E2%9C%85-%E8%80%83%E9%A1%8C%E8%A7%A3%E6%9E%90">六、✅ 考題解析</h3>
+<h4 id="%E7%AC%AC11%E9%A1%8C%E5%90%9B%E5%AD%90%E8%A1%8C%E4%BA%8B%E7%9A%84%E7%89%B9%E8%B3%AA"><strong>第11題:君子行事的特質</strong></h4>
+<ul>
+<li><strong>考點:</strong> 成為君子的條件</li>
+<li><strong>答案線索:</strong> 「心雖純正,而行事偶失,亦即是過」</li>
+<li><strong>關鍵理解:</strong> 君子必須「動機純正」+「行事無失」兩者兼備</li>
+</ul>
+<h4 id="%E7%AC%AC12%E9%A1%8C%E8%AB%96%E5%B0%8F%E4%BA%BA%E5%BF%85%E8%AB%96%E5%85%B6%E5%BF%83%E7%9A%84%E7%94%A8%E6%84%8F"><strong>第12題:論小人必論其心的用意</strong></h4>
+<ul>
+<li><strong>考點:</strong> 為何要從動機判斷小人</li>
+<li><strong>答案線索:</strong> 「小人庸多善事」但「其心未有無所為而為者」</li>
+<li><strong>關鍵理解:</strong> 不可被小人的表面善行所蒙蔽</li>
+</ul>
+<hr>
+<h3 id="%E4%B8%83%F0%9F%93%8C-%E9%87%8D%E8%A6%81%E5%AD%97%E8%A9%9E">七、📌 重要字詞</h3>
+<table>
+<thead>
+<tr>
+<th>字詞</th>
+<th>注音</th>
+<th>意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>庸</td>
+<td>ㄩㄥ</td>
+<td>平常、通常</td>
+</tr>
+<tr>
+<td>無所為而為</td>
+<td>-</td>
+<td>無所圖謀而做,單純無私</td>
+</tr>
+<tr>
+<td>徒</td>
+<td>ㄊㄨˊ</td>
+<td>只、僅僅</td>
+</tr>
+<tr>
+<td>防閑</td>
+<td>ㄈㄤˊ ㄒㄧㄢˊ</td>
+<td>防範</td>
+</tr>
+<tr>
+<td>造就</td>
+<td>ㄗㄠˋ ㄐㄧㄡˋ</td>
+<td>培養成就</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="文言文3"></a></p>
+<h2 id="%F0%9F%93%9C-%E6%96%87%E8%A8%80%E6%96%87%E9%96%B1%E8%AE%80%E4%BA%8C%E6%9D%8E%E6%BC%81%E9%96%92%E6%83%85%E5%81%B6%E5%AF%84%E5%BB%B3%E5%A3%81">📜 文言文閱讀(二):李漁《閒情偶寄·廳壁》</h2>
+<h3 id="%E9%A1%8C%E7%B5%84%E8%B3%87%E8%A8%8A%E7%AC%AC20-21%E9%A1%8C">【題組資訊】第20-21題</h3>
+<hr>
+<h3 id="%E4%B8%80%F0%9F%93%96-%E5%AE%8C%E6%95%B4%E5%8E%9F%E6%96%87">一、📖 完整原文</h3>
+<blockquote>
+<p>石灰壁,最宜銷夏。一白如銀,使暑氣消形遁跡,不敢侵人。人當此際,如立雪山之上,坐冰壺之中,涼氣隨處可掬,透入肌膚,沁人心腑,使人不復有人間煙火之見,真避暑第一良方也。</p>
+<p>若遇秋冬之月,則患在太寒,宜加畫卷數幅,古書幾套,懸之壁間,以增文采,兼避冷氣。此又與石灰壁相輔而行者也。然必取古名人之蹟,或今書家可稱者,若俗筆之懸壁也,是代牆壁受辱也。</p>
+</blockquote>
+<hr>
+<h3 id="%E4%BA%8C%F0%9F%94%B4-%E6%A0%B8%E5%BF%83%E4%B8%BB%E6%97%A8%E7%B4%85%E8%89%B2%E6%A8%99%E8%A8%BB">二、🔴 核心主旨(紅色標註)</h3>
+<p><strong>「石灰壁,最宜銷夏」+「遇秋冬之月,宜加畫卷...以增文采,兼避冷氣」</strong></p>
+<p><strong>主旨解析:</strong></p>
+<ul>
+<li>說明石灰壁在<strong>夏天</strong>與<strong>秋冬</strong>的不同佈置方式</li>
+<li>夏天:純白消暑</li>
+<li>秋冬:加掛字畫增添文采並避寒</li>
+</ul>
+<hr>
+<h3 id="%E4%B8%89%F0%9F%8E%A8-%E9%97%9C%E9%8D%B5%E5%AD%97%E5%8F%A5%E5%88%86%E8%89%B2%E6%A8%99%E8%A8%BB">三、🎨 關鍵字句分色標註</h3>
+<h4 id="%F0%9F%9F%A1-%E9%97%9C%E9%8D%B5%E6%A6%82%E5%BF%B5%E4%B8%80%E5%A4%8F%E6%97%A5%E4%BD%88%E7%BD%AE%E7%9F%B3%E7%81%B0%E5%A3%81%E4%B9%8B%E5%A6%99">🟡 <strong>關鍵概念一:夏日佈置(石灰壁之妙)</strong></h4>
+<ul>
+<li>「<strong>一白如銀</strong>」→ 純白色澤如銀</li>
+<li>「<strong>使暑氣消形遁跡</strong>」→ 讓暑氣無處藏身</li>
+<li>「<strong>如立雪山之上,坐冰壺之中</strong>」→ 形容涼爽之感</li>
+<li>「<strong>真避暑第一良方也</strong>」→ 最佳消暑方法</li>
+</ul>
+<h4 id="%F0%9F%9F%A2-%E9%97%9C%E9%8D%B5%E6%A6%82%E5%BF%B5%E4%BA%8C%E7%A7%8B%E5%86%AC%E4%BD%88%E7%BD%AE%E5%8A%A0%E6%8E%9B%E5%AD%97%E7%95%AB">🟢 <strong>關鍵概念二:秋冬佈置(加掛字畫)</strong></h4>
+<ul>
+<li>「<strong>患在太寒</strong>」→ 問題在於太冷</li>
+<li>「<strong>宜加畫卷數幅,古書幾套</strong>」→ 應加掛字畫</li>
+<li>「<strong>以增文采,兼避冷氣</strong>」→ 增添文化氣息並避寒</li>
+<li>「<strong>必取古名人之蹟</strong>」→ 必須是名家作品</li>
+</ul>
+<h4 id="%F0%9F%94%B4-%E8%AD%A6%E7%A4%BA%E9%87%8D%E9%BB%9E">🔴 <strong>警示重點</strong></h4>
+<ul>
+<li>「<strong>若俗筆之懸壁也,是代牆壁受辱也</strong>」→ 掛庸俗字畫是侮辱牆壁</li>
+</ul>
+<hr>
+<h3 id="%E5%9B%9B%F0%9F%92%AD-%E5%BF%83%E6%99%BA%E5%9C%96%E5%91%88%E7%8F%BE">四、💭 心智圖呈現</h3>
+<pre><code class="language-mermaid"><div class="mermaid">mindmap
+  root((李漁<br/>廳壁佈置))
+    🔴核心概念
+      石灰壁最宜銷夏
+      秋冬加掛字畫
+    🟡夏日佈置
+      石灰壁
+        一白如銀
+        消暑氣
+      效果描述
+        如立雪山
+        坐冰壺中
+        涼氣沁人
+      結論
+        避暑第一良方
+    🟢秋冬佈置
+      問題
+        患在太寒
+      解決方法
+        加畫卷數幅
+        懸古書幾套
+      雙重功能
+        增文采
+        避冷氣
+    ⚠️注意事項
+      須用名家作品
+        古名人之蹟
+        今書家可稱者
+      禁用俗筆
+        代牆壁受辱
+</div></code></pre>
+<hr>
+<h3 id="%E4%BA%94%F0%9F%93%9D-%E7%99%BD%E8%A9%B1%E8%AA%9E%E8%AD%AF">五、📝 白話語譯</h3>
+<blockquote>
+<p><strong>石灰壁</strong>最適合用來消暑。純白如銀的色澤,能使暑氣無所遁形,不敢侵襲人。人在此時,就像站在雪山之上,坐在冰壺之中,涼氣隨處可以掬取,透入肌膚,沁入心腑,使人不再有人間煙火的感覺,真是避暑的第一良方啊。</p>
+<p>如果遇到<strong>秋冬時節</strong>,問題就在於太寒冷,應該加掛幾幅畫卷、幾套古書,懸掛在牆壁上,以增添文化氣息,同時避免冷氣。這又是與石灰壁相輔相成的做法。但必須選取古代名人的墨寶,或當今書法家值得稱道的作品,如果將庸俗的字畫懸掛於壁,那是替牆壁受辱啊。</p>
+</blockquote>
+<hr>
+<h3 id="%E5%85%AD%E2%9C%85-%E8%80%83%E9%A1%8C%E8%A7%A3%E6%9E%90">六、✅ 考題解析</h3>
+<h4 id="%E7%AC%AC20%E9%A1%8C%E7%9F%B3%E7%81%B0%E5%A3%81%E7%9A%84%E5%8A%9F%E8%83%BD"><strong>第20題:石灰壁的功能</strong></h4>
+<ul>
+<li><strong>考點:</strong> 理解夏日石灰壁的消暑效果</li>
+<li><strong>答案線索:</strong> 「一白如銀,使暑氣消形遁跡」</li>
+<li><strong>關鍵理解:</strong> 純白色澤能消暑降溫</li>
+</ul>
+<h4 id="%E7%AC%AC21%E9%A1%8C%E7%A7%8B%E5%86%AC%E4%BD%88%E7%BD%AE%E7%9A%84%E7%9B%AE%E7%9A%84"><strong>第21題:秋冬佈置的目的</strong></h4>
+<ul>
+<li><strong>考點:</strong> 理解加掛字畫的雙重功能</li>
+<li><strong>答案線索:</strong> 「以增文采,兼避冷氣」</li>
+<li><strong>關鍵理解:</strong> 既能增添文化氣息,又能避寒</li>
+</ul>
+<hr>
+<h3 id="%E4%B8%83%F0%9F%93%8C-%E9%87%8D%E8%A6%81%E5%AD%97%E8%A9%9E">七、📌 重要字詞</h3>
+<table>
+<thead>
+<tr>
+<th>字詞</th>
+<th>注音</th>
+<th>意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>銷夏</td>
+<td>ㄒㄧㄠ ㄒㄧㄚˋ</td>
+<td>消暑、消解暑氣</td>
+</tr>
+<tr>
+<td>遁跡</td>
+<td>ㄉㄨㄣˋ ㄐㄧ</td>
+<td>隱藏蹤跡</td>
+</tr>
+<tr>
+<td>掬</td>
+<td>ㄐㄩˊ</td>
+<td>雙手捧取</td>
+</tr>
+<tr>
+<td>沁</td>
+<td>ㄑㄧㄣˋ</td>
+<td>滲入、透入</td>
+</tr>
+<tr>
+<td>患</td>
+<td>ㄏㄨㄢˋ</td>
+<td>問題、缺點</td>
+</tr>
+<tr>
+<td>蹟</td>
+<td>ㄐㄧ</td>
+<td>墨寶、作品</td>
+</tr>
+<tr>
+<td>俗筆</td>
+<td>ㄙㄨˊ ㄅㄧˇ</td>
+<td>庸俗的字畫</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="文言文1"></a></p>
+<h2 id="%F0%9F%93%9C-%E6%96%87%E8%A8%80%E6%96%87%E9%96%B1%E8%AE%80%E4%B8%89%E7%8E%8B%E5%AE%89%E7%9F%B3%E6%9D%90%E8%AB%96">📜 文言文閱讀(三):王安石〈材論〉</h2>
+<h3 id="%E9%A1%8C%E7%B5%84%E8%B3%87%E8%A8%8A%E7%AC%AC5%E9%A1%8C%E7%AF%87%E7%AB%A0%E7%B5%90%E6%A7%8B%E9%A1%8C">【題組資訊】第5題(篇章結構題)</h3>
+<hr>
+<h3 id="%E4%B8%80%F0%9F%93%96-%E5%AE%8C%E6%95%B4%E5%8E%9F%E6%96%87">一、📖 完整原文</h3>
+<blockquote>
+<p>吾聞之,<strong>六國合從,而辯說之材出</strong>;<strong>劉、項並世,而籌畫戰鬥之徒起</strong>;<strong>唐太宗欲治,而謨謀諫諍之佐來</strong>。此數輩者,方此數君未出之時,蓋未嘗有也。<strong>_______________</strong>。天下之廣,人物之眾,而曰果無材可用者,吾不信也。</p>
+</blockquote>
+<hr>
+<h3 id="%E4%BA%8C%F0%9F%94%B4-%E6%A0%B8%E5%BF%83%E4%B8%BB%E6%97%A8%E7%B4%85%E8%89%B2%E6%A8%99%E8%A8%BB">二、🔴 核心主旨(紅色標註)</h3>
+<p><strong>「人君苟欲之,斯至矣」</strong> ← 此為空格應填入之句</p>
+<p><strong>主旨解析:</strong></p>
+<ul>
+<li>當君主有需求時,相關人才就會應運而生</li>
+<li>天下並非沒有人才,關鍵在於君主是否需要</li>
+</ul>
+<hr>
+<h3 id="%E4%B8%89%F0%9F%8E%A8-%E9%97%9C%E9%8D%B5%E5%AD%97%E5%8F%A5%E5%88%86%E8%89%B2%E6%A8%99%E8%A8%BB">三、🎨 關鍵字句分色標註</h3>
+<h4 id="%F0%9F%9F%A2-%E4%B8%89%E5%80%8B%E6%AD%B7%E5%8F%B2%E4%BE%8B%E8%AD%89%E7%B6%A0%E8%89%B2">🟢 <strong>三個歷史例證(綠色)</strong></h4>
+<ol>
+<li>
+<p>「<strong>六國合從,而辯說之材出</strong>」</p>
+<ul>
+<li>戰國合縱 → 辯士出現</li>
+</ul>
+</li>
+<li>
+<p>「<strong>劉、項並世,而籌畫戰鬥之徒起</strong>」</p>
+<ul>
+<li>楚漢相爭 → 謀略家崛起</li>
+</ul>
+</li>
+<li>
+<p>「<strong>唐太宗欲治,而謨謀諫諍之佐來</strong>」</p>
+<ul>
+<li>唐太宗治國 → 諫臣聚集</li>
+</ul>
+</li>
+</ol>
+<h4 id="%F0%9F%9F%A1-%E6%AD%B8%E7%B4%8D%E7%B8%BD%E7%B5%90%E9%BB%83%E8%89%B2">🟡 <strong>歸納總結(黃色)</strong></h4>
+<ul>
+<li>「<strong>方此數君未出之時,蓋未嘗有也</strong>」
+→ 君主未出現前,這些人才也不存在</li>
+</ul>
+<h4 id="%F0%9F%94%B4-%E6%A0%B8%E5%BF%83%E8%AB%96%E9%BB%9E%E7%B4%85%E8%89%B2">🔴 <strong>核心論點(紅色)</strong></h4>
+<ul>
+<li><strong>空格應填:</strong> 「人君苟欲之,斯至矣」
+→ 君主若有需求,人才自然到來</li>
+</ul>
+<h4 id="%F0%9F%94%B5-%E7%B5%90%E8%AB%96%E8%97%8D%E8%89%B2">🔵 <strong>結論(藍色)</strong></h4>
+<ul>
+<li>「<strong>天下之廣,人物之眾,而曰果無材可用者,吾不信也</strong>」
+→ 說沒有人才可用,我不相信</li>
+</ul>
+<hr>
+<h3 id="%E5%9B%9B%F0%9F%92%AD-%E5%BF%83%E6%99%BA%E5%9C%96%E5%91%88%E7%8F%BE">四、💭 心智圖呈現</h3>
+<pre><code class="language-mermaid"><div class="mermaid">mindmap
+  root((王安石<br/>材論))
+    📚舉例論證
+      例一
+        六國合從
+        辯說之材出
+      例二
+        劉項並世
+        籌畫戰鬥之徒起
+      例三
+        唐太宗欲治
+        謨謀諫諍之佐來
+      共同點
+        君主未出時
+        人才未嘗有
+    🔴核心論點
+      人君苟欲之
+        斯至矣
+      人才應運而生
+        隨需求出現
+    🔵作者觀點
+      天下之廣
+      人物之眾
+      必有材可用
+        我不信無材
+</div></code></pre>
+<hr>
+<h3 id="%E4%BA%94%F0%9F%93%9D-%E7%99%BD%E8%A9%B1%E8%AA%9E%E8%AD%AF">五、📝 白話語譯</h3>
+<blockquote>
+<p>我聽聞,戰國時期<strong>六國實行合縱策略</strong>,善於辯說的人才就出現了;<strong>劉邦、項羽爭奪天下</strong>,善於謀略、勇於戰鬥的人才就崛起了;<strong>唐太宗想要治理天下</strong>,善於謀略且能直言勸諫的人才就聚集而來。這些人才,在上述這幾位君主尚未出現的時候,也並不存在。<strong>當君主有需要的時候,他們就出現了</strong>。天下如此廣闊,人物如此眾多,如果說真的沒有人才可以任用,我是不相信的。</p>
+</blockquote>
+<hr>
+<h3 id="%E5%85%AD%E2%9C%85-%E8%80%83%E9%A1%8C%E8%A7%A3%E6%9E%90">六、✅ 考題解析</h3>
+<h4 id="%E7%AC%AC5%E9%A1%8C%E7%AF%87%E7%AB%A0%E7%B5%90%E6%A7%8B%E5%A1%AB%E7%A9%BA%E9%A1%8C"><strong>第5題:篇章結構(填空題)</strong></h4>
+<ul>
+<li>
+<p><strong>考點:</strong> 理解文章論證邏輯,找出承上啟下的關鍵句</p>
+</li>
+<li>
+<p><strong>文章結構:</strong></p>
+<ol>
+<li>舉例(三個歷史例證)</li>
+<li>歸納(君主未出時,人才不存在)</li>
+<li><strong>★核心論點(空格處)</strong> → 君主有需求,人才就來</li>
+<li>結論(天下必有人才可用)</li>
+</ol>
+</li>
+<li>
+<p><strong>答案:</strong> (A) 人君苟欲之,斯至矣</p>
+</li>
+<li>
+<p><strong>其他選項為何不適合:</strong></p>
+<ul>
+<li>(B) 強調古人教育人才 → 偏離主題</li>
+<li>(C) 強調人才易被發現 → 未呼應君主需求</li>
+<li>(D) 強調後世君主不任用 → 與全文論點矛盾</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="%E4%B8%83%F0%9F%93%8C-%E9%87%8D%E8%A6%81%E5%AD%97%E8%A9%9E">七、📌 重要字詞</h3>
+<table>
+<thead>
+<tr>
+<th>字詞</th>
+<th>注音</th>
+<th>意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>合從</td>
+<td>ㄏㄜˊ ㄗㄨㄥˋ</td>
+<td>合縱,戰國時六國聯合對抗秦國</td>
+</tr>
+<tr>
+<td>辯說之材</td>
+<td>-</td>
+<td>善於辯論說服的人才</td>
+</tr>
+<tr>
+<td>並世</td>
+<td>ㄅㄧㄥˋ ㄕˋ</td>
+<td>同時存在於世</td>
+</tr>
+<tr>
+<td>籌畫</td>
+<td>ㄔㄡˊ ㄏㄨㄚˋ</td>
+<td>謀劃、策劃</td>
+</tr>
+<tr>
+<td>謨謀</td>
+<td>ㄇㄛˊ ㄇㄡˊ</td>
+<td>計謀、謀略</td>
+</tr>
+<tr>
+<td>諫諍</td>
+<td>ㄐㄧㄢˋ ㄓㄥ</td>
+<td>直言規勸</td>
+</tr>
+<tr>
+<td>苟</td>
+<td>ㄍㄡˇ</td>
+<td>如果、假使</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="文言文4"></a></p>
+<h2 id="%F0%9F%93%9C-%E6%96%87%E8%A8%80%E6%96%87%E9%96%B1%E8%AE%80%E5%9B%9B%E8%A2%81%E5%AE%8F%E9%81%93%E6%99%9A%E9%81%8A%E5%85%AD%E6%A9%8B%E5%BE%85%E6%9C%88%E8%A8%98">📜 文言文閱讀(四):袁宏道〈晚遊六橋待月記〉</h2>
+<h3 id="%E9%A1%8C%E7%B5%84%E8%B3%87%E8%A8%8A%E7%AC%AC30-31%E9%A1%8C%E7%B5%90%E5%90%88%E7%99%BD%E8%A9%B1%E8%AA%AA%E6%98%8E%E6%96%87">【題組資訊】第30-31題(結合白話說明文)</h3>
+<hr>
+<h3 id="%E4%B8%80%F0%9F%93%96-%E5%AE%8C%E6%95%B4%E5%8E%9F%E6%96%87">一、📖 完整原文</h3>
+<blockquote>
+<p>西湖最盛,為春為月。一日之盛,為朝煙,為夕嵐。今歲春雪甚盛,梅花為寒所勒,與杏桃相次開發,尤為奇觀。</p>
+<p>石簣數為余言:「傅金吾園中梅,張功甫家故物也,急往觀之。」余時為桃花所戀,竟不忍去湖上。由斷橋至蘇堤一帶,綠煙紅霧,彌漫二十餘里。歌吹為風,粉汗為雨,羅紈之盛,多於堤畔之草,豔冶極矣。</p>
+<p>然杭人遊湖,止午、未、申三時;其實湖光染翠之工,山嵐設色之妙,皆在朝日始出,夕舂未下,始極其濃媚。月景尤不可言,花態柳情,山容水意,別是一種趣味。此樂留與山僧遊客受用,安可為俗士道哉!</p>
+</blockquote>
+<hr>
+<h3 id="%E4%BA%8C%F0%9F%94%B4-%E6%A0%B8%E5%BF%83%E4%B8%BB%E6%97%A8%E7%B4%85%E8%89%B2%E6%A8%99%E8%A8%BB">二、🔴 核心主旨(紅色標註)</h3>
+<p><strong>「杭人遊湖,止午、未、申三時;其實湖光染翠之工,山嵐設色之妙,皆在朝日始出,夕舂未下...月景尤不可言」</strong></p>
+<p><strong>主旨解析:</strong></p>
+<ul>
+<li>批評杭州人只在中午遊湖</li>
+<li>真正的美景在「清晨」、「傍晚」、「月夜」</li>
+<li>這種雅趣只有山僧遊客能體會</li>
+</ul>
+<hr>
+<h3 id="%E4%B8%89%F0%9F%8E%A8-%E9%97%9C%E9%8D%B5%E5%AD%97%E5%8F%A5%E5%88%86%E8%89%B2%E6%A8%99%E8%A8%BB">三、🎨 關鍵字句分色標註</h3>
+<h4 id="%F0%9F%9F%A1-%E8%A5%BF%E6%B9%96%E4%B9%8B%E7%9B%9B%E9%BB%83%E8%89%B2">🟡 <strong>西湖之盛(黃色)</strong></h4>
+<ul>
+<li>「<strong>西湖最盛,為春為月</strong>」→ 最美在春天和月夜</li>
+<li>「<strong>一日之盛,為朝煙,為夕嵐</strong>」→ 一天中最美在清晨與傍晚</li>
+<li>「<strong>今歲春雪甚盛...尤為奇觀</strong>」→ 今年梅杏桃同時開,特別奇特</li>
+</ul>
+<h4 id="%F0%9F%9F%A2-%E6%B9%96%E4%B8%8A%E7%9B%9B%E6%B3%81%E7%B6%A0%E8%89%B2">🟢 <strong>湖上盛況(綠色)</strong></h4>
+<ul>
+<li>「<strong>由斷橋至蘇堤一帶,綠煙紅霧,彌漫二十餘里</strong>」→ 煙霧瀰漫</li>
+<li>「<strong>歌吹為風,粉汗為雨</strong>」→ 歌聲如風,汗水如雨</li>
+<li>「<strong>羅紈之盛,多於堤畔之草</strong>」→ 遊客之多</li>
+<li>「<strong>豔冶極矣</strong>」→ 景色豔麗至極</li>
+</ul>
+<h4 id="%F0%9F%94%B4-%E4%BD%9C%E8%80%85%E8%A7%80%E9%BB%9E%E7%B4%85%E8%89%B2">🔴 <strong>作者觀點(紅色)</strong></h4>
+<ul>
+<li>「<strong>杭人遊湖,止午、未、申三時</strong>」→ 批評只在中午遊湖</li>
+<li>「<strong>湖光染翠之工,山嵐設色之妙,皆在朝日始出,夕舂未下</strong>」→ 真正美景在清晨傍晚</li>
+<li>「<strong>月景尤不可言</strong>」→ 月夜景色更是美妙難言</li>
+<li>「<strong>此樂留與山僧遊客受用,安可為俗士道哉</strong>」→ 這種雅趣豈能與俗人說</li>
+</ul>
+<hr>
+<h3 id="%E5%9B%9B%F0%9F%92%AD-%E5%BF%83%E6%99%BA%E5%9C%96%E5%91%88%E7%8F%BE">四、💭 心智圖呈現</h3>
+<pre><code class="language-mermaid"><div class="mermaid">mindmap
+  root((袁宏道<br/>晚遊六橋))
+    🟡西湖最盛
+      春天與月夜
+        為春為月
+      一日之盛
+        朝煙
+        夕嵐
+      今年奇觀
+        梅杏桃同開
+    🟢湖上盛況
+      景色描寫
+        綠煙紅霧
+        彌漫二十餘里
+      人潮擁擠
+        歌吹為風
+        粉汗為雨
+        羅紈之盛
+      結論
+        豔冶極矣
+    🔴作者觀點
+      批評俗人
+        止午未申三時
+        不知真趣
+      真正美景
+        朝日始出
+        夕舂未下
+        月景尤不可言
+      雅俗之分
+        山僧遊客受用
+        不可為俗士道
+</div></code></pre>
+<hr>
+<h3 id="%E4%BA%94%F0%9F%93%9D-%E7%99%BD%E8%A9%B1%E8%AA%9E%E8%AD%AF">五、📝 白話語譯</h3>
+<blockquote>
+<p><strong>西湖最盛大的景色,在於春天和月夜</strong>。一天當中最盛的景色,在於清晨的煙霧和傍晚的山嵐。今年春雪特別多,梅花被寒冷所阻,與杏花桃花依次開放,尤其是奇特的景觀。</p>
+<p>石簣多次對我說:「傅金吾園中的梅花,是張功甫家舊有的,趕快去觀賞吧。」我當時被桃花所吸引,竟然捨不得離開西湖。<strong>從斷橋到蘇堤一帶,綠色的煙霧紅色的霧氣,瀰漫二十多里</strong>。歌聲笛聲如同風一般,脂粉汗水如同雨一般,身穿綾羅綢緞的人,比堤岸邊的草還多,豔麗至極。</p>
+<p>然而<strong>杭州人遊湖,只在午、未、申三個時辰</strong>(上午11點到下午5點);其實<strong>湖光映照綠色的工夫,山嵐調配色彩的妙處,都在清晨太陽剛出來,傍晚夕陽還未下山時,才最濃郁美麗。月夜的景色更是美妙得無法形容</strong>,花的姿態柳的情致,山的容顏水的意韻,別是一種趣味。<strong>這種樂趣留給山僧和遊客享受,怎麼可以對俗人說呢</strong>!</p>
+</blockquote>
+<hr>
+<h3 id="%E5%85%AD%E2%9C%85-%E8%80%83%E9%A1%8C%E8%A7%A3%E6%9E%90">六、✅ 考題解析</h3>
+<h4 id="%E7%AC%AC30%E9%A1%8C%E6%96%87%E6%9C%AC%E7%B5%B1%E6%95%B4"><strong>第30題:文本統整</strong></h4>
+<ul>
+<li><strong>考點:</strong> 理解晚明文人記遊書寫的特色</li>
+<li><strong>關鍵:</strong> 結合甲文(白話說明)與乙文(袁宏道原文)</li>
+<li><strong>重點:</strong> 強調「雅俗之分」、「避開人潮」、「追求真趣」</li>
+</ul>
+<h4 id="%E7%AC%AC31%E9%A1%8C%E8%A7%80%E9%BB%9E%E6%87%89%E7%94%A8"><strong>第31題:觀點應用</strong></h4>
+<ul>
+<li><strong>考點:</strong> 比較袁宏道與王思任的遊記風格</li>
+<li><strong>關鍵:</strong> 兩者皆強調避開俗人、追求獨特體驗</li>
+<li><strong>重點:</strong> 理解文人遊記的書寫特色</li>
+</ul>
+<hr>
+<h3 id="%E4%B8%83%F0%9F%93%8C-%E9%87%8D%E8%A6%81%E5%AD%97%E8%A9%9E">七、📌 重要字詞</h3>
+<table>
+<thead>
+<tr>
+<th>字詞</th>
+<th>注音</th>
+<th>意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>夕嵐</td>
+<td>ㄒㄧ ㄌㄢˊ</td>
+<td>傍晚的山嵐、霧氣</td>
+</tr>
+<tr>
+<td>為寒所勒</td>
+<td>-</td>
+<td>被寒冷所阻礙</td>
+</tr>
+<tr>
+<td>石簣</td>
+<td>ㄕˊ ㄎㄨㄟˋ</td>
+<td>人名</td>
+</tr>
+<tr>
+<td>羅紈</td>
+<td>ㄌㄨㄛˊ ㄨㄢˊ</td>
+<td>綾羅綢緞,借指穿著華麗的人</td>
+</tr>
+<tr>
+<td>豔冶</td>
+<td>ㄧㄢˋ ㄧㄝˇ</td>
+<td>豔麗、美麗</td>
+</tr>
+<tr>
+<td>染翠</td>
+<td>ㄖㄢˇ ㄘㄨㄟˋ</td>
+<td>映照翠綠色</td>
+</tr>
+<tr>
+<td>夕舂</td>
+<td>ㄒㄧ ㄔㄨㄥ</td>
+<td>夕陽</td>
+</tr>
+<tr>
+<td>山僧</td>
+<td>ㄕㄢ ㄙㄥ</td>
+<td>山中僧人</td>
+</tr>
+<tr>
+<td>俗士</td>
+<td>ㄙㄨˊ ㄕˋ</td>
+<td>庸俗之人</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a name="白話文2"></a></p>
+<h2 id="%F0%9F%93%96-%E7%99%BD%E8%A9%B1%E6%96%87%E9%96%B1%E8%AE%80%E4%B8%80%E6%9E%97%E6%96%87%E6%9C%88%E5%B1%B1%E7%AC%91">📖 白話文閱讀(一):林文月〈山笑〉</h2>
+<h3 id="%E9%A1%8C%E7%B5%84%E8%B3%87%E8%A8%8A%E7%AC%AC6-8%E9%A1%8C">【題組資訊】第6-8題</h3>
+<hr>
+<h3 id="%E4%B8%80%F0%9F%93%96-%E5%AE%8C%E6%95%B4%E5%8E%9F%E6%96%87">一、📖 完整原文</h3>
+<blockquote>
+<p>深夜,斜臥床榻,隨手抽取一本小几上疊放的書漫讀助眠,已是長年習慣。書宜輕巧易掌握,內容勿過於深奧嚴肅,否則刺激興奮,反失效果。那夜,從書堆抽出體積特小的日本岩波書店口袋型書,曾閱讀過部分而未竟,書頁間夾著一張書籤,姑且從有書籤的那頁讀起來。翻閱兩三頁後,忽有一張小小的短箋滑下,上面印著淺淺好看藍紫色的鉛印字:</p>
+<p><strong>山笑—根據《廣辭苑》</strong></p>
+<p>俳句的季節語。謂眾樹一齊吐芽的春季華麗景致。相對的,「山眠」指枯槁失卻精采的山,「山粧」則是被紅葉裝扮的山,各為冬、秋季節語。見於北宋畫家、兼山水畫理論家郭熙的「四時山」。</p>
+<p>《廣辭苑》雖未採入,但青青的夏季的山是「山滴」。</p>
+<p>這幾行文字與我手中捧讀的書全不相關。把紙片反過來看,正中央印著岩波書店新印製的辭典《廣辭苑》書脊樣本,原來正面文字是為第五版《廣辭苑》做的廣告。</p>
+<p>廣告何以題為「山笑」,又引用郭熙「四時山」的字句呢?根據《廣辭苑》,「山笑」一詞,是俳句(日本古典短詩)的季節語,典出於北宋郭熙的《山水訓》。按捺不住好奇,索性走到書房去查究。**《山水訓》的原文是這樣的:「真山水之煙嵐,四時不同。春山淡冶而如笑,夏山蒼翠而如滴,秋山明淨而如粧,冬山慘淡而如睡。」**雖然日文廣告詞引述的文字,把原文的「如笑」、「如滴」、「如粧」、「如睡」改為「山笑」、「山滴」、「山粧」、「山眠」,以適合其語言習慣,且文章次序也略有變動,但郭熙的絕妙比喻,卻被生動地化為一則含帶商業性質的文字裡,不得不令人佩服!至於在四季不同山色中擇取「山笑」為題,從我正在閱讀的書印刷發行時間推斷,應是配合此書是春季版的效果,也是神來之筆。</p>
+<p>日本的文士不僅寫作漢詩文,即使和歌、俳句也深受中國文化影響,這段廣告詞可以為證。查得這些來龍去脈,我心中釋然,雖則睡意全消,卻經驗了一次愉悅的失眠。</p>
+</blockquote>
+<hr>
+<h3 id="%E4%BA%8C%F0%9F%94%B4-%E6%A0%B8%E5%BF%83%E4%B8%BB%E6%97%A8%E7%B4%85%E8%89%B2%E6%A8%99%E8%A8%BB">二、🔴 核心主旨(紅色標註)</h3>
+<p><strong>「郭熙的絕妙比喻,卻被生動地化為一則含帶商業性質的文字裡...查得這些來龍去脈,我心中釋然...經驗了一次愉悅的失眠。」</strong></p>
+<p><strong>主旨解析:</strong></p>
+<ul>
+<li>作者因發現短箋中的「山笑」典故</li>
+<li>追溯出處,理解廣告如何巧妙化用郭熙《山水訓》</li>
+<li>體會到跨文化的文字創意,感到愉悅</li>
+</ul>
+<hr>
+<h3 id="%E4%B8%89%F0%9F%8E%A8-%E9%97%9C%E9%8D%B5%E5%AD%97%E5%8F%A5%E5%88%86%E8%89%B2%E6%A8%99%E8%A8%BB">三、🎨 關鍵字句分色標註</h3>
+<h4 id="%F0%9F%9F%A1-%E7%99%BC%E7%8F%BE%E7%9F%AD%E7%AE%8B%E9%BB%83%E8%89%B2">🟡 <strong>發現短箋(黃色)</strong></h4>
+<ul>
+<li>「<strong>深夜...隨手抽取一本小几上疊放的書漫讀助眠</strong>」→ 睡前閱讀習慣</li>
+<li>「<strong>忽有一張小小的短箋滑下</strong>」→ 意外發現</li>
+<li>「<strong>山笑—根據《廣辭苑》</strong>」→ 短箋標題</li>
+</ul>
+<h4 id="%F0%9F%9F%A2-%E7%9F%AD%E7%AE%8B%E5%85%A7%E5%AE%B9%E7%B6%A0%E8%89%B2">🟢 <strong>短箋內容(綠色)</strong></h4>
+<ul>
+<li>「<strong>俳句的季節語</strong>」→ 說明「山笑」的文類</li>
+<li>「<strong>謂眾樹一齊吐芽的春季華麗景致</strong>」→ 春季意象</li>
+<li>「<strong>山眠(冬)、山粧(秋)、山滴(夏)</strong>」→ 四季對應</li>
+</ul>
+<h4 id="%F0%9F%94%B5-%E8%BF%BD%E6%BA%AF%E5%85%B8%E6%95%85%E8%97%8D%E8%89%B2">🔵 <strong>追溯典故(藍色)</strong></h4>
+<ul>
+<li>「<strong>典出於北宋郭熙的《山水訓》</strong>」→ 出處</li>
+<li>「<strong>春山淡冶而如笑,夏山蒼翠而如滴,秋山明淨而如粧,冬山慘淡而如睡</strong>」→ 原文</li>
+<li>「<strong>日文廣告詞...把原文的『如笑』改為『山笑』</strong>」→ 化用手法</li>
+</ul>
+<h4 id="%F0%9F%94%B4-%E4%BD%9C%E8%80%85%E6%84%9F%E6%82%9F%E7%B4%85%E8%89%B2">🔴 <strong>作者感悟(紅色)</strong></h4>
+<ul>
+<li>「<strong>郭熙的絕妙比喻,卻被生動地化為一則含帶商業性質的文字裡,不得不令人佩服</strong>」→ 讚嘆創意</li>
+<li>「<strong>擇取『山笑』為題...應是配合此書是春季版的效果,也是神來之筆</strong>」→ 理解巧思</li>
+<li>「<strong>經驗了一次愉悅的失眠</strong>」→ 滿足感</li>
+</ul>
+<hr>
+<h3 id="%E5%9B%9B%F0%9F%92%AD-%E5%BF%83%E6%99%BA%E5%9C%96%E5%91%88%E7%8F%BE">四、💭 心智圖呈現</h3>
+<pre><code class="language-mermaid"><div class="mermaid">mindmap
+  root((林文月<br/>山笑))
+    🟡發現短箋
+      睡前閱讀
+        深夜漫讀助眠
+        抽取口袋書
+      意外發現
+        短箋滑下
+        印著山笑
+    🟢短箋內容
+      俳句季節語
+        春:山笑
+        夏:山滴
+        秋:山粧
+        冬:山眠
+      廣告用途
+        為廣辭苑做廣告
+    🔵追溯典故
+      查證出處
+        典出郭熙山水訓
+      原文對照
+        春山如笑
+        夏山如滴
+        秋山如粧
+        冬山如睡
+      化用手法
+        改如笑為山笑
+        配合日語習慣
+        次序略調整
+    🔴作者感悟
+      讚嘆創意
+        絕妙比喻
+        化為廣告
+        神來之筆
+      跨文化影響
+        日本深受中國影響
+      愉悅失眠
+        心中釋然
+        查得來龍去脈
+</div></code></pre>
+<hr>
+<h3 id="%E4%BA%94">五、</h3>
+
+</body>
+</html>
