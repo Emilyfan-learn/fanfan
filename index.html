@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>家庭網站</title>
+    <title>帆</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Microsoft JhengHei', Arial, sans-serif;
-            background: linear-gradient(135deg, #fce4ec 0%, #fff9e6 50%, #e8f5e9 100%);
+            background: linear-gradient(135deg, #f5ebe9 0%, #fff9e6 50%, #e8f5e9 100%);
             min-height: 100vh;
         }
 
@@ -36,7 +36,7 @@
         }
 
         .login-box h1 {
-            color: #f48fb1;
+            color: #E2C6C4;
             text-align: center;
             margin-bottom: 30px;
             font-size: 28px;
@@ -64,13 +64,13 @@
 
         .input-group input:focus {
             outline: none;
-            border-color: #f48fb1;
+            border-color: #E2C6C4;
         }
 
         .login-btn {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, #f48fb1 0%, #f8bbd0 100%);
+            background: linear-gradient(135deg, #E2C6C4 0%, #ead8d6 100%);
             color: white;
             border: none;
             border-radius: 10px;
@@ -132,7 +132,7 @@
 
         .back-btn {
             padding: 12px 30px;
-            background: linear-gradient(135deg, #f48fb1 0%, #f8bbd0 100%);
+            background: linear-gradient(135deg, #E2C6C4 0%, #ead8d6 100%);
             color: white;
             border: none;
             border-radius: 10px;
@@ -167,7 +167,7 @@
 
         .sidebar-header {
             padding: 20px;
-            background: linear-gradient(135deg, #f48fb1 0%, #f8bbd0 100%);
+            background: linear-gradient(135deg, #E2C6C4 0%, #ead8d6 100%);
             color: white;
             display: flex;
             justify-content: space-between;
@@ -207,11 +207,11 @@
         }
 
         .menu-title:hover {
-            background: #fce4ec;
+            background: #f5ebe9;
         }
 
         .menu-title span {
-            color: #f48fb1;
+            color: #E2C6C4;
             font-weight: 600;
             font-size: 15px;
         }
@@ -232,7 +232,7 @@
         }
 
         .menu-item.active .submenu {
-            max-height: 200px;
+            max-height: 500px;
         }
 
         .submenu-item {
@@ -247,6 +247,60 @@
         .submenu-item:hover {
             background: #fff9e6;
             border-left-color: #ffeb3b;
+            color: #333;
+        }
+
+        /* 第二層選單 */
+        .submenu-title {
+            padding: 12px 20px 12px 40px;
+            cursor: pointer;
+            color: #666;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fafafa;
+        }
+
+        .submenu-title:hover {
+            background: #fff9e6;
+            color: #333;
+        }
+
+        .submenu-arrow {
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+
+        .submenu-item.has-children.active .submenu-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* 第三層選單 */
+        .sub-submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #f5f5f5;
+        }
+
+        .submenu-item.has-children.active .sub-submenu {
+            max-height: 300px;
+        }
+
+        .sub-submenu-item {
+            padding: 10px 20px 10px 60px;
+            cursor: pointer;
+            color: #777;
+            font-size: 13px;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .sub-submenu-item:hover {
+            background: #e8f5e9;
+            border-left-color: #66bb6a;
             color: #333;
         }
 
@@ -266,7 +320,7 @@
         }
 
         .content-box h2 {
-            color: #f48fb1;
+            color: #E2C6C4;
             margin-bottom: 20px;
             font-size: 24px;
         }
@@ -281,7 +335,7 @@
         .mobile-header {
             display: none;
             padding: 15px 20px;
-            background: linear-gradient(135deg, #f48fb1 0%, #f8bbd0 100%);
+            background: linear-gradient(135deg, #E2C6C4 0%, #ead8d6 100%);
             color: white;
             align-items: center;
             justify-content: space-between;
@@ -350,7 +404,7 @@
     <!-- 登入頁面 -->
     <div class="login-container" id="loginPage">
         <div class="login-box">
-            <h1>🏠 家庭網站</h1>
+            <h1>🏠 帆</h1>
             <form id="loginForm">
                 <div class="input-group">
                     <label for="username">帳號</label>
@@ -381,7 +435,7 @@
         <!-- 手機版頂部 -->
         <div class="mobile-header">
             <button class="menu-toggle" id="menuToggle">☰</button>
-            <h2>家庭網站</h2>
+            <h2>帆</h2>
             <button class="logout-btn" onclick="logout()">登出</button>
         </div>
 
@@ -397,61 +451,211 @@
             
             <div class="menu-item">
                 <div class="menu-title" onclick="toggleMenu(this)">
-                    <span>📸 句子翻譯</span>
+                    <span>📸 攻略</span>
                     <span class="menu-arrow">▼</span>
                 </div>
                 <div class="submenu">
-                    <div class="submenu-item" onclick="window.location.href='english-translation-guide-2.html'">青少年</div>
-                    <div class="submenu-item" onclick="loadPage('旅遊回憶')">旅遊回憶</div>
-                    <div class="submenu-item" onclick="loadPage('節日慶祝')">節日慶祝</div>
+                    <div class="submenu-item has-children">
+                        <div class="submenu-title" onclick="toggleSubMenu(this)">
+                            <span>句型翻譯</span>
+                            <span class="submenu-arrow">▼</span>
+                        </div>
+                        <div class="sub-submenu">
+                            <div class="sub-submenu-item" onclick="window.location.href='pages/english-translation-guide-2.html'">25-30</div>
+                            <div class="sub-submenu-item" onclick="loadPage('2023年照片')">2023年照片</div>
+                            <div class="sub-submenu-item" onclick="loadPage('2022年照片')">2022年照片</div>
+                        </div>
+                    </div>
+                    <div class="submenu-item has-children">
+                        <div class="submenu-title" onclick="toggleSubMenu(this)">
+                            <span>旅遊回憶</span>
+                            <span class="submenu-arrow">▼</span>
+                        </div>
+                        <div class="sub-submenu">
+                            <div class="sub-submenu-item" onclick="loadPage('國內旅遊')">國內旅遊</div>
+                            <div class="sub-submenu-item" onclick="loadPage('國外旅遊')">國外旅遊</div>
+                            <div class="sub-submenu-item" onclick="loadPage('週末小旅行')">週末小旅行</div>
+                        </div>
+                    </div>
+                    <div class="submenu-item has-children">
+                        <div class="submenu-title" onclick="toggleSubMenu(this)">
+                            <span>節日慶祝</span>
+                            <span class="submenu-arrow">▼</span>
+                        </div>
+                        <div class="sub-submenu">
+                            <div class="sub-submenu-item" onclick="loadPage('生日派對')">生日派對</div>
+                            <div class="sub-submenu-item" onclick="loadPage('節日活動')">節日活動</div>
+                            <div class="sub-submenu-item" onclick="loadPage('特殊紀念日')">特殊紀念日</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="menu-item">
                 <div class="menu-title" onclick="toggleMenu(this)">
-                    <span>📝 記事本</span>
+                    <span>📝國   文</span>
                     <span class="menu-arrow">▼</span>
                 </div>
                 <div class="submenu">
-                    <div class="submenu-item" onclick="loadPage('日常筆記')">日常筆記</div>
-                    <div class="submenu-item" onclick="loadPage('重要事項')">重要事項</div>
-                    <div class="submenu-item" onclick="loadPage('待辦清單')">待辦清單</div>
+                    <div class="submenu-item has-children">
+                        <div class="submenu-title" onclick="toggleSubMenu(this)">
+                            <span>114</span>
+                            <span class="submenu-arrow">▼</span>
+                        </div>
+                        <div class="sub-submenu">
+                            <div class="sub-submenu-item" onclick="loadPage('工作筆記')">單選題</div>
+                            <div class="sub-submenu-item" onclick="loadPage('生活記錄')">生活記錄</div>
+                            <div class="sub-submenu-item" onclick="loadPage('心情日記')">心情日記</div>
+                        </div>
+                    </div>
+                    <div class="submenu-item has-children">
+                        <div class="submenu-title" onclick="toggleSubMenu(this)">
+                            <span>113</span>
+                            <span class="submenu-arrow">▼</span>
+                        </div>
+                        <div class="sub-submenu">
+                            <div class="sub-submenu-item" onclick="loadPage('待辦事項')">待辦事項</div>
+                            <div class="sub-submenu-item" onclick="loadPage('重要文件')">重要文件</div>
+                            <div class="sub-submenu-item" onclick="loadPage('緊急聯絡')">緊急聯絡</div>
+                        </div>
+                    </div>
+                    <div class="submenu-item has-children">
+                        <div class="submenu-title" onclick="toggleSubMenu(this)">
+                            <span>112 </span>
+                            <span class="submenu-arrow">▼</span>
+                        </div>
+                        <div class="sub-submenu">
+                            <div class="sub-submenu-item" onclick="loadPage('本週待辦')">本週待辦</div>
+                            <div class="sub-submenu-item" onclick="loadPage('本月待辦')">本月待辦</div>
+                            <div class="sub-submenu-item" onclick="loadPage('長期計畫')">長期計畫</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="menu-item">
                 <div class="menu-title" onclick="toggleMenu(this)">
-                    <span>🍳 食譜</span>
+                    <span>🍳 英文</span>
                     <span class="menu-arrow">▼</span>
                 </div>
                 <div class="submenu">
-                    <div class="submenu-item" onclick="loadPage('家常菜')">家常菜</div>
-                    <div class="submenu-item" onclick="loadPage('甜點')">甜點</div>
-                    <div class="submenu-item" onclick="loadPage('節日料理')">節日料理</div>
+                    <div class="submenu-item has-children">
+                        <div class="submenu-title" onclick="toggleSubMenu(this)">
+                            <span>114</span>
+                            <span class="submenu-arrow">▼</span>
+                        </div>
+                        <div class="sub-submenu">
+                            <div class="sub-submenu-item" onclick="loadPage('中式料理')">中式料理</div>
+                            <div class="sub-submenu-item" onclick="loadPage('西式料理')">西式料理</div>
+                            <div class="sub-submenu-item" onclick="loadPage('湯品')">湯品</div>
+                        </div>
+                    </div>
+                    <div class="submenu-item has-children">
+                        <div class="submenu-title" onclick="toggleSubMenu(this)">
+                            <span>113</span>
+                            <span class="submenu-arrow">▼</span>
+                        </div>
+                        <div class="sub-submenu">
+                            <div class="sub-submenu-item" onclick="loadPage('蛋糕')">蛋糕</div>
+                            <div class="sub-submenu-item" onclick="loadPage('餅乾')">餅乾</div>
+                            <div class="sub-submenu-item" onclick="loadPage('飲品')">飲品</div>
+                        </div>
+                    </div>
+                    <div class="submenu-item has-children">
+                        <div class="submenu-title" onclick="toggleSubMenu(this)">
+                            <span>112</span>
+                            <span class="submenu-arrow">▼</span>
+                        </div>
+                        <div class="sub-submenu">
+                            <div class="sub-submenu-item" onclick="loadPage('過年料理')">過年料理</div>
+                            <div class="sub-submenu-item" onclick="loadPage('中秋料理')">中秋料理</div>
+                            <div class="sub-submenu-item" onclick="loadPage('端午料理')">端午料理</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="menu-item">
                 <div class="menu-title" onclick="toggleMenu(this)">
-                    <span>💰 財務</span>
+                    <span>💰 國寫 </span>
                     <span class="menu-arrow">▼</span>
                 </div>
                 <div class="submenu">
-                    <div class="submenu-item" onclick="loadPage('收支記錄')">收支記錄</div>
-                    <div class="submenu-item" onclick="loadPage('預算規劃')">預算規劃</div>
-                    <div class="submenu-item" onclick="loadPage('投資理財')">投資理財</div>
+                    <div class="submenu-item has-children">
+                        <div class="submenu-title" onclick="toggleSubMenu(this)">
+                            <span>收支記錄</span>
+                            <span class="submenu-arrow">▼</span>
+                        </div>
+                        <div class="sub-submenu">
+                            <div class="sub-submenu-item" onclick="loadPage('每月收入')">每月收入</div>
+                            <div class="sub-submenu-item" onclick="loadPage('每月支出')">每月支出</div>
+                            <div class="sub-submenu-item" onclick="loadPage('年度統計')">年度統計</div>
+                        </div>
+                    </div>
+                    <div class="submenu-item has-children">
+                        <div class="submenu-title" onclick="toggleSubMenu(this)">
+                            <span>預算規劃</span>
+                            <span class="submenu-arrow">▼</span>
+                        </div>
+                        <div class="sub-submenu">
+                            <div class="sub-submenu-item" onclick="loadPage('月度預算')">月度預算</div>
+                            <div class="sub-submenu-item" onclick="loadPage('年度預算')">年度預算</div>
+                            <div class="sub-submenu-item" onclick="loadPage('儲蓄目標')">儲蓄目標</div>
+                        </div>
+                    </div>
+                    <div class="submenu-item has-children">
+                        <div class="submenu-title" onclick="toggleSubMenu(this)">
+                            <span>投資理財</span>
+                            <span class="submenu-arrow">▼</span>
+                        </div>
+                        <div class="sub-submenu">
+                            <div class="sub-submenu-item" onclick="loadPage('股票投資')">股票投資</div>
+                            <div class="sub-submenu-item" onclick="loadPage('基金投資')">基金投資</div>
+                            <div class="sub-submenu-item" onclick="loadPage('保險規劃')">保險規劃</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="menu-item">
                 <div class="menu-title" onclick="toggleMenu(this)">
-                    <span>📅 行事曆</span>
+                    <span>📅 其他</span>
                     <span class="menu-arrow">▼</span>
                 </div>
                 <div class="submenu">
-                    <div class="submenu-item" onclick="loadPage('家庭活動')">家庭活動</div>
-                    <div class="submenu-item" onclick="loadPage('重要日期')">重要日期</div>
-                    <div class="submenu-item" onclick="loadPage('提醒事項')">提醒事項</div>
+                    <div class="submenu-item has-children">
+                        <div class="submenu-title" onclick="toggleSubMenu(this)">
+                            <span>國綜-模</span>
+                            <span class="submenu-arrow">▼</span>
+                        </div>
+                        <div class="sub-submenu">
+                            <div class="sub-submenu-item" onclick="window.location.href='pages/exam_q13-15_analysis.html'">"111-13to15</div>
+                            <div class="sub-submenu-item" onclick="loadPage('假期活動')">假期活動</div>
+                            <div class="sub-submenu-item" onclick="loadPage('聚會活動')">聚會活動</div>
+                        </div>
+                    </div>
+                    <div class="submenu-item has-children">
+                        <div class="submenu-title" onclick="toggleSubMenu(this)">
+                            <span>重要日期</span>
+                            <span class="submenu-arrow">▼</span>
+                        </div>
+                        <div class="sub-submenu">
+                            <div class="sub-submenu-item" onclick="loadPage('生日紀念')">生日紀念</div>
+                            <div class="sub-submenu-item" onclick="loadPage('結婚紀念')">結婚紀念</div>
+                            <div class="sub-submenu-item" onclick="loadPage('其他紀念日')">其他紀念日</div>
+                        </div>
+                    </div>
+                    <div class="submenu-item has-children">
+                        <div class="submenu-title" onclick="toggleSubMenu(this)">
+                            <span>提醒事項</span>
+                            <span class="submenu-arrow">▼</span>
+                        </div>
+                        <div class="sub-submenu">
+                            <div class="sub-submenu-item" onclick="loadPage('每日提醒')">每日提醒</div>
+                            <div class="sub-submenu-item" onclick="loadPage('每週提醒')">每週提醒</div>
+                            <div class="sub-submenu-item" onclick="loadPage('每月提醒')">每月提醒</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -581,19 +785,45 @@
             document.getElementById('password').value = '';
         }
 
-        // 選單切換
+        // 選單切換（第一層）
         function toggleMenu(element) {
             const menuItem = element.parentElement;
             const wasActive = menuItem.classList.contains('active');
             
-            // 關閉所有選單
+            // 關閉所有第一層選單
             document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // 關閉所有第二層選單
+            document.querySelectorAll('.submenu-item.has-children').forEach(item => {
                 item.classList.remove('active');
             });
             
             // 如果原本是關閉的，則打開
             if (!wasActive) {
                 menuItem.classList.add('active');
+            }
+        }
+
+        // 第二層選單切換
+        function toggleSubMenu(element) {
+            const submenuItem = element.parentElement;
+            const wasActive = submenuItem.classList.contains('active');
+            
+            // 關閉同層的其他第二層選單
+            const parentSubmenu = submenuItem.parentElement;
+            parentSubmenu.querySelectorAll('.submenu-item.has-children').forEach(item => {
+                if (item !== submenuItem) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // 切換當前選單
+            if (wasActive) {
+                submenuItem.classList.remove('active');
+            } else {
+                submenuItem.classList.add('active');
             }
         }
 
