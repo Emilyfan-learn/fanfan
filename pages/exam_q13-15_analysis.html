@@ -1,1 +1,815 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學測考試精簡版 - 第13-15題獨立分析</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
+            background: linear-gradient(135deg, #fef9e7 0%, #fef5e7 100%);
+            padding: 20px;
+            line-height: 1.9;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #fdeaa8 0%, #f9e08d 100%);
+            padding: 35px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #5a4a2a;
+            font-size: 32px;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+        
+        .header p {
+            color: #7a6a4a;
+            font-size: 17px;
+        }
+        
+        .color-guide {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 25px;
+            background: #fffdf5;
+            border-bottom: 3px solid #f4d680;
+            flex-wrap: wrap;
+        }
+        
+        .color-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+        }
+        
+        .color-box {
+            width: 24px;
+            height: 24px;
+            border-radius: 5px;
+            border: 2px solid #ccc;
+        }
+        
+        .red-box { background: #dc3545; }
+        .green-box { background: #28a745; }
+        .blue-box { background: #007bff; }
+        
+        .content {
+            padding: 35px;
+        }
+        
+        .question-block {
+            margin-bottom: 50px;
+            border: 3px solid #f4d680;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fffef8;
+        }
+        
+        .question-header {
+            background: linear-gradient(135deg, #fdeaa8 0%, #f9e08d 100%);
+            padding: 20px 25px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #5a4a2a;
+            border-bottom: 2px solid #f4d680;
+        }
+        
+        .section {
+            padding: 25px;
+            border-bottom: 1px solid #f4d680;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff5d6 100%);
+            color: #5a4a2a;
+            padding: 12px 20px;
+            border-left: 5px solid #f4d680;
+            margin-bottom: 18px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        
+        .technique {
+            background: #fff9f0;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ff9800;
+            margin-bottom: 15px;
+        }
+        
+        .technique-title {
+            font-weight: bold;
+            color: #e65100;
+            margin-bottom: 10px;
+            font-size: 17px;
+        }
+        
+        .technique-content {
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .technique-content li {
+            margin-bottom: 8px;
+            margin-left: 20px;
+        }
+        
+        .article-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c5f2d;
+            background: #f0fff0;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 5px solid #28a745;
+        }
+        
+        .article-content {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px solid #e8e8e8;
+            font-size: 17px;
+            line-height: 2.3;
+            text-align: justify;
+        }
+        
+        .red { color: #dc3545; font-weight: bold; }
+        .green { color: #28a745; font-weight: bold; }
+        .blue { color: #007bff; font-weight: bold; }
+        
+        .strategy {
+            background: #f0f8ff;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #2196F3;
+        }
+        
+        .strategy-title {
+            font-weight: bold;
+            color: #1565c0;
+            margin-bottom: 12px;
+            font-size: 17px;
+        }
+        
+        .strategy-item {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.9;
+        }
+        
+        .strategy-item:before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: #2196F3;
+        }
+        
+        .answer-section {
+            background: #fff3e0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 2px solid #ff9800;
+        }
+        
+        .answer-title {
+            font-weight: bold;
+            color: #e65100;
+            margin-bottom: 12px;
+            font-size: 17px;
+        }
+        
+        .genre-tag {
+            display: inline-block;
+            background: #4caf50;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .timer {
+            display: inline-block;
+            background: #ff5722;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-left: 10px;
+            font-weight: bold;
+        }
 
+        .options {
+            margin-top: 20px;
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 8px;
+        }
+
+        .option {
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            line-height: 1.9;
+        }
+
+        .option-label {
+            font-weight: bold;
+            color: #5a4a2a;
+            margin-right: 8px;
+            font-size: 17px;
+        }
+
+        .structure-visual {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #9c27b0;
+        }
+
+        .structure-visual h4 {
+            color: #7b1fa2;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .paragraph-box {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            border: 2px solid #e0e0e0;
+        }
+
+        .arrow-down {
+            text-align: center;
+            color: #9c27b0;
+            font-size: 24px;
+            margin: 8px 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            margin: 15px 0;
+            border-collapse: collapse;
+        }
+
+        .comparison-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            background: white;
+            line-height: 1.8;
+        }
+
+        .comparison-table td:first-child {
+            background: #fff3e0;
+            font-weight: bold;
+            width: 100px;
+            text-align: center;
+        }
+
+        .timeline {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 12px;
+            background: white;
+            border-radius: 6px;
+            border-left: 4px solid #4caf50;
+        }
+
+        .timeline-period {
+            font-weight: bold;
+            color: #2e7d32;
+            min-width: 80px;
+            font-size: 16px;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding-left: 15px;
+            line-height: 1.8;
+        }
+
+        .tips-box {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #4caf50;
+        }
+
+        .tips-title {
+            font-weight: bold;
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 17px;
+        }
+
+        .summary-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff5d6 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border: 3px solid #f4d680;
+        }
+
+        .summary-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #5a4a2a;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .summary-content {
+            line-height: 2;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 學測第13-15題 - 悲秋傳統獨立分析</h1>
+            <p>議論文 | 文學史論 | 三色標示完整解析</p>
+        </div>
+        
+        <div class="color-guide">
+            <div class="color-item">
+                <div class="color-box red-box"></div>
+                <span><strong>紅色粗體</strong> = 主旨/核心概念/主題詞</span>
+            </div>
+            <div class="color-item">
+                <div class="color-box green-box"></div>
+                <span><strong>綠色粗體</strong> = 時間/地點/人物/數據/具體事實</span>
+            </div>
+            <div class="color-item">
+                <div class="color-box blue-box"></div>
+                <span><strong>藍色粗體</strong> = 轉折/因果/對比/結論/邏輯詞</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="question-block">
+                <div class="question-header">
+                    題組 13-15 為題組 - 閱讀測驗(議論文)
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">⏱️ 考試實戰技巧 (30秒快速掃描法)</div>
+                    <div class="genre-tag">文體:議論文(文學史發展論)</div>
+                    <div class="timer">建議時間:3題共4.5分鐘</div>
+                    
+                    <div class="technique">
+                        <div class="technique-title">📍 議論文「歷史發展脈絡」速讀法</div>
+                        <div class="technique-content">
+                            <ol>
+                                <li><strong>第一眼看紅色</strong> → 抓核心概念:<span class="red">悲秋</span>→<span class="red">轉化</span>→<span class="red">淡去</span>→<span class="red">揚棄</span>(發展軸)(8秒)</li>
+                                <li><strong>第二眼看綠色</strong> → 定位時序:<span class="green">漢</span>→<span class="green">中唐</span>→<span class="green">宋</span>(歷史演變)(7秒)</li>
+                                <li><strong>第三眼看藍色</strong> → 理解邏輯:<span class="blue">但如果...則</span>、<span class="blue">或許與...有關</span>、<span class="blue">實始於</span>(因果轉折)(10秒)</li>
+                                <li><strong>最後確認結構</strong> → 三段論:問題→發展→完成(5秒)</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="timeline">
+                        <h4 style="color:#2e7d32; margin-bottom:15px; font-weight:bold;">📊 文章發展時間軸(快速掌握)</h4>
+                        <div class="timeline-item">
+                            <div class="timeline-period">漢代</div>
+                            <div class="timeline-content">
+                                <span class="red">第一步</span>:《長歌行》- 感傷→<span class="red">轉化</span>為積極(擺落悲)
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-period">中唐</div>
+                            <div class="timeline-content">
+                                <span class="red">淡去</span>:錢起詩 - 發現秋天<span class="red">美感特質</span>(歡喜閒情)
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-period">宋代</div>
+                            <div class="timeline-content">
+                                <span class="red">揚棄</span>:歐陽脩 - 問題在<span class="red">人</span>非秋(<span class="blue">何恨乎</span>秋聲)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">📖 文章標題</div>
+                    <div class="article-title">悲秋傳統的歷史轉化 - 從感傷到釋懷的三階段</div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">✨ 標示後的文章內容(完整三段)</div>
+                    <div class="article-content">
+                        <strong style="color:#7b1fa2; font-size:18px;">【第一段:轉化契機的提出】</strong><br><br>
+                        睹<span class="red">自然之衰逝</span><span class="blue">而</span>感<span class="red">人生之衰逝</span>,乃<span class="red">秋之所以興悲</span>的<span class="red">癥結</span>,<span class="blue">但如果</span>體悟<span class="red">生命短暫</span>,<span class="blue">故</span>尤應<span class="red">及時掌握</span>,<span class="blue">則</span><span class="red">「悲」秋之情</span>便已獲得<span class="red">轉化契機</span>。<span class="green">漢樂府《長歌行》</span>:「<span class="green">百川</span>東到海,何時復西歸?<span class="green">少壯</span>不努力,<span class="green">老大</span>徒傷悲。」詩人<span class="blue">並非沒有</span>人身易老、年命易衰的感傷,<span class="blue">但反而</span>激發<span class="red">及時努力</span>的<span class="red">積極意識</span>,確為<span class="red">「悲秋」之擺落「悲」</span>跨出<span class="green">第一步</span>。<br><br>
+
+                        <strong style="color:#7b1fa2; font-size:18px;">【第二段:悲情的淡化過程】</strong><br><br>
+                        <span class="red">「悲秋」之「悲」</span>的<span class="red">淡去</span>,約自<span class="green">中唐</span>漸多。<span class="green">錢起〈秋夕與梁鍠宴〉</span>觀察到<span class="red">秋日之晴、秋葉之清、秋風之好、秋月之明</span>,充滿<span class="red">歡喜之閒情</span>:「客至衡門下,林香蕙草時。<span class="red">好風</span>能自在,<span class="red">明月</span>不須期。秋日翻荷影,晴光脆柳枝。留歡美清夜,寧覺曉鐘遲。」<span class="green">中唐</span>以降,<span class="red">悲秋之作</span>漸有<span class="red">擺脫悲</span>者,<span class="blue">或許與</span><span class="green">盛唐</span>以來形成之<span class="red">自然詩風</span><span class="blue">有關</span>。<span class="blue">蓋</span><span class="red">自然詩</span>之盛行,<span class="blue">促使</span>詩人對<span class="red">自然節候、宇宙環境</span>有<span class="red">更細密之體察</span>,<span class="blue">從而</span>發現秋於「蕭瑟」外,那一種<span class="red">相對性的美感特質</span>,<span class="blue">以致</span>改變已趨固定的<span class="red">秋之意識型態</span>。<br><br>
+
+                        <strong style="color:#7b1fa2; font-size:18px;">【第三段:悲哀的完全揚棄】</strong><br><br>
+                        <span class="red">感秋之作</span>真正<span class="red">揚棄悲哀</span>者,<span class="blue">實始於</span><span class="green">宋</span>。<span class="green">歐陽脩〈秋聲賦〉</span>:「人為動物,惟物之靈。<span class="red">百憂感其心,萬事勞其形</span>。⋯⋯<span class="blue">奈何</span>以非金石之質,欲與草木而爭榮!念<span class="red">誰為之戕賊</span>,<span class="blue">亦何恨乎</span>秋聲!」他了解到<span class="red">人命易衰</span>,<span class="blue">往往起於</span><span class="red">自我愛思之摧折</span>,<span class="blue">不得</span>悉恨於秋聲,<span class="blue">亦何必</span>一睹<span class="red">草木榮枯之循環</span>,便悲<span class="red">自我生命衰逝</span>之不返!
+                    </div>
+
+                    <div class="tips-box">
+                        <div class="tips-title">💡 三段結構速記口訣</div>
+                        第一段:問題+<span class="red">轉化可能</span>(如果體悟→及時掌握)<br>
+                        第二段:原因+<span class="red">淡化過程</span>(細密體察→發現美感)<br>
+                        第三段:結果+<span class="red">完全揚棄</span>(起於自我→何恨秋聲)
+                    </div>
+                </div>
+
+                <!-- 第13題 -->
+                <div class="section">
+                    <div class="section-title">📝 第13題 - 綜合理解題</div>
+                    <div style="background:#fff9e6; padding:15px; border-radius:8px; margin-bottom:20px;">
+                        <strong style="color:#5a4a2a;">題目:</strong> 依據上文,關於古典文學悲秋傳統的敘述,最適當的是:
+                    </div>
+                    <div class="options">
+                        <div class="option">
+                            <span class="option-label">(A)</span>漢樂府〈長歌行〉壯志未酬的感慨,深化悲秋的內涵
+                        </div>
+                        <div class="option">
+                            <span class="option-label">(B)</span>中唐受盛唐自然詩風影響,詩作中幾乎未見悲秋情緒
+                        </div>
+                        <div class="option">
+                            <span class="option-label">(C)</span>歐陽脩〈秋聲賦〉認為秋氣之冷寂肅殺,是造成人身心摧折之因
+                        </div>
+                        <div class="option">
+                            <span class="option-label">(D)</span>個人對生命的體悟、對自然節候的體察,是轉化悲秋情緒的契機
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">🎯 第13題 答題策略</div>
+                    <div class="strategy">
+                        <div class="strategy-title">⚡ 綜合理解題 - 三步驟解題法</div>
+                        
+                        <div class="strategy-item">
+                            <strong>步驟1:先看三段核心紅色詞</strong><br>
+                            第一段:<span class="red">轉化契機</span> = <span class="red">體悟生命</span>→<span class="red">及時掌握</span>→<span class="red">積極意識</span><br>
+                            第二段:<span class="red">淡去</span> = <span class="red">細密體察</span>→發現<span class="red">美感特質</span><br>
+                            第三段:<span class="red">揚棄</span> = 問題在<span class="red">自我</span>非秋聲
+                        </div>
+
+                        <div class="strategy-item">
+                            <strong>步驟2:理解藍色邏輯關係</strong><br>
+                            「<span class="blue">但如果</span>...便已」→ 條件句,提出轉化方法<br>
+                            「<span class="blue">或許與</span>...有關」→ 推測原因<br>
+                            「<span class="blue">往往起於</span>」→ 因果關係,真正原因
+                        </div>
+
+                        <div class="strategy-item">
+                            <strong>步驟3:逐項檢驗</strong>
+                            <table class="comparison-table">
+                                <tr>
+                                    <td>(A)</td>
+                                    <td>❌ 文中說「<span class="blue">但反而</span>激發<span class="red">積極意識</span>」→ 是<span class="red">轉化</span>(減輕悲)非<span class="red">深化</span>(加重悲)</td>
+                                </tr>
+                                <tr>
+                                    <td>(B)</td>
+                                    <td>❌ 「漸有擺脫悲者」≠「幾乎未見」→ <span class="blue">程度過度誇大</span></td>
+                                </tr>
+                                <tr>
+                                    <td>(C)</td>
+                                    <td>❌ 「<span class="blue">往往起於</span><span class="red">自我愛思之摧折</span>」→ 因在<span class="red">人</span>非秋,與原文<span class="blue">相反</span></td>
+                                </tr>
+                                <tr>
+                                    <td>(D)</td>
+                                    <td>✅ 完美總結:<br>「<span class="red">對生命的體悟</span>」= 第一段<br>「<span class="red">對自然節候的體察</span>」= 第二段<br>「<span class="red">轉化...契機</span>」= 原文用詞</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="answer-section">
+                        <div class="answer-title">✓ 正解: (D)</div>
+                        <strong>秒殺關鍵:</strong><br>
+                        第一段紅色「<span class="red">體悟生命</span>」「<span class="red">轉化契機</span>」<br>
+                        第二段紅色「<span class="red">細密體察</span>」「<span class="red">自然節候</span>」<br>
+                        → 選項(D)完美整合兩大轉化因素!
+                    </div>
+                </div>
+
+                <!-- 第14題 -->
+                <div class="section">
+                    <div class="section-title">📝 第14題 - 論證結構題</div>
+                    <div style="background:#fff9e6; padding:15px; border-radius:8px; margin-bottom:20px;">
+                        <strong style="color:#5a4a2a;">題目:</strong> 關於上文第一段、第三段的寫作方式,敘述最適當的是:
+                    </div>
+                    <div class="options">
+                        <div class="option">
+                            <span class="option-label">(A)</span>均是先揭示論點,再提出論據
+                        </div>
+                        <div class="option">
+                            <span class="option-label">(B)</span>皆是先提出論據,再揭示論點
+                        </div>
+                        <div class="option">
+                            <span class="option-label">(C)</span>第一段有論點而無論據,第三段先揭論點再提論據
+                        </div>
+                        <div class="option">
+                            <span class="option-label">(D)</span>第一段先揭論點再提論據,第三段有論點而無論據
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">🎯 第14題 答題策略</div>
+                    <div class="strategy">
+                        <div class="strategy-title">⚡ 論證結構題 - 視覺化拆解法</div>
+
+                        <div class="structure-visual">
+                            <h4>【第一段結構分析】</h4>
+                            <div class="paragraph-box">
+                                <span style="color:#9c27b0; font-weight:bold;">論點:</span><br>
+                                「<span class="blue">但如果</span>體悟生命短暫,<span class="blue">故</span>尤應及時掌握,<span class="blue">則</span>『悲』秋之情便已獲得<span class="red">轉化契機</span>。」
+                            </div>
+                            <div class="arrow-down">↓</div>
+                            <div class="paragraph-box">
+                                <span style="color:#9c27b0; font-weight:bold;">論據:</span><br>
+                                <span class="green">漢樂府《長歌行》</span>詩句 + 說明「激發<span class="red">積極意識</span>」「跨出第一步」
+                            </div>
+                        </div>
+
+                        <div class="structure-visual">
+                            <h4>【第三段結構分析】</h4>
+                            <div class="paragraph-box">
+                                <span style="color:#9c27b0; font-weight:bold;">論點:</span><br>
+                                「感秋之作真正<span class="red">揚棄悲哀</span>者,<span class="blue">實始於</span><span class="green">宋</span>。」
+                            </div>
+                            <div class="arrow-down">↓</div>
+                            <div class="paragraph-box">
+                                <span style="color:#9c27b0; font-weight:bold;">論據:</span><br>
+                                <span class="green">歐陽脩〈秋聲賦〉</span>引文 + 說明「<span class="blue">往往起於</span><span class="red">自我愛思</span>」「<span class="blue">何恨乎</span>秋聲」
+                            </div>
+                        </div>
+
+                        <div class="strategy-item">
+                            <strong>判斷技巧:</strong><br>
+                            ✓ 看<span class="blue">藍色邏輯詞</span>位置 → 「<span class="blue">但如果...則</span>」「<span class="blue">實始於</span>」= 論點標誌<br>
+                            ✓ 看<span class="green">綠色人名作品</span>位置 → 《長歌行》、〈秋聲賦〉= 論據標誌<br>
+                            ✓ 兩段都是:<span style="color:#9c27b0; font-weight:bold;">論點在前 → 論據在後</span>
+                        </div>
+
+                        <div class="strategy-item">
+                            <strong>選項快判:</strong><br>
+                            ✅ (A) 兩段都是「先論點,後論據」→ 符合!<br>
+                            ❌ (B)(C)(D) 與實際結構不符
+                        </div>
+                    </div>
+                    
+                    <div class="answer-section">
+                        <div class="answer-title">✓ 正解: (A)</div>
+                        <strong>秒殺關鍵:</strong><br>
+                        看到<span class="blue">「但如果...則」</span>和<span class="blue">「實始於」</span>→ 這是論點<br>
+                        後面接<span class="green">人名+作品</span>→ 這是論據<br>
+                        兩段結構一致!
+                    </div>
+                </div>
+
+                <!-- 第15題 -->
+                <div class="section">
+                    <div class="section-title">📝 第15題 - 詩歌比對應用題</div>
+                    <div style="background:#fff9e6; padding:15px; border-radius:8px; margin-bottom:20px;">
+                        <strong style="color:#5a4a2a;">題目:</strong> 下列詩歌對秋的感受,最接近錢起〈秋夕與梁鍠宴〉的是:
+                    </div>
+                    <div class="options">
+                        <div class="option">
+                            <span class="option-label">(A)</span>何處秋風至?蕭蕭送雁群。朝來入庭樹,孤客最先聞
+                        </div>
+                        <div class="option">
+                            <span class="option-label">(B)</span>客心驚落木,夜坐聽秋風。朝日看容鬢,生涯在鏡中
+                        </div>
+                        <div class="option">
+                            <span class="option-label">(C)</span>自古逢秋悲寂寥,我言秋日勝春朝。晴空一鶴排雲上,便引詩情到碧霄
+                        </div>
+                        <div class="option">
+                            <span class="option-label">(D)</span>搖落深知宋玉悲,風流儒雅亦吾師。恨望千秋一灑淚,蕭條異代不同時
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">🎯 第15題 答題策略</div>
+                    <div class="strategy">
+                        <div class="strategy-title">⚡ 詩歌比對題 - 情感定位法</div>
+
+                        <div style="background:#e8f5e9; padding:20px; border-radius:8px; margin:15px 0; border-left:4px solid #4caf50;">
+                            <strong style="color:#2e7d32; font-size:17px;">目標詩特徵分析</strong><br><br>
+                            <span class="green">錢起〈秋夕與梁鍠宴〉</span>關鍵特徵:<br>
+                            <span class="red">紅色意象</span>:「<span class="red">好風</span>」「<span class="red">明月</span>」「秋日之晴」「秋葉之清」<br>
+                            <span class="red">情感基調</span>:「<span class="red">歡喜之閒情</span>」「留歡美清夜」<br>
+                            <span class="red">文章定位</span>:屬於「<span class="red">擺脫悲</span>」「<span class="red">淡去</span>悲秋」→ <strong>正面讚美秋天</strong>
+                        </div>
+
+                        <div class="strategy-item">
+                            <strong>四選項情感快速判定表:</strong>
+                            <table class="comparison-table" style="margin-top:15px;">
+                                <tr>
+                                    <td>(A)</td>
+                                    <td>
+                                        「<span style="color:#666;">蕭蕭</span>」「<span style="color:#dc3545; font-weight:bold;">孤客</span>」「最先聞」<br>
+                                        → 情感:<span style="color:#dc3545; font-weight:bold;">孤寂、淒涼</span> ❌
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>(B)</td>
+                                    <td>
+                                        「客心<span style="color:#dc3545; font-weight:bold;">驚</span>落木」「看容鬢」「生涯在鏡中」<br>
+                                        → 情感:<span style="color:#dc3545; font-weight:bold;">驚懼衰老、感嘆無常</span> ❌
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>(C)</td>
+                                    <td>
+                                        「<span style="color:#007bff; font-weight:bold;">自古</span>逢秋悲寂寥,<span style="color:#007bff; font-weight:bold;">我言</span>秋日<span style="color:#28a745; font-weight:bold;">勝</span>春朝」<br>
+                                        「<span style="color:#28a745; font-weight:bold;">晴空</span>一鶴排雲上」「引詩情到<span style="color:#28a745; font-weight:bold;">碧霄</span>」<br>
+                                        → 情感:<span style="color:#28a745; font-weight:bold;">明確讚美、超越傳統悲秋</span> ✅
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>(D)</td>
+                                    <td>
+                                        「深知宋玉<span style="color:#dc3545; font-weight:bold;">悲</span>」「恨望千秋一灑<span style="color:#dc3545; font-weight:bold;">淚</span>」「<span style="color:#dc3545; font-weight:bold;">蕭條</span>異代」<br>
+                                        → 情感:<span style="color:#dc3545; font-weight:bold;">悲傷、感懷古人</span> ❌
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="strategy-item">
+                            <strong>決勝關鍵 - 選項(C)深度分析:</strong><br>
+                            <span class="blue">「自古」vs「我言」</span>→ 明確<span class="red">對比</span>傳統悲秋觀<br>
+                            <span class="red">「勝春朝」</span>→ 秋天<span class="red">超越</span>春天(極度正面)<br>
+                            <span class="red">「晴空」「碧霄」</span>→ 明亮高遠意象<br>
+                            → 與錢起「<span class="red">好風</span>」「<span class="red">明月</span>」「<span class="red">歡喜</span>」完全一致!
+                        </div>
+                    </div>
+                    
+                    <div class="answer-section">
+                        <div class="answer-title">✓ 正解: (C)</div>
+                        <strong>秒殺關鍵:</strong><br>
+                        唯一<span class="blue">明確對立</span>「自古悲」→「我言勝」<br>
+                        唯一<span class="red">正面意象</span>:晴空、碧霄、勝春朝<br>
+                        唯一符合「<span class="red">擺脫悲</span>」「<span class="red">淡去</span>」定位!
+                    </div>
+                </div>
+
+                <!-- 總結 -->
+                <div class="section">
+                    <div class="summary-box">
+                        <div class="summary-title">📊 三題核心考點總結</div>
+                        <div class="summary-content">
+                            <strong style="color:#e65100;">第13題(綜合理解)</strong><br>
+                            → 抓兩大<span class="red">轉化因素</span>:體悟生命(第一段) + 體察節候(第二段)<br><br>
+
+                            <strong style="color:#e65100;">第14題(論證結構)</strong><br>
+                            → 看<span class="blue">藍色邏輯詞</span>定位論點,看<span class="green">綠色人名作品</span>確認論據位置<br><br>
+
+                            <strong style="color:#e65100;">第15題(詩歌比對)</strong><br>
+                            → 快速判斷<span class="red">情感基調</span>:正面/負面,找唯一明確讚美秋天者
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 實戰技巧總整理 -->
+                <div class="section">
+                    <div class="section-title">🎓 本題組實戰技巧總整理</div>
+                    
+                    <div style="background:#f3e5f5; padding:20px; border-radius:8px; margin-bottom:15px;">
+                        <h4 style="color:#7b1fa2; margin-bottom:12px;">✅ 議論文「文學史論」專用速讀法</h4>
+                        <ol style="line-height:2; margin-left:25px;">
+                            <li><strong>時序定位法</strong>:快速抓<span class="green">綠色朝代</span>(漢→中唐→宋)建立時間軸</li>
+                            <li><strong>概念演變法</strong>:追蹤<span class="red">紅色核心詞</span>變化(悲→轉化→淡去→揚棄)</li>
+                            <li><strong>邏輯推論法</strong>:用<span class="blue">藍色邏輯詞</span>理解因果(但如果、或許、實始於)</li>
+                            <li><strong>結構辨識法</strong>:論點(<span class="blue">藍色邏輯</span>) + 論據(<span class="green">綠色例證</span>)</li>
+                        </ol>
+                    </div>
+
+                    <div style="background:#e3f2fd; padding:20px; border-radius:8px; margin-bottom:15px;">
+                        <h4 style="color:#1565c0; margin-bottom:12px;">⚡ 30秒速判技巧</h4>
+                        <table style="width:100%; line-height:2;">
+                            <tr>
+                                <td style="width:30%; font-weight:bold; color:#1565c0;">看題型</td>
+                                <td>綜合理解→看全文主旨紅色詞</td>
+                            </tr>
+                            <tr>
+                                <td style="width:30%; font-weight:bold; color:#1565c0;"></td>
+                                <td>論證結構→看藍色+綠色位置關係</td>
+                            </tr>
+                            <tr>
+                                <td style="width:30%; font-weight:bold; color:#1565c0;"></td>
+                                <td>詩歌比對→看情感正負面</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div style="background:#fff3e0; padding:20px; border-radius:8px;">
+                        <h4 style="color:#e65100; margin-bottom:12px;">🎯 考前提醒</h4>
+                        <ul style="line-height:2; margin-left:25px;">
+                            <li>議論文要看<strong>全文脈絡</strong>,別被單一選項關鍵字誤導</li>
+                            <li>注意<strong>程度詞</strong>:「幾乎」「全部」「深化」等誇張詞要小心</li>
+                            <li>文學史題目要抓<strong>發展趨勢</strong>,不是單一朝代的描述</li>
+                            <li>詩歌比對先判<strong>情感基調</strong>,再看意象細節</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 延伸學習 -->
+                <div class="section">
+                    <div class="section-title">📚 延伸學習 - 相關考點</div>
+                    <div style="line-height:2; color:#555;">
+                        <strong style="color:#5a4a2a;">同類型題目特徵:</strong><br>
+                        • 文學傳統的演變(如:田園詩、邊塞詩發展)<br>
+                        • 詩歌風格的轉變(如:唐詩→宋詩差異)<br>
+                        • 文學觀念的轉化(如:寫實→寫意)<br><br>
+
+                        <strong style="color:#5a4a2a;">必備能力:</strong><br>
+                        ✓ 時序梳理能力(朝代演進)<br>
+                        ✓ 概念追蹤能力(核心詞變化)<br>
+                        ✓ 邏輯推理能力(因果轉折)<br>
+                        ✓ 情感判讀能力(正負基調)
+                    </div>
+                </div>
+            </div>
+
+            <!-- 底部提示 -->
+            <div style="text-align:center; padding:40px; background:linear-gradient(135deg, #fff9e6 0%, #fff5d6 100%); border-radius:10px; margin-top:30px; border:3px solid #f4d680;">
+                <h3 style="color:#5a4a2a; margin-bottom:15px; font-size:22px;">🌟 三色標示系統使用心得</h3>
+                <div style="color:#7a6a4a; line-height:2; font-size:16px;">
+                    <strong>紅色</strong> = 你的思考導航(核心概念)<br>
+                    <strong>綠色</strong> = 你的定位座標(時空人物)<br>
+                    <strong>藍色</strong> = 你的邏輯地圖(轉折因果)<br><br>
+                    <span style="color:#e65100; font-weight:bold;">30秒掃描 → 3分鐘理解 → 1分鐘答題 = 高效得分!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 平滑滾動到頂部功能
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                if (!document.getElementById('backToTop')) {
+                    const btn = document.createElement('button');
+                    btn.id = 'backToTop';
+                    btn.innerHTML = '↑';
+                    btn.style.cssText = 'position:fixed; bottom:30px; right:30px; width:50px; height:50px; border-radius:50%; background:#f4d680; border:none; font-size:24px; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.2); z-index:1000; transition:all 0.3s;';
+                    btn.onmouseover = function() { this.style.background = '#f9e08d'; this.style.transform = 'translateY(-3px)'; };
+                    btn.onmouseout = function() { this.style.background = '#f4d680'; this.style.transform = 'translateY(0)'; };
+                    btn.onclick = function() { window.scrollTo({top: 0, behavior: 'smooth'}); };
+                    document.body.appendChild(btn);
+                }
+            } else {
+                const btn = document.getElementById('backToTop');
+                if (btn) btn.remove();
+            }
+        });
+    </script>
+</body>
+</html>
