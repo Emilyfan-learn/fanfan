@@ -14,85 +14,65 @@
         body {
             font-family: 'Microsoft JhengHei', Arial, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
+            padding: 10px;
             line-height: 1.8;
+            min-height: 100vh;
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
             overflow: hidden;
         }
         
         .header {
             background: linear-gradient(135deg, #2d3561 0%, #1a1f3a 100%);
             color: white;
-            padding: 30px;
+            padding: 20px 15px;
             text-align: center;
         }
         
         .header h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
+            font-size: 1.5em;
+            margin-bottom: 8px;
+            line-height: 1.3;
         }
         
         .header p {
-            font-size: 1.1em;
+            font-size: 0.95em;
             opacity: 0.9;
         }
         
-        .download-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #4CAF50;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
-            transition: all 0.3s;
-            z-index: 1000;
-        }
-        
-        .download-btn:hover {
-            background: #45a049;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6);
-        }
-        
+
         .content {
-            padding: 40px;
+            padding: 20px 15px;
         }
         
         .section {
-            margin-bottom: 40px;
-            padding: 30px;
+            margin-bottom: 25px;
+            padding: 20px 15px;
             background: #f8f9fa;
-            border-radius: 15px;
-            border-left: 5px solid #667eea;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
         }
         
         .section-title {
-            font-size: 1.8em;
+            font-size: 1.4em;
             color: #2d3561;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #667eea;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #667eea;
         }
         
         .legend {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 25px;
-            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+            padding: 15px;
             background: white;
             border-radius: 10px;
         }
@@ -100,35 +80,41 @@
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             font-weight: bold;
+            font-size: 0.9em;
         }
         
         .color-box {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             border-radius: 4px;
+            flex-shrink: 0;
         }
         
         .red { color: #e74c3c; font-weight: bold; }
         .purple { color: #9b59b6; font-weight: bold; }
         .green { color: #27ae60; font-weight: bold; }
         .blue { color: #3498db; font-weight: bold; }
-        .blank { background: #fff3cd; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
+        .blank { background: #fff3cd; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
         
         .passage {
             background: white;
-            padding: 30px;
+            padding: 20px 15px;
             border-radius: 10px;
-            font-size: 1.1em;
-            line-height: 2;
+            font-size: 1em;
+            line-height: 1.9;
             text-align: justify;
+        }
+        
+        .passage p {
+            margin-bottom: 15px;
         }
         
         .step {
             background: white;
-            padding: 20px;
-            margin-bottom: 20px;
+            padding: 15px;
+            margin-bottom: 15px;
             border-radius: 10px;
             border-left: 4px solid #667eea;
         }
@@ -137,56 +123,63 @@
             display: inline-block;
             background: #667eea;
             color: white;
-            width: 35px;
-            height: 35px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             text-align: center;
-            line-height: 35px;
+            line-height: 32px;
             font-weight: bold;
-            margin-right: 15px;
+            margin-right: 10px;
+            vertical-align: middle;
         }
         
         .answer-box {
             background: #e8f5e9;
-            padding: 15px;
-            margin: 15px 0;
+            padding: 12px;
+            margin: 12px 0;
             border-radius: 8px;
             border-left: 4px solid #4CAF50;
+            font-size: 0.95em;
         }
         
         .vocab-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
         }
         
         .vocab-card {
             background: white;
-            padding: 20px;
+            padding: 18px;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         
         .vocab-word {
-            font-size: 1.3em;
+            font-size: 1.25em;
             font-weight: bold;
             color: #2d3561;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .vocab-type {
             display: inline-block;
-            padding: 5px 10px;
+            padding: 4px 10px;
             background: #667eea;
             color: white;
             border-radius: 5px;
-            font-size: 0.85em;
-            margin-bottom: 10px;
+            font-size: 0.8em;
+            margin-bottom: 8px;
+        }
+        
+        .vocab-card p {
+            margin: 6px 0;
+            font-size: 0.95em;
         }
         
         .key-points {
             background: white;
-            padding: 25px;
+            padding: 20px 15px;
             border-radius: 10px;
         }
         
@@ -196,30 +189,112 @@
         }
         
         .key-points li {
-            padding: 15px;
-            margin-bottom: 15px;
+            padding: 12px 12px 12px 40px;
+            margin-bottom: 12px;
             background: #f8f9fa;
             border-radius: 8px;
             border-left: 4px solid #e74c3c;
             position: relative;
-            padding-left: 45px;
+            font-size: 0.95em;
         }
         
         .key-points li:before {
             content: "★";
             position: absolute;
-            left: 15px;
+            left: 12px;
+            top: 12px;
             color: #e74c3c;
-            font-size: 1.5em;
+            font-size: 1.3em;
         }
+        
+        /* 平板尺寸優化 */
+        @media (min-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .header p {
+                font-size: 1.1em;
+            }
+            
+            .content {
+                padding: 30px 25px;
+            }
+            
+            .section {
+                padding: 25px 20px;
+            }
+            
+            .section-title {
+                font-size: 1.6em;
+            }
+            
+            .passage {
+                padding: 25px 20px;
+                font-size: 1.05em;
+            }
+            
+}
+        
+        /* 桌面尺寸優化 */
+        @media (min-width: 1024px) {
+            .container {
+                border-radius: 20px;
+            }
+            
+            .content {
+                padding: 40px;
+            }
+            
+            .section {
+                padding: 30px;
+                margin-bottom: 40px;
+            }
+            
+            .section-title {
+                font-size: 1.8em;
+                margin-bottom: 20px;
+            }
+            
+            .passage {
+                padding: 30px;
+                font-size: 1.1em;
+            }
+            
+            .vocab-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+}
+        
+        /* 手機小螢幕優化 */
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.3em;
+            }
+            
+            .legend {
+                grid-template-columns: 1fr;
+            }
+            
+            .vocab-grid {
+                grid-template-columns: 1fr;
+            }
+            
+}
         
         @media print {
             body {
                 background: white;
                 padding: 0;
-            }
-            .download-btn {
-                display: none;
             }
             .container {
                 box-shadow: none;
@@ -228,7 +303,7 @@
     </style>
 </head>
 <body>
-    <button class="download-btn" onclick="downloadPDF()">📥 下載教材 PDF</button>
+
     
     <div class="container">
         <div class="header">
@@ -511,11 +586,5 @@
             </div>
         </div>
     </div>
-    
-    <script>
-        function downloadPDF() {
-            window.print();
-        }
-    </script>
 </body>
 </html>
