@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學測篇章結構實戰解析</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Microsoft JhengHei", "Segoe UI", Arial, sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+        
+        .legend {
+            background: #f8f9fa;
+            padding: 25px;
+            margin: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .legend h2 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .legend-item {
+            display: inline-block;
+            margin: 10px 20px 10px 0;
+            padding: 8px 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .content-section {
+            padding: 30px 40px;
+        }
+        
+        .section-title {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 25px;
+            margin: 30px 0 20px 0;
+            border-radius: 10px;
+            font-size: 1.5em;
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+        }
+        
+        .article {
+            background: #fefefe;
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #e0e0e0;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+        
+        .main-idea {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        
+        .transition {
+            color: #9c27b0;
+            font-weight: bold;
+        }
+        
+        .keyword {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .blank {
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+            border-bottom: 2px solid #333;
+            margin: 0 5px;
+            text-align: center;
+            font-weight: bold;
+            color: #667eea;
+            vertical-align: middle;
+        }
+        
+        .options {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .option-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+        }
+        
+        .strategy-box {
+            background: #e3f2fd;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #2196f3;
+        }
+        
+        .strategy-box h3 {
+            color: #1565c0;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .step {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .question-analysis {
+            background: #f3e5f5;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #9c27b0;
+        }
+        
+        .answer-box {
+            background: #c8e6c9;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #4caf50;
+            font-size: 1.1em;
+        }
+        
+        .wrong-answer {
+            background: #ffcdd2;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #f44336;
+        }
+        
+        .tips-box {
+            background: #fff9c4;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 3px dashed #fbc02d;
+        }
+        
+        .tips-box h2 {
+            color: #f57f17;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+        
+        .tip-item {
+            background: white;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 4px solid #fbc02d;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .tip-title {
+            color: #f57f17;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .highlight-box {
+            background: #ffe0b2;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #ff9800;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 學測篇章結構實戰解析</h1>
+            <p>Capsule Hotel 膠囊旅館篇章結構題</p>
+        </div>
+        
+        <div class="legend">
+            <h2>🎯 閱讀標示系統</h2>
+            <div class="legend-item">
+                <span class="main-idea">■ 紅色粗體</span> = 核心句/主旨
+            </div>
+            <div class="legend-item">
+                <span class="transition">■ 紫色粗體</span> = 轉折詞/導向詞
+            </div>
+            <div class="legend-item">
+                <span class="keyword">■ 綠色粗體</span> = 主題關鍵詞
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-title">📖 完整文章(含關鍵標示)</div>
+            
+            <div class="article">
+                <p><strong>第一段:</strong> A <span class="keyword">capsule hotel</span>, <span class="transition">also known as</span> a <span class="keyword">pod hotel</span>, is a unique type of basic, affordable accommodation. <span class="main-idea">Originated in Japan, these hotels were initially meant for business professionals to stay close to populated business districts without spending a lot.</span> <span class="blank">(1)</span></p>
+                
+                <p><strong>第二段:</strong> A typical room of a <span class="keyword">capsule hotel</span> is roughly the length and width of a single bed, with sufficient height for a guest to crawl in and sit up on the bed. The walls of each capsule may be made of wood, metal or any rigid material, but are often fiberglass or plastic. <span class="blank">(2)</span> Each capsule is equipped with a comfortable mattress, a small light, and <span class="transition">sometimes</span> a television or other entertainment options. <span class="main-idea">Such minimalist design is what makes these hotels both inexpensive and efficient, providing only the essential elements for a good night sleep.</span></p>
+                
+                <p><strong>第三段:</strong> The first <span class="keyword">capsule hotel</span>, the Capsule Inn Osaka, opened in 1979. <span class="transition">Since then</span>, capsule hotels have quickly spread to other cities and countries. Chains have emerged in Taiwan, Singapore, and even on resort islands like Bali. <span class="keyword">Pod hotels</span> are <span class="transition">also</span> seen in Europe and North America, especially in big cities like New York, London, and Paris. <span class="blank">(3)</span> <span class="transition">Instead of</span> the traditional bare pod-sized style, <span class="main-idea">new chains now feature interior design that appeals to digitally connected travelers from around the world.</span> Guests may enjoy facilities such as free Wi-Fi, mobile charging, and even a soundless alarm system that raises the sleeping guests into a seated position while gradually brightening the lights.</p>
+                
+                <p><strong>第四段:</strong> <span class="transition">While</span> offering budget-conscious travelers a unique option, <span class="main-idea">capsule hotels may not be suitable for everyone.</span> Some hotels may not provide air conditioning in the capsules, leading to poor air flow. <span class="blank">(4)</span> <span class="transition">Also</span>, you may have to share common facilities (such as bathrooms) with other guests. <span class="transition">And, if</span> you're worried about feeling claustrophobic in small spaces, you'd better think twice before making a reservation.</p>
+            </div>
+            
+            <div class="options">
+                <h3>📝 選項分析</h3>
+                <div class="option-item"><strong>(A)</strong> In response to rising demands, these hotels are embracing a wave of innovation.</div>
+                <div class="option-item"><strong>(B)</strong> The room's thin plastic walls easily transmit the sound of snoring made by neighboring guests.</div>
+                <div class="option-item"><strong>(C)</strong> The chambers are stacked side-by-side, two units high, with the upper rooms reached by a ladder.</div>
+                <div class="option-item"><strong>(D)</strong> Today, they provide low-budget, overnight lodging in commerce centers in large cities worldwide.</div>
+            </div>
+            
+            <div class="section-title">🎓 實戰解題步驟</div>
+            
+            <div class="strategy-box">
+                <h3>核心解題策略</h3>
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <strong>先看空格前後句</strong> - 找出上下文邏輯關係
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <strong>抓關鍵詞呼應</strong> - 找代名詞(they/these)指涉對象
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <strong>注意轉折詞</strong> - 判斷是延續、轉折還是舉例
+                </div>
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <strong>檢查段落主旨</strong> - 該句是否符合段落核心意義
+                </div>
+            </div>
+            
+            <div class="section-title">✍️ 逐題詳細解析</div>
+            
+            <div class="question-analysis">
+                <h3>題目(1)解析</h3>
+                <div class="highlight-box">
+                    <strong>空格前:</strong> "Originated in Japan, these hotels were <span class="main-idea">initially</span> meant for business professionals..."<br>
+                    <strong>關鍵詞:</strong> <span class="transition">initially</span> (最初) → 暗示後面要講「現在」的狀況
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <strong>判斷邏輯:</strong> 前句講「最初目的」,需要對比句講「今日狀況」
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <strong>選項分析:</strong><br>
+                    • (A) 講「創新」→ 不對,這段在介紹基本概念<br>
+                    • (B) 講「缺點」→ 不對,第一段是介紹性質<br>
+                    • (C) 講「結構」→ 不對,還沒講到細節<br>
+                    • <span class="keyword">(D) "Today, they provide..." → ✓ 完美對應 "initially"</span>
+                </div>
+                
+                <div class="answer-box">
+                    <strong>✓ 答案: (D)</strong><br>
+                    <strong>關鍵:</strong> initially (最初) vs. Today (今日) 形成時間對比
+                </div>
+            </div>
+            
+            <div class="question-analysis">
+                <h3>題目(2)解析</h3>
+                <div class="highlight-box">
+                    <strong>空格前:</strong> "The walls of each capsule may be made of wood, metal... often fiberglass or plastic."<br>
+                    <strong>空格後:</strong> "Each capsule is equipped with..."<br>
+                    <strong>關鍵:</strong> 前後都在描述 <span class="keyword">capsule 的物理特徵</span>
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <strong>判斷邏輯:</strong> 前句講「牆壁材質」,後句講「內部設備」,中間應該講「空間配置」
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <strong>選項分析:</strong><br>
+                    • (A) 講「創新」→ 不對,這段在講基本結構<br>
+                    • (B) 講「噪音」→ 不對,這是缺點,放第四段<br>
+                    • <span class="keyword">(C) "The chambers are stacked side-by-side..." → ✓ 描述空間排列</span><br>
+                    • (D) 講「今日用途」→ 已用在(1)
+                </div>
+                
+                <div class="answer-box">
+                    <strong>✓ 答案: (C)</strong><br>
+                    <strong>關鍵:</strong> chambers = capsules (同義詞),描述堆疊方式
+                </div>
+            </div>
+            
+            <div class="question-analysis">
+                <h3>題目(3)解析</h3>
+                <div class="highlight-box">
+                    <strong>空格前:</strong> "Pod hotels are also seen in Europe and North America..."<br>
+                    <strong>空格後:</strong> "<span class="transition">Instead of</span> the traditional bare pod-sized style, <span class="main-idea">new chains now feature interior design</span>..."<br>
+                    <strong>關鍵轉折:</strong> <span class="transition">Instead of (取代傳統)</span> → 暗示有「改變/創新」
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <strong>判斷邏輯:</strong> 後句說「取代傳統,現在有新設計」,前面應該先提「創新趨勢」
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <strong>選項分析:</strong><br>
+                    • <span class="keyword">(A) "In response to rising demands, these hotels are embracing a wave of innovation." → ✓</span><br>
+                    • innovation (創新) 完美銜接後句的 "new chains feature interior design"<br>
+                    • (B) 講缺點 → 不符合<br>
+                    • (C)(D) 已使用
+                </div>
+                
+                <div class="answer-box">
+                    <strong>✓ 答案: (A)</strong><br>
+                    <strong>關鍵:</strong> innovation → Instead of traditional → new design (邏輯鏈完整)
+                </div>
+            </div>
+            
+            <div class="question-analysis">
+                <h3>題目(4)解析</h3>
+                <div class="highlight-box">
+                    <strong>空格前:</strong> "Some hotels may not provide air conditioning... leading to <span class="main-idea">poor air flow</span>."<br>
+                    <strong>空格後:</strong> "<span class="transition">Also</span>, you may have to share common facilities..."<br>
+                    <strong>段落主旨:</strong> capsule hotels <span class="main-idea">may not be suitable for everyone</span> (列舉缺點)
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <strong>判斷邏輯:</strong> 這段在列舉「缺點」,前面講「空氣不好」,後面講「共用設施」,中間應該再補一個缺點
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <strong>選項分析:</strong><br>
+                    • 剩下選項只有 (B)<br>
+                    • <span class="keyword">(B) "The room's thin plastic walls easily transmit the sound of snoring..." → ✓</span><br>
+                    • 「薄塑膠牆會傳噪音」→ 明顯是缺點,符合段落主旨
+                </div>
+                
+                <div class="answer-box">
+                    <strong>✓ 答案: (B)</strong><br>
+                    <strong>關鍵:</strong> 噪音問題 = 缺點之一,與段落「列舉缺點」主旨一致
+                </div>
+            </div>
+            
+            <div class="section-title">🎯 考前衝刺重點整理</div>
+            
+            <div class="tips-box">
+                <h2>⚡ 5大秒殺技巧</h2>
+                
+                <div class="tip-item">
+                    <div class="tip-title">1️⃣ 時間對比詞必考</div>
+                    <strong>initially / originally → Today / Now</strong><br>
+                    看到「過去時態」就找「現在狀態」的對比句<br>
+                    本題: initially meant → Today, they provide (✓)
+                </div>
+                
+                <div class="tip-item">
+                    <div class="tip-title">2️⃣ 轉折詞 = 答案提示</div>
+                    <table>
+                        <tr>
+                            <th>轉折詞</th>
+                            <th>功能</th>
+                            <th>範例</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Instead of</strong></td>
+                            <td>取代/對比</td>
+                            <td>前面要先提「變化」</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Also / And</strong></td>
+                            <td>並列/補充</td>
+                            <td>前後句性質相同</td>
+                        </tr>
+                        <tr>
+                            <td><strong>However / While</strong></td>
+                            <td>轉折</td>
+                            <td>前後句意思相反</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="tip-item">
+                    <div class="tip-title">3️⃣ 代名詞指涉必檢查</div>
+                    <strong>they / these / such → 一定指前面出現的名詞</strong><br>
+                    選項(D) "Today, <span class="keyword">they</span> provide..." → they = capsule hotels<br>
+                    選項(C) "The <span class="keyword">chambers</span>..." → chambers = capsules
+                </div>
+                
+                <div class="tip-item">
+                    <div class="tip-title">4️⃣ 段落主旨判斷法</div>
+                    <strong>第一段:</strong> 介紹起源/定義 → 不會出現缺點<br>
+                    <strong>第二段:</strong> 描述細節/特徵 → 客觀描述<br>
+                    <strong>第三段:</strong> 發展/演變 → 時間順序<br>
+                    <strong>第四段:</strong> 優缺點/評價 → While開頭常引出缺點
+                </div>
+                
+                <div class="tip-item">
+                    <div class="tip-title">5️⃣ 快速排除法</div>
+                    <strong>Step 1:</strong> 看空格所在段落主旨<br>
+                    <strong>Step 2:</strong> 刪除「主旨不符」的選項<br>
+                    <strong>Step 3:</strong> 從剩下選項找「關鍵詞呼應」<br>
+                    <br>
+                    <strong>範例:</strong> 空格(4)在「缺點段」→ 直接刪除(A)(C)(D) → 答案(B)
+                </div>
+            </div>
+            
+            <div class="tips-box" style="background: #e1f5fe; border-color: #0277bd;">
+                <h2>📌 考試實戰檢查清單</h2>
+                
+                <table>
+                    <tr>
+                        <th style="background: #0277bd;">檢查項目</th>
+                        <th style="background: #0277bd;">具體作法</th>
+                    </tr>
+                    <tr>
+                        <td>☑️ 代名詞檢查</td>
+                        <td>they/these/it 是否指涉正確?</td>
+                    </tr>
+                    <tr>
+                        <td>☑️ 轉折詞檢查</td>
+                        <td>however/instead 前後邏輯是否相反?</td>
+                    </tr>
+                    <tr>
+                        <td>☑️ 時態檢查</td>
+                        <td>過去式/現在式 是否與上下文一致?</td>
+                    </tr>
+                    <tr>
+                        <td>☑️ 主題詞檢查</td>
+                        <td>選項的主題詞 是否與段落一致?</td>
+                    </tr>
+                    <tr>
+                        <td>☑️ 語氣檢查</td>
+                        <td>正面/負面/中性 是否與段落語氣相符?</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="answer-box" style="background: #fff3e0; border-color: #e65100; font-size: 1.3em; text-align: center; padding: 25px;">
+                <strong>📊 本題答案:</strong><br>
+                (1) <span style="color: #e65100; font-size: 1.5em;">D</span> │ 
+                (2) <span style="color: #e65100; font-size: 1.5em;">C</span> │ 
+                (3) <span style="color: #e65100; font-size: 1.5em;">A</span> │ 
+                (4) <span style="color: #e65100; font-size: 1.5em;">B</span>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>💪 掌握這些技巧,篇章結構題輕鬆拿分!</p>
+            <p>祝學測順利 🎓</p>
+        </div>
+    </div>
+</body>
+</html>

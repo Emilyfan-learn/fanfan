@@ -46,7 +46,6 @@
             opacity: 0.9;
         }
         
-
         .content {
             padding: 20px 15px;
         }
@@ -69,7 +68,7 @@
         
         .legend {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 12px;
             margin-bottom: 20px;
             padding: 15px;
@@ -95,7 +94,6 @@
         .red { color: #e74c3c; font-weight: bold; }
         .purple { color: #9b59b6; font-weight: bold; }
         .green { color: #27ae60; font-weight: bold; }
-        .blue { color: #3498db; font-weight: bold; }
         .blank { background: #fff3cd; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
         
         .passage {
@@ -119,6 +117,12 @@
             border-left: 4px solid #667eea;
         }
         
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
         .step-number {
             display: inline-block;
             background: #667eea;
@@ -130,7 +134,7 @@
             line-height: 32px;
             font-weight: bold;
             margin-right: 10px;
-            vertical-align: middle;
+            flex-shrink: 0;
         }
         
         .answer-box {
@@ -140,6 +144,30 @@
             border-radius: 8px;
             border-left: 4px solid #4CAF50;
             font-size: 0.95em;
+        }
+        
+        .thinking-box {
+            background: #fff3e0;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #ff9800;
+            font-size: 0.95em;
+        }
+        
+        .vocab-category {
+            margin-bottom: 25px;
+        }
+        
+        .category-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2d3561;
+            margin-bottom: 12px;
+            padding: 10px;
+            background: #667eea;
+            color: white;
+            border-radius: 8px;
         }
         
         .vocab-grid {
@@ -207,6 +235,12 @@
             font-size: 1.3em;
         }
         
+        .highlight-yellow {
+            background: #fff59d;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        
         /* 平板尺寸優化 */
         @media (min-width: 768px) {
             body {
@@ -241,8 +275,7 @@
                 padding: 25px 20px;
                 font-size: 1.05em;
             }
-            
-}
+        }
         
         /* 桌面尺寸優化 */
         @media (min-width: 1024px) {
@@ -272,8 +305,7 @@
             .vocab-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
-}
+        }
         
         /* 手機小螢幕優化 */
         @media (max-width: 480px) {
@@ -288,23 +320,10 @@
             .vocab-grid {
                 grid-template-columns: 1fr;
             }
-            
-}
-        
-        @media print {
-            body {
-                background: white;
-                padding: 0;
-            }
-            .container {
-                box-shadow: none;
-            }
         }
     </style>
 </head>
 <body>
-
-    
     <div class="container">
         <div class="header">
             <h1>🎯 學測英文文意選填實戰教材</h1>
@@ -322,15 +341,11 @@
                     </div>
                     <div class="legend-item">
                         <div class="color-box" style="background: #9b59b6;"></div>
-                        <span>問題/負面資訊</span>
+                        <span>學測常用轉折詞</span>
                     </div>
                     <div class="legend-item">
                         <div class="color-box" style="background: #27ae60;"></div>
-                        <span>解決方案/正面結果</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="color-box" style="background: #3498db;"></div>
-                        <span>重要事實(人/時/地)</span>
+                        <span>主題詞</span>
                     </div>
                 </div>
             </div>
@@ -339,13 +354,13 @@
             <div class="section">
                 <h2 class="section-title">📖 文章標示版</h2>
                 <div class="passage">
-                    <p><span class="red">The Notre-Dame de Paris is one of the most famous cathedrals in Europe.</span> <span class="blue">Located at the heart of Paris</span>, <span class="red">this medieval cathedral is <span class="blank">21(I) noted</span> for its intricate architecture, stunning stained glass windows, and, above all, its bells.</span></p>
+                    <p><span class="red">The Notre-Dame de Paris is one of the most famous cathedrals in Europe.</span> Located at the heart of Paris, this medieval <span class="green">cathedral</span> is <span class="blank">21(I) noted</span> for its intricate architecture, stunning stained glass windows, and, <span class="green">above all</span>, its <span class="green">bells</span>.</p>
                     
-                    <p><span class="blue">Mounted in the two tall towers of the cathedral</span>, <span class="red">Notre-Dame's bells have been ringing for over 800 years.</span> In fact, there is documented <span class="blank">22(A) reference</span> to the ringing of bells even before the cathedral's construction was completed, <span class="blue">dating as far back as the 12th century</span>. <span class="blue">The 10 bells vary in size, each <span class="blank">23(B) bearing</span> a name. The largest one, named "Emmanuel," weighs over 13 tons.</span> It is the only one of the whole group that <span class="blank">24(F) survived</span> <span class="purple">the French Revolution, while the rest were melted down for weapons.</span> <span class="purple">The melted bells were recast in the late 19th century. But due to their poor acoustic quality, all of the bells were replaced in 2013</span>—<span class="green">except for Emmanuel, which <span class="blank">25(D) retained</span> its renowned, excellent sound.</span> <span class="green">This particular bell, ringing in F sharp, is considered one of the most harmonically beautiful in Europe.</span></p>
+                    <p>Mounted in the two tall towers of the <span class="green">cathedral</span>, <span class="red">Notre-Dame's bells have been ringing for over 800 years.</span> <span class="purple">In fact</span>, there is documented <span class="blank">22(A) reference</span> to the ringing of <span class="green">bells</span> even before the <span class="green">cathedral's</span> construction was completed, dating as far back as the 12th century. The 10 <span class="green">bells</span> vary in size, each <span class="blank">23(B) bearing</span> a name. The largest one, named "Emmanuel," weighs over 13 tons. It is the only one of the whole group that <span class="blank">24(F) survived</span> the French Revolution, <span class="purple">while</span> the rest were melted down for weapons. The melted <span class="green">bells</span> were recast in the late 19th century. <span class="purple">But</span> due to their poor acoustic quality, all of the <span class="green">bells</span> were replaced in 2013—<span class="purple">except for</span> Emmanuel, which <span class="blank">25(D) retained</span> its renowned, excellent <span class="green">sound</span>. This particular <span class="green">bell</span>, ringing in F sharp, is considered one of the most harmonically beautiful in Europe.</p>
                     
-                    <p><span class="blue">Over centuries</span>, <span class="red">the bells have become a <span class="blank">26(C) familiar</span> part of life in Paris, where they are known as "the cathedral's voice."</span> They have been used to mark the hours of the day, to call the <span class="blank">27(E) faithful</span> to prayer, and to signal emergency situations such as fires and invasions. They have also rung in times of <span class="blank">28(G) celebration</span> and of mourning, announcing such events as royal weddings and coronations of kings, as well as funerals of heads of state.</p>
+                    <p>Over centuries, <span class="red">the bells have become a <span class="blank">26(C) familiar</span> part of life in Paris</span>, where they are known as "the <span class="green">cathedral's voice</span>." They have been used to mark the hours of the day, to call the <span class="blank">27(E) faithful</span> to prayer, and to signal emergency situations such as fires and invasions. They have <span class="purple">also</span> rung in times of <span class="blank">28(G) celebration</span> and of mourning, announcing such events as royal weddings and coronations of kings, <span class="purple">as well as</span> funerals of heads of state.</p>
                     
-                    <p>However, <span class="purple">after the devastating fire that damaged the cathedral in 2019, the bells fell <span class="blank">29(J) silent</span>.</span> <span class="green">The building went through a complex and time-consuming process of <span class="blank">30(H) restoration</span>, and the famous monument was finally reopened on <span class="blue">December 8, 2024</span>.</span> <span class="green">The sounds of Notre-Dame bells once again filled the air in Paris, and will be heard for generations to come.</span></p>
+                    <p><span class="purple">However</span>, after the devastating fire that damaged the <span class="green">cathedral</span> in 2019, the <span class="green">bells</span> fell <span class="blank">29(J) silent</span>. The building went through a complex and time-consuming process of <span class="blank">30(H) restoration</span>, and the famous monument was finally reopened on December 8, 2024. The sounds of Notre-Dame <span class="green">bells</span> once again filled the air in Paris, and will be heard for generations to come.</p>
                 </div>
             </div>
             
@@ -354,188 +369,272 @@
                 <h2 class="section-title">🎯 實戰解題步驟</h2>
                 
                 <div class="step">
-                    <span class="step-number">21</span>
-                    <strong>空格前後分析:</strong> "is ___ for" 表示「以...而聞名」
+                    <div class="step-header">
+                        <span class="step-number">21</span>
+                        <strong>空格: "is ___ for"</strong>
+                    </div>
+                    <div class="thinking-box">
+                        <strong>🔍 解題思維:</strong><br>
+                        1. 前面出現主旨句「most famous cathedrals」→ 需要「以...著稱」的意思<br>
+                        2. 看到 "for" → 立刻想到固定搭配 "be noted for"<br>
+                        3. 主題詞: cathedral, architecture, bells
+                    </div>
                     <div class="answer-box">
-                        <strong>關鍵思維:</strong> be noted for = be famous for (以...著稱)<br>
-                        <strong>正確答案: (I) noted</strong><br>
-                        <strong>搭配用法:</strong> be noted for + 特點/原因
+                        <strong>✅ 正確答案: (I) noted</strong><br>
+                        <strong>固定搭配:</strong> be noted for = be famous for (以...著稱)
                     </div>
                 </div>
                 
                 <div class="step">
-                    <span class="step-number">22</span>
-                    <strong>空格前後分析:</strong> "documented ___ to the ringing" 需要名詞
+                    <div class="step-header">
+                        <span class="step-number">22</span>
+                        <strong>空格: "documented ___ to"</strong>
+                    </div>
+                    <div class="thinking-box">
+                        <strong>🔍 解題思維:</strong><br>
+                        1. 轉折詞「In fact」→ 補充更多證據<br>
+                        2. documented + 名詞 + to → 需要「記載/提及」的名詞<br>
+                        3. 主題詞持續: bells, ringing
+                    </div>
                     <div class="answer-box">
-                        <strong>關鍵思維:</strong> reference to = 提及、參考資料<br>
-                        <strong>正確答案: (A) reference</strong><br>
-                        <strong>搭配用法:</strong> reference to + 名詞 (對...的記載)
+                        <strong>✅ 正確答案: (A) reference</strong><br>
+                        <strong>固定搭配:</strong> reference to (對...的記載/提及)
                     </div>
                 </div>
                 
                 <div class="step">
-                    <span class="step-number">23</span>
-                    <strong>空格前後分析:</strong> "each ___ a name" 需要現在分詞表主動
+                    <div class="step-header">
+                        <span class="step-number">23</span>
+                        <strong>空格: "each ___ a name"</strong>
+                    </div>
+                    <div class="thinking-box">
+                        <strong>🔍 解題思維:</strong><br>
+                        1. 前面說「10 bells vary in size」→ 接著說每個鐘的特徵<br>
+                        2. each + Ving 結構 → 現在分詞作補語<br>
+                        3. 主題詞: bells, name
+                    </div>
                     <div class="answer-box">
-                        <strong>關鍵思維:</strong> bearing = 帶有、擁有(現在分詞作補語)<br>
-                        <strong>正確答案: (B) bearing</strong><br>
-                        <strong>文法重點:</strong> 獨立分詞構句,表示「各自擁有」
+                        <strong>✅ 正確答案: (B) bearing</strong><br>
+                        <strong>文法:</strong> bearing = 帶有、擁有 (獨立分詞構句)
                     </div>
                 </div>
                 
                 <div class="step">
-                    <span class="step-number">24</span>
-                    <strong>空格前後分析:</strong> "that ___ the French Revolution" 需要動詞
+                    <div class="step-header">
+                        <span class="step-number">24</span>
+                        <strong>空格: "that ___ the French Revolution"</strong>
+                    </div>
+                    <div class="thinking-box">
+                        <strong>🔍 解題思維:</strong><br>
+                        1. 轉折詞「while」→ 對比關係出現<br>
+                        2. 後半句「the rest were melted down」→ 其他鐘被毀<br>
+                        3. 對比邏輯: Emmanuel 必定是「倖存」
+                    </div>
                     <div class="answer-box">
-                        <strong>關鍵思維:</strong> survived = 倖存於...<br>
-                        <strong>正確答案: (F) survived</strong><br>
-                        <strong>上下文提示:</strong> 後面說其他鐘被熔化,表示這口鐘「倖存」下來
+                        <strong>✅ 正確答案: (F) survived</strong><br>
+                        <strong>對比邏輯:</strong> survived ↔ melted down
                     </div>
                 </div>
                 
                 <div class="step">
-                    <span class="step-number">25</span>
-                    <strong>空格前後分析:</strong> "which ___ its renowned, excellent sound" 需要動詞
+                    <div class="step-header">
+                        <span class="step-number">25</span>
+                        <strong>空格: "which ___ its renowned, excellent sound"</strong>
+                    </div>
+                    <div class="thinking-box">
+                        <strong>🔍 解題思維:</strong><br>
+                        1. 轉折詞「except for」→ Emmanuel 是例外<br>
+                        2. 前面說「all bells were replaced」→ 但 Emmanuel 沒被換<br>
+                        3. 主題詞: sound, excellent → 保留原有的好聲音
+                    </div>
                     <div class="answer-box">
-                        <strong>關鍵思維:</strong> retained = 保持、維持<br>
-                        <strong>正確答案: (D) retained</strong><br>
-                        <strong>對比關係:</strong> 其他鐘被替換,但Emmanuel「保留」了原本的聲音
+                        <strong>✅ 正確答案: (D) retained</strong><br>
+                        <strong>對比邏輯:</strong> retained ↔ replaced (保留 vs 替換)
                     </div>
                 </div>
                 
                 <div class="step">
-                    <span class="step-number">26</span>
-                    <strong>空格前後分析:</strong> "a ___ part of life" 需要形容詞
+                    <div class="step-header">
+                        <span class="step-number">26</span>
+                        <strong>空格: "a ___ part of life"</strong>
+                    </div>
+                    <div class="thinking-box">
+                        <strong>🔍 解題思維:</strong><br>
+                        1. 前面說「Over centuries」→ 經過數百年<br>
+                        2. 主旨句「become a ___ part of life」→ 成為生活的一部分<br>
+                        3. 主題詞: cathedral's voice, Paris → 巴黎人熟悉的聲音
+                    </div>
                     <div class="answer-box">
-                        <strong>關鍵思維:</strong> familiar = 熟悉的、親切的<br>
-                        <strong>正確答案: (C) familiar</strong><br>
-                        <strong>語意邏輯:</strong> 鐘聲響了數百年,已成為巴黎生活中「熟悉的」一部分
+                        <strong>✅ 正確答案: (C) familiar</strong><br>
+                        <strong>語意:</strong> 經過數百年 → 變得熟悉
                     </div>
                 </div>
                 
                 <div class="step">
-                    <span class="step-number">27</span>
-                    <strong>空格前後分析:</strong> "call the ___ to prayer" 需要名詞指「信徒」
+                    <div class="step-header">
+                        <span class="step-number">27</span>
+                        <strong>空格: "call the ___ to prayer"</strong>
+                    </div>
+                    <div class="thinking-box">
+                        <strong>🔍 解題思維:</strong><br>
+                        1. 主題詞: prayer (禱告) → 宗教相關<br>
+                        2. call + 人 + to prayer → 召喚某人禱告<br>
+                        3. 定冠詞 the + 形容詞 → 可當名詞使用
+                    </div>
                     <div class="answer-box">
-                        <strong>關鍵思維:</strong> the faithful = 信徒們(定冠詞+形容詞當名詞)<br>
-                        <strong>正確答案: (E) faithful</strong><br>
-                        <strong>固定用法:</strong> call sb to prayer (召喚某人禱告)
+                        <strong>✅ 正確答案: (E) faithful</strong><br>
+                        <strong>文法:</strong> the faithful = 信徒們 (the + 形容詞當名詞)
                     </div>
                 </div>
                 
                 <div class="step">
-                    <span class="step-number">28</span>
-                    <strong>空格前後分析:</strong> "times of ___ and of mourning" 需要與mourning對比的名詞
+                    <div class="step-header">
+                        <span class="step-number">28</span>
+                        <strong>空格: "times of ___ and of mourning"</strong>
+                    </div>
+                    <div class="thinking-box">
+                        <strong>🔍 解題思維:</strong><br>
+                        1. 轉折詞「also」→ 補充其他用途<br>
+                        2. "___ and mourning" → 對比結構<br>
+                        3. 後面舉例: weddings (歡慶) vs funerals (哀悼)
+                    </div>
                     <div class="answer-box">
-                        <strong>關鍵思維:</strong> celebration = 慶祝(與mourning「哀悼」形成對比)<br>
-                        <strong>正確答案: (G) celebration</strong><br>
-                        <strong>上下文提示:</strong> 後面提到royal weddings(歡慶)和funerals(哀悼)
+                        <strong>✅ 正確答案: (G) celebration</strong><br>
+                        <strong>對比邏輯:</strong> celebration ↔ mourning (慶祝 vs 哀悼)
                     </div>
                 </div>
                 
                 <div class="step">
-                    <span class="step-number">29</span>
-                    <strong>空格前後分析:</strong> "the bells fell ___" 需要形容詞表狀態
+                    <div class="step-header">
+                        <span class="step-number">29</span>
+                        <strong>空格: "the bells fell ___"</strong>
+                    </div>
+                    <div class="thinking-box">
+                        <strong>🔍 解題思維:</strong><br>
+                        1. <span class="highlight-yellow">超重要轉折詞「However」</span> → 前後對比<br>
+                        2. 前段: bells 一直在響 → 現在: devastating fire 災難發生<br>
+                        3. 主題詞: bells → 從有聲變無聲
+                    </div>
                     <div class="answer-box">
-                        <strong>關鍵思維:</strong> fell silent = 陷入沉默(固定搭配)<br>
-                        <strong>正確答案: (J) silent</strong><br>
-                        <strong>因果關係:</strong> 火災損壞大教堂→鐘聲停止
+                        <strong>✅ 正確答案: (J) silent</strong><br>
+                        <strong>固定搭配:</strong> fall silent (陷入沉默)
                     </div>
                 </div>
                 
                 <div class="step">
-                    <span class="step-number">30</span>
-                    <strong>空格前後分析:</strong> "process of ___" 需要名詞
+                    <div class="step-header">
+                        <span class="step-number">30</span>
+                        <strong>空格: "process of ___"</strong>
+                    </div>
+                    <div class="thinking-box">
+                        <strong>🔍 解題思維:</strong><br>
+                        1. 前面: fire damaged → 接著: process of ___<br>
+                        2. 後面: reopened (重新開放) → 因果邏輯<br>
+                        3. 主題詞: cathedral, reopened → 修復後重開
+                    </div>
                     <div class="answer-box">
-                        <strong>關鍵思維:</strong> restoration = 修復、重建<br>
-                        <strong>正確答案: (H) restoration</strong><br>
-                        <strong>語意邏輯:</strong> 火災後需要「修復」,且後面說重新開放
+                        <strong>✅ 正確答案: (H) restoration</strong><br>
+                        <strong>因果邏輯:</strong> 火災 → 修復 → 重新開放
                     </div>
                 </div>
             </div>
             
             <!-- 單字分類 -->
             <div class="section">
-                <h2 class="section-title">📚 單字分類整理</h2>
-                <div class="vocab-grid">
-                    <div class="vocab-card">
-                        <div class="vocab-word">noted</div>
-                        <span class="vocab-type">形容詞</span>
-                        <p><strong>意思:</strong> 著名的、顯著的</p>
-                        <p><strong>用法:</strong> be noted for 以...聞名</p>
-                        <p><strong>同義:</strong> famous, renowned</p>
+                <h2 class="section-title">📚 單字依解題邏輯分類</h2>
+                
+                <div class="vocab-category">
+                    <div class="category-title">🎯 固定搭配型 (優先填)</div>
+                    <div class="vocab-grid">
+                        <div class="vocab-card">
+                            <div class="vocab-word">noted</div>
+                            <span class="vocab-type">形容詞</span>
+                            <p><strong>固定搭配:</strong> be noted for</p>
+                            <p><strong>同義:</strong> famous, renowned</p>
+                            <p><strong>學測必考!</strong> 看到 "for" 立刻聯想</p>
+                        </div>
+                        
+                        <div class="vocab-card">
+                            <div class="vocab-word">reference</div>
+                            <span class="vocab-type">名詞</span>
+                            <p><strong>固定搭配:</strong> reference to</p>
+                            <p><strong>動詞:</strong> refer to (提及)</p>
+                            <p><strong>學測必考!</strong> documented + reference to</p>
+                        </div>
+                        
+                        <div class="vocab-card">
+                            <div class="vocab-word">silent</div>
+                            <span class="vocab-type">形容詞</span>
+                            <p><strong>固定搭配:</strong> fall silent</p>
+                            <p><strong>同義:</strong> quiet, soundless</p>
+                            <p><strong>學測必考!</strong> fall/remain/keep silent</p>
+                        </div>
                     </div>
-                    
-                    <div class="vocab-card">
-                        <div class="vocab-word">reference</div>
-                        <span class="vocab-type">名詞</span>
-                        <p><strong>意思:</strong> 提及、參考、記載</p>
-                        <p><strong>用法:</strong> reference to 對...的記載</p>
-                        <p><strong>動詞:</strong> refer 提及</p>
+                </div>
+                
+                <div class="vocab-category">
+                    <div class="category-title">🔄 對比轉折型 (看轉折詞)</div>
+                    <div class="vocab-grid">
+                        <div class="vocab-card">
+                            <div class="vocab-word">survived</div>
+                            <span class="vocab-type">動詞</span>
+                            <p><strong>轉折詞:</strong> while (而...)</p>
+                            <p><strong>對比:</strong> survived ↔ melted down</p>
+                            <p><strong>提示:</strong> 看到破壞詞就想倖存詞</p>
+                        </div>
+                        
+                        <div class="vocab-card">
+                            <div class="vocab-word">retained</div>
+                            <span class="vocab-type">動詞</span>
+                            <p><strong>轉折詞:</strong> except for (除了...)</p>
+                            <p><strong>對比:</strong> retained ↔ replaced</p>
+                            <p><strong>提示:</strong> 例外通常是好的結果</p>
+                        </div>
+                        
+                        <div class="vocab-card">
+                            <div class="vocab-word">celebration</div>
+                            <span class="vocab-type">名詞</span>
+                            <p><strong>轉折詞:</strong> also, as well as</p>
+                            <p><strong>對比:</strong> celebration ↔ mourning</p>
+                            <p><strong>提示:</strong> 看到 and 找相反詞</p>
+                        </div>
                     </div>
-                    
-                    <div class="vocab-card">
-                        <div class="vocab-word">bearing</div>
-                        <span class="vocab-type">現在分詞</span>
-                        <p><strong>意思:</strong> 帶有、擁有</p>
-                        <p><strong>原形:</strong> bear (帶有、忍受)</p>
-                        <p><strong>文法:</strong> 獨立分詞構句</p>
-                    </div>
-                    
-                    <div class="vocab-card">
-                        <div class="vocab-word">survived</div>
-                        <span class="vocab-type">動詞過去式</span>
-                        <p><strong>意思:</strong> 倖存、存活</p>
-                        <p><strong>用法:</strong> survive + 災難/困境</p>
-                        <p><strong>名詞:</strong> survival 存活</p>
-                    </div>
-                    
-                    <div class="vocab-card">
-                        <div class="vocab-word">retained</div>
-                        <span class="vocab-type">動詞過去式</span>
-                        <p><strong>意思:</strong> 保留、維持</p>
-                        <p><strong>用法:</strong> retain + 特質/物品</p>
-                        <p><strong>同義:</strong> keep, maintain</p>
-                    </div>
-                    
-                    <div class="vocab-card">
-                        <div class="vocab-word">familiar</div>
-                        <span class="vocab-type">形容詞</span>
-                        <p><strong>意思:</strong> 熟悉的、常見的</p>
-                        <p><strong>用法:</strong> be familiar with/to</p>
-                        <p><strong>名詞:</strong> familiarity 熟悉</p>
-                    </div>
-                    
-                    <div class="vocab-card">
-                        <div class="vocab-word">faithful</div>
-                        <span class="vocab-type">形容詞/名詞</span>
-                        <p><strong>意思:</strong> 忠實的;信徒</p>
-                        <p><strong>用法:</strong> the faithful 信徒們</p>
-                        <p><strong>名詞:</strong> faith 信仰</p>
-                    </div>
-                    
-                    <div class="vocab-card">
-                        <div class="vocab-word">celebration</div>
-                        <span class="vocab-type">名詞</span>
-                        <p><strong>意思:</strong> 慶祝、慶典</p>
-                        <p><strong>動詞:</strong> celebrate 慶祝</p>
-                        <p><strong>反義:</strong> mourning 哀悼</p>
-                    </div>
-                    
-                    <div class="vocab-card">
-                        <div class="vocab-word">silent</div>
-                        <span class="vocab-type">形容詞</span>
-                        <p><strong>意思:</strong> 沉默的、無聲的</p>
-                        <p><strong>用法:</strong> fall/remain silent</p>
-                        <p><strong>名詞:</strong> silence 沉默</p>
-                    </div>
-                    
-                    <div class="vocab-card">
-                        <div class="vocab-word">restoration</div>
-                        <span class="vocab-type">名詞</span>
-                        <p><strong>意思:</strong> 修復、恢復</p>
-                        <p><strong>動詞:</strong> restore 修復</p>
-                        <p><strong>同義:</strong> renovation, repair</p>
+                </div>
+                
+                <div class="vocab-category">
+                    <div class="category-title">📖 上下文邏輯型 (看主題詞)</div>
+                    <div class="vocab-grid">
+                        <div class="vocab-card">
+                            <div class="vocab-word">bearing</div>
+                            <span class="vocab-type">現在分詞</span>
+                            <p><strong>文法:</strong> 獨立分詞構句</p>
+                            <p><strong>語意:</strong> 帶有、擁有</p>
+                            <p><strong>提示:</strong> each + Ving 結構</p>
+                        </div>
+                        
+                        <div class="vocab-card">
+                            <div class="vocab-word">familiar</div>
+                            <span class="vocab-type">形容詞</span>
+                            <p><strong>主題詞:</strong> Over centuries → 時間久</p>
+                            <p><strong>語意:</strong> 變得熟悉的</p>
+                            <p><strong>提示:</strong> 時間長 = 熟悉感</p>
+                        </div>
+                        
+                        <div class="vocab-card">
+                            <div class="vocab-word">faithful</div>
+                            <span class="vocab-type">形容詞/名詞</span>
+                            <p><strong>主題詞:</strong> prayer (禱告)</p>
+                            <p><strong>文法:</strong> the + 形容詞 = 名詞</p>
+                            <p><strong>提示:</strong> 宗教相關找 faithful</p>
+                        </div>
+                        
+                        <div class="vocab-card">
+                            <div class="vocab-word">restoration</div>
+                            <span class="vocab-type">名詞</span>
+                            <p><strong>因果邏輯:</strong> fire → restoration → reopened</p>
+                            <p><strong>同義:</strong> renovation, repair</p>
+                            <p><strong>提示:</strong> 破壞後必定修復</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -545,42 +644,56 @@
                 <h2 class="section-title">⚡ 考前衝刺重點整理</h2>
                 <div class="key-points">
                     <ul>
-                        <li><strong>固定搭配必背:</strong><br>
-                        • be noted for (以...聞名)<br>
-                        • reference to (對...的記載)<br>
-                        • fall silent (陷入沉默)<br>
-                        • call sb to prayer (召喚某人禱告)</li>
+                        <li><strong>【超重要】學測最常見轉折詞:</strong><br>
+                        • <span class="highlight-yellow">However</span> (然而) - 強烈對比<br>
+                        • <span class="highlight-yellow">But</span> (但是) - 轉折<br>
+                        • <span class="highlight-yellow">While</span> (而) - 對比兩件事<br>
+                        • <span class="highlight-yellow">Except for</span> (除了) - 例外<br>
+                        • <span class="highlight-yellow">In fact</span> (事實上) - 補充證據<br>
+                        • <span class="highlight-yellow">Also / As well as</span> (也、以及) - 補充資訊<br>
+                        💡 看到轉折詞 = 前後一定有對比或因果關係!</li>
                         
-                        <li><strong>對比關係詞彙:</strong><br>
-                        • celebration ↔ mourning (慶祝 ↔ 哀悼)<br>
-                        • survived ↔ melted down (倖存 ↔ 被熔化)<br>
-                        • retained ↔ replaced (保留 ↔ 被替換)</li>
+                        <li><strong>【核心技巧】抓主題詞追蹤法:</strong><br>
+                        • 主題詞: <span class="highlight-yellow">bells</span> (出現 8 次)<br>
+                        • 主題詞: <span class="highlight-yellow">cathedral</span> (出現 5 次)<br>
+                        • 主題詞: <span class="highlight-yellow">sound/voice</span> (聲音相關)<br>
+                        💡 主題詞重複出現 = 文章核心,選項要跟主題詞相關!</li>
                         
-                        <li><strong>時間線索判斷:</strong><br>
-                        • 12th century → 800 years → French Revolution → 19th century → 2013 → 2019 fire → 2024 reopened<br>
-                        (掌握事件順序有助於理解因果關係)</li>
+                        <li><strong>【黃金三步驟】文意選填必勝法:</strong><br>
+                        <strong>Step 1:</strong> 找固定搭配 (be noted for, fall silent, reference to)<br>
+                        <strong>Step 2:</strong> 看轉折詞判斷對比關係 (However, But, While, Except for)<br>
+                        <strong>Step 3:</strong> 追蹤主題詞確認語意通順<br>
+                        ⏱️ 這三步驟可以解決 80% 的題目!</li>
                         
-                        <li><strong>文法重點:</strong><br>
-                        • 現在分詞作補語: each bearing a name<br>
-                        • 定冠詞+形容詞當名詞: the faithful = 信徒們<br>
-                        • 關係代名詞 which 指代前面整句或特定名詞</li>
+                        <li><strong>【對比邏輯】常見配對:</strong><br>
+                        • survived ↔ destroyed/melted (倖存 vs 毀滅)<br>
+                        • retained ↔ replaced (保留 vs 替換)<br>
+                        • celebration ↔ mourning (慶祝 vs 哀悼)<br>
+                        • silent ↔ ringing (沉默 vs 響亮)<br>
+                        💡 學測超愛考「相反概念」的對比!</li>
                         
-                        <li><strong>解題黃金法則:</strong><br>
-                        1️⃣ 先看空格前後 2-3 個字,判斷詞性<br>
-                        2️⃣ 找固定搭配 (be noted for, fall silent)<br>
-                        3️⃣ 看上下文邏輯關係 (對比/因果/舉例)<br>
-                        4️⃣ 剩餘選項用刪去法,確認語意通順</li>
+                        <li><strong>【文法陷阱】易混淆重點:</strong><br>
+                        • bearing (現在分詞) vs boring (無聊的) - 拼字相似<br>
+                        • familiar (熟悉的) vs famous (著名的) - 語意接近<br>
+                        • faithful 可當形容詞或名詞 - the faithful = 信徒們<br>
+                        • reference 後面接 to 不接 of<br>
+                        💡 固定搭配千萬不能錯!</li>
                         
-                        <li><strong>常見陷阱提醒:</strong><br>
-                        • bearing vs. boring: 拼字相似但意思完全不同<br>
-                        • familiar vs. famous: 都可形容「知名」,但familiar強調「熟悉感」<br>
-                        • faithful 可當形容詞也可當名詞,需依句子結構判斷</li>
+                        <li><strong>【時間管理】答題節奏:</strong><br>
+                        ⏱️ <strong>第一遍 (3 分鐘):</strong> 快速掃描全文,標出轉折詞和主題詞<br>
+                        ⏱️ <strong>第二遍 (4 分鐘):</strong> 填固定搭配和明顯對比的 6-7 題<br>
+                        ⏱️ <strong>第三遍 (2 分鐘):</strong> 用刪去法處理剩餘選項<br>
+                        ⏱️ <strong>第四遍 (1 分鐘):</strong> 快速檢查語意是否通順<br>
+                        💡 單題組控制在 10 分鐘內完成!</li>
                         
-                        <li><strong>快速答題策略:</strong><br>
-                        ⏱️ 第一遍: 填有把握的 5-6 題 (固定搭配、明顯對比)<br>
-                        ⏱️ 第二遍: 用刪去法處理剩餘選項<br>
-                        ⏱️ 第三遍: 代入檢查語意是否通順<br>
-                        💡 單題不超過 1 分鐘,全題組 8-10 分鐘完成</li>
+                        <li><strong>【考場實戰】檢查清單:</strong><br>
+                        ✅ 每個空格前後 2-3 個字都看過了嗎?<br>
+                        ✅ 轉折詞有標出來了嗎?<br>
+                        ✅ 主題詞有追蹤到嗎?<br>
+                        ✅ 固定搭配有確認嗎?<br>
+                        ✅ 對比關係有找到嗎?<br>
+                        ✅ 全文讀起來通順嗎?<br>
+                        💡 檢查完這 6 項就可以放心交卷!</li>
                     </ul>
                 </div>
             </div>
