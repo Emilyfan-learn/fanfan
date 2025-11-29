@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學測英文閱讀理解訓練系統 - 恐怖片研究</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .legend {
+            background: #f8f9fa;
+            padding: 25px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .legend h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .legend-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title::before {
+            content: '📖';
+            margin-right: 10px;
+        }
+        
+        .passage {
+            background: #fff;
+            padding: 30px;
+            border-left: 5px solid #667eea;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            line-height: 2;
+            font-size: 1.05em;
+        }
+        
+        .passage p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .core-sentence {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        
+        .transition {
+            color: #6f42c1;
+            font-weight: bold;
+        }
+        
+        .key-word {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .paragraph-key {
+            color: #007bff;
+            font-weight: bold;
+        }
+        
+        .question-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .question-box h4 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .question-box p {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        
+        .solution {
+            background: #e7f3ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #007bff;
+        }
+        
+        .solution h5 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        
+        .step {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .answer {
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #155724;
+        }
+        
+        .transition-section {
+            background: #f3e5f5;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .transition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .transition-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .transition-card h4 {
+            color: #6f42c1;
+            margin-bottom: 10px;
+        }
+        
+        .transition-example {
+            color: #666;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+        
+        .transition-word-in-example {
+            color: #007bff;
+            font-weight: bold;
+        }
+        
+        .final-tips {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .final-tips h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .tip-card {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .tip-card h4 {
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 學測英文閱讀理解訓練系統</h1>
+            <p>恐怖片的利弊研究 - 實戰解題技巧</p>
+        </div>
+        
+        <div class="legend">
+            <h3>📌 標示系統說明</h3>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <span class="legend-icon" style="color: #dc3545;">●</span>
+                    <span><strong>紅色粗體</strong> = 核心句/主旨</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-icon" style="color: #6f42c1;">●</span>
+                    <span><strong>紫色粗體</strong> = 轉折詞</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-icon" style="color: #28a745;">●</span>
+                    <span><strong>綠色粗體</strong> = 主題詞</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-icon" style="color: #007bff;">●</span>
+                    <span><strong>藍色粗體</strong> = 段落重點</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">標示版文章</h2>
+                <div class="passage">
+                    <p><span class="paragraph-key">Typically featuring zombies and serial killers, horror movies are too frightening to be fun for some people.</span> <span class="transition">But</span> many others enjoy a good fear spectacle, and line up to see the latest scary movie. <span class="core-sentence">Given the variations in preferences, new studies have started to untangle the benefits and risks of horror movies.</span></p>
+                    
+                    <p><span class="paragraph-key">One benefit of horror movies revolves around the concept of so-called "safe fear."</span> When watching a frightening film, people are in the comfort of their own home or theater seats <span class="transition">rather than</span> under the threat of any real danger. In a controlled environment, these films may actually reduce the negative impact on viewers and help them become tougher. <span class="transition">Secondly</span>, as people are drawn into the story, they tend to take the perspective of the characters and rehearse the plot unconsciously. <span class="core-sentence">Researchers believe that viewers are learning vicariously this way, picking up tips on how to handle threats in the real world.</span> <span class="transition">In addition</span>, studies show that the thrill and excitement linked with <span class="key-word">scary films</span> can be therapeutic: It allows viewers to release bottled-up emotions and experience a sense of relief after the movie is over. <span class="paragraph-key">This probably explains why during the COVID-19 pandemic, horror and pandemic thrillers were the most-watched movies on digital movie apps.</span></p>
+                    
+                    <p><span class="paragraph-key"><span class="transition">However</span>, researchers also find that horror movies can have negative effects on some people.</span> People who are more sensitive to anxiety can panic after viewing a thriller. For those with unpleasant experiences, trauma may be triggered by the themes and images in the movies, which could make their symptoms worse. <span class="transition">Furthermore</span>, watching <span class="key-word">horror movies</span> can disturb sleep patterns, as the residual fear and anxiety they evoke may keep people awake all night, <span class="transition">thus</span> leading to fatigue and irritability the following day. <span class="transition">Finally</span>, specialists warn that frightening films can have a negative impact on children. <span class="core-sentence">Children under 14 who watch horror movies have a greater chance of developing anxiety later in adulthood.</span> <span class="transition">Worse yet</span>, <span class="paragraph-key">exposure to graphic violence and bloodshed can make them less sensitive to real-life violence and more accepting of aggression.</span></p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">解題步驟與分析</h2>
+                
+                <div class="question-box">
+                    <h4>第 (1) 題：What field of study does the research mentioned in the passage most likely belong to?</h4>
+                    <p>(A) Psychology.<br>
+                    (B) Education.<br>
+                    (C) Philosophy.<br>
+                    (D) Communication.</p>
+                    
+                    <div class="solution">
+                        <h5>🎯 解題步驟：</h5>
+                        <div class="step"><strong>Step 1：</strong> 判斷題型 → <span style="color: #dc3545;">推論題</span>（most likely belong to）</div>
+                        <div class="step"><strong>Step 2：</strong> 找出研究的核心內容</div>
+                        
+                        <div class="highlight-box">
+                            <strong>關鍵研究內容：</strong>
+                            <ul>
+                                <li>探討人們對恐怖片的<strong>偏好差異</strong>（preferences）</li>
+                                <li>分析<strong>情緒反應</strong>（fear, anxiety, relief）</li>
+                                <li>研究<strong>心理效應</strong>（safe fear, vicarious learning）</li>
+                                <li>討論<strong>行為影響</strong>（sleep patterns, aggression）</li>
+                                <li>關注<strong>心理健康</strong>（trauma, anxiety disorders）</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="step"><strong>Step 3：</strong> 分析各領域特徵</div>
+                        <ul>
+                            <li>(A) Psychology - 研究人類<strong>心理、情緒、行為</strong> ✓</li>
+                            <li>(B) Education - 研究<strong>教學方法、學習過程</strong> ✗</li>
+                            <li>(C) Philosophy - 探討<strong>抽象思想、價值觀</strong> ✗</li>
+                            <li>(D) Communication - 研究<strong>訊息傳遞、媒體效果</strong> ✗</li>
+                        </ul>
+                        
+                        <div class="answer">✅ 正確答案：(A) Psychology</div>
+                    </div>
+                </div>
+                
+                <div class="question-box">
+                    <h4>第 (2) 題：What does the author mean by "learning vicariously" in the second paragraph?</h4>
+                    <p>(A) Making inquiries without reservation.<br>
+                    (B) Gaining knowledge through observation.<br>
+                    (C) Acquiring insights by face-to-face interaction.<br>
+                    (D) Obtaining information from personal experience.</p>
+                    
+                    <div class="solution">
+                        <h5>🎯 解題步驟：</h5>
+                        <div class="step"><strong>Step 1：</strong> 判斷題型 → <span style="color: #dc3545;">詞彙理解題</span>（mean by）</div>
+                        <div class="step"><strong>Step 2：</strong> 回到原文找上下文</div>
+                        
+                        <div class="highlight-box">
+                            <strong>原文關鍵句：</strong>
+                            <p>"as people are <strong>drawn into the story</strong>, they tend to <strong>take the perspective of the characters</strong> and rehearse the plot unconsciously. Researchers believe that viewers are <strong>learning vicariously</strong> this way, <strong>picking up tips</strong> on how to handle threats"</p>
+                        </div>
+                        
+                        <div class="step"><strong>Step 3：</strong> 分析 "vicariously" 的含義</div>
+                        <ul>
+                            <li><strong>vicarious</strong> = 間接的、替代性的</li>
+                            <li>觀眾<strong>不是親身經歷</strong>，而是透過<strong>觀看角色</strong>來學習</li>
+                            <li>= <strong>透過觀察他人</strong>來獲得經驗</li>
+                        </ul>
+                        
+                        <div class="step"><strong>Step 4：</strong> 排除選項</div>
+                        <ul>
+                            <li>(A) 提問 - 文中沒提到 ✗</li>
+                            <li>(B) <strong>透過觀察獲得知識</strong> - 符合！✓</li>
+                            <li>(C) 面對面互動 - 看電影不是互動 ✗</li>
+                            <li>(D) 個人經驗 - 恰好相反，是觀察他人 ✗</li>
+                        </ul>
+                        
+                        <div class="answer">✅ 正確答案：(B) Gaining knowledge through observation</div>
+                    </div>
+                </div>
+                
+                <div class="question-box">
+                    <h4>第 (3) 題：Which of the following statements about horror movies can be inferred from the passage?</h4>
+                    <p>(A) Most horror movie lovers are prone to aggressive behavior.<br>
+                    (B) There are far more benefits to horror movies than disadvantages.<br>
+                    (C) COVID-19 was an important source of inspiration for horror movies.<br>
+                    (D) Watching horror movies may have a long-term effect on personality.</p>
+                    
+                    <div class="solution">
+                        <h5>🎯 解題步驟：</h5>
+                        <div class="step"><strong>Step 1：</strong> 判斷題型 → <span style="color: #dc3545;">推論題</span>（can be inferred）</div>
+                        <div class="step"><strong>Step 2：</strong> 逐一檢視各選項</div>
+                        
+                        <div class="highlight-box">
+                            <strong>(A) 大部分恐怖片愛好者容易有攻擊行為？</strong>
+                            <p>✗ 文中只說「兒童」暴露在暴力中會變得不敏感，沒說「大部分愛好者」</p>
+                            
+                            <strong>(B) 好處遠多於壞處？</strong>
+                            <p>✗ 文章平衡呈現，第2段講好處，第3段講壞處，沒說哪個多</p>
+                            
+                            <strong>(C) COVID-19 是恐怖片的靈感來源？</strong>
+                            <p>✗ 文中只說疫情期間「觀看率高」，不是「靈感來源」</p>
+                            
+                            <strong>(D) 看恐怖片可能有長期人格影響？</strong>
+                            <p>✓ 第3段："Children under 14... have a greater chance of <strong>developing anxiety later in adulthood</strong>" + "less sensitive to real-life violence"</p>
+                            <p>→ 這些都是<strong>長期的人格/心理變化</strong></p>
+                        </div>
+                        
+                        <div class="answer">✅ 正確答案：(D) Watching horror movies may have a long-term effect on personality</div>
+                    </div>
+                </div>
+                
+                <div class="question-box">
+                    <h4>第 (4) 題：How does the author develop the ideas in this passage?</h4>
+                    <p>(A) By defining and illustrating a concept.<br>
+                    (B) By showing opposing views of an issue.<br>
+                    (C) By presenting cause and effect of a problem.<br>
+                    (D) By providing steps for settling a disagreement.</p>
+                    
+                    <div class="solution">
+                        <h5>🎯 解題步驟：</h5>
+                        <div class="step"><strong>Step 1：</strong> 判斷題型 → <span style="color: #dc3545;">文章結構題</span>（develop the ideas）</div>
+                        <div class="step"><strong>Step 2：</strong> 分析全文架構</div>
+                        
+                        <div class="highlight-box">
+                            <strong>文章結構分析：</strong>
+                            <ul>
+                                <li><strong>第1段：</strong> 引入議題 - 人們對恐怖片的不同偏好</li>
+                                <li><strong>第2段：</strong> 正面觀點 - 恐怖片的好處（safe fear, learning, therapeutic）</li>
+                                <li><strong>第3段：</strong> 負面觀點 - 恐怖片的壞處（anxiety, trauma, sleep, children）</li>
+                            </ul>
+                            <p style="margin-top: 10px; color: #dc3545; font-weight: bold;">→ 典型的「正反兩面」論述結構</p>
+                        </div>
+                        
+                        <div class="step"><strong>Step 3：</strong> 排除選項</div>
+                        <ul>
+                            <li>(A) 定義並舉例說明 - 不是主要結構 ✗</li>
+                            <li>(B) <strong>呈現對立觀點</strong> - 好處 vs 壞處 ✓</li>
+                            <li>(C) 因果關係 - 不是重點 ✗</li>
+                            <li>(D) 解決爭議的步驟 - 文章沒提供解決方法 ✗</li>
+                        </ul>
+                        
+                        <div class="answer">✅ 正確答案：(B) By showing opposing views of an issue</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="transition-section">
+                <h2 style="color: #6f42c1; margin-bottom: 20px;">🔄 學測高頻轉折詞完全解析</h2>
+                
+                <div class="transition-grid">
+                    <div class="transition-card">
+                        <h4>1. 對比轉折</h4>
+                        <p><strong>but, however, whereas, rather than</strong></p>
+                        <p class="transition-example">例句：Horror movies are frightening, <strong class="transition-word-in-example">but</strong> many people enjoy them.</p>
+                        <p class="transition-example">（恐怖片很嚇人，<strong class="transition-word-in-example">但</strong>很多人喜歡）</p>
+                    </div>
+                    
+                    <div class="transition-card">
+                        <h4>2. 遞進補充</h4>
+                        <p><strong>secondly, in addition, furthermore, moreover</strong></p>
+                        <p class="transition-example">例句：Safe fear helps viewers. <strong class="transition-word-in-example">In addition</strong>, it provides therapeutic benefits.</p>
+                        <p class="transition-example">（安全恐懼幫助觀眾，<strong class="transition-word-in-example">此外</strong>還有療癒效果）</p>
+                    </div>
+                    
+                    <div class="transition-card">
+                        <h4>3. 因果關係</h4>
+                        <p><strong>thus, therefore, as a result</strong></p>
+                        <p class="transition-example">例句：Fear keeps people awake, <strong class="transition-word-in-example">thus</strong> leading to fatigue.</p>
+                        <p class="transition-example">（恐懼讓人失眠，<strong class="transition-word-in-example">因此</strong>導致疲勞）</p>
+                    </div>
+                    
+                    <div class="transition-card">
+                        <h4>4. 順序標記</h4>
+                        <p><strong>firstly, secondly, finally</strong></p>
+                        <p class="transition-example">例句：<strong class="transition-word-in-example">Finally</strong>, experts warn about effects on children.</p>
+                        <p class="transition-example">（<strong class="transition-word-in-example">最後</strong>，專家警告對兒童的影響）</p>
+                    </div>
+                    
+                    <div class="transition-card">
+                        <h4>5. 強化語氣</h4>
+                        <p><strong>worse yet, even worse</strong></p>
+                        <p class="transition-example">例句：Children develop anxiety. <strong class="transition-word-in-example">Worse yet</strong>, they accept aggression.</p>
+                        <p class="transition-example">（兒童產生焦慮，<strong class="transition-word-in-example">更糟的是</strong>接受攻擊性）</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-box" style="margin-top: 20px;">
+                    <strong>⚠️ 考試秘訣：</strong>
+                    <p>本文出現的關鍵轉折：<strong>"But"</strong>（第1段）和 <strong>"However"</strong>（第3段）標示了文章從「正面」轉向「負面」的重要轉折點！</p>
+                </div>
+            </div>
+            
+            <div class="final-tips">
+                <h3>🏆 考前衝刺重點整理</h3>
+                
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <h4>📍 閱讀策略</h4>
+                        <ul>
+                            <li>先看題目，帶著問題讀文章</li>
+                            <li>段落首尾句必看</li>
+                            <li>注意轉折詞，重點在後面</li>
+                            <li>找出重複出現的關鍵詞</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h4>🎯 推論題技巧</h4>
+                        <ul>
+                            <li>答案必須有原文支持</li>
+                            <li>不能過度推論</li>
+                            <li>注意「can be inferred」vs「stated」</li>
+                            <li>排除原文沒提到的選項</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h4>🔍 詞彙題技巧</h4>
+                        <ul>
+                            <li>看前後文找線索</li>
+                            <li>注意同義轉換</li>
+                            <li>理解整句意思</li>
+                            <li>代入選項驗證</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h4>📊 結構題技巧</h4>
+                        <ul>
+                            <li>看全文架構（正反？時序？）</li>
+                            <li>注意段落間的關係</li>
+                            <li>找出作者的論述方式</li>
+                            <li>別被細節干擾</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h4>⏱️ 時間分配</h4>
+                        <ul>
+                            <li>第一遍快速掃描：1分鐘</li>
+                            <li>詳細閱讀：2-3分鐘</li>
+                            <li>答題：每題30-45秒</li>
+                            <li>檢查：30秒</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h4>🚫 常見陷阱</h4>
+                        <ul>
+                            <li>過度推論（原文沒說）</li>
+                            <li>絕對化選項（most, all, never）</li>
+                            <li>偷換概念（相似但不同）</li>
+                            <li>以偏概全（單段當全文）</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.3); padding: 20px; border-radius: 10px; margin-top: 30px; text-align: center;">
+                    <h4 style="font-size: 1.5em; margin-bottom: 15px;">💪 本篇重點回顧</h4>
+                    <p style="font-size: 1.1em; line-height: 1.8;">
+                        ✓ 文章結構：正反兩面論述（benefits vs risks）<br>
+                        ✓ 關鍵轉折：But（第1段）、However（第3段）<br>
+                        ✓ 主題詞：horror movies, effects, viewers<br>
+                        ✓ 解題關鍵：理解 vicarious learning 與長期影響
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

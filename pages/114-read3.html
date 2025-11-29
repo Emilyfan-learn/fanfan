@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學測英文閱讀測驗訓練 - 俄羅斯酒文化</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .legend {
+            background: #f8f9fa;
+            padding: 30px;
+            border-bottom: 3px solid #e9ecef;
+        }
+        
+        .legend h2 {
+            color: #2a5298;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .legend-color {
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .red { background-color: #dc3545; }
+        .purple { background-color: #6f42c1; }
+        .green { background-color: #28a745; }
+        .blue { background-color: #007bff; }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.6em;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .article {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            margin-bottom: 30px;
+            line-height: 2;
+        }
+        
+        .article p {
+            margin-bottom: 20px;
+            text-indent: 2em;
+        }
+        
+        .highlight-red { color: #dc3545; font-weight: bold; }
+        .highlight-purple { color: #6f42c1; font-weight: bold; }
+        .highlight-green { color: #28a745; font-weight: bold; }
+        .highlight-blue { color: #007bff; font-weight: bold; }
+        
+        .question-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border: 2px solid #e9ecef;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .question-number {
+            background: #667eea;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .question-text {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .options {
+            margin: 15px 0;
+        }
+        
+        .option {
+            padding: 12px 20px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #dee2e6;
+            transition: all 0.3s;
+        }
+        
+        .option:hover {
+            background: #e9ecef;
+            border-left-color: #667eea;
+        }
+        
+        .answer {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        
+        .answer-label {
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        
+        .step {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+        
+        .step-title {
+            color: #856404;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .transition-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border: 2px dashed #6f42c1;
+        }
+        
+        .transition-title {
+            color: #6f42c1;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .example {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #6f42c1;
+        }
+        
+        .final-tips {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        
+        .final-tips h3 {
+            font-size: 2em;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .tip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .tip-card {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .tip-card h4 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid white;
+            padding-bottom: 10px;
+        }
+        
+        .tip-card ul {
+            list-style: none;
+        }
+        
+        .tip-card li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .tip-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 學測英文閱讀測驗訓練</h1>
+            <p>俄羅斯酒文化歷史探討 - 完整解題策略</p>
+        </div>
+        
+        <div class="legend">
+            <h2>🎯 顏色標示系統說明</h2>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <div class="legend-color red"></div>
+                    <div>
+                        <strong>紅色粗體</strong><br>
+                        核心句/主旨
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color purple"></div>
+                    <div>
+                        <strong>紫色粗體</strong><br>
+                        轉折詞/導向詞
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color green"></div>
+                    <div>
+                        <strong>綠色粗體</strong><br>
+                        主題詞
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color blue"></div>
+                    <div>
+                        <strong>藍色粗體</strong><br>
+                        段落重點字詞
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- 文章標示版 -->
+            <div class="section">
+                <h2 class="section-title">📖 文章分析 - 關鍵標示版</h2>
+                
+                <div class="article">
+                    <p><strong>第一段:</strong> <span class="highlight-blue">Russia is widely portrayed</span> as <span class="highlight-green">the most alcohol-dependent country</span> in the world. Critics of the country say that <span class="highlight-green">drinking</span> is almost an inherent trait of the Russian people. <span class="highlight-purple">However</span>, <span class="highlight-red">there is more to the story</span>.</p>
+                    
+                    <p><strong>第二段:</strong> <span class="highlight-blue">The consumption of alcoholic beverages was unusual</span> in ancient Russia. Before the adoption of Christianity in Russia (10th century), there were <span class="highlight-green">no vineyards</span> and <span class="highlight-purple">therefore</span> <span class="highlight-green">no wine</span>. People only drank beverages with <span class="highlight-blue">low alcohol content</span>. <span class="highlight-green">Vodka</span>, Russia's national drink, was <span class="highlight-red">not a Russian invention</span>. The liquid was originally a grape alcohol introduced from France in the late 14th century. The first Russian-made <span class="highlight-green">vodka</span> appeared in the 15th century, and the drink remained <span class="highlight-blue">relatively low in alcohol content</span> until the mid-18th century.</p>
+                    
+                    <p><strong>第三段:</strong> <span class="highlight-blue">There is contradictory information</span> about Russians' inclination toward <span class="highlight-green">alcohol</span> in the 15th and 16th centuries. Some documents noted that Russians "indulge in excessive drinking whenever the occasion arises," <span class="highlight-purple">while others</span> claimed that Russians "rarely drink wine." <span class="highlight-red">The heaviest drinkers in medieval Europe were actually Germans</span>. There were many sayings about their desire for <span class="highlight-green">alcohol</span>, such as <span class="highlight-blue">"drunk as a German."</span></p>
+                    
+                    <p><strong>第四段:</strong> <span class="highlight-blue">The Russian state played a significant role</span> in the spread of <span class="highlight-green">alcohol consumption</span> in the country. In the 19th century, the emperors began to establish a <span class="highlight-green">state monopoly</span>, largely due to the rise of illegal production of low-quality <span class="highlight-green">vodka</span>. <span class="highlight-purple">Thus</span>, only the government was permitted to produce the <span class="highlight-green">alcohol</span>. <span class="highlight-red">This soon filled the state treasury with huge revenues, but it also encouraged vodka consumption</span>. The situation worsened when the industrial production of <span class="highlight-green">vodka</span> began in the country, causing its prices to drop sharply and making it <span class="highlight-blue">available to even low-income citizens</span>.</p>
+                    
+                    <p><strong>第五段:</strong> <span class="highlight-blue">Meanwhile, a powerful anti-alcohol movement started</span> in the 19th century. Government policies were made and public organizations established to prevent the spread of <span class="highlight-green">alcoholism</span> in the country. The movement continued over the years; <span class="highlight-purple">however</span>, <span class="highlight-red">the problem remains</span>. <span class="highlight-purple">Although</span> Russia does not occupy first place when it comes to <span class="highlight-green">alcohol consumption</span> per capita, it is <span class="highlight-blue">still close to the top</span>.</p>
+                </div>
+            </div>
+            
+            <!-- 題目解析 -->
+            <div class="section">
+                <h2 class="section-title">🎯 題目詳解與解題步驟</h2>
+                
+                <!-- 第一題 -->
+                <div class="question-box">
+                    <div class="question-number">題目 1</div>
+                    <div class="question-text">What is the main purpose of the second paragraph in the passage?</div>
+                    
+                    <div class="options">
+                        <div class="option">(A) To discuss the content of alcoholic drinks in ancient Europe.</div>
+                        <div class="option">(B) To highlight the French impact on Russians' drinking habits.</div>
+                        <div class="option">(C) To argue against the assumption that Russians are born drinkers.</div>
+                        <div class="option">(D) To link Russians' vodka consumption to their adoption of Christianity.</div>
+                    </div>
+                    
+                    <div class="answer">
+                        <div class="answer-label">✓ 正確答案: (C)</div>
+                        
+                        <div class="step">
+                            <div class="step-title">📍 步驟一: 理解第一段結論</div>
+                            第一段最後說 "However, there is more to the story" (然而,事情不僅如此),這是關鍵<span class="highlight-purple">轉折詞</span>,表示要反駁前面的刻板印象。
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-title">📍 步驟二: 找出第二段核心句</div>
+                            <span class="highlight-red">"Vodka was not a Russian invention"</span> 和 "The consumption of alcoholic beverages was unusual in ancient Russia" 都在說明<strong>喝酒不是俄羅斯人天生的特質</strong>。
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-title">📍 步驟三: 連結段落功能</div>
+                            第二段的目的是提供<strong>歷史證據</strong>來反駁「俄羅斯人天生愛喝酒」這個假設。
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-title">📍 步驟四: 排除錯誤選項</div>
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li>(A) 沒有討論「歐洲」酒的內容</li>
+                                <li>(B) 法國只是提到伏特加來源,不是重點</li>
+                                <li>(D) 基督教只是時間標記,非主要論點</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 第二題 -->
+                <div class="question-box">
+                    <div class="question-number">題目 2</div>
+                    <div class="question-text">Which of the following is true about vodka production?</div>
+                    
+                    <div class="options">
+                        <div class="option">(A) Vodka production in Russia started in the 15th century.</div>
+                        <div class="option">(B) The first vodka made from wheat was imported from France.</div>
+                        <div class="option">(C) Germany was the biggest vodka producer in medieval Europe.</div>
+                        <div class="option">(D) Russian people were encouraged to make their own vodka in the 19th century.</div>
+                    </div>
+                    
+                    <div class="answer">
+                        <div class="answer-label">✓ 正確答案: (A)</div>
+                        
+                        <div class="step">
+                            <div class="step-title">📍 步驟一: 定位關鍵資訊</div>
+                            在第二段找 <span class="highlight-green">vodka production</span> 相關資訊。
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-title">📍 步驟二: 逐句比對</div>
+                            原文: <span class="highlight-blue">"The first Russian-made vodka appeared in the 15th century"</span>
+                            <br>選項 (A): "Vodka production in Russia started in the 15th century"
+                            <br>→ 完全符合!
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-title">📍 步驟三: 驗證其他選項</div>
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li>(B) 文中提到是 "grape alcohol"(葡萄酒精),不是 wheat(小麥)</li>
+                                <li>(C) 第三段說德國人是 "heaviest drinkers",但沒說是 vodka producer</li>
+                                <li>(D) 第四段說的是 "illegal production"(非法生產),後來只有<strong>政府</strong>能生產</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 第三題 -->
+                <div class="question-box">
+                    <div class="question-number">題目 3</div>
+                    <div class="question-text">What does "This" in the fourth paragraph refer to?</div>
+                    
+                    <div class="options">
+                        <div class="option">(A) The alcohol.</div>
+                        <div class="option">(B) The government.</div>
+                        <div class="option">(C) The illegal production.</div>
+                        <div class="option">(D) The state monopoly.</div>
+                    </div>
+                    
+                    <div class="answer">
+                        <div class="answer-label">✓ 正確答案: (D)</div>
+                        
+                        <div class="step">
+                            <div class="step-title">📍 步驟一: 找出 "This" 的位置</div>
+                            原文: "Thus, only the government was permitted to produce the alcohol. <span class="highlight-red">This</span> soon filled the state treasury..."
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-title">📍 步驟二: 向前找最近的名詞</div>
+                            指代詞通常指前一句的<strong>主要概念</strong>,這裡前面提到:
+                            <br>→ "establish a <span class="highlight-green">state monopoly</span>"
+                            <br>→ "only the government was permitted to produce"
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-title">📍 步驟三: 邏輯驗證</div>
+                            「<span class="highlight-green">國家壟斷</span>」→ 政府獨占生產 → 帶來巨大收益
+                            <br>邏輯完整!選 (D) The state monopoly
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-title">📍 步驟四: 排除其他選項</div>
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li>(A) alcohol 本身不會 "fill the treasury"</li>
+                                <li>(B) government 是執行者,不是制度本身</li>
+                                <li>(C) illegal production 是問題,不是解決方案</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 第四題 -->
+                <div class="question-box">
+                    <div class="question-number">題目 4</div>
+                    <div class="question-text">How does the author conclude the passage in the last paragraph?</div>
+                    
+                    <div class="options">
+                        <div class="option">(A) By providing further facts.</div>
+                        <div class="option">(B) By summarizing the main ideas.</div>
+                        <div class="option">(C) By raising a new problem.</div>
+                        <div class="option">(D) By making a future prediction.</div>
+                    </div>
+                    
+                    <div class="answer">
+                        <div class="answer-label">✓ 正確答案: (A)</div>
+                        
+                        <div class="step">
+                            <div class="step-title">📍 步驟一: 分析最後一段的結構</div>
+                            第五段提到:
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li>19世紀開始反酒精運動 ← 事實</li>
+                                <li>政府政策和組織成立 ← 事實</li>
+                                <li>問題仍然存在 ← 事實</li>
+                                <li>俄羅斯仍接近酒精消費榜首 ← <strong>補充事實</strong></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-title">📍 步驟二: 理解作者手法</div>
+                            作者用 <span class="highlight-purple">"Although"</span> 引出<strong>補充資訊</strong>,提供更多現況數據,屬於 <strong>"providing further facts"</strong>。
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-title">📍 步驟三: 排除其他選項</div>
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li>(B) 沒有總結全文主旨,只是補充現況</li>
+                                <li>(C) 不是「新」問題,是延續前文的問題</li>
+                                <li>(D) 沒有預測未來,只是陳述現狀</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 轉折詞教學 -->
+            <div class="section">
+                <h2 class="section-title">🔄 學測必考轉折詞完全攻略</h2>
+                
+                <div class="transition-box">
+                    <div class="transition-title">1️⃣ 對比轉折 (Contrast)</div>
+                    
+                    <div class="example">
+                        <strong><span class="highlight-purple">However</span></strong> - 然而<br>
+                        Russia is portrayed as alcohol-dependent. <span class="highlight-purple"><strong>However</strong></span>, there is more to the story.<br>
+                        <em>用法: 推翻前面的刻板印象或觀點</em>
+                    </div>
+                    
+                    <div class="example">
+                        <strong><span class="highlight-purple">While</span></strong> - 然而/儘管<br>
+                        Some said Russians drink excessively, <span class="highlight-purple"><strong>while others</strong></span> claimed they rarely drink.<br>
+                        <em>用法: 呈現兩種相反的觀點</em>
+                    </div>
+                    
+                    <div class="example">
+                        <strong><span class="highlight-purple">Although</span></strong> - 儘管<br>
+                        <span class="highlight-purple"><strong>Although</strong></span> Russia does not occupy first place, it is still close to the top.<br>
+                        <em>用法: 讓步後提出真實情況</em>
+                    </div>
+                </div>
+                
+                <div class="transition-box">
+                    <div class="transition-title">2️⃣ 因果關係 (Cause & Effect)</div>
+                    
+                    <div class="example">
+                        <strong><span class="highlight-purple">Therefore</span></strong> - 因此<br>
+                        There were no vineyards and <span class="highlight-purple"><strong>therefore</strong></span> no wine.<br>
+                        <em>用法: 直接因果,前因後果</em>
+                    </div>
+                    
+                    <div class="example">
+                        <strong><span class="highlight-purple">Thus</span></strong> - 因此/於是<br>
+                        The government established a monopoly. <span class="highlight-purple"><strong>Thus</strong></span>, only the government could produce alcohol.<br>
+                        <em>用法: 政策或決策的結果</em>
+                    </div>
+                </div>
+                
+                <div class="transition-box">
+                    <div class="transition-title">3️⃣ 時間並列 (Time & Addition)</div>
+                    
+                    <div class="example">
+                        <strong><span class="highlight-purple">Meanwhile</span></strong> - 同時/與此同時<br>
+                        Industrial production lowered prices. <span class="highlight-purple"><strong>Meanwhile</strong></span>, an anti-alcohol movement started.<br>
+                        <em>用法: 同時發生的兩件事,通常是對立的發展</em>
+                    </div>
+                </div>
+                
+                <div class="transition-box">
+                    <div class="transition-title">⚡ 考試快速判斷技巧</div>
+                    <ul style="margin-left: 25px; line-height: 2;">
+                        <li><strong>However/But</strong> → 後面是重點,前面可能是錯的</li>
+                        <li><strong>Although/While</strong> → 真正重點在主句</li>
+                        <li><strong>Therefore/Thus</strong> → 結果比原因重要</li>
+                        <li><strong>Meanwhile</strong> → 注意兩件事的對比關係</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 考前衝刺 -->
+            <div class="final-tips">
+                <h3>🚀 考前衝刺重點整理</h3>
+                
+                <div class="tip-grid">
+                    <div class="tip-card">
+                        <h4>📍 閱讀策略</h4>
+                        <ul>
+                            <li>先看題目再讀文章</li>
+                            <li>圈出關鍵字和轉折詞</li>
+                            <li>第一段和最後一段必讀</li>
+                            <li>每段首尾句抓重點</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h4>🎯 答題技巧</h4>
+                        <ul>
+                            <li>先刪除明顯錯誤選項</li>
+                            <li>回文定位找證據</li>
+                            <li>注意選項的改寫</li>
+                            <li>指代詞向前找最近名詞</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h4>⚠️ 常見陷阱</h4>
+                        <ul>
+                            <li>選項偷換概念(如: wheat→grape)</li>
+                      
