@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學測英文閱讀理解訓練系統 - 魔鬼氈發明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .legend {
+            background: #f8f9fa;
+            padding: 25px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .legend h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .legend-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title::before {
+            content: '📖';
+            margin-right: 10px;
+        }
+        
+        .passage {
+            background: #fff;
+            padding: 30px;
+            border-left: 5px solid #667eea;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            line-height: 2;
+            font-size: 1.05em;
+        }
+        
+        .passage p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .core-sentence {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        
+        .transition {
+            color: #6f42c1;
+            font-weight: bold;
+        }
+        
+        .key-word {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .paragraph-key {
+            color: #007bff;
+            font-weight: bold;
+        }
+        
+        .question-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .question-box h4 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .question-box p {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        
+        .solution {
+            background: #e7f3ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #007bff;
+        }
+        
+        .solution h5 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        
+        .step {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .answer {
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #155724;
+        }
+        
+        .transition-section {
+            background: #f3e5f5;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .transition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .transition-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .transition-card h4 {
+            color: #6f42c1;
+            margin-bottom: 10px;
+        }
+        
+        .transition-example {
+            color: #666;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+        
+        .transition-word-in-example {
+            color: #007bff;
+            font-weight: bold;
+        }
+        
+        .final-tips {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .final-tips h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .tip-card {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .tip-card h4 {
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 學測英文閱讀理解訓練系統</h1>
+            <p>魔鬼氈的發明故事 - 實戰解題技巧</p>
+        </div>
+        
+        <div class="legend">
+            <h3>📌 標示系統說明</h3>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <span class="legend-icon" style="color: #dc3545;">●</span>
+                    <span><strong>紅色粗體</strong> = 核心句/主旨</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-icon" style="color: #6f42c1;">●</span>
+                    <span><strong>紫色粗體</strong> = 轉折詞</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-icon" style="color: #28a745;">●</span>
+                    <span><strong>綠色粗體</strong> = 主題詞</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-icon" style="color: #007bff;">●</span>
+                    <span><strong>藍色粗體</strong> = 段落重點</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">標示版文章</h2>
+                <div class="passage">
+                    <p><span class="paragraph-key">One fine morning in 1941, Swiss engineer George de Mestral went for a walk in the woods with his dog.</span> Upon their return home, he found a lot of <span class="key-word">burrs</span> (from plants) stuck to the dog's fur and his pants. <span class="paragraph-key">He immediately rushed to his microscope and examined the burrs attached on his pants—feeling a lightbulb moment coming on.</span></p>
+                    
+                    <p><span class="paragraph-key">Upon closer examination, de Mestral observed that the burrs, which appeared straight to the naked eye, actually contained many small <span class="key-word">hooks</span> that clung firmly to the <span class="key-word">loops</span> in the fabric of his pants.</span> <span class="core-sentence">He determined that if he could recreate the same thing, making hooks-and-loops that bind to each other firmly, he could produce a strong fastener with many uses.</span></p>
+                    
+                    <p><span class="paragraph-key">De Mestral's first challenge was finding a fabric for a strong bonding system.</span> He first tried cotton, <span class="transition">but</span> it proved too soft and could not withstand repeated openings and closures. <span class="transition">After</span> years of research and testing, he learned that synthetics worked best and <span class="transition">eventually</span> settled on heat-treated nylon, a strong and durable substance. By 1955, he had completed an improved version of the product, with each square inch of material containing 300 hooks, which made it stay fastened and <span class="transition">yet</span> easy enough to pull apart when needed. Named "<span class="key-word">Velcro</span>," from the French words velours (velvet) and crochet (hook), the new product received a patent from the Swiss government in 1955. <span class="paragraph-key">De Mestral thus began mass-producing Velcro, opening plants in Europe and eventually into Canada and the United States.</span></p>
+                    
+                    <p><span class="paragraph-key"><span class="transition">Initially</span> Velcro did not fare well.</span> As most fashion critics considered it ugly and cheap-looking, the use of <span class="key-word">Velcro</span> was limited to athletic equipment. In the early 1960s, <span class="core-sentence">the product received a huge boost in popularity when NASA began using it in a lot of equipment that went into space along with astronauts.</span> <span class="transition">Today</span>, <span class="paragraph-key">de Mestral's design is found almost everywhere: clothing and footwear, toys, airline seat cushions, blood pressure cuffs and surgeons' gowns.</span> <span class="transition">Most impressively</span>, <span class="core-sentence">the magical fastener was used in the first human artificial heart transplantation to hold together parts of the device.</span></p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">解題步驟與分析</h2>
+                
+                <div class="question-box">
+                    <h4>第 35 題：Which of the following pictures shows de Mestral's invention?</h4>
+                    <p>(A) (B) (C) (D) [圖片題]</p>
+                    
+                    <div class="solution">
+                        <h5>🎯 解題步驟：</h5>
+                        <div class="step"><strong>Step 1：</strong> 判斷題型 → <span style="color: #dc3545;">圖片辨識題</span></div>
+                        <div class="step"><strong>Step 2：</strong> 回到文章找發明的關鍵特徵</div>
+                        
+                        <div class="highlight-box">
+                            <strong>關鍵描述（第2段）：</strong>
+                            <p>"the burrs... actually contained many small <strong>hooks</strong> that clung firmly to the <strong>loops</strong> in the fabric"</p>
+                            <p>"making <strong>hooks-and-loops</strong> that bind to each other firmly"</p>
+                            
+                            <strong>核心特徵：</strong>
+                            <ul>
+                                <li>✓ 一面有許多小「鉤子」(hooks)</li>
+                                <li>✓ 另一面有「環狀纖維」(loops)</li>
+                                <li>✓ 兩面可以互相緊密結合</li>
+                                <li>✓ 可以重複拉開和黏合</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="step"><strong>Step 3：</strong> 選擇符合特徵的圖片</div>
+                        <p style="margin-left: 20px;">正確圖片應該顯示：<strong>一面有鉤狀結構，一面有毛絨環狀結構</strong>的兩片材料</p>
+                        
+                        <div class="answer">✅ 正確答案：選擇顯示「鉤子-環圈」結構的魔鬼氈圖片</div>
+                    </div>
+                </div>
+                
+                <div class="question-box">
+                    <h4>第 36 題：What does the author mean by "a lightbulb moment" in the first paragraph?</h4>
+                    <p>(A) A blessing in disguise.<br>
+                    (B) A happy ending.<br>
+                    (C) An unpredictable future.<br>
+                    (D) A sudden inspiration.</p>
+                    
+                    <div class="solution">
+                        <h5>🎯 解題步驟：</h5>
+                        <div class="step"><strong>Step 1：</strong> 判斷題型 → <span style="color: #dc3545;">慣用語理解題</span></div>
+                        <div class="step"><strong>Step 2：</strong> 分析上下文情境</div>
+                        
+                        <div class="highlight-box">
+                            <strong>原文情境：</strong>
+                            <p>"he found a lot of burrs stuck to the dog's fur and his pants. He <strong>immediately rushed</strong> to his microscope and examined the burrs—feeling <strong>a lightbulb moment</strong> coming on."</p>
+                            
+                            <strong>關鍵線索：</strong>
+                            <ul>
+                                <li>"<strong>immediately rushed</strong>" → 立刻行動，表示突然想到什麼</li>
+                                <li>"<strong>examined</strong> the burrs" → 開始研究，想解開奧秘</li>
+                                <li>"coming on" → 靈感即將湧現</li>
+                            </ul>
+                            
+                            <strong>lightbulb moment 意義：</strong>
+                            <p>💡 燈泡亮起 = 突然想到好點子、靈光乍現</p>
+                        </div>
+                        
+                        <div class="step"><strong>Step 3：</strong> 排除選項</div>
+                        <ul>
+                            <li>(A) blessing in disguise = 因禍得福 → 不符，不是壞事變好事 ✗</li>
+                            <li>(B) happy ending = 快樂結局 → 太早，這是開始 ✗</li>
+                            <li>(C) unpredictable future = 不可預測的未來 → 不符 ✗</li>
+                            <li>(D) <strong>sudden inspiration</strong> = 突然的靈感 → 完全符合！✓</li>
+                        </ul>
+                        
+                        <div class="answer">✅ 正確答案：(D) A sudden inspiration</div>
+                    </div>
+                </div>
+                
+                <div class="question-box">
+                    <h4>第 37 題：Which of the following statements about Velcro is true?</h4>
+                    <p>(A) It has been a market favorite since its first appearance.<br>
+                    (B) Cotton was not durable enough to be used as its materials.<br>
+                    (C) It was given a French name because it was first produced in France.<br>
+                    (D) The design was intended to look as shiny and smooth as velvet.</p>
+                    
+                    <div class="solution">
+                        <h5>🎯 解題步驟：</h5>
+                        <div class="step"><strong>Step 1：</strong> 判斷題型 → <span style="color: #dc3545;">是非判斷題</span></div>
+                        <div class="step"><strong>Step 2：</strong> 逐一檢視各選項</div>
+                        
+                        <div class="highlight-box">
+                            <strong>(A) 自出現以來一直是市場最愛？</strong>
+                            <p>✗ 第4段："<strong>Initially</strong> Velcro did not fare well. As most fashion critics considered it ugly and cheap-looking"</p>
+                            <p>→ 一開始並不受歡迎！</p>
+                            
+                            <strong>(B) 棉花不夠耐用，無法作為材料？</strong>
+                            <p>✓ 第3段："He first tried cotton, <strong>but</strong> it proved too soft and <strong>could not withstand repeated openings and closures</strong>"</p>
+                            <p>→ 完全正確！棉花太軟，無法承受重複使用</p>
+                            
+                            <strong>(C) 取法文名字因為在法國生產？</strong>
+                            <p>✗ 第3段："received a patent from the <strong>Swiss</strong> government" + "opening plants in Europe"</p>
+                            <p>→ 是瑞士專利，不是因為在法國生產</p>
+                            
+                            <strong>(D) 設計目的是看起來像天鵝絨般光滑？</strong>
+                            <p>✗ 名稱來自法文 velours，但設計目的是「strong fastener」（強力扣件），不是為了外觀</p>
+                        </div>
+                        
+                        <div class="answer">✅ 正確答案：(B) Cotton was not durable enough to be used as its materials</div>
+                    </div>
+                </div>
+                
+                <div class="question-box">
+                    <h4>第 38 題：Which of the following fields is NOT mentioned for Velcro uses in the passage?</h4>
+                    <p>(A) Civil engineering.<br>
+                    (B) Aerospace industry.<br>
+                    (C) Medical technology.<br>
+                    (D) Sports and recreation.</p>
+                    
+                    <div class="solution">
+                        <h5>🎯 解題步驟：</h5>
+                        <div class="step"><strong>Step 1：</strong> 判斷題型 → <span style="color: #dc3545;">否定細節題</span>（NOT mentioned）</div>
+                        <div class="step"><strong>Step 2：</strong> 找出文章提到的所有應用領域</div>
+                        
+                        <div class="highlight-box">
+                            <strong>文章提到的 Velcro 應用：</strong>
+                            
+                            <p><strong>第4段前半：</strong></p>
+                            <ul>
+                                <li>"limited to <strong>athletic equipment</strong>" → (D) 運動休閒 ✓</li>
+                            </ul>
+                            
+                            <p><strong>第4段中段：</strong></p>
+                            <ul>
+                                <li>"<strong>NASA</strong> began using it in a lot of equipment that went into <strong>space</strong>" → (B) 航太工業 ✓</li>
+                            </ul>
+                            
+                            <p><strong>第4段後半：</strong></p>
+                            <ul>
+                                <li>"clothing and footwear, toys, airline seat cushions" → 日常用品</li>
+                                <li>"<strong>blood pressure cuffs</strong> and <strong>surgeons' gowns</strong>" → (C) 醫療技術 ✓</li>
+                                <li>"<strong>artificial heart transplantation</strong>" → (C) 醫療技術 ✓</li>
+                            </ul>
+                            
+                            <p style="margin-top: 15px; color: #dc3545; font-weight: bold;">✗ (A) Civil engineering（土木工程）→ 完全沒提到！</p>
+                        </div>
+                        
+                        <div class="step"><strong>Step 3：</strong> 確認答案</div>
+                        <p style="margin-left: 20px;">文章沒有提到魔鬼氈在<strong>建築、橋樑、道路</strong>等土木工程領域的應用</p>
+                        
+                        <div class="answer">✅ 正確答案：(A) Civil engineering</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="transition-section">
+                <h2 style="color: #6f42c1; margin-bottom: 20px;">🔄 學測高頻轉折詞完全解析</h2>
+                
+                <div class="transition-grid">
+                    <div class="transition-card">
+                        <h4>1. 對比轉折</h4>
+                        <p><strong>but, yet, however</strong></p>
+                        <p class="transition-example">例句：He tried cotton, <strong class="transition-word-in-example">but</strong> it proved too soft.</p>
+                        <p class="transition-example">（他試過棉花，<strong class="transition-word-in-example">但</strong>太軟了）</p>
+                        <p class="transition-example" style="margin-top: 10px;">例句：The material stays fastened, <strong class="transition-word-in-example">yet</strong> easy to pull apart.</p>
+                        <p class="transition-example">（材料緊密結合，<strong class="transition-word-in-example">卻</strong>容易拉開）</p>
+                    </div>
+                    
+                    <div class="transition-card">
+                        <h4>2. 時間順序</h4>
+                        <p><strong>initially, eventually, after, today</strong></p>
+                        <p class="transition-example">例句：<strong class="transition-word-in-example">Initially</strong> Velcro did not fare well.</p>
+                        <p class="transition-example">（<strong class="transition-word-in-example">起初</strong>魔鬼氈不受歡迎）</p>
+                        <p class="transition-example" style="margin-top: 10px;">例句：<strong class="transition-word-in-example">After</strong> years of research, he found the solution.</p>
+                        <p class="transition-example">（<strong class="transition-word-in-example">經過</strong>多年研究，他找到解答）</p>
+                    </div>
+                    
+                    <div class="transition-card">
+                        <h4>3. 因果關係</h4>
+                        <p><strong>thus, as, so</strong></p>
+                        <p class="transition-example">例句：He got a patent. <strong class="transition-word-in-example">Thus</strong>, he began mass production.</p>
+                        <p class="transition-example">（他獲得專利，<strong class="transition-word-in-example">因此</strong>開始量產）</p>
+                        <p class="transition-example" style="margin-top: 10px;">例句：<strong class="transition-word-in-example">As</strong> critics disliked it, usage was limited.</p>
+                        <p class="transition-example">（<strong class="transition-word-in-example">由於</strong>批評家不喜歡，用途受限）</p>
+                    </div>
+                    
+                    <div class="transition-card">
+                        <h4>4. 強化語氣</h4>
+                        <p><strong>most impressively, even more</strong></p>
+                        <p class="transition-example">例句：It's used in clothing. <strong class="transition-word-in-example">Most impressively</strong>, it's in artificial hearts.</p>
+                        <p class="transition-example">（用於衣物，<strong class="transition-word-in-example">最令人印象深刻的是</strong>用於人工心臟）</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-box" style="margin-top: 20px;">
+                    <strong>⚠️ 本文關鍵轉折：</strong>
+                    <p>1. "<strong>But</strong>" (第3段) → 棉花失敗，轉向尼龍</p>
+                    <p>2. "<strong>Initially</strong>" (第4段) → 標示時間轉折，從失敗到成功</p>
+                    <p>3. "<strong>Most impressively</strong>" (第4段) → 強調最重要的應用（人工心臟）</p>
+                </div>
+            </div>
+            
+            <div class="final-tips">
+                <h3>🏆 考前衝刺重點整理</h3>
+                
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <h4>📍 時間軸閱讀法</h4>
+                        <ul>
+                            <li>1941：發現芒刺靈感</li>
+                            <li>研發期：棉花失敗→尼龍成功</li>
+                            <li>1955：獲得專利、量產</li>
+                            <li>初期：不受歡迎</li>
+                            <li>1960s：NASA 使用，大受歡迎</li>
+                            <li>今日：廣泛應用</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h4>🎯 圖片題技巧</h4>
+                        <ul>
+                            <li>先讀文章找<strong>具體描述</strong></li>
+                            <li>提取關鍵<strong>視覺特徵</strong></li>
+                            <li>注意<strong>結構細節</strong></li>
+                            <li>排除不符合描述的選項</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h4>🔍 慣用語題技巧</h4>
+                        <ul>
+                            <li>看前後文<strong>情境</strong></li>
+                            <li>理解比喻的<strong>意象</strong></li>
+                            <li>不要只看字面意思</li>
+                            <li>代入選項驗證合理性</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h4>⚠️ NOT 題型陷阱</h4>
+                        <ul>
+                            <li>看清楚是問 "mentioned" 還是 "NOT mentioned"</li>
+                            <li>逐一檢查每個選項</li>
+                            <li>注意同義轉換</li>
+                            <li>找不到的才是答案</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h4>📊 記敘文重點</h4>
+                        <ul>
+                            <li>人物：發明家是誰</li>
+                            <li>時間：發明的時間線</li>
+                            <li>起因：為何發明</li>
+                            <li>過程：如何研發</li>
+                            <li>結果：最終應用</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h4>⏱️ 實戰建議</h4>
+                        <ul>
+                            <li>記敘文通常較簡單</li>
+                            <li>注意時間順序</li>
+                            <li>關鍵資訊常在段首尾</li>
+                            <li>專有名詞要特別注意</li>
+                

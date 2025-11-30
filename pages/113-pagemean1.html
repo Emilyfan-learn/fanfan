@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學測篇章結構實戰解析 - 運動傷害篇</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Microsoft JhengHei", "Segoe UI", Arial, sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+        
+        .legend {
+            background: #f8f9fa;
+            padding: 25px;
+            margin: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .legend h2 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .legend-item {
+            display: inline-block;
+            margin: 10px 20px 10px 0;
+            padding: 8px 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .content-section {
+            padding: 30px 40px;
+        }
+        
+        .section-title {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 25px;
+            margin: 30px 0 20px 0;
+            border-radius: 10px;
+            font-size: 1.5em;
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+        }
+        
+        .article {
+            background: #fefefe;
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #e0e0e0;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+        
+        .main-idea {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        
+        .transition {
+            color: #9c27b0;
+            font-weight: bold;
+        }
+        
+        .keyword {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .blank {
+            display: inline-block;
+            min-width: 50px;
+            height: 30px;
+            border-bottom: 2px solid #333;
+            margin: 0 5px;
+            text-align: center;
+            font-weight: bold;
+            color: #667eea;
+            vertical-align: middle;
+            padding: 0 10px;
+        }
+        
+        .options {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .option-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+        }
+        
+        .strategy-box {
+            background: #e3f2fd;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #2196f3;
+        }
+        
+        .strategy-box h3 {
+            color: #1565c0;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .step {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .question-analysis {
+            background: #f3e5f5;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #9c27b0;
+        }
+        
+        .answer-box {
+            background: #c8e6c9;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #4caf50;
+            font-size: 1.1em;
+        }
+        
+        .wrong-answer {
+            background: #ffcdd2;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #f44336;
+        }
+        
+        .tips-box {
+            background: #fff9c4;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 3px dashed #fbc02d;
+        }
+        
+        .tips-box h2 {
+            color: #f57f17;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+        
+        .tip-item {
+            background: white;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 4px solid #fbc02d;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .tip-title {
+            color: #f57f17;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .highlight-box {
+            background: #ffe0b2;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #ff9800;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .logic-chain {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px solid #2196f3;
+        }
+        
+        .logic-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        
+        .logic-arrow {
+            font-size: 2em;
+            color: #1976d2;
+            margin: 0 15px;
+        }
+        
+        .footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 學測篇章結構實戰解析</h1>
+            <p>Sports Injury Exercise 運動傷害與運動篇章結構題</p>
+        </div>
+        
+        <div class="legend">
+            <h2>🎯 閱讀標示系統</h2>
+            <div class="legend-item">
+                <span class="main-idea">■ 紅色粗體</span> = 核心句/主旨
+            </div>
+            <div class="legend-item">
+                <span class="transition">■ 紫色粗體</span> = 轉折詞/導向詞
+            </div>
+            <div class="legend-item">
+                <span class="keyword">■ 綠色粗體</span> = 主題關鍵詞
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="section-title">📖 完整文章(含關鍵標示)</div>
+            
+            <div class="article">
+                <p><strong>第一段 (引言-真實案例):</strong></p>
+                <p>While Dr. Weinstein, a <span class="keyword">surgeon</span> at Dartmouth College, was trying to lift a heavy box, he twisted his back. The pain was agonizing. The surgeon could not sit, and when he lay down he could barely get up. <span class="transition">So</span> <span class="main-idea">he decided to go out for a run.</span> He took an aspirin, iced the injured area, and off he went. When he returned, he felt "pretty good."</p>
+                
+                <p><strong>第二段 (新舊觀念對比):</strong></p>
+                <p><span class="blank">31</span> When people have <span class="keyword">sprained a muscle or tendon</span>, they are usually advised <span class="transition">not to</span> go right back to exercising until the pain goes away. <span class="transition">But</span> <span class="main-idea">Dr. Weinstein says that approach is outdated and counterproductive.</span> <span class="transition">In fact</span>, when <span class="keyword">active people</span> consult him, he usually tells them to <span class="main-idea">just keep exercising.</span></p>
+                
+                <p><strong>第三段 (專家意見多元):</strong></p>
+                <p>Dr. Weinstein is not alone in his <span class="keyword">treatment of sports injury</span>, <span class="transition">but</span> the specific advice can differ from specialist to specialist. <span class="blank">32</span> They <span class="transition">nevertheless</span> caution that a cutback may be necessary, such as running shorter distances or going more slowly. <span class="transition">Others</span> say the patients may need to engage in sports outside of their usual, main sport (that is, to <span class="keyword">cross-train</span>), at least some of the time. <span class="transition">Still others</span> say the safest thing to do is cross-train all the time until the pain is gone. <span class="blank">33</span> <span class="main-idea">Their consensus, however, is that unless the injury involves something as serious as a broken bone or a ripped muscle, moderate exercise can actually speed healing.</span></p>
+                
+                <p><strong>第四段 (結論與建議):</strong></p>
+                <p><span class="blank">34</span> <span class="transition">Thus</span>, <span class="main-idea">more and more patients are now advised to keep moving despite the pain.</span> The rule of thumb, <span class="transition">however</span>, is to see a doctor first and get an accurate diagnosis. <span class="transition">If</span> a serious injury is ruled out and the pain is not getting worse after exercising, <span class="transition">then</span> the exercise "makes a lot of sense."</p>
+            </div>
+            
+            <div class="options">
+                <h3>📝 選項分析</h3>
+                <div class="option-item"><strong>(A)</strong> For example, an injured runner might end up cycling and swimming instead of running.</div>
+                <div class="option-item"><strong>(B)</strong> Over time, researchers have come to realize the importance of exercising when injured.</div>
+                <div class="option-item"><strong>(C)</strong> Many suggest that most patients can continue with the sport they love.</div>
+                <div class="option-item"><strong>(D)</strong> This seems to run counter to the common practice.</div>
+            </div>
+            
+            <div class="section-title">🎓 實戰解題步驟</div>
+            
+            <div class="strategy-box">
+                <h3>核心解題策略</h3>
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <strong>先看空格前後句</strong> - 找出上下文邏輯關係(對比/並列/舉例)
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <strong>抓關鍵詞呼應</strong> - 找代名詞(This/They/Their)指涉對象
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <strong>注意轉折詞</strong> - But/However/Nevertheless/Thus 等邏輯連接詞
+                </div>
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <strong>檢查段落功能</strong> - 該句是引言/舉例/對比/總結?
+                </div>
+            </div>
+            
+            <div class="section-title">✍️ 逐題詳細解析</div>
+            
+            <div class="question-analysis">
+                <h3>題目 31 解析</h3>
+                <div class="highlight-box">
+                    <strong>空格位置:</strong> 第二段開頭<br>
+                    <strong>空格後:</strong> "When people have sprained... they are usually advised <span class="transition">not to</span> go right back to exercising..."<br>
+                    <strong>關鍵轉折:</strong> <span class="transition">But</span> Dr. Weinstein says that approach is <span class="main-idea">outdated</span>
+                </div>
+                
+                <div class="logic-chain">
+                    <h4>邏輯鏈分析:</h4>
+                    <div class="logic-item">
+                        <span>第一段: 醫生「受傷後繼續跑步」</span>
+                        <span class="logic-arrow">→</span>
+                        <span>需要銜接句</span>
+                        <span class="logic-arrow">→</span>
+                        <span>第二段: 傳統建議「不要運動」</span>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <strong>判斷邏輯:</strong><br>
+                    • 第一段講「受傷後繼續運動」(特殊做法)<br>
+                    • 第二段講「傳統建議休息」(一般做法)<br>
+                    • 需要過渡句說明「這跟常識不同」
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <strong>選項分析:</strong><br>
+                    • (A) 講「舉例cross-train」→ 太具體,不適合當過渡句<br>
+                    • (B) 講「研究發現」→ 不對,還沒進入研究討論<br>
+                    • (C) 講「繼續原本運動」→ 不對,還沒講到這個觀點<br>
+                    • <span class="keyword">(D) "This seems to run counter to the common practice." → ✓</span><br>
+                    <strong>關鍵:</strong> "This" 指第一段的做法, "run counter to" = 與...相反, "common practice" = 一般做法
+                </div>
+                
+                <div class="answer-box">
+                    <strong>✓ 答案: (D)</strong><br>
+                    <strong>核心邏輯:</strong> This (受傷後運動) vs. common practice (傳統建議休息)<br>
+                    <strong>功能:</strong> 承上啟下,引出新舊觀念對比
+                </div>
+            </div>
+            
+            <div class="question-analysis">
+                <h3>題目 32 解析</h3>
+                <div class="highlight-box">
+                    <strong>空格前:</strong> "the specific advice can differ from specialist to specialist."<br>
+                    <strong>空格後:</strong> "<span class="transition">They nevertheless</span> caution that a cutback may be necessary..."<br>
+                    <strong>關鍵:</strong> <span class="keyword">They</span> = 複數代名詞,指前面的專家們
+                </div>
+                
+                <div class="logic-chain">
+                    <h4>段落結構分析:</h4>
+                    <div class="logic-item">
+                        <span>前句: 專家意見「不同」</span>
+                        <span class="logic-arrow">→</span>
+                        <span>空格: 先講一派觀點</span>
+                        <span class="logic-arrow">→</span>
+                        <span>後句: 他們的建議是...</span>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <strong>判斷邏輯:</strong><br>
+                    • 前句說「專家意見不同」→ 後面要列舉不同觀點<br>
+                    • 空格後用 "They... Others... Still others" 結構<br>
+                    • 空格應該先提第一派觀點
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <strong>代名詞檢查:</strong><br>
+                    空格後 "<span class="keyword">They</span> nevertheless caution..."<br>
+                    → They 必須指前面提到的「一群專家」<br>
+                    → 空格句要先引入這群專家
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <strong>選項分析:</strong><br>
+                    • (A) 講cross-train例子 → 太具體,應該放在後面<br>
+                    • (B) 講研究趨勢 → 不對,這段在講專家意見<br>
+                    • <span class="keyword">(C) "Many suggest that most patients can continue with the sport they love." → ✓</span><br>
+                    <strong>關鍵:</strong> "Many (專家)" 可以被 "They" 指涉<br>
+                    • (D) 已用在31
+                </div>
+                
+                <div class="answer-box">
+                    <strong>✓ 答案: (C)</strong><br>
+                    <strong>關鍵:</strong> Many (suggest) → They (caution) → Others (say) → Still others (say)<br>
+                    <strong>結構:</strong> 第一派觀點(繼續原運動) → 補充說明(可能要減量)
+                </div>
+            </div>
+            
+            <div class="question-analysis">
+                <h3>題目 33 解析</h3>
+                <div class="highlight-box">
+                    <strong>空格前:</strong> "Still others say the safest thing to do is cross-train all the time..."<br>
+                    <strong>空格後:</strong> "<span class="transition">Their consensus, however,</span> is that... <span class="main-idea">moderate exercise can actually speed healing.</span>"<br>
+                    <strong>關鍵轉折:</strong> <span class="transition">however</span> = 前面講「不同意見」,這裡要講「共識」
+                </div>
+                
+                <div class="logic-chain">
+                    <h4>邏輯結構:</h4>
+                    <div class="logic-item">
+                        <span>Many... Others... Still others (分歧)</span>
+                        <span class="logic-arrow">→</span>
+                        <span>空格?</span>
+                        <span class="logic-arrow">→</span>
+                        <span><strong>however</strong> (共識)</span>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <strong>判斷邏輯:</strong><br>
+                    • 前面講了3種不同意見 (Many / Others / Still others)<br>
+                    • 空格後說 "Their consensus, <span class="transition">however</span>"<br>
+                    • <strong>however</strong> 暗示前面還要再強調「差異」,才能對比「共識」
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <strong>選項分析:</strong><br>
+                    • 剩下選項: (A)(B)<br>
+                    • <span class="keyword">(A) "For example, an injured runner might end up cycling and swimming..." → ✓</span><br>
+                    <strong>分析:</strong> 這是對 "cross-train" 的具體舉例,說明不同運動的替代方案<br>
+                    • (B) "Over time, researchers have come to realize..." → 講「研究趨勢」,但這段重點是「專家意見」
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <strong>功能檢查:</strong><br>
+                    選項(A) 作用:<br>
+                    ① 舉例說明 "cross-train" 的具體做法<br>
+                    ② 補充完「不同意見」後,接 "however" 轉折到「共識」更自然
+                </div>
+                
+                <div class="answer-box">
+                    <strong>✓ 答案: (A)</strong><br>
+                    <strong>關鍵:</strong> For example 舉例說明 cross-train → <strong>however</strong> 轉折到共識<br>
+                    <strong>結構:</strong> 差異(+舉例) → 轉折 → 共識
+                </div>
+            </div>
+            
+            <div class="question-analysis">
+                <h3>題目 34 解析</h3>
+                <div class="highlight-box">
+                    <strong>空格位置:</strong> 第四段開頭<br>
+                    <strong>空格後:</strong> "<span class="transition">Thus</span>, more and more patients are now advised to keep moving..."<br>
+                    <strong>關鍵:</strong> <span class="transition">Thus</span> = 因此,表示「結論」
+                </div>
+                
+                <div class="logic-chain">
+                    <h4>全文結構:</h4>
+                    <div class="logic-item">
+                        <span>第1段: 案例</span>
+                        <span class="logic-arrow">→</span>
+                        <span>第2段: 新舊對比</span>
+                        <span class="logic-arrow">→</span>
+                        <span>第3段: 專家共識</span>
+                        <span class="logic-arrow">→</span>
+                        <span>第4段: 趨勢總結</span>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <strong>判斷邏輯:</strong><br>
+                    • 前三段講完「新觀念」和「專家共識」<br>
+                    • 第四段要總結「趨勢/影響」<br>
+                    • 空格句應該說明「為什麼會有這個趨勢」
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <strong>選項分析:</strong><br>
+                    • 剩下選項: (B)<br>
+                    • <span class="keyword">(B) "Over time, researchers have come to realize the importance of exercising when injured." → ✓</span><br>
+                    <strong>關鍵:</strong><br>
+                    ① "Over time" = 隨著時間,說明趨勢發展<br>
+                    ② "researchers have come to realize" = 研究發現,提供科學依據<br>
+                    ③ 完美銜接後句 "Thus, more and more patients are now advised..." (因此現在越來越多病人被建議...)
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <strong>因果邏輯:</strong><br>
+                    <span class="keyword">Over time, researchers realize importance</span> (原因)<br>
+                    <span class="logic-arrow" style="display: inline;">→</span><br>
+                    <span class="transition">Thus</span>, more patients are advised to keep moving (結果)
+                </div>
+                
+                <div class="answer-box">
+                    <strong>✓ 答案: (B)</strong><br>
+                    <strong>關鍵:</strong> Over time (研究發現) → <strong>Thus</strong> (導致新趨勢)<br>
+                    <strong>功能:</strong> 提供科學依據,解釋為何有新的治療趨勢
+                </div>
+            </div>
+            
+            <div class="section-title">🎯 考前衝刺重點整理</div>
+            
+            <div class="tips-box">
+                <h2>⚡ 本題 5 大關鍵技巧</h2>
+                
+                <div class="tip-item">
+                    <div class="tip-title">1️⃣ 代名詞指涉 = 必考考點</div>
+                    <table>
+                        <tr>
+                            <th>代名詞</th>
+                            <th>必須指涉的對象</th>
+                            <th>本題範例</th>
+                        </tr>
+                        <tr>
+                            <td><strong>This</strong></td>
+                            <td>前一句的「整個概念」</td>
+                            <td>This (受傷後運動) runs counter to common practice</td>
+                        </tr>
+                        <tr>
+                            <td><strong>They</strong></td>
+                            <td>前面的「複數名詞」</td>
+                            <td>Many (suggest) → They (caution)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Their</strong></td>
+                            <td>前面的「一群人」</td>
+                            <td>specialists → Their consensus</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="tip-item">
+                    <div class="tip-title">2️⃣ 轉折詞 = 邏輯方向指標</div>
+                    <strong>本題出現的關鍵轉折詞:</strong><br><br>
+                    
+                    <strong>① But (但是)</strong> - 觀念對比<br>
+                    → 前: 傳統建議休息 | 後: 新觀念建議運動<br><br>
+                    
+                    <strong>② Nevertheless (然而)</strong> - 補充說明<br>
+                    → Many suggest 繼續運動, nevertheless 可能要減量<br><br>
+                    
+                    <strong>③ However (然而)</strong> - 轉折到共識<br>
+                    → 前: 意見不同 | 後: 大家都同意適度運動有益<br><br>
+                    
+                    <strong>④ Thus (因此)</strong> - 結論<br>
+                    → 因為研究發現 → 所以現在建議運動
+                </div>
+                
+                <div class="tip-item">
+                    <div class="tip-title">3️⃣ 段落功能判斷法</div>
+                    <table>
+                        <tr>
+                            <th>段落位置</th>
+                            <th>功能</th>
+                            <th>常見句型</th>
+                        </tr>
+                        <tr>
+                            <td><strong>第一段</strong></td>
+                            <td>引言/案例</td>
+                            <td>真實故事吸引注意</td>
+                        </tr>
+                        <tr>
+                            <td><strong>第二段</strong></td>
+                            <td>對比/問題提出</td>
+                            <td>But... / However...</td>
+                        </tr>
+                        <tr>
+                            <td><strong>第三段</strong></td>
+                            <td>多方觀點/論述</td>
+                            <td>Many... Others... Still others...</td>
+                        </tr>
+                        <tr>
+                            <td><strong>第四段</strong></td>
+                            <td>結論/趨勢</td>
+                            <td>Thus... / Therefore...</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="tip-item">
+                    <div class="tip-title">4️⃣ 並列結構辨識</div>
+                    <strong>本題第三段的並列結構:</strong><br>
+                    <div class="logic-chain">
+                        <div class="logic-item" style="display: block;">
+                            <span class="keyword">Many</span> suggest... (第一派)<br>
+                            <span class="logic-arrow" style="display: inline;">↓</span><br>
+                            <span class="keyword">They</span> nevertheless... (補充說明)<br>
+                            <span class="logic-arrow" style="display: inline;">↓</span><br>
+                            <span class="keyword">Others</span> say... (第二派)<br>
+                            <span class="logic-arrow" style="display: inline;">↓</span><br>
+                            <span class="keyword">Still others</span> say... (第三派)<br>
+                            <span class="logic-arrow" style="display: inline;">↓</span><br>
+                            <span class="keyword">For example</span>... (舉例說明)<br>
+                            <span class="logic-arrow" style="display: inline;">↓</span><br>
+                            <span class="transition">Their consensus, however</span>... (共識)
+                        </div>
+                    </div>
+                    <strong>技巧:</strong> 看到 Many/Others/Some 結構,要繼續找有沒有更多並列
+                </div>
+                
+                <div class="tip-item">
+                    <div class="tip-title">5️⃣ 因果關係判斷</div>
+                    <strong>關鍵句型:</strong><br>
+                    • <strong>Thus / Therefore / Consequently</strong> 之前要有「原因」<br>
+                    • <strong>For example / For instance</strong> 之前要有「概括敘述」<br>
+                    • <strong>In fact / Actually</strong> 用來「強化/澄清」前句<br><br>
+                    
+                    <strong>本題範例:</strong><br>
+                    <span class="keyword">Over time, researchers have come to realize...</span> (原因)<br>
+                    <span class="logic-arrow" style="display: inline;">→</span><br>
+                    <span class="transition">Thus</span>, more patients are now advised... (結果)
+                </div>
+            </div>
+            
+            <div class="tips-box" style="background: #e1f5fe; border-color: #0277bd;">
+                <h2>📌 快速解題檢查表</h2>
+                
+                <table>
+                    <tr>
+                        <th style="background: #0277bd;">題號</th>
+                        <th style="background: #0277bd;">關鍵檢查點</th>
+                        <th style="background: #0277bd;">秒殺技巧</th>
+                    </tr>
+                    <tr>
+                        <td><strong>31</strong></td>
+                        <td>段落銜接</td>
+                        <td>第一段「特殊做法」需要過渡到第二段「一般做法」→ 選含 "counter to common practice" 的句子</td>
+                    </tr>
+                    <tr>
+                        <td><strong>32</strong></td>
+                        <td>代名詞 They</td>
+                        <td>空格後有 "They" → 前面必須先提「複數主詞」→ 選 "Many suggest"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>33</strong></td>
+                        <td>舉例關係</td>
+                        <td>前面提到 "cross-train" → 需要舉例說明 → 選 "For example, cycling and swimming"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>34</strong></td>
+                        <td>因果關係</td>
+                        <td>空格後有 "Thus" → 前面要有「原因」→ 選 "researchers have come to realize"</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="tips-box" style="background: #fff3e0; border-color: #e65100;">
+                <h2>⚠️ 常見陷阱提醒</h2>
+                
+                <div class="tip-item">
+                    <div class="tip-title">陷阱 1: 內容相關 ≠ 位置正確</div>
+                    <strong>範例:</strong> 選項(A) "cross-train 舉例" 內容確實相關,但:<br>
+                    • 放在32 → ✗ 太早,還沒提到 cross-train<br>
+                    • 放在33 → ✓ 前面剛好提到 cross-train
+                </div>
+                
+                <div class="tip-item">
+                    <div class="tip-title">陷阱 2: 代名詞前面沒有指涉對象</div>
+                    <strong>錯誤範例:</strong><br>
+                    如果把 (C) "Many suggest..." 放在 33:<br>
+                    → 前面是 "Still others say...", 後面是 "For example..."<br>
+                    → 後面的 "For example" 找不到要舉例的對象 ✗
+                </div>
+                
+                <div class="tip-item">
+                    <div class="tip-title">陷阱 3: 轉折詞邏輯不對</div>
+                    <strong>檢查方法:</strong><br>
+                    • <strong>However</strong> 前後要「相反」<br>
+                    • <strong>Thus</strong> 前後要「因果」<br>
+                    • <strong>For example</strong> 前後要「概括→具體」
+                </div>
+            </div>
+            
+            <div class="section-title">📊 全文邏輯結構圖</div>
+            
+            <div class="logic-chain" style="padding: 30px;">
+                <h3 style="text-align: center; margin-bottom: 20px;">文章結構一覽</h3>
+                <div style="text-align: center; line-height: 2.5;">
+                    <div style="background: #e3f2fd; padding: 15px; border-radius: 10px; margin: 10px 0;">
+                        <strong>第1段:</strong> 真實案例 (醫生受傷後繼續跑步)
+                    </div>
+                    <div class="logic-arrow" style="font-size: 3em;">↓</div>
+                    <div style="background: #fff9c4; padding: 15px; border-radius: 10px; margin: 10px 0;">
+                        <strong>31. (D)</strong> This seems to run counter to common practice<br>
+                        <span style="color: #666; font-size: 0.9em;">(過渡句: 這跟常識不同)</span>
+                    </div>
+                    <div class="logic-arrow" style="font-size: 3em;">↓</div>
+                    <div style="background: #f3e5f5; padding: 15px; border-radius: 10px; margin: 10px 0;">
+                        <strong>第2段:</strong> 新舊觀念對比<br>
+                        (傳統: 休息 <strong>vs.</strong> 新觀念: 繼續運動)
+                    </div>
+                    <div class="logic-arrow" style="font-size: 3em;">↓</div>
+                    <div style="background: #e8f5e9; padding: 15px; border-radius: 10px; margin: 10px 0;">
+                        <strong>第3段:</strong> 專家意見分歧但有共識
+                    </div>
+                    <div style="background: #fff9c4; padding: 10px; border-radius: 10px; margin: 5px 20px;">
+                        <strong>32. (C)</strong> Many suggest... (第一派)
+                    </div>
+                    <div style="padding: 5px 40px;">They nevertheless... (補充)</div>
+                    <div style="padding: 5px 40px;">Others say... (第二派)</div>
+                    <div style="padding: 5px 40px;">Still others say... (第三派)</div>
+                    <div style="background: #fff9c4; padding: 10px; border-radius: 10px; margin: 5px 20px;">
+                        <strong>33. (A)</strong> For example... (舉例說明)
+                    </div>
+                    <div style="padding: 5px 40px;"><strong>However</strong>, consensus = 適度運動有益</div>
+                    <div class="logic-arrow" style="font-size: 3em;">↓</div>
+                    <div style="background: #fff9c4; padding: 15px; border-radius: 10px; margin: 10px 0;">
+                        <strong>34. (B)</strong> Over time, researchers have come to realize...<br>
+                        <span style="color: #666; font-size: 0.9em;">(提供科學依據)</span>
+                    </div>
+                    <div class="logic-arrow" style="font-size: 3em;">↓</div>
+                    <div style="background: #c8e6c9; padding: 15px; border-radius: 10px; margin: 10px 0;">
+                        <strong>第4段:</strong> 結論 → <strong>Thus</strong>, 新趨勢 + 實際建議
+                    </div>
+                </div>
+            </div>
+            
+            <div class="answer-box" style="background: #fff3e0; border-color: #e65100; font-size: 1.3em; text-align: center; padding: 25px; margin-top: 30px;">
+                <strong>📊 本題答案:</strong><br><br>
+                31. <span style="color: #e65100; font-size: 1.5em; font-weight: bold;">D</span> │ 
+                32. <span style="color: #e65100; font-size: 1.5em; font-weight: bold;">C</span> │ 
+                33. <span style="color: #e65100; font-size: 1.5em; font-weight: bold;">A</span> │ 
+                34. <span style="color: #e65100; font-size: 1.5em; font-weight: bold;">B</span>
+            </div>
+            
+            <div class="tips-box" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none;">
+                <h2 style="color: white;">🎯 考試心法總結</h2>
+                
+                <div class="tip-item" style="background: rgba(255,255,255,0.95); color: #333;">
+                    <div class="tip-title" style="color: #667eea;">心法 1: 代名詞向前找</div>
+                    This / They / Their / These 一定指前面出現過的概念<br>
+                    <strong>找不到指涉對象 = 該選項不可能是答案</strong>
+                </div>
+                
+                <div class="tip-item" style="background: rgba(255,255,255,0.95); color: #333;">
+                    <div class="tip-title" style="color: #667eea;">心法 2: 轉折詞看邏輯</div>
+                    But/However = 相反 | Thus/Therefore = 因果 | For example = 舉例<br>
+                    <strong>轉折詞決定前後句的邏輯關係</strong>
+                </div>
+                
+                <div class="tip-item" style="background: rgba(255,255,255,0.95); color: #333;">
+                    <div class="tip-title" style="color: #667eea;">心法 3: 段落有功能</div>
+                    第一段引言 | 中間段論述 | 最後段結論<br>
+                    <strong>不同段落有不同任務,不要放錯位置</strong>
+                </div>
+                
+                <div class="tip-item" style="background: rgba(255,255,255,0.95); color: #333;">
+                    <div class="tip-title" style="color: #667eea;">心法 4: 並列要對稱</div>
+                    Many... Others... Still others... 要保持結構一致<br>
+                    <strong>看到並列結構,要數清楚有幾個</strong>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>💪 掌握代名詞 + 轉折詞 + 段落功能 = 篇章結構滿分!</p>
+            <p>學測加油 🎓</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學測英文閱讀理解訓練系統 - 100% Fish</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .legend {
+            background: #f8f9fa;
+            padding: 25px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .legend h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .legend-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title::before {
+            content: '📖';
+            margin-right: 10px;
+        }
+        
+        .passage {
+            background: #fff;
+            padding: 30px;
+            border-left: 5px solid #667eea;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            line-height: 2;
+            font-size: 1.05em;
+        }
+        
+        .passage p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .core-sentence {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        
+        .transition {
+            color: #6f42c1;
+            font-weight: bold;
+        }
+        
+        .key-word {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .paragraph-key {
+            color: #007bff;
+            font-weight: bold;
+        }
+        
+        .question-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .question-box h4 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .question-box p {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        
+        .solution {
+            background: #e7f3ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #007bff;
+        }
+        
+        .solution h5 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        
+        .step {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .answer {
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #155724;
+        }
+        
+        .transition-section {
+            background: #f3e5f5;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .transition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .transition-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .transition-card h4 {
+            color: #6f42c1;
+            margin-bottom: 10px;
+        }
+        
+        .transition-example {
+            color: #666;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+        
+        .transition-word-in-example {
+            color: #007bff;
+            font-weight: bold;
+        }
+        
+        .final-tips {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .final-tips h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .tip-card {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .tip-card h4 {
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 學測英文閱讀理解訓練系統</h1>
+            <p>冰島 100% Fish 計畫 - 實戰解題技巧</p>
+        </div>
+        
+        <div class="legend">
+            <h3>📌 標示系統說明</h3>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <span class="legend-icon" style="color: #dc3545;">●</span>
+                    <span><strong>紅色粗體</strong> = 核心句/主旨</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-icon" style="color: #6f42c1;">●</span>
+                    <span><strong>紫色粗體</strong> = 轉折詞</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-icon" style="color: #28a745;">●</span>
+                    <span><strong>綠色粗體</strong> = 主題詞</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-icon" style="color: #007bff;">●</span>
+                    <span><strong>藍色粗體</strong> = 段落重點</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">標示版文章</h2>
+                <div class="passage">
+                    <p><span class="paragraph-key">In 2020, Petur Oddsson, a power station worker in Iceland, was struck by a 60,000-volt current.</span> The electrical shock burned almost half of his body and melted layers of his skin off. Such deep and extensive burns can be fatal. <span class="transition">But</span> <span class="paragraph-key">Oddsson's life was saved by a creative invention: transplanting <span class="key-word">codfish skins</span> onto human bodies.</span></p>
+                    
+                    <p><span class="paragraph-key">A triumph for medical technology, Oddsson's fish skin transplantation was actually part of the astonishing achievement of "<span class="key-word">100% Fish</span>," an ambitious task in promoting environmental efficiency.</span> The Icelandic project, from which this pioneering procedure emerged, strives for making a fundamental change in the <span class="key-word">marine industry</span>. <span class="core-sentence">It aims to encourage full utilization of each fish caught, and to strengthen innovation in seafood products.</span></p>
+                    
+                    <p><span class="paragraph-key">Reducing waste of fish catch has become a serious issue today, when many countries are faced with food crises.</span> According to a 2003 study, about 60% of a codfish caught in Iceland was lost or wasted during the production process for human consumption. <span class="transition">Under the guidance of 100% Fish, however</span>, Icelanders are now using almost 95% of a cod. Cod skin, <span class="transition">for example</span>, is made into calcium supplement and energy drinks, and even as material for skin transplantation as in Oddsson's case. Dried fish heads and spines are exported to West Africa, where they are used as the base of a protein-rich soup. <span class="paragraph-key">Other groundbreaking products, including Omega-3 capsules, cold virus pretreatment sprays, and dog snacks are made from what was once cod catch detritus.</span></p>
+                    
+                    <p><span class="paragraph-key">The Icelandic success is accomplished largely through cooperative efforts across various industries.</span> <span class="core-sentence">100% Fish takes the initiative to show seafood companies the importance of collaboration, and facilitate valuable connections between fishing companies and other participants of the project, including academia, start-ups, and research and development teams.</span> By sharing knowledge and information, the different sectors are able to come up with improved processing and handling, through which creation of various innovative products was made possible. <span class="paragraph-key">The project not only helps Icelanders to get 30% more value from each cod than most developed countries, but also provides an effective model to promote resource efficiency worldwide.</span></p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">解題步驟與分析</h2>
+                
+                <div class="question-box">
+                    <h4>第 43 題：What is the primary goal of 100% Fish?</h4>
+                    <p>(A) To advance ocean technology.<br>
+                    (B) To reduce food crises worldwide.<br>
+                    (C) To enhance cross-industry cooperation.<br>
+                    (D) To make the most of marine resources.</p>
+                    
+                    <div class="solution">
+                        <h5>🎯 解題步驟：</h5>
+                        <div class="step"><strong>Step 1：</strong> 判斷題型 → <span style="color: #dc3545;">主旨目的題</span>（primary goal）</div>
+                        <div class="step"><strong>Step 2：</strong> 回到第2段找 100% Fish 的核心目標</div>
+                        
+                        <div class="highlight-box">
+                            <strong>關鍵句（第2段）：</strong>
+                            <p>"It aims to <strong>encourage full utilization of each fish caught</strong>, and to strengthen innovation in seafood products."</p>
+                            <p style="margin-top: 10px;">→ 核心目標：<strong>充分利用每一條捕獲的魚</strong></p>
+                        </div>
+                        
+                        <div class="step"><strong>Step 3：</strong> 排除選項</div>
+                        <ul>
+                            <li>(A) 海洋科技 - 太狹隘，只是手段之一 ✗</li>
+                            <li>(B) 解決全球糧食危機 - 結果，非主要目標 ✗</li>
+                            <li>(C) 跨產業合作 - 這是<strong>方法</strong>，不是目標 ✗</li>
+                            <li>(D) <strong>充分利用海洋資源</strong> - 直接對應原文！✓</li>
+                        </ul>
+                        
+                        <div class="highlight-box">
+                            <strong>⚠️ 陷阱分析：</strong>
+                            <p>(C) 很容易被誤選！因為第4段大篇幅談合作，但那是<strong>達成目標的方式</strong>，不是目標本身。</p>
+                        </div>
+                        
+                        <div class="answer">✅ 正確答案：(D) To make the most of marine resources</div>
+                    </div>
+                </div>
+                
+                <div class="question-box">
+                    <h4>第 44 題：What does "this pioneering procedure" in the second paragraph refer to?</h4>
+                    <p>(A) 100% Fish's mission.<br>
+                    (B) Oddsson's skin transplant.<br>
+                    (C) A fundamental change in seafood business.<br>
+                    (D) A new approach to protect the environment.</p>
+                    
+                    <div class="solution">
+                        <h5>🎯 解題步驟：</h5>
+                        <div class="step"><strong>Step 1：</strong> 判斷題型 → <span style="color: #dc3545;">指代題</span>（refer to）</div>
+                        <div class="step"><strong>Step 2：</strong> 找出 "this pioneering procedure" 的位置</div>
+                        
+                        <div class="highlight-box">
+                            <strong>原文（第2段）：</strong>
+                            <p>"A triumph for medical technology, <strong>Oddsson's fish skin transplantation</strong> was actually part of the astonishing achievement of '100% Fish,' an ambitious task in promoting environmental efficiency. The Icelandic project, from which <strong>this pioneering procedure</strong> emerged..."</p>
+                        </div>
+                        
+                        <div class="step"><strong>Step 3：</strong> 向前找最近的名詞</div>
+                        <ul>
+                            <li><strong>"this"</strong> = 指代前面剛提到的事物</li>
+                            <li>前一句主語 = <strong>Oddsson's fish skin transplantation</strong></li>
+                            <li>"pioneering procedure" = 開創性的程序</li>
+                            <li>→ 指的就是「魚皮移植手術」</li>
+                        </ul>
+                        
+                        <div class="step"><strong>Step 4：</strong> 驗證選項</div>
+                        <ul>
+                            <li>(A) 計畫使命 - 太廣泛 ✗</li>
+                            <li>(B) <strong>Oddsson 的皮膚移植</strong> - 完全吻合！✓</li>
+                            <li>(C) 海鮮產業改變 - 不是 procedure ✗</li>
+                            <li>(D) 環保新方法 - 太模糊 ✗</li>
+                        </ul>
+                        
+                        <div class="answer">✅ 正確答案：(B) Oddsson's skin transplant</div>
+                    </div>
+                </div>
+                
+                <div class="question-box">
+                    <h4>第 45 題：Which of the following is true according to the passage?</h4>
+                    <p>(A) Iceland has increased their fish catch by 30% in the last 20 years.<br>
+                    (B) Petur Oddsson was an important member of the Icelandic project.<br>
+                    (C) Cross-field collaboration has proved to be very fruitful for 100% Fish.<br>
+                    (D) 100% Fish is a big international enterprise marketing seafood products.</p>
+                    
+                    <div class="solution">
+                        <h5>🎯 解題步驟：</h5>
+                        <div class="step"><strong>Step 1：</strong> 判斷題型 → <span style="color: #dc3545;">是非題</span>（true statement）</div>
+                        <div class="step"><strong>Step 2：</strong> 逐一驗證各選項</div>
+                        
+                        <div class="highlight-box">
+                            <strong>(A) 冰島增加 30% 捕魚量？</strong>
+                            <p>✗ 第4段："get <strong>30% more value</strong> from each cod"</p>
+                            <p>→ 是「價值」增加 30%，不是「捕魚量」！<strong>偷換概念</strong></p>
+                            
+                            <strong>(B) Oddsson 是計畫的重要成員？</strong>
+                            <p>✗ 他只是「受益者」（接受魚皮移植），不是成員</p>
+                            
+                            <strong>(C) 跨領域合作對計畫很有成效？</strong>
+                            <p>✓ 第4段："The Icelandic success is accomplished <strong>largely through cooperative efforts</strong> across various industries"</p>
+                            <p>→ 成功主要歸功於合作！完全符合</p>
+                            
+                            <strong>(D) 100% Fish 是國際海產企業？</strong>
+                            <p>✗ 文中說是「project/task」（計畫），不是企業</p>
+                        </div>
+                        
+                        <div class="answer">✅ 正確答案：(C) Cross-field collaboration has proved to be very fruitful for 100% Fish</div>
+                    </div>
+                </div>
+                
+                <div class="question-box">
+                    <h4>第 46 題：句子插入題</h4>
+                    <p>"Almost nothing of a fish is left for the trash bin."</p>
+                    <p>Which paragraph is most suitable to have it as the final sentence?</p>
+                    
+                    <div class="solution">
+                        <h5>🎯 解題步驟：</h5>
+                        <div class="step"><strong>Step 1：</strong> 判斷題型 → <span style="color: #dc3545;">句子插入題</span></div>
+                        <div class="step"><strong>Step 2：</strong> 分析句子關鍵訊息</div>
+                        
+                        <div class="highlight-box">
+                            <strong>句子分析：</strong>
+                            <ul>
+                                <li>"<strong>Almost nothing</strong>... left for trash" = 幾乎沒有浪費</li>
+                                <li>→ 這是對「充分利用」的<strong>總結陳述</strong></li>
+                                <li>→ 應該放在詳細描述利用方式的段落之後</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="step"><strong>Step 3：</strong> 檢視各段內容</div>
+                        <ul>
+                            <li><strong>第1段：</strong> 介紹 Oddsson 案例 - 太早 ✗</li>
+                            <li><strong>第2段：</strong> 介紹 100% Fish 計畫 - 只是概述 ✗</li>
+                            <li><strong>第3段：</strong> 詳細列舉魚的各部位利用方式</li>
+                            <ul style="margin-left: 20px; color: #28a745;">
+                                <li>✓ 魚皮 → 鈣補充劑、能量飲料、移植材料</li>
+                                <li>✓ 魚頭魚骨 → 出口到西非做湯底</li>
+                                <li>✓ 其他部位 → Omega-3、噴霧劑、狗零食</li>
+                            </ul>
+                            <li>→ 列舉完所有利用方式後，用這句話<strong>總結</strong>最完美！✓</li>
+                            <li><strong>第4段：</strong> 談合作方式與成效 - 主題不符 ✗</li>
+                        </ul>
+                        
+                        <div class="answer">✅ 正確答案：(C) Paragraph 3</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="transition-section">
+                <h2 style="color: #6f42c1; margin-bottom: 20px;">🔄 學測高頻轉折詞完全解析</h2>
+                
+                <div class="transition-grid">
+                    <div class="transition-card">
+                        <h4>1. 對比轉折</h4>
+                        <p><strong>but, however</strong></p>
+                        <p class="transition-example">例句：Burns can be fatal, <strong class="transition-word-in-example">but</strong> his life was saved.</p>
+                        <p class="transition-example">（燒傷可能致命，<strong class="transition-word-in-example">但</strong>他的命被救了）</p>
+                    </div>
+                    
+                    <div class="transition-card">
+                        <h4>2. 舉例說明</h4>
+                        <p><strong>for example, for instance</strong></p>
+                        <p class="transition-example">例句：Cod skin, <strong class="transition-word-in-example">for example</strong>, is made into supplements.</p>
+                        <p class="transition-example">（<strong class="transition-word-in-example">例如</strong>，魚皮被製成補充劑）</p>
+                    </div>
+                    
+                    <div class="transition-card">
+                        <h4>3. 條件引導</h4>
+                        <p><strong>under the guidance of</strong></p>
+                        <p class="transition-example">例句：<strong class="transition-word-in-example">Under the guidance of</strong> 100% Fish, Icelanders use 95% of cod.</p>
+                        <p class="transition-example">（<strong class="transition-word-in-example">在...指導下</strong>，冰島人利用95%的鱈魚）</p>
+                    </div>
+                    
+                    <div class="transition-card">
+                        <h4>4. 結果總結</h4>
+                        <p><strong>not only... but also</strong></p>
+                        <p class="transition-example">例句：The project <strong class="transition-word-in-example">not only</strong> helps Icelanders <strong class="transition-word-in-example">but also</strong> provides a global model.</p>
+                        <p class="transition-example">（計畫<strong class="transition-word-in-example">不僅</strong>幫助冰島人，<strong class="transition-word-in-example">還</strong>提供全球典範）</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-box" style="margin-top: 20px;">
+                    <strong>⚠️ 本文轉折重點：</strong>
+                    <p>第1段的 <strong>"But"</strong> 標示從「致命危險」轉向「成功救治」，是全文情感轉折點！</p>
+                </div>
+            </div>
+            
+            <div class="final-tips">
+                <h3>🏆 考前衝刺重點整理</h3>
+                
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <h4>📍 主旨目的題</h4>
+                        <ul>
+                            <li>區分「目標」vs「方法」</li>
+                            <li>目標通常在第2段明確說明</li>
+                            <li>排除「手段當目的」的選項</li>
+                            <li>找 "aim to" "goal" "purpose" 等字</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h4>🎯 指代題技巧</h4>
+                        <ul>
+                            <li>"this/these" 往前找最近名詞</li>
+                            <li>確保單複數一致</li>
+                            <li>確保邏輯連貫</li>
+                            <li>注意 "procedure" "approach" 等詞</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h4>🔍 是非題技巧</h4>
+                        <ul>
+                            <li>小心「偷換概念」陷阱</li>
+                            <li>注意「價值 vs 數量」差異</li>
+                            <li>驗證每個關鍵詞</li>
+                            <li>排除「無中生有」選項</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h4>📝 句子插入題</h4>
+                        <ul>
+                            <li>分析句子功能（總結/例子/轉折）</li>
+                            <li>總結句放在詳述後</li>
+                            <li>確保主題一致</li>
+                            <li>注意段落邏輯流暢度</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h4>⏱️ 時間分配</h4>
+                        <ul>
+                            <li>快速掃描：1 分鐘</li>
+                            <li>詳細閱讀：2-3 分鐘</li>
+                            <li>答題：每題 30-45 秒</li>
+                            <li>總計：4-5 分鐘/篇</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h4>🚫 本文常見陷阱</h4>
+                        <ul>
+                            <li>30% value ≠ 30% catch（價值≠數量）</li>
+                            <li>合作是「方法」非「目標」</li>
+                            <li>Oddsson 是「受益者」非「成員」</li>
+                            <li>"procedure" 指「手術」非「計畫」</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.3); padding: 20px; border-radius: 10px; margin-top: 30px; text-align: center;">
+                    <h4 style="font-size: 1.5em; margin-bottom: 15px;">💪 本篇重點回顧</h4>
+                    <p style="font-size: 1.1em; line-height: 1.8;">
+                        ✓ 文章主題：100% Fish 計畫的目標與成就<br>
+                        ✓ 核心概念：充分利用海洋資源（from 60% → 95%）<br>
+                        ✓ 成功關鍵：跨產業合作創新<br>
+                        ✓ 解題陷阱：區分目標/方法、價值/數量、成員/受益者
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</htm
