@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>english-translation-guide-2.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E9%AB%98%E4%B8%AD%E8%8B%B1%E6%96%87%E5%AD%B8%E6%B8%AC%E7%BF%BB%E8%AD%AF%E8%A7%A3%E9%A1%8C%E6%8C%87%E5%8D%97">高中英文學測翻譯解題指南</h1>
+<h2 id="%E9%A1%8C%E7%9B%AE-1%E9%9D%92%E5%B0%91%E5%B9%B4%E8%BA%AB%E5%BF%83%E7%99%BC%E5%B1%95">題目 1:青少年身心發展</h2>
+<h3 id="11-span-style%22color-blue%22%E9%9A%A8%E8%91%97%E9%9D%92%E5%B0%91%E5%B9%B4%E9%80%B2%E5%85%A5%E4%BA%86%E9%9D%92%E6%98%A5%E6%9C%9F%E4%BB%96%E5%80%91%E9%80%90%E6%BC%B8%E6%B3%A8%E6%84%8F%E5%88%B0%E8%BA%AB%E9%AB%94%E4%B8%8A%E7%9A%84%E8%AE%8A%E5%8C%96span">1.1 <span style="color: blue;">隨著青少年進入了青春期,他們逐漸注意到身體上的變化。</span></h3>
+<p><strong>技巧點判斷:</strong></p>
+<ul>
+<li><span style="color: red;">「隨著...」表時間/條件關係 → 使用 As 引導副詞子句</span></li>
+<li><span style="color: red;">「逐漸」表漸進過程 → gradually/progressively</span></li>
+<li><span style="color: red;">「注意到」→ notice/become aware of</span></li>
+</ul>
+<p><strong>解題策略:</strong></p>
+<ol>
+<li>識別主要子句與從屬子句</li>
+<li>時間副詞子句用 As 開頭</li>
+<li>主詞為 teenagers/adolescents</li>
+<li>動詞時態:現在簡單式(陳述普遍事實)</li>
+</ol>
+<p><strong>句型結構圖:</strong></p>
+<pre class="hljs"><code><div>As + S1 + V1 (進入青春期), S2 + V2 (注意到) + O (變化)
+     ↓                        ↓
+[時間副詞子句]              [主要子句]
+</div></code></pre>
+<p><strong>範文:</strong></p>
+<blockquote>
+<p><strong>As teenagers enter puberty</strong>, they <strong>gradually notice</strong> physical changes.</p>
+</blockquote>
+<p><strong>關鍵句標示:</strong></p>
+<ul>
+<li><strong>As teenagers enter puberty</strong> (時間副詞子句)</li>
+<li><strong>gradually notice</strong> (漸進動詞)</li>
+<li><strong>physical changes</strong> (受詞)</li>
+</ul>
+<p><strong>實用句型:</strong></p>
+<ul>
+<li>As + S + V, S + V (隨著...)</li>
+<li>gradually + V (逐漸...)</li>
+<li>notice/become aware of + N (注意到...)</li>
+</ul>
+<hr>
+<h3 id="12-span-style%22color-blue%22%E4%BB%96%E5%80%91%E9%96%8B%E5%A7%8B%E5%9C%A8%E6%84%8F%E8%87%AA%E5%B7%B1%E7%9A%84%E5%A4%96%E8%A1%A8%E4%B8%A6%E4%B8%94%E5%B0%8D%E7%95%B0%E6%80%A7%E6%84%9F%E5%88%B0%E5%A5%BD%E5%A5%87span">1.2 <span style="color: blue;">他們開始在意自己的外表,並且對異性感到好奇。</span></h3>
+<p><strong>技巧點判斷:</strong></p>
+<ul>
+<li><span style="color: red;">「開始...」→ begin/start to + V</span></li>
+<li><span style="color: red;">「在意」→ care about/be concerned about</span></li>
+<li><span style="color: red;">「並且」表並列關係 → and 連接兩個動詞片語</span></li>
+<li><span style="color: red;">「對...感到好奇」→ be/become curious about</span></li>
+</ul>
+<p><strong>解題策略:</strong></p>
+<ol>
+<li>使用對等連接詞 and 連接兩個平行結構</li>
+<li>兩個動詞片語:care about / become curious about</li>
+<li>注意平行結構的一致性</li>
+</ol>
+<p><strong>句型結構圖:</strong></p>
+<pre class="hljs"><code><div>S + begin to + V1 (care about) + O1 + and + V2 (become curious about) + O2
+              ↓                            ↓
+         [第一個動作]                  [第二個動作]
+</div></code></pre>
+<p><strong>範文:</strong></p>
+<blockquote>
+<p>They <strong>begin to care about</strong> their appearance <strong>and become curious about</strong> the opposite sex.</p>
+</blockquote>
+<p><strong>關鍵句標示:</strong></p>
+<ul>
+<li><strong>begin to care about their appearance</strong> (第一個動作)</li>
+<li><strong>and</strong> (對等連接詞)</li>
+<li><strong>become curious about the opposite sex</strong> (第二個動作)</li>
+</ul>
+<p><strong>實用句型:</strong></p>
+<ul>
+<li>begin/start to + V (開始...)</li>
+<li>care about/be concerned about + N (在意...)</li>
+<li>become curious about + N (對...感到好奇)</li>
+<li>A and B (並列結構)</li>
+</ul>
+<hr>
+<h2 id="%E9%A1%8C%E7%9B%AE-2%E7%B4%84%E6%9C%83%E6%83%85%E5%A2%83">題目 2:約會情境</h2>
+<h3 id="21-span-style%22color-blue%22%E5%9C%A8%E4%B8%80%E4%BA%9B%E7%B7%B4%E7%BF%92%E5%BE%8Cjack-%E7%B5%82%E6%96%BC%E9%BC%93%E8%B5%B7%E5%8B%87%E6%B0%A3%E7%B4%84-jane-%E5%85%B1%E9%80%B2%E6%99%9A%E9%A4%90span">2.1 <span style="color: blue;">在一些練習後,Jack 終於鼓起勇氣約 Jane 共進晚餐。</span></h3>
+<p><strong>技巧點判斷:</strong></p>
+<ul>
+<li><span style="color: red;">「在...之後」→ After + N/Ving</span></li>
+<li><span style="color: red;">「終於」表時間遞進 → finally/eventually</span></li>
+<li><span style="color: red;">「鼓起勇氣」慣用語 → gather/pluck up the courage to</span></li>
+<li><span style="color: red;">「約...做某事」→ ask/invite sb to + V</span></li>
+</ul>
+<p><strong>解題策略:</strong></p>
+<ol>
+<li>使用介系詞片語 After... 作時間副詞</li>
+<li>注意慣用語的正確搭配</li>
+<li>不定詞表目的</li>
+</ol>
+<p><strong>句型結構圖:</strong></p>
+<pre class="hljs"><code><div>After + N/Ving, S + Adv (finally) + V (gathered courage) + to V (ask/invite)
+     ↓                                                        ↓
+[時間副詞片語]                                           [目的不定詞]
+</div></code></pre>
+<p><strong>範文:</strong></p>
+<blockquote>
+<p><strong>After some practice</strong>, Jack <strong>finally gathered the courage to ask</strong> Jane <strong>to have dinner with him</strong>.</p>
+</blockquote>
+<p>或</p>
+<blockquote>
+<p><strong>After practicing several times</strong>, Jack <strong>finally plucked up the courage to invite</strong> Jane <strong>to dinner</strong>.</p>
+</blockquote>
+<p><strong>關鍵句標示:</strong></p>
+<ul>
+<li><strong>After some practice</strong> (時間副詞片語)</li>
+<li><strong>finally</strong> (副詞)</li>
+<li><strong>gathered the courage to ask</strong> (慣用語 + 不定詞)</li>
+</ul>
+<p><strong>實用句型:</strong></p>
+<ul>
+<li>After + N/Ving (在...之後)</li>
+<li>finally/eventually (終於)</li>
+<li>gather/pluck up the courage to + V (鼓起勇氣做...)</li>
+<li>ask/invite sb to + V (邀請某人做...)</li>
+</ul>
+<hr>
+<h3 id="22-span-style%22color-blue%22%E4%BB%A4%E4%BB%96%E5%BE%88%E5%A4%B1%E6%9C%9B%E7%9A%84%E6%98%AFjane-%E5%A9%89%E6%8B%92%E4%BA%86%E4%BB%96%E7%9A%84%E9%82%80%E7%B4%84%E5%9B%A0%E7%82%BA%E5%A5%B9%E5%B7%B2%E4%BA%8B%E5%89%8D%E6%9C%89%E7%B4%84span">2.2 <span style="color: blue;">令他很失望的是,Jane 婉拒了他的邀約因為她已事前有約。</span></h3>
+<p><strong>技巧點判斷:</strong></p>
+<ul>
+<li><span style="color: red;">「令人...的是」→ To one's + 情緒名詞 (To his disappointment)</span></li>
+<li><span style="color: red;">「婉拒」→ politely decline/turn down</span></li>
+<li><span style="color: red;">「因為」表原因 → because/since/as</span></li>
+<li><span style="color: red;">「事前有約」→ have a prior commitment/engagement</span></li>
+</ul>
+<p><strong>解題策略:</strong></p>
+<ol>
+<li>使用 To his disappointment 開頭表達情緒</li>
+<li>主要動詞:declined/turned down</li>
+<li>原因子句說明理由</li>
+</ol>
+<p><strong>句型結構圖:</strong></p>
+<pre class="hljs"><code><div>To one's + 情緒N, S + V (declined) + O + because + S + V (已有約)
+     ↓                                        ↓
+[表情緒的副詞片語]                        [原因副詞子句]
+</div></code></pre>
+<p><strong>範文:</strong></p>
+<blockquote>
+<p><strong>To his disappointment</strong>, Jane <strong>politely declined/turned down</strong> his invitation <strong>because she already had a prior commitment</strong>.</p>
+</blockquote>
+<p><strong>關鍵句標示:</strong></p>
+<ul>
+<li><strong>To his disappointment</strong> (情緒副詞片語)</li>
+<li><strong>politely declined/turned down</strong> (婉拒的表達)</li>
+<li><strong>because she already had a prior commitment</strong> (原因子句)</li>
+</ul>
+<p><strong>實用句型:</strong></p>
+<ul>
+<li>To one's disappointment/surprise/delight (令某人...)</li>
+<li>politely decline/turn down (婉拒)</li>
+<li>because/since/as (因為)</li>
+<li>have a prior commitment/engagement (已有約)</li>
+</ul>
+<hr>
+<h2 id="%E9%A1%8C%E7%9B%AE-3%E7%86%B1%E6%88%80%E6%83%85%E4%BE%B6">題目 3:熱戀情侶</h2>
+<h3 id="31-span-style%22color-blue%22%E5%9C%A8%E4%BA%A4%E5%BE%80%E4%B8%80%E6%AE%B5%E6%99%82%E9%96%93%E5%BE%8Cjoan-%E5%92%8C-mike-%E9%99%B7%E5%85%A5%E7%86%B1%E6%88%80span">3.1 <span style="color: blue;">在交往一段時間後,Joan 和 Mike 陷入熱戀。</span></h3>
+<p><strong>技巧點判斷:</strong></p>
+<ul>
+<li><span style="color: red;">「在...之後」→ After + Ving/N</span></li>
+<li><span style="color: red;">「交往」→ date/go out (together)</span></li>
+<li><span style="color: red;">「一段時間」→ for a while/for some time</span></li>
+<li><span style="color: red;">「陷入熱戀」慣用語 → fall deeply in love/be madly in love</span></li>
+</ul>
+<p><strong>解題策略:</strong></p>
+<ol>
+<li>時間副詞片語置於句首</li>
+<li>使用過去式(描述過去發生的事)</li>
+<li>注意慣用語搭配</li>
+</ol>
+<p><strong>句型結構圖:</strong></p>
+<pre class="hljs"><code><div>After + Ving (dating) + for a while, S + V (fell in love)
+     ↓                                   ↓
+[時間副詞片語]                      [主要子句]
+</div></code></pre>
+<p><strong>範文:</strong></p>
+<blockquote>
+<p><strong>After dating for a while</strong>, Joan and Mike <strong>fell deeply in love</strong>.</p>
+</blockquote>
+<p>或</p>
+<blockquote>
+<p><strong>After going out together for some time</strong>, Joan and Mike <strong>became madly in love</strong>.</p>
+</blockquote>
+<p><strong>關鍵句標示:</strong></p>
+<ul>
+<li><strong>After dating for a while</strong> (時間副詞片語)</li>
+<li><strong>fell deeply in love</strong> (慣用語)</li>
+</ul>
+<p><strong>實用句型:</strong></p>
+<ul>
+<li>After + Ving + for a while/for some time (在...一段時間後)</li>
+<li>fall (deeply) in love (陷入熱戀)</li>
+<li>be madly in love (熱戀中)</li>
+</ul>
+<hr>
+<h3 id="32-span-style%22color-blue%22%E4%BB%96%E5%80%91%E6%9C%83%E8%AC%9B%E5%A5%BD%E5%B9%BE%E5%80%8B%E5%B0%8F%E6%99%82%E7%9A%84%E9%9B%BB%E8%A9%B1%E8%80%8C%E4%B8%94%E6%B2%92%E6%9C%89%E4%BB%BB%E4%BD%95%E4%BA%8B%E7%89%A9%E8%83%BD%E9%98%BB%E6%AD%A2%E4%BB%96%E5%80%91%E5%9C%A8%E4%B8%80%E8%B5%B7span">3.2 <span style="color: blue;">他們會講好幾個小時的電話,而且沒有任何事物能阻止他們在一起。</span></h3>
+<p><strong>技巧點判斷:</strong></p>
+<ul>
+<li><span style="color: red;">「會...」表習慣 → would + V/used to + V</span></li>
+<li><span style="color: red;">「好幾個小時」→ for hours</span></li>
+<li><span style="color: red;">「而且」表遞進 → and (連接兩個子句)</span></li>
+<li><span style="color: red;">「沒有任何事物」→ nothing (否定代名詞)</span></li>
+<li><span style="color: red;">「阻止...做某事」→ stop/prevent/keep sb from Ving</span></li>
+</ul>
+<p><strong>解題策略:</strong></p>
+<ol>
+<li>第一個子句:描述習慣性動作</li>
+<li>第二個子句:使用否定句強調</li>
+<li>注意 prevent/stop/keep 的用法差異</li>
+</ol>
+<p><strong>句型結構圖:</strong></p>
+<pre class="hljs"><code><div>S + would + V (talk) + for hours, and + nothing + could + V (stop) + sb + from + Ving
+           ↓                                                              ↓
+    [習慣性動作]                                                    [阻止某人做某事]
+</div></code></pre>
+<p><strong>範文:</strong></p>
+<blockquote>
+<p>They <strong>would talk on the phone for hours</strong>, <strong>and nothing could stop/prevent them from being together</strong>.</p>
+</blockquote>
+<p><strong>關鍵句標示:</strong></p>
+<ul>
+<li><strong>would talk on the phone for hours</strong> (習慣性動作)</li>
+<li><strong>nothing could stop them from being together</strong> (否定句 + 慣用語)</li>
+</ul>
+<p><strong>實用句型:</strong></p>
+<ul>
+<li>would + V (過去習慣...)</li>
+<li>talk on the phone for hours (講電話好幾小時)</li>
+<li>nothing can/could + V (沒有任何事物能...)</li>
+<li>stop/prevent/keep sb from Ving (阻止某人做...)</li>
+</ul>
+<hr>
+<h2 id="%E9%A1%8C%E7%9B%AE-4%E6%83%85%E4%BE%B6%E9%97%9C%E4%BF%82%E7%A0%94%E7%A9%B6">題目 4:情侶關係研究</h2>
+<h3 id="41-span-style%22color-blue%22%E7%A0%94%E7%A9%B6%E6%8C%87%E5%87%BA%E5%B9%B4%E8%BC%95%E7%9A%84%E6%83%85%E4%BE%B6%E5%AE%B9%E6%98%93%E5%9B%A0%E7%82%BA%E5%BE%88%E5%BE%AE%E4%B8%8D%E8%B6%B3%E9%81%93%E7%9A%84%E4%BA%8B%E6%83%85%E5%88%86%E6%89%8Bspan">4.1 <span style="color: blue;">研究指出年輕的情侶容易因為很微不足道的事情分手。</span></h3>
+<p><strong>技巧點判斷:</strong></p>
+<ul>
+<li><span style="color: red;">「研究指出」→ Research shows/indicates that...</span></li>
+<li><span style="color: red;">「容易...」→ tend to + V/be likely to + V</span></li>
+<li><span style="color: red;">「分手」→ break up</span></li>
+<li><span style="color: red;">「因為」→ over/because of (介系詞)</span></li>
+<li><span style="color: red;">「微不足道的」→ trivial/minor/insignificant</span></li>
+</ul>
+<p><strong>解題策略:</strong></p>
+<ol>
+<li>主詞為 Research,後接 that 名詞子句</li>
+<li>名詞子句中描述研究結果</li>
+<li>注意介系詞 over 的特殊用法(表原因)</li>
+</ol>
+<p><strong>句型結構圖:</strong></p>
+<pre class="hljs"><code><div>Research + shows/indicates + that + S + tend to + V (break up) + over + Adj + N
+                              ↓                                      ↓
+                        [名詞子句]                            [原因介系詞片語]
+</div></code></pre>
+<p><strong>範文:</strong></p>
+<blockquote>
+<p><strong>Research shows/indicates that</strong> young couples <strong>tend to break up over trivial/minor matters</strong>.</p>
+</blockquote>
+<p>或</p>
+<blockquote>
+<p><strong>Studies suggest that</strong> young couples <strong>are likely to break up because of insignificant things</strong>.</p>
+</blockquote>
+<p><strong>關鍵句標示:</strong></p>
+<ul>
+<li><strong>Research shows that</strong> (研究指出)</li>
+<li><strong>tend to break up</strong> (容易分手)</li>
+<li><strong>over trivial matters</strong> (因為瑣事)</li>
+</ul>
+<p><strong>實用句型:</strong></p>
+<ul>
+<li>Research shows/indicates that... (研究指出...)</li>
+<li>tend to + V/be likely to + V (容易/傾向於...)</li>
+<li>break up (分手)</li>
+<li>over/because of + N (因為...)</li>
+<li>trivial/minor/insignificant (微不足道的)</li>
+</ul>
+<hr>
+<h3 id="42-span-style%22color-blue%22%E5%A6%82%E6%9E%9C%E4%BB%96%E5%80%91%E5%AD%B8%E6%9C%83%E5%82%BE%E8%81%BD%E5%B0%8D%E6%96%B9%E4%B8%A6%E4%B8%80%E5%90%8C%E8%A7%A3%E6%B1%BA%E5%95%8F%E9%A1%8C%E8%A1%9D%E7%AA%81%E5%BE%88%E5%8F%AF%E8%83%BD%E5%B9%AB%E5%8A%A9%E6%94%B9%E5%96%84%E4%BB%96%E5%80%91%E7%9A%84%E9%97%9C%E4%BF%82span">4.2 <span style="color: blue;">如果他們學會傾聽對方並一同解決問題,衝突很可能幫助改善他們的關係。</span></h3>
+<p><strong>技巧點判斷:</strong></p>
+<ul>
+<li><span style="color: red;">「如果」表條件 → If 引導條件子句</span></li>
+<li><span style="color: red;">「學會做某事」→ learn to + V</span></li>
+<li><span style="color: red;">「傾聽對方」→ listen to each other</span></li>
+<li><span style="color: red;">「並」表並列 → and</span></li>
+<li><span style="color: red;">「一同」→ together/jointly</span></li>
+<li><span style="color: red;">「很可能」→ be likely to/can possibly</span></li>
+<li><span style="color: red;">「改善」→ improve/enhance</span></li>
+</ul>
+<p><strong>解題策略:</strong></p>
+<ol>
+<li>If 條件句 + 主要子句結構</li>
+<li>條件句中使用 learn to 表達「學會」</li>
+<li>主要子句表達可能的結果</li>
+</ol>
+<p><strong>句型結構圖:</strong></p>
+<pre class="hljs"><code><div>If + S + learn to + V1 (listen) + and + V2 (solve), S + be likely to + V (improve)
+     ↓                                                   ↓
+[條件副詞子句]                                      [主要子句-結果]
+</div></code></pre>
+<p><strong>範文:</strong></p>
+<blockquote>
+<p><strong>If they learn to listen to each other and solve problems together</strong>, conflicts <strong>are likely to help improve their relationship</strong>.</p>
+</blockquote>
+<p>或</p>
+<blockquote>
+<p><strong>If they learn to listen to one another and work together to solve problems</strong>, conflicts <strong>can possibly help enhance their relationship</strong>.</p>
+</blockquote>
+<p><strong>關鍵句標示:</strong></p>
+<ul>
+<li><strong>If they learn to listen to each other</strong> (條件子句)</li>
+<li><strong>and solve problems together</strong> (並列動作)</li>
+<li><strong>are likely to help improve</strong> (可能性 + 改善)</li>
+</ul>
+<p><strong>實用句型:</strong></p>
+<ul>
+<li>If + S + V, S + V (如果...就...)</li>
+<li>learn to + V (學會...)</li>
+<li>listen to each other/one another (傾聽對方)</li>
+<li>solve problems together (一同解決問題)</li>
+<li>be likely to + V (很可能...)</li>
+<li>help + V/help to + V (幫助...)</li>
+<li>improve/enhance (改善)</li>
+</ul>
+<hr>
+<h2 id="%E9%A1%8C%E7%9B%AE-5%E6%89%93%E5%B7%A5%E7%B6%93%E9%A9%97">題目 5:打工經驗</h2>
+<h3 id="51-span-style%22color-blue%22%E9%99%A4%E4%BA%86%E8%B3%BA%E4%BA%9B%E9%9B%B6%E7%94%A8%E9%8C%A2%E5%A4%96%E6%89%93%E5%B7%A5%E5%B9%AB%E5%8A%A9%E5%AD%B8%E7%94%9F%E7%8D%B2%E5%BE%97%E5%AF%A6%E7%94%A8%E7%9A%84%E6%8A%80%E8%83%BDspan">5.1 <span style="color: blue;">除了賺些零用錢外,打工幫助學生獲得實用的技能。</span></h3>
+<p><strong>技巧點判斷:</strong></p>
+<ul>
+<li><span style="color: red;">「除了...外」表附加 → Besides/In addition to + N/Ving</span></li>
+<li><span style="color: red;">「賺零用錢」→ earn pocket money/make some extra money</span></li>
+<li><span style="color: red;">「打工」→ part-time jobs/working part-time</span></li>
+<li><span style="color: red;">「幫助某人做某事」→ help sb (to) + V</span></li>
+<li><span style="color: red;">「獲得」→ acquire/gain/develop</span></li>
+<li><span style="color: red;">「實用的」→ practical/useful</span></li>
+</ul>
+<p><strong>解題策略:</strong></p>
+<ol>
+<li>介系詞片語置於句首表附加資訊</li>
+<li>主詞為 part-time jobs</li>
+<li>使用 help 的正確句型</li>
+</ol>
+<p><strong>句型結構圖:</strong></p>
+<pre class="hljs"><code><div>Besides/In addition to + Ving (earning), S (part-time jobs) + help + sb + (to) V (acquire)
+            ↓                                                              ↓
+    [介系詞片語-附加]                                              [不定詞-目的]
+</div></code></pre>
+<p><strong>範文:</strong></p>
+<blockquote>
+<p><strong>Besides/In addition to earning pocket money</strong>, part-time jobs <strong>help students acquire/gain practical skills</strong>.</p>
+</blockquote>
+<p>或</p>
+<blockquote>
+<p><strong>Besides making some extra money</strong>, <strong>working part-time helps students develop useful skills</strong>.</p>
+</blockquote>
+<p><strong>關鍵句標示:</strong></p>
+<ul>
+<li><strong>Besides earning pocket money</strong> (附加資訊)</li>
+<li><strong>help students acquire</strong> (幫助獲得)</li>
+<li><strong>practical skills</strong> (實用技能)</li>
+</ul>
+<p><strong>實用句型:</strong></p>
+<ul>
+<li>Besides/In addition to + N/Ving (除了...外)</li>
+<li>earn pocket money/make extra money (賺零用錢)</li>
+<li>part-time job (打工)</li>
+<li>help sb (to) + V (幫助某人...)</li>
+<li>acquire/gain/develop (獲得/培養)</li>
+<li>practical/useful (實用的)</li>
+</ul>
+<hr>
+<h3 id="52-span-style%22color-blue%22%E5%BE%9E%E9%80%99%E4%BA%9B%E5%B7%A5%E4%BD%9C%E7%B6%93%E9%A9%97%E4%BB%96%E5%80%91%E4%B9%9F%E8%83%BD%E5%A4%A0%E6%8E%A2%E7%B4%A2%E8%87%AA%E5%B7%B1%E7%9A%84%E6%BD%9B%E8%83%BD%E7%94%9A%E8%87%B3%E6%89%BE%E5%88%B0%E4%BA%BA%E7%94%9F%E7%9A%84%E7%9B%AE%E6%A8%99span">5.2 <span style="color: blue;">從這些工作經驗,他們也能夠探索自己的潛能,甚至找到人生的目標。</span></h3>
+<p><strong>技巧點判斷:</strong></p>
+<ul>
+<li><span style="color: red;">「從...」表來源 → From/Through + N</span></li>
+<li><span style="color: red;">「能夠」→ be able to/can</span></li>
+<li><span style="color: red;">「探索」→ explore/discover</span></li>
+<li><span style="color: red;">「潛能」→ potential/capabilities</span></li>
+<li><span style="color: red;">「甚至」表遞進 → even/and even</span></li>
+<li><span style="color: red;">「人生目標」→ life goal/purpose in life</span></li>
+</ul>
+<p><strong>解題策略:</strong></p>
+<ol>
+<li>介系詞片語 From... 置於句首</li>
+<li>使用 and even 連接兩個遞進的動作</li>
+<li>注意平行結構</li>
+</ol>
+<p><strong>句型結構圖:</strong></p>
+<pre class="hljs"><code><div>From/Through + N (experiences), S + can + V1 (explore) + and even + V2 (find)
+         ↓                                                            ↓
+  [介系詞片語-來源]                                              [遞進並列]
+</div></code></pre>
+<p><strong>範文:</strong></p>
+<blockquote>
+<p><strong>From these work experiences</strong>, they <strong>can also explore their potential and even find their purpose in life</strong>.</p>
+</blockquote>
+<p>或</p>
+<blockquote>
+<p><strong>Through such job experiences</strong>, they <strong>are able to discover their capabilities and even find goals in life</strong>.</p>
+</blockquote>
+<p><strong>關鍵句標示:</strong></p>
+<ul>
+<li><strong>From these work experiences</strong> (來源)</li>
+<li><strong>can explore their potential</strong> (能夠探索)</li>
+<li><strong>and even find their purpose in life</strong> (甚至找到目標)</li>
+</ul>
+<p><strong>實用句型:</strong></p>
+<ul>
+<li>From/Through + N (從...)</li>
+<li>be able to/can (能夠)</li>
+<li>explore/discover (探索)</li>
+<li>potential/capabilities (潛能)</li>
+<li>and even (甚至)</li>
+<li>purpose/goal in life (人生目標)</li>
+</ul>
+<hr>
+<h2 id="%E9%A1%8C%E7%9B%AE-6%E8%A6%AA%E5%AD%90%E6%95%99%E9%A4%8A">題目 6:親子教養</h2>
+<h3 id="61-span-style%22color-blue%22%E7%88%B6%E6%AF%8D%E8%A6%AA%E6%87%89%E8%A9%B2%E8%A6%81%E9%BC%93%E5%8B%B5%E5%B0%8F%E5%AD%A9%E7%8D%A8%E7%AB%8B%E8%80%8C%E9%9D%9E%E9%81%8E%E5%BA%A6%E4%BF%9D%E8%AD%B7%E6%88%96%E6%BA%BA%E6%84%9Bspan">6.1 <span style="color: blue;">父母親應該要鼓勵小孩獨立,而非過度保護或溺愛。</span></h3>
+<p><strong>技巧點判斷:</strong></p>
+<ul>
+<li><span style="color: red;">「應該」→ should</span></li>
+<li><span style="color: red;">「鼓勵某人做某事」→ encourage sb to + V</span></li>
+<li><span style="color: red;">「獨立」→ be independent/become independent</span></li>
+<li><span style="color: red;">「而非」表對比 → rather than/instead of</span></li>
+<li><span style="color: red;">「過度保護」→ overprotect</span></li>
+<li><span style="color: red;">「溺愛」→ spoil/pamper</span></li>
+<li><span style="color: red;">「或」→ or</span></li>
+</ul>
+<p><strong>解題策略:</strong></p>
+<ol>
+<li>使用 should 表建議</li>
+<li>encourage 後接不定詞</li>
+<li>rather than 連接對比概念</li>
+</ol>
+<p><strong>句型結構圖:</strong></p>
+<pre class="hljs"><code><div>S (Parents) + should + V (encourage) + sb + to V, rather than + V1 or V2
+                                              ↓            ↓
+                                         [正面建議]   [負面對比]
+</div></code></pre>
+<p><strong>範文:</strong></p>
+<blockquote>
+<p>Parents <strong>should encourage their children to be independent rather than overprotect or spoil them</strong>.</p>
+</blockquote>
+<p>或</p>
+<blockquote>
+<p>Parents <strong>should encourage their children to become independent instead of overprotecting or pampering them</strong>.</p>
+</blockquote>
+<p><strong>關鍵句標示:</strong></p>
+<ul>
+<li><strong>should encourage their children to be independent</strong> (應該鼓勵)</li>
+<li><strong>rather than overprotect or spoil them</strong> (對比-不該做的)</li>
+</ul>
+<p><strong>實用句型:</strong></p>
+<ul>
+<li>should + V (應該)</li>
+<li>encourage sb to + V (鼓勵某人...)</li>
+<li>be/become independent (獨立)</li>
+<li>rather than/instead of (而非)</li>
+<li>overprotect (過度保護)</li>
+<li>spoil/pamper (溺愛)</li>
+</ul>
+<hr>
+<h3 id="62-span-style%22color-blue%22%E4%BA%8B%E5%AF%A6%E4%B8%8A%E5%B0%8F%E5%AD%A9%E6%87%89%E8%A9%B2%E7%82%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E8%A1%8C%E7%82%BA%E6%89%BF%E6%93%94%E5%BE%8C%E6%9E%9C%E8%80%8C%E9%9D%9E%E5%87%A1%E4%BA%8B%E4%BE%9D%E8%B3%B4%E7%88%B6%E6%AF%8Dspan">6.2 <span style="color: blue;">事實上,小孩應該為自己的行為承擔後果,而非凡事依賴父母。</span></h3>
+<p><strong>技巧點判斷:</strong></p>
+<ul>
+<li><span style="color: red;">「事實上」→ In fact/Actually</span></li>
+<li><span style="color: red;">「為...承擔後果」→ take responsibility for/bear the consequences of</span></li>
+<li><span style="color: red;">「行為」→ behavior/actions</span></li>
+<li><span style="color: red;">「而非」→ rather than/instead of</span></li>
+<li><span style="color: red;">「凡事」→ everything/in everything</span></li>
+<li><span style="color: red;">「依賴」→ depend on/rely on</span></li>
+</ul>
+<p><strong>解題策略:</strong></p>
+<ol>
+<li>使用轉折語 In fact 開頭</li>
+<li>對比兩種行為:承擔責任 vs 依賴</li>
+<li>注意 rather than 後的動詞形式</li>
+</ol>
+<p><strong>句型結構圖:</strong></p>
+<pre class="hljs"><code><div>In fact, S + should + V (take responsibility), rather than + V (depend on)
+             ↓                                              ↓
+      [應該的行為]                                    [不該的行為]
+</div></code></pre>
+<p><strong>範文:</strong></p>
+<blockquote>
+<p><strong>In fact</strong>, children <strong>should take responsibility for their own behavior/actions rather than depend/rely on their parents for everything</strong>.</p>
+</blockquote>
+<p>或</p>
+<blockquote>
+<p><strong>Actually</strong>, children <strong>should bear the consequences of their actions instead of relying on their parents in everything</strong>.</p>
+</blockquote>
+<p><strong>關鍵句標示:</strong></p>
+<ul>
+<li><strong>In fact</strong> (轉折語)</li>
+<li><strong>should take responsibility for their actions</strong> (承擔責任)</li>
+<li><strong>rather than depend on their parents for everything</strong> (對比)</li>
+</ul>
+<p><strong>實用句型:</strong></p>
+<ul>
+<li>In fact/Actually (事實上)</li>
+<li>take responsibility for (為...負責)</li>
+<li>bear the consequences of (承擔...的後果)</li>
+<li>one's own behavior/actions (自己的行為)</li>
+<li>rather than/instead of (而非)</li>
+<li>depend on/rely on (依賴)</li>
+<li>for everything/in everything (凡事)</li>
+</ul>
+<hr>
+<h2 id="%E9%A1%8C%E7%9B%AE-7%E5%A4%A7%E5%AD%B8%E7%95%A2%E6%A5%AD%E7%94%9F">題目 7:大學畢業生</h2>
+<h3 id="71-span-style%22color-blue%22%E8%A8%B1%E5%A4%9A%E5%AD%B8%E7%94%9F%E5%8D%B3%E5%B0%87%E8%A6%81%E5%BE%9E%E5%A4%A7%E5%AD%B8%E7%95%A2%E6%A5%AD%E6%99%82%E6%9C%83%E5%B0%8D%E6%96%BC%E6%9C%AA%E4%BE%86%E6%84%9F%E5%88%B0%E5%9B%B0%E6%83%91span">7.1 <span style="color: blue;">許多學生即將要從大學畢業時,會對於未來感到困惑。</span></h3>
+<p><strong>技巧點判斷:</strong></p>
+<ul>
+<li><span style="color: red;">「當...時」→ When/As 引導時間子句</span></li>
+<li><span style="color: red;">「即將要」表未來 → be about to + V/be going to + V</span></li>
+<li><span style="color: red;">「從...畢業」→ graduate from</span></li>
+<li><span style="color: red;">「會...」表傾向 → tend to/are likely to</span></li>
+<li><span style="color: red;">「對...感到困惑」→ feel confused about/be confused about</span></li>
+</ul>
+<p><strong>解題策略:</strong></p>
+<ol>
+<li>When 時間子句 + 主要子句結構</li>
+<li>時間子句使用未來式或現在式</li>
+<li>主要子句描述結果</li>
+</ol>
+<p><strong>句型結構圖:</strong></p>
+<pre class="hljs"><code><div>When/As + S + be about to + V (graduate), S + V (feel confused) + about + N
+          ↓                                   ↓
+   [時間副詞子句]                        [主要子句]
+</div></code></pre>
+<p><strong>範文:</strong></p>
+<blockquote>
+<p><strong>When many students are about to graduate from college/university</strong>, they <strong>tend to feel confused about their future</strong>.</p>
+</blockquote>
+<p>或</p>
+<blockquote>
+<p><strong>As many students are going to graduate from university</strong>, they <strong>are likely to be confused about the future</strong>.</p>
+</blockquote>
+<p><strong>關鍵句標示:</strong></p>
+<ul>
+<li><strong>When students are about to graduate</strong> (時間子句)</li>
+<li><strong>tend to feel confused about</strong> (感到困惑)</li>
+<li><strong>their future</strong> (未來)</li>
+</ul>
+<p><strong>實用句型:</strong></p>
+<ul>
+<li>When/As + S + V (當...時)</li>
+<li>be about to + V/be going to + V (即將...)</li>
+<li>graduate from (從...畢業)</li>
+<li>tend to/be likely to (傾向於/會...)</li>
+<li>feel confused about/be confused about (對...感到困惑)</li>
+</ul>
+<hr>
+<h3 id="72-span-style%22color-blue%22%E6%AD%A4%E6%99%82%E5%B0%B1%E6%98%AF%E6%AD%A3%E9%9D%A2%E7%9A%84%E6%85%8B%E5%BA%A6%E5%B0%87%E7%B5%A6%E4%BA%88%E4%BB%96%E5%80%91%E5%8A%9B%E9%87%8F%E5%8E%BB%E9%9D%A2%E5%B0%8D%E4%BA%BA%E7%94%9F%E4%B8%AD%E6%96%B0%E7%9A%84%E6%8C%91%E6%88%B0span">7.2 <span style="color: blue;">此時,就是正面的態度將給予他們力量去面對人生中新的挑戰。</span></h3>
+<p><strong>技巧點判斷:</strong></p>
+<ul>
+<li><span style="color: red;">「此時」→ At this moment/At this time/It is then</span></li>
+<li><span style="color: red;">「就是...」強調句 → It is... that...</span></li>
+<li><span style="color: red;">「正面的態度」→ positive attitude</span></li>
+<li><span style="color: red;">「將」表未來 → will</span></li>
+<li><span style="color: red;">「給予某人某物」→ give sb sth</span></li>
+<li><span style="color: red;">「力量去做...」→ strength to + V</span></li>
+<li><span style="color: red;">「面對」→ face/confront</span></li>
+</ul>
+<p><strong>解題策略:</strong></p>
+<ol>
+<li>使用強調句型 It is... that... 強調「正面態度」</li>
+<li>或使用 At this time 作時間副詞</li>
+<li>不定詞 to face 表目的</li>
+</ol>
+<p><strong>句型結構圖:</strong></p>
+<pre class="hljs"><code><div>It is + N (positive attitude) + that + will + V (give) + sb + N (strength) + to V (face)
+   ↓                                                                          ↓
+[強調句型]                                                              [目的不定詞]
+</div></code></pre>
+<p><strong>範文:</strong></p>
+<blockquote>
+<p><strong>At this moment/time</strong>, <strong>it is a positive attitude that will give them the strength to face new challenges in life</strong>.</p>
+</blockquote>
+<p>或</p>
+<blockquote>
+<p><strong>It is then that a positive attitude will give them strength to confront the new challenges of life</strong>.</p>
+</blockquote>
+<p>或 (非強調句型):</p>
+<blockquote>
+<p><strong>At this time</strong>, <strong>a positive attitude will give them the strength to face new challenges in life</strong>.</p>
+</blockquote>
+<p><strong>關鍵句標示:</strong></p>
+<ul>
+<li><strong>It is a positive attitude that</strong> (強調句型)</li>
+<li><strong>will give them the strength</strong> (給予力量)</li>
+<li><strong>to face new challenges in life</strong> (面對挑戰)</li>
+</ul>
+<p><strong>實用句型:</strong></p>
+<ul>
+<li>At this moment/time/It is then (此時)</li>
+<li>It is... that... (強調句型)</li>
+<li>positive attitude (正面態度)</li>
+<li>give sb sth (給予某人某物)</li>
+<li>the strength to + V (去做...的力量)</li>
+<li>face/confront (面對)</li>
+<li>challenges in life/life challenges (人生挑戰)</li>
+</ul>
+<hr>
+<h2 id="%E7%B8%BD%E7%B5%90%E7%BF%BB%E8%AD%AF%E6%8A%80%E5%B7%A7%E8%A6%81%E9%BB%9E">總結:翻譯技巧要點</h2>
+<h3 id="%E5%B8%B8%E7%94%A8%E9%80%A3%E6%8E%A5%E8%A9%9E%E6%95%B4%E7%90%86">常用連接詞整理</h3>
+<ol>
+<li><strong>時間關係</strong>: As, When, After, Before</li>
+<li><strong>因果關係</strong>: because, since, as</li>
+<li><strong>對比關係</strong>: rather than, instead of, while</li>
+<li><strong>遞進關係</strong>: and even, not only... but also</li>
+<li><strong>條件關係</strong>: If</li>
+</ol>
+<h3 id="%E5%B8%B8%E7%94%A8%E5%8F%A5%E5%9E%8B%E7%B5%90%E6%A7%8B">常用句型結構</h3>
+<ol>
+<li><strong>S + V + O</strong> (基本句型)</li>
+<li><strong>副詞子句 + 主要子句</strong> (複合句)</li>
+<li><strong>It is... that...</strong> (強調句)</li>
+<li><strong>S + help + sb + (to) V</strong> (使役動詞)</li>
+<li><strong>S + encourage/allow + sb + to V</strong> (不定詞補語)</li>
+</ol>
+<h3 id="%E7%BF%BB%E8%AD%AF%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85">翻譯注意事項</h3>
+<ol>
+<li>確認時態(現在/過去/未來)</li>
+<li>識別主被動語態</li>
+<li>注意慣用語搭配</li>
+<li>保持句子平衡與對稱</li>
+<li>善用連接詞表達邏輯關係</li>
+</ol>
+
+</body>
+</html>
