@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學測文意選填 988 - 水分補充與身體健康</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.5em;
+            color: #1e3c72;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* 文章標示版樣式 */
+        .article-box {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid #e9ecef;
+            font-size: 1.05em;
+            line-height: 2;
+        }
+        
+        .core-sentence {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        
+        .transition-word {
+            color: #7b1fa2;
+            font-weight: bold;
+        }
+        
+        .theme-word {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        
+        .blank {
+            display: inline-block;
+            min-width: 80px;
+            border-bottom: 2px solid #1e3c72;
+            text-align: center;
+            font-weight: bold;
+            color: #1e3c72;
+            margin: 0 5px;
+            padding: 0 10px;
+        }
+        
+        /* 選項區塊 */
+        .options-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin: 20px 0;
+            border: 2px solid #64b5f6;
+        }
+        
+        .options-title {
+            font-weight: bold;
+            color: #1565c0;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+        
+        .option-item {
+            background: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .option-item span {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        
+        /* 解題思維區塊 */
+        .question-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
+        }
+        
+        .question-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        .question-sentence {
+            background: #fff3e0;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #ff9800;
+            font-size: 1.05em;
+        }
+        
+        .answer-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .step-box {
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .step-title {
+            color: #1565c0;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+        
+        .step-item {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .step-item::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+        
+        .quote-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 12px 18px;
+            margin: 10px 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+        
+        .quote-label {
+            color: #2e7d32;
+            font-weight: bold;
+            font-style: normal;
+        }
+        
+        .key-thinking {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-top: 15px;
+            border: 2px solid #ffc107;
+        }
+        
+        .key-thinking-title {
+            color: #f57c00;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        /* 單字表格 */
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .vocab-table th {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .vocab-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+        }
+        
+        .vocab-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .vocab-table tr:hover {
+            background: #e3f2fd;
+        }
+        
+        .vocab-word {
+            color: #d32f2f;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .eng-sentence {
+            color: #1565c0;
+        }
+        
+        .eng-highlight {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        
+        .chi-sentence {
+            color: #616161;
+        }
+        
+        .chi-highlight {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        
+        /* 考前衝刺重點 */
+        .sprint-section {
+            background: linear-gradient(135deg, #fffbea 0%, #fff9c4 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 2px solid #ffd54f;
+        }
+        
+        .sprint-title {
+            color: #0d47a1;
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .sprint-content {
+            color: #1565c0;
+            font-weight: bold;
+        }
+        
+        .sprint-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .sprint-item h4 {
+            color: #0d47a1;
+            font-weight: bold;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+        
+        .sprint-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sprint-item li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #1565c0;
+            font-weight: bold;
+        }
+        
+        .sprint-item li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        .transition-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .transition-table th {
+            background: #0d47a1;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .transition-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            color: #1565c0;
+            font-weight: bold;
+        }
+        
+        .transition-table tr:nth-child(even) {
+            background: rgba(255,255,255,0.7);
+        }
+        
+        .mantra-box {
+            background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 20px;
+            border: 3px solid #3f51b5;
+        }
+        
+        .mantra-title {
+            color: #1a237e;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+        
+        .mantra-text {
+            color: #283593;
+            font-size: 1.4em;
+            font-weight: bold;
+            line-height: 2;
+        }
+        
+        .footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+        
+        /* 回答選項對照 */
+        .answer-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+        }
+        
+        .answer-option {
+            background: #f5f5f5;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+        }
+        
+        .answer-option.correct {
+            background: #c8e6c9;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 學測文意選填 988</h1>
+            <div class="subtitle">主題：水分補充與身體健康 | Water Hydration & Body Health</div>
+        </div>
+        
+        <div class="content">
+            <!-- 選項區塊 -->
+            <div class="options-box">
+                <div class="options-title">📋 選項總覽 Options</div>
+                <div class="options-grid">
+                    <div class="option-item"><span>(A)</span> absorption 吸收</div>
+                    <div class="option-item"><span>(B)</span> active 活躍的</div>
+                    <div class="option-item"><span>(C)</span> alert 警告</div>
+                    <div class="option-item"><span>(D)</span> combat 對抗</div>
+                    <div class="option-item"><span>(E)</span> option 選擇</div>
+                    <div class="option-item"><span>(F)</span> effective 有效的</div>
+                    <div class="option-item"><span>(G)</span> even 使平衡</div>
+                    <div class="option-item"><span>(H)</span> status 狀態</div>
+                    <div class="option-item"><span>(I)</span> pass through 通過</div>
+                    <div class="option-item"><span>(J)</span> reach for 伸手拿</div>
+                </div>
+            </div>
+            
+            <!-- 文章標示版 -->
+            <div class="section">
+                <h2 class="section-title">📖 文章標示版</h2>
+                <div class="article-box">
+                    <p><span class="core-sentence">Water makes up more than half of our body weight.</span> To sustain this amount of <span class="theme-word">fluid</span> in our bodies, <span class="theme-word">plain water</span> is considered our best choice, <span class="transition-word">for</span> it contains no sugar and no calories. <span class="transition-word">Yet</span>, is water always the healthiest drink we can <span class="blank">21</span>? Well, it depends on who and where we are, and what we're doing.</p>
+                    
+                    <p><span class="transition-word">Obviously</span>, a physically <span class="blank">22</span> person with an outdoor job under the sun will need to drink more <span class="theme-word">fluid</span> than a desk-bound person who lives and works in an air-conditioned place. <span class="transition-word">But</span> there's more to it than that. <span class="core-sentence">When a person sweats, he loses water and salt, so he needs to replace both.</span> Replacing lost fluid with just plain water means the body has too much water and not enough salt. To <span class="blank">23</span> things out, the body will get rid of water by producing <span class="theme-word">urine</span>. <span class="transition-word">For this reason</span>, milk can actually be more <span class="blank">24</span> than drinking water. <span class="core-sentence">Milk naturally contains salt and lactose, a sugar which the human body needs in small amounts to help stimulate water <span class="blank">25</span>.</span> <span class="theme-word">Coconut water</span>, which contains salt and carbohydrates, is <span class="transition-word">also</span> more functional than water at restoring and maintaining a normal <span class="theme-word">fluid</span> <span class="blank">26</span> after exercise.</p>
+                    
+                    <p><span class="transition-word">For the average person, however</span>, water remains a very good <span class="blank">27</span> for keeping <span class="theme-word">hydrated</span>—if you know how to drink it. <span class="core-sentence">The secret is: Never wait until the body is telling you you're thirsty, since there must already have been significant changes in your body for it to eventually <span class="blank">28</span> your consciousness.</span> At that point, it might be well past the best moment to take in fluid. <span class="transition-word">Also</span>, drinking a lot of liquid in one go can cause more water to <span class="blank">29</span> the body quickly and come out as urine. To <span class="blank">30</span> this, you need to drink water throughout the day to maintain your <span class="theme-word">hydration</span> levels.</p>
+                </div>
+                
+                <div style="margin-top: 20px; padding: 15px; background: #f5f5f5; border-radius: 10px;">
+                    <p><strong>📌 標示說明：</strong></p>
+                    <p><span class="core-sentence">紅色粗體</span> = 核心句/主旨 | <span class="transition-word">紫色粗體</span> = 轉折詞 | <span class="theme-word">綠色粗體</span> = 主題詞</p>
+                </div>
+            </div>
+            
+            <!-- 解題思維 -->
+            <div class="section">
+                <h2 class="section-title">🧠 解題思維</h2>
+                
+                <!-- 第21題 -->
+                <div class="question-card">
+                    <div class="answer-options">
+                        <span class="answer-option">(A) absorption</span>
+                        <span class="answer-option">(B) active</span>
+                        <span class="answer-option">(C) alert</span>
+                        <span class="answer-option">(D) combat</span>
+                        <span class="answer-option">(E) option</span>
+                        <span class="answer-option">(F) effective</span>
+                        <span class="answer-option">(G) even</span>
+                        <span class="answer-option">(H) status</span>
+                        <span class="answer-option">(I) pass through</span>
+                        <span class="answer-option correct">✓(J) reach for</span>
+                    </div>
+                    
+                    <p><span class="question-number">21</span><strong>題目定位</strong></p>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句子：</strong>Yet, is water always the healthiest drink we can <u><strong>____</strong></u>?
+                    </div>
+                    
+                    <div class="answer-tag">正確答案：(J) reach for</div>
+                    
+                    <div class="step-box">
+                        <div class="step-title">📝 解題步驟</div>
+                        <div class="step-item"><strong>Step 1 判斷詞性：</strong>空格前有助動詞 "can"，需要填入<strong>動詞原形</strong></div>
+                        <div class="step-item"><strong>Step 2 篩選選項：</strong>動詞選項有 (C) alert、(D) combat、(G) even、(I) pass through、(J) reach for</div>
+                        <div class="step-item"><strong>Step 3 語意判斷：</strong>句意為「水是否永遠是我們能____的最健康飲料？」</div>
+                        <div class="step-item"><strong>Step 4 搭配分析：</strong>"reach for" 表示「伸手拿取」，符合「拿取飲料」的語境</div>
+                    </div>
+                    
+                    <div class="quote-box">
+                        <span class="quote-label">📖 原文引用：</span><br>
+                        "Yet, is water always the healthiest drink we can <strong>reach for</strong>?"
+                    </div>
+                    
+                    <div class="key-thinking">
+                        <div class="key-thinking-title">💡 關鍵思維</div>
+                        <p>"reach for" 是固定搭配，表示「伸手去拿」，常用於拿取食物或飲料的情境。此處詢問「水是否永遠是最健康的選擇」，用 reach for 表達「拿取飲用」最為自然。</p>
+                    </div>
+                </div>
+                
+                <!-- 第22題 -->
+                <div class="question-card">
+                    <div class="answer-options">
+                        <span class="answer-option">(A) absorption</span>
+                        <span class="answer-option correct">✓(B) active</span>
+                        <span class="answer-option">(C) alert</span>
+                        <span class="answer-option">(D) combat</span>
+                        <span class="answer-option">(E) option</span>
+                        <span class="answer-option">(F) effective</span>
+                        <span class="answer-option">(G) even</span>
+                        <span class="answer-option">(H) status</span>
+                        <span class="answer-option">(I) pass through</span>
+                        <span class="answer-option">(J) reach for</span>
+                    </div>
+                    
+                    <p><span class="question-number">22</span><strong>題目定位</strong></p>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句子：</strong>Obviously, a physically <u><strong>____</strong></u> person with an outdoor job under the sun will need to drink more fluid than a desk-bound person...
+                    </div>
+                    
+                    <div class="answer-tag">正確答案：(B) active</div>
+                    
+                    <div class="step-box">
+                        <div class="step-title">📝 解題步驟</div>
+                        <div class="step-item"><strong>Step 1 判斷詞性：</strong>空格前有副詞 "physically"，空格後有名詞 "person"，需要填入<strong>形容詞</strong></div>
+                        <div class="step-item"><strong>Step 2 篩選選項：</strong>形容詞選項有 (B) active、(F) effective</div>
+                        <div class="step-item"><strong>Step 3 語意判斷：</strong>與 "outdoor job under the sun" 形成對比的是 "desk-bound person"</div>
+                        <div class="step-item"><strong>Step 4 搭配分析：</strong>"physically active" 是常見搭配，意為「身體活動量大的」</div>
+                    </div>
+                    
+                    <div class="quote-box">
+                        <span class="quote-label">📖 原文引用：</span><br>
+                        "a physically <strong>active</strong> person with an outdoor job under the sun" vs. "a desk-bound person who lives and works in an air-conditioned place"
+                    </div>
+                    
+                    <div class="key-thinking">
+                        <div class="key-thinking-title">💡 關鍵思維</div>
+                        <p>注意對比結構！"outdoor job under the sun" 與 "desk-bound / air-conditioned" 形成明顯對比。"physically active"（身體活躍）與久坐的人形成反差，說明活動量大的人需要更多水分。</p>
+                    </div>
+                </div>
+                
+                <!-- 第23題 -->
+                <div class="question-card">
+                    <div class="answer-options">
+                        <span class="answer-option">(A) absorption</span>
+                        <span class="answer-option">(B) active</span>
+                        <span class="answer-option">(C) alert</span>
+                        <span class="answer-option">(D) combat</span>
+                        <span class="answer-option">(E) option</span>
+                        <span class="answer-option">(F) effective</span>
+                        <span class="answer-option correct">✓(G) even</span>
+                        <span class="answer-option">(H) status</span>
+                        <span class="answer-option">(I) pass through</span>
+                        <span class="answer-option">(J) reach for</span>
+                    </div>
+                    
+                    <p><span class="question-number">23</span><strong>題目定位</strong></p>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句子：</strong>To <u><strong>____</strong></u> things out, the body will get rid of water by producing urine.
+                    </div>
+                    
+                    <div class="answer-tag">正確答案：(G) even</div>
+                    
+                    <div class="step-box">
+                        <div class="step-title">📝 解題步驟</div>
+                        <div class="step-item"><strong>Step 1 判斷詞性：</strong>空格在 "To" 後，需要填入<strong>動詞原形</strong></div>
+                        <div class="step-item"><strong>Step 2 固定搭配：</strong>"even things out" 是固定片語，意為「使事情平衡」</div>
+                        <div class="step-item"><strong>Step 3 上下文分析：</strong>前文提到「身體水分過多、鹽分不足」，因此身體需要「平衡」</div>
+                        <div class="step-item"><strong>Step 4 結果驗證：</strong>為了平衡，身體會排出多餘水分（producing urine）</div>
+                    </div>
+                    
+                    <div class="quote-box">
+                        <span class="quote-label">📖 原文引用：</span><br>
+                        "the body has too much water and not enough salt. To <strong>even</strong> things out, the body will get rid of water by producing urine."
+                    </div>
+                    
+                    <div class="key-thinking">
+                        <div class="key-thinking-title">💡 關鍵思維</div>
+                        <p>"even" 作動詞時意為「使平衡、使均等」。"even things out" 是固定搭配，表示「使情況達到平衡」。注意：even 不只是副詞「甚至」，也可作動詞！</p>
+                    </div>
+                </div>
+                
+                <!-- 第24題 -->
+                <div class="question-card">
+                    <div class="answer-options">
+                        <span class="answer-option">(A) absorption</span>
+                        <span class="answer-option">(B) active</span>
+                        <span class="answer-option">(C) alert</span>
+                        <span class="answer-option">(D) combat</span>
+                        <span class="answer-option">(E) option</span>
+                        <span class="answer-option correct">✓(F) effective</span>
+                        <span class="answer-option">(G) even</span>
+                        <span class="answer-option">(H) status</span>
+                        <span class="answer-option">(I) pass through</span>
+                        <span class="answer-option">(J) reach for</span>
+                    </div>
+                    
+                    <p><span class="question-number">24</span><strong>題目定位</strong></p>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句子：</strong>For this reason, milk can actually be more <u><strong>____</strong></u> than drinking water.
+                    </div>
+                    
+                    <div class="answer-tag">正確答案：(F) effective</div>
+                    
+                    <div class="step-box">
+                        <div class="step-title">📝 解題步驟</div>
+                        <div class="step-item"><strong>Step 1 判斷詞性：</strong>空格在 "more" 後、"than" 前，需要填入<strong>形容詞</strong>（比較級結構）</div>
+                        <div class="step-item"><strong>Step 2 篩選選項：</strong>剩餘形容詞選項為 (F) effective</div>
+                        <div class="step-item"><strong>Step 3 語意判斷：</strong>前文說明身體需要補充水和鹽，牛奶含有這些成分</div>
+                        <div class="step-item"><strong>Step 4 邏輯驗證：</strong>因此牛奶比純水「更有效」</div>
+                    </div>
+                    
+                    <div class="quote-box">
+                        <span class="quote-label">📖 原文引用：</span><br>
+                        "For this reason, milk can actually be more <strong>effective</strong> than drinking water."
+                    </div>
+                    
+                    <div class="key-thinking">
+                        <div class="key-thinking-title">💡 關鍵思維</div>
+                        <p>注意轉折詞 "For this reason"（因此）！這表示答案需要承接前文邏輯。前文說明只喝水會導致水鹽失衡，而牛奶含鹽和乳糖，所以補水「更有效」。"more effective than" 是常見比較結構。</p>
+                    </div>
+                </div>
+                
+                <!-- 第25題 -->
+                <div class="question-card">
+                    <div class="answer-options">
+                        <span class="answer-option correct">✓(A) absorption</span>
+                        <span class="answer-option">(B) active</span>
+                        <span class="answer-option">(C) alert</span>
+                        <span class="answer-option">(D) combat</span>
+                        <span class="answer-option">(E) option</span>
+                        <span class="answer-option">(F) effective</span>
+                        <span class="answer-option">(G) even</span>
+                        <span class="answer-option">(H) status</span>
+                        <span class="answer-option">(I) pass through</span>
+                        <span class="answer-option">(J) reach for</span>
+                    </div>
+                    
+                    <p><span class="question-number">25</span><strong>題目定位</strong></p>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句子：</strong>Milk naturally contains salt and lactose, a sugar which the human body needs in small amounts to help stimulate water <u><strong>____</strong></u>.
+                    </div>
+                    
+                    <div class="answer-tag">正確答案：(A) absorption</div>
+                    
+                    <div class="step-box">
+                        <div class="step-title">📝 解題步驟</div>
+                        <div class="step-item"><strong>Step 1 判斷詞性：</strong>空格前有名詞 "water" 作修飾語，需要填入<strong>名詞</strong></div>
+                        <div class="step-item"><strong>Step 2 篩選選項：</strong>名詞選項有 (A) absorption、(E) option、(H) status</div>
+                        <div class="step-item"><strong>Step 3 搭配分析：</strong>"water absorption" 意為「水分吸收」</div>
+                        <div class="step-item"><strong>Step 4 語意驗證：</strong>乳糖能「刺激水分吸收」，符合文意</div>
+                    </div>
+                    
+                    <div class="quote-box">
+                        <span class="quote-label">📖 原文引用：</span><br>
+                        "lactose, a sugar which the human body needs in small amounts to help stimulate water <strong>absorption</strong>"
+                    </div>
+                    
+                    <div class="key-thinking">
+                        <div class="key-thinking-title">💡 關鍵思維</div>
+                        <p>"stimulate"（刺激）後面接的對象應該是可被促進的過程。"water absorption"（水分吸收）是專業術語，指身體吸收水分的過程。這是典型的「名詞+名詞」複合結構。</p>
+                    </div>
+                </div>
+                
+                <!-- 第26題 -->
+                <div class="question-card">
+                    <div class="answer-options">
+                        <span class="answer-option">(A) absorption</span>
+                        <span class="answer-option">(B) active</span>
+                        <span class="answer-option">(C) alert</span>
+                        <span class="answer-option">(D) combat</span>
+                        <span class="answer-option">(E) option</span>
+                        <span class="answer-option">(F) effective</span>
+                        <span class="answer-option">(G) even</span>
+                        <span class="answer-option correct">✓(H) status</span>
+                        <span class="answer-option">(I) pass through</span>
+                        <span class="answer-option">(J) reach for</span>
+                    </div>
+                    
+                    <p><span class="question-number">26</span><strong>題目定位</strong></p>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句子：</strong>Coconut water, which contains salt and carbohydrates, is also more functional than water at restoring and maintaining a normal fluid <u><strong>____</strong></u> after exercise.
+                    </div>
+                    
+                    <div class="answer-tag">正確答案：(H) status</div>
+                    
+                    <div class="step-box">
+                        <div class="step-title">📝 解題步驟</div>
+                        <div class="step-item"><strong>Step 1 判斷詞性：</strong>空格前有形容詞 "normal fluid"，需要填入<strong>名詞</strong></div>
+                        <div class="step-item"><strong>Step 2 篩選選項：</strong>剩餘名詞選項為 (E) option、(H) status</div>
+                        <div class="step-item"><strong>Step 3 搭配分析：</strong>"fluid status" 意為「體液狀態」，是醫學/健康用語</div>
+                        <div class="step-item"><strong>Step 4 語意驗證：</strong>運動後需要「恢復和維持正常的體液狀態」</div>
+                    </div>
+                    
+                    <div class="quote-box">
+                        <span class="quote-label">📖 原文引用：</span><br>
+                        "restoring and maintaining a normal fluid <strong>status</strong> after exercise"
+                    </div>
+                    
+                    <div class="key-thinking">
+                        <div class="key-thinking-title">💡 關鍵思維</div>
+                        <p>"fluid status"（體液狀態）是健康/醫學領域的專業搭配。注意動詞 "restoring and maintaining"（恢復和維持），後面接的對象應是一種「狀態」，而非「選項」。</p>
+                    </div>
+                </div>
+                
+                <!-- 第27題 -->
+                <div class="question-card">
+                    <div class="answer-options">
+                        <span class="answer-option">(A) absorption</span>
+                        <span class="answer-option">(B) active</span>
+                        <span class="answer-option">(C) alert</span>
+                        <span class="answer-option">(D) combat</span>
+                        <span class="answer-option correct">✓(E) option</span>
+                        <span class="answer-option">(F) effective</span>
+                        <span class="answer-option">(G) even</span>
+                        <span class="answer-option">(H) status</span>
+                        <span class="answer-option">(I) pass through</span>
+                        <span class="answer-option">(J) reach for</span>
+                    </div>
+                    
+                    <p><span class="question-number">27</span><strong>題目定位</strong></p>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句子：</strong>For the average person, however, water remains a very good <u><strong>____</strong></u> for keeping hydrated...
+                    </div>
+                    
+                    <div class="answer-tag">正確答案：(E) option</div>
+                    
+                    <div class="step-box">
+                        <div class="step-title">📝 解題步驟</div>
+                        <div class="step-item"><strong>Step 1 判斷詞性：</strong>空格前有形容詞 "good"，需要填入<strong>名詞</strong></div>
+                        <div class="step-item"><strong>Step 2 篩選選項：</strong>剩餘名詞選項為 (E) option</div>
+                        <div class="step-item"><strong>Step 3 語意判斷：</strong>句意為「對一般人而言，水仍是保持水分的好____」</div>
+                        <div class="step-item"><strong>Step 4 轉折分析：</strong>"however" 表示轉折，對比前文（牛奶、椰子水更有效），但水仍是好「選擇」</div>
+                    </div>
+                    
+                    <div class="quote-box">
+                        <span class="quote-label">📖 原文引用：</span><br>
+                        "For the average person, <strong>however</strong>, water remains a very good <strong>option</strong> for keeping hydrated"
+                    </div>
+                    
+                    <div class="key-thinking">
+                        <div class="key-thinking-title">💡 關鍵思維</div>
+                        <p>注意轉折詞 "however"！前文討論牛奶和椰子水的優點，此處轉折說「但對一般人來說」，水仍是好的「選擇」(option)。這是典型的「讓步轉折」結構。</p>
+                    </div>
+                </div>
+                
+                <!-- 第28題 -->
+                <div class="question-card">
+                    <div class="answer-options">
+                        <span class="answer-option">(A) absorption</span>
+                        <span class="answer-option">(B) active</span>
+                        <span class="answer-option correct">✓(C) alert</span>
+                        <span class="answer-option">(D) combat</span>
+                        <span class="answer-option">(E) option</span>
+                        <span class="answer-option">(F) effective</span>
+                        <span class="answer-option">(G) even</span>
+                        <span class="answer-option">(H) status</span>
+                        <span class="answer-option">(I) pass through</span>
+                        <span class="answer-option">(J) reach for</span>
+                    </div>
+                    
+                    <p><span class="question-number">28</span><strong>題目定位</strong></p>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句子：</strong>...since there must already have been significant changes in your body for it to eventually <u><strong>____</strong></u> your consciousness.
+                    </div>
+                    
+                    <div class="answer-tag">正確答案：(C) alert</div>
+                    
+                    <div class="step-box">
+                        <div class="step-title">📝 解題步驟</div>
+                        <div class="step-item"><strong>Step 1 判斷詞性：</strong>空格前有 "to"，需要填入<strong>動詞原形</strong></div>
+                        <div class="step-item"><strong>Step 2 篩選選項：</strong>剩餘動詞選項有 (C) alert、(D) combat</div>
+                        <div class="step-item"><strong>Step 3 語意判斷：</strong>句意為「身體變化需要____你的意識」</div>
+                        <div class="step-item"><strong>Step 4 搭配分析：</strong>"alert one's consciousness" 意為「喚醒某人的意識」，符合「感到口渴」的語境</div>
+                    </div>
+                    
+                    <div class="quote-box">
+                        <span class="quote-label">📖 原文引用：</span><br>
+                        "there must already have been significant changes in your body for it to eventually <strong>alert</strong> your consciousness"
+                    </div>
+                    
+                    <div class="key-thinking">
+                        <div class="key-thinking-title">💡 關鍵思維</div>
+                        <p>"alert" 作動詞時意為「警示、提醒」。"alert your consciousness" 表示「提醒你的意識」，即讓你感知到口渴。注意：alert 不只是形容詞「警覺的」，也可作動詞！</p>
+                    </div>
+                </div>
+                
+                <!-- 第29題 -->
+                <div class="question-card">
+                    <div class="answer-options">
+                        <span class="answer-option">(A) absorption</span>
+                        <span class="answer-option">(B) active</span>
+                        <span class="answer-option">(C) alert</span>
+                        <span class="answer-option">(D) combat</span>
+                        <span class="answer-option">(E) option</span>
+                        <span class="answer-option">(F) effective</span>
+                        <span class="answer-option">(G) even</span>
+                        <span class="answer-option">(H) status</span>
+                        <span class="answer-option correct">✓(I) pass through</span>
+                        <span class="answer-option">(J) reach for</span>
+                    </div>
+                    
+                    <p><span class="question-number">29</span><strong>題目定位</strong></p>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句子：</strong>Also, drinking a lot of liquid in one go can cause more water to <u><strong>____</strong></u> the body quickly and come out as urine.
+                    </div>
+                    
+                    <div class="answer-tag">正確答案：(I) pass through</div>
+                    
+                    <div class="step-box">
+                        <div class="step-title">📝 解題步驟</div>
+                        <div class="step-item"><strong>Step 1 判斷詞性：</strong>空格前有 "to"，需要填入<strong>動詞原形</strong></div>
+                        <div class="step-item"><strong>Step 2 篩選選項：</strong>剩餘動詞選項有 (D) combat、(I) pass through</div>
+                        <div class="step-item"><strong>Step 3 語意判斷：</strong>句意為「水會快速____身體，然後以尿液排出」</div>
+                        <div class="step-item"><strong>Step 4 邏輯驗證：</strong>"pass through"（通過）符合水分快速穿過身體的意思</div>
+                    </div>
+                    
+                    <div class="quote-box">
+                        <span class="quote-label">📖 原文引用：</span><br>
+                        "drinking a lot of liquid in one go can cause more water to <strong>pass through</strong> the body quickly and come out as urine"
+                    </div>
+                    
+                    <div class="key-thinking">
+                        <div class="key-thinking-title">💡 關鍵思維</div>
+                        <p>注意後半句 "come out as urine"（以尿液排出）！這說明水分快速「通過」身體，而不是被吸收。"pass through" 強調水分只是經過，沒有被身體有效利用。</p>
+                    </div>
+                </div>
+                
+                <!-- 第30題 -->
+                <div class="question-card">
+                    <div class="answer-options">
+                        <span class="answer-option">(A) absorption</span>
+                        <span class="answer-option">(B) active</span>
+                        <span class="answer-option">(C) alert</span>
+                        <span class="answer-option correct">✓(D) combat</span>
+                        <span class="answer-option">(E) option</span>
+                        <span class="answer-option">(F) effective</span>
+                        <span class="answer-option">(G) even</span>
+                        <span class="answer-option">(H) status</span>
+                        <span class="answer-option">(I) pass through</span>
+                        <span class="answer-option">(J) reach for</span>
+                    </div>
+                    
+                    <p><span class="question-number">30</span><strong>題目定位</strong></p>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句子：</strong>To <u><strong>____</strong></u> this, you need to drink water throughout the day to maintain your hydration levels.
+                    </div>
+                    
+                    <div class="answer-tag">正確答案：(D) combat</div>
+                    
+                    <div class="step-box">
+                        <div class="step-title">📝 解題步驟</div>
+                        <div class="step-item"><strong>Step 1 判斷詞性：</strong>空格前有 "To"，需要填入<strong>動詞原形</strong></div>
+                        <div class="step-item"><strong>Step 2 篩選選項：</strong>剩餘動詞選項為 (D) combat</div>
+                        <div class="step-item"><strong>Step 3 語意判斷：</strong>"this" 指前文提到的「水分快速流失」問題</div>
+                        <div class="step-item"><strong>Step 4 搭配分析：</strong>"combat this" 意為「對抗/解決這個問題」</div>
+                    </div>
+                    
+                    <div class="quote-box">
+                        <span class="quote-label">📖 原文引用：</span><br>
+                        "To <strong>combat</strong> this, you need to drink water throughout the day to maintain your hydration levels."
+                    </div>
+                    
+                    <div class="key-thinking">
+                        <div class="key-thinking-title">💡 關鍵思維</div>
+                        <p>"combat" 意為「對抗、打擊」，常用於對抗問題或困難。"To combat this" 是常見句型，用於引出解決方案。"this" 指代前文的問題（一次喝太多水會快速排出），解決方法是「全天分次補水」。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 單字依解題邏輯分類 -->
+            <div class="section">
+                <h2 class="section-title">📚 單字依解題邏輯分類</h2>
+                
+                <h3 style="color: #1565c0; margin: 20px 0 15px 0;">🔹 動詞類 Verbs</h3>
+                <table class="vocab-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">單字</th>
+                            <th style="width: 40%;">原文英文句子</th>
+                            <th style="width: 40%;">中文翻譯</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="vocab-word">reach for</span><br>(v.) 伸手拿取</td>
+                            <td><span class="eng-sentence">is water always the healthiest drink we can <span class="eng-highlight">reach for</span>?</span></td>
+                            <td><span class="chi-sentence">水是否永遠是我們能<span class="chi-highlight">伸手拿取</span>的最健康飲料？</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="vocab-word">even</span><br>(v.) 使平衡</td>
+                            <td><span class="eng-sentence">To <span class="eng-highlight">even</span> things out, the body will get rid of water.</span></td>
+                            <td><span class="chi-sentence">為了<span class="chi-highlight">使情況平衡</span>，身體會排出水分。</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="vocab-word">alert</span><br>(v.) 警示、提醒</td>
+                            <td><span class="eng-sentence">for it to eventually <span class="eng-highlight">alert</span> your consciousness</span></td>
+                            <td><span class="chi-sentence">（變化）最終才能<span class="chi-highlight">喚醒</span>你的意識</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="vocab-word">pass through</span><br>(v.) 通過、穿過</td>
+                            <td><span class="eng-sentence">cause more water to <span class="eng-highlight">pass through</span> the body quickly</span></td>
+                            <td><span class="chi-sentence">使更多水分快速<span class="chi-highlight">通過</span>身體</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="vocab-word">combat</span><br>(v.) 對抗、打擊</td>
+                            <td><span class="eng-sentence">To <span class="eng-highlight">combat</span> this, you need to drink water throughout the day.</span></td>
+                            <td><span class="chi-sentence">為了<span class="chi-highlight">對抗</span>這個問題，你需要全天喝水。</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3 style="color: #1565c0; margin: 20px 0 15px 0;">🔹 形容詞類 Adjectives</h3>
+                <table class="vocab-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">單字</th>
+                            <th style="width: 40%;">原文英文句子</th>
+                            <th style="width: 40%;">中文翻譯</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="vocab-word">active</span><br>(adj.) 活躍的</td>
+                            <td><span class="eng-sentence">a physically <span class="eng-highlight">active</span> person with an outdoor job</span></td>
+                            <td><span class="chi-sentence">一個身體<span class="chi-highlight">活躍的</span>、從事戶外工作的人</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="vocab-word">effective</span><br>(adj.) 有效的</td>
+                            <td><span class="eng-sentence">milk can actually be more <span class="eng-highlight">effective</span> than drinking water</span></td>
+                            <td><span class="chi-sentence">牛奶實際上可能比喝水<span class="chi-highlight">更有效</span></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3 style="color: #1565c0; margin: 20px 0 15px 0;">🔹 名詞類 Nouns</h3>
+                <table class="vocab-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">單字</th>
+                            <th style="width: 40%;">原文英文句子</th>
+                            <th style="width: 40%;">中文翻譯</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="vocab-word">absorption</span><br>(n.) 吸收</td>
+                            <td><span class="eng-sentence">to help stimulate water <span class="eng-highlight">absorption</span></span></td>
+                            <td><span class="chi-sentence">幫助刺激水分<span class="chi-highlight">吸收</span></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="vocab-word">status</span><br>(n.) 狀態</td>
+                            <td><span class="eng-sentence">maintaining a normal fluid <span class="eng-highlight">status</span> after exercise</span></td>
+                            <td><span class="chi-sentence">維持運動後正常的體液<span class="chi-highlight">狀態</span></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="vocab-word">option</span><br>(n.) 選擇</td>
+                            <td><span class="eng-sentence">water remains a very good <span class="eng-highlight">option</span> for keeping hydrated</span></td>
+                            <td><span class="chi-sentence">水仍是保持水分的好<span class="chi-highlight">選擇</span></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- 考前衝刺重點整理 -->
+            <div class="section">
+                <h2 class="section-title">🚀 考前衝刺重點整理</h2>
+                
+                <div class="sprint-section">
+                    <!-- 解題三步驟 -->
+                    <div class="sprint-item">
+                        <h4>🎯 解題三步驟</h4>
+                        <ul>
+                            <li><strong style="color: #0d47a1;">Step 1 判斷詞性：</strong>看空格前後的詞彙，判斷需要什麼詞性（名詞/動詞/形容詞/副詞）</li>
+                            <li><strong style="color: #0d47a1;">Step 2 篩選選項：</strong>根據詞性先刪除不符合的選項，縮小範圍</li>
+                            <li><strong style="color: #0d47a1;">Step 3 語意驗證：</strong>根據上下文語意、轉折詞、搭配用法，選出最合適的答案</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 高頻轉折詞彙表 -->
+                    <div class="sprint-item">
+                        <h4>🔑 高頻轉折詞彙表</h4>
+                        <table class="transition-table">
+                            <thead>
+                                <tr>
+                                    <th>轉折詞</th>
+                                    <th>功能</th>
+                                    <th>原文例句 + 中文</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span style="color: #7b1fa2; font-weight: bold;">Yet</span></td>
+                                    <td><span style="color: #1565c0;">轉折/</span><span style="color: #7b1fa2; font-weight: bold;">然而</span></td>
+                                    <td><span style="color: #7b1fa2; font-weight: bold;">Yet</span><span style="color: #1565c0;">, is water always the healthiest drink?</span><br><span style="color: #7b1fa2; font-weight: bold;">然而</span><span style="color: #616161;">，水是否永遠是最健康的飲料？</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span style="color: #7b1fa2; font-weight: bold;">However</span></td>
+                                    <td><span style="color: #1565c0;">轉折/</span><span style="color: #7b1fa2; font-weight: bold;">然而</span></td>
+                                    <td><span style="color: #1565c0;">For the average person, </span><span style="color: #7b1fa2; font-weight: bold;">however</span><span style="color: #1565c0;">, water remains a very good option.</span><br><span style="color: #7b1fa2; font-weight: bold;">然而</span><span style="color: #616161;">，對一般人而言，水仍是很好的選擇。</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span style="color: #7b1fa2; font-weight: bold;">But</span></td>
+                                    <td><span style="color: #1565c0;">轉折/</span><span style="color: #7b1fa2; font-weight: bold;">但是</span></td>
+                                    <td><span style="color: #7b1fa2; font-weight: bold;">But</span><span style="color: #1565c0;"> there's more to it than that.</span><br><span style="color: #7b1fa2; font-weight: bold;">但是</span><span style="color: #616161;">事情不只如此。</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span style="color: #7b1fa2; font-weight: bold;">For this reason</span></td>
+                                    <td><span style="color: #1565c0;">因果/</span><span style="color: #7b1fa2; font-weight: bold;">因此</span></td>
+                                    <td><span style="color: #7b1fa2; font-weight: bold;">For this reason</span><span style="color: #1565c0;">, milk can actually be more effective.</span><br><span style="color: #7b1fa2; font-weight: bold;">因此</span><span style="color: #616161;">，牛奶實際上可能更有效。</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span style="color: #7b1fa2; font-weight: bold;">Also</span></td>
+                                    <td><span style="color: #1565c0;">添加/</span><span style="color: #7b1fa2; font-weight: bold;">此外</span></td>
+                                    <td><span style="color: #7b1fa2; font-weight: bold;">Also</span><span style="color: #1565c0;">, drinking a lot of liquid in one go can cause problems.</span><br><span style="color: #7b1fa2; font-weight: bold;">此外</span><span style="color: #616161;">，一次喝太多液體會造成問題。</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span style="color: #7b1fa2; font-weight: bold;">Obviously</span></td>
+                                    <td><span style="color: #1565c0;">顯然/</span><span style="color: #7b1fa2; font-weight: bold;">明顯地</span></td>
+                                    <td><span style="color: #7b1fa2; font-weight: bold;">Obviously</span><span style="color: #1565c0;">, a physically active person will need to drink more.</span><br><span style="color: #7b1fa2; font-weight: bold;">顯然</span><span style="color: #616161;">，身體活躍的人需要喝更多水。</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- 主題詞辨識技巧 -->
+                    <div class="sprint-item">
+                        <h4>🎨 主題詞辨識技巧</h4>
+                        <ul>
+                            <li><strong style="color: #0d47a1;">核心主題詞：</strong>fluid（體液）、water（水）、hydration（水合作用）、urine（尿液）</li>
+                            <li><strong style="color: #0d47a1;">替代飲品詞：</strong>milk（牛奶）、coconut water（椰子水）</li>
+                            <li><strong style="color: #0d47a1;">身體機能詞：</strong>sweat（流汗）、salt（鹽分）、absorption（吸收）</li>
+                            <li><strong style="color: #0d47a1;">辨識方法：</strong>重複出現的詞彙通常是主題詞，幫助理解文章核心</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 快速判斷詞性技巧 -->
+                    <div class="sprint-item">
+                        <h4>⚡ 快速判斷詞性技巧</h4>
+                        <ul>
+                            <li><strong style="color: #0d47a1;">名詞位置：</strong>冠詞(a/an/the)後、形容詞後、介系詞後 → 需要名詞</li>
+                            <li><strong style="color: #0d47a1;">動詞位置：</strong>to 後、助動詞(can/will/must)後、主詞後 → 需要動詞原形</li>
+                            <li><strong style="color: #0d47a1;">形容詞位置：</strong>be 動詞後、名詞前、more/most 後 → 需要形容詞</li>
+                            <li><strong style="color: #0d47a1;">副詞位置：</strong>修飾動詞、形容詞或句首 → 需要副詞</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 常見陷阱與破解 -->
+                    <div class="sprint-item">
+                        <h4>🚨 常見陷阱與破解</h4>
+                        <ul>
+                            <li><strong style="color: #d32f2f;">陷阱1：一詞多義</strong> → even 可作副詞「甚至」，也可作動詞「使平衡」</li>
+                            <li><strong style="color: #d32f2f;">陷阱2：一詞多性</strong> → alert 可作形容詞「警覺的」，也可作動詞「警示」</li>
+                            <li><strong style="color: #d32f2f;">陷阱3：片語動詞</strong> → reach for、pass through 整體當一個動詞使用</li>
+                            <li><strong style="color: #d32f2f;">陷阱4：名詞搭配</strong> → water absorption（水分吸收）、fluid status（體液狀態）是固定搭配</li>
+                            <li><strong style="color: #0d47a1;">破解方法：</strong>先看空格前後結構，再判斷該選項在此處的詞性用法</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 考前終極口訣 -->
+                    <div class="mantra-box">
+                        <div class="mantra-title">🏆 考前終極口訣</div>
+                        <div class="mantra-text">
+                            📌 先看詞性，再看語意<br>
+                            📌 轉折必看，上下文連<br>
+                            📌 搭配優先，固定用法<br>
+                            📌 一詞多義，結構判斷
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 答案總覽 -->
+            <div class="section">
+                <h2 class="section-title">✅ 答案總覽</h2>
+                <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 25px; border-radius: 15px; text-align: center;">
+                    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; max-width: 600px; margin: 0 auto;">
+                        <div style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            <strong style="color: #1565c0;">21</strong><br>
+                            <span style="color: #2e7d32; font-weight: bold;">(J)</span>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            <strong style="color: #1565c0;">22</strong><br>
+                            <span style="color: #2e7d32; font-weight: bold;">(B)</span>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            <strong style="color: #1565c0;">23</strong><br>
+                            <span style="color: #2e7d32; font-weight: bold;">(G)</span>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            <strong style="color: #1565c0;">24</strong><br>
+                            <span style="color: #2e7d32; font-weight: bold;">(F)</span>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            <strong style="color: #1565c0;">25</strong><br>
+                            <span style="color: #2e7d32; font-weight: bold;">(A)</span>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            <strong style="color: #1565c0;">26</strong><br>
+                            <span style="color: #2e7d32; font-weight: bold;">(H)</span>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            <strong style="color: #1565c0;">27</strong><br>
+                            <span style="color: #2e7d32; font-weight: bold;">(E)</span>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            <strong style="color: #1565c0;">28</strong><br>
+                            <span style="color: #2e7d32; font-weight: bold;">(C)</span>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            <strong style="color: #1565c0;">29</strong><br>
+                            <span style="color: #2e7d32; font-weight: bold;">(I)</span>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            <strong style="color: #1565c0;">30</strong><br>
+                            <span style="color: #2e7d32; font-weight: bold;">(D)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>📚 學測英文文意選填 | 主題：水分補充與身體健康</p>
+            <p>製作者：高中英文教師教學資源</p>
+        </div>
+    </div>
+</body>
+</html>
