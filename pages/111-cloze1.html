@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>學測英文克漏字解題訓練</title>
+    <title>學測文意選填 - 特技演員 專業教學分析版</title>
     <style>
         * {
             margin: 0;
@@ -12,38 +12,45 @@
         }
         
         body {
-            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
-            line-height: 1.8;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif;
+            line-height: 1.9;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
             padding: 20px;
-            color: #333;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: white;
+            background: #fff;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 25px 80px rgba(0,0,0,0.4);
             overflow: hidden;
         }
         
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #d32f2f 0%, #ff5722 100%);
             color: white;
-            padding: 40px;
+            padding: 35px 40px;
             text-align: center;
         }
         
         .header h1 {
-            font-size: 2.5em;
+            font-size: 2.4em;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
-        .header p {
+        .header .subtitle {
             font-size: 1.2em;
-            opacity: 0.95;
+            opacity: 0.9;
+        }
+        
+        .header .theme-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            margin-top: 10px;
         }
         
         .content {
@@ -52,909 +59,1756 @@
         
         .section {
             margin-bottom: 50px;
-            padding: 30px;
-            background: #f8f9fa;
-            border-radius: 15px;
-            border-left: 5px solid #667eea;
         }
         
         .section-title {
-            font-size: 1.8em;
-            color: #667eea;
+            font-size: 1.6em;
+            color: #d32f2f;
+            border-left: 6px solid #ff5722;
+            padding-left: 18px;
             margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #667eea;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
         
-        /* 文章標示版樣式 */
-        .article-text {
-            background: white;
+        /* 文章結構分析 */
+        .structure-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid #ff5722;
+        }
+        
+        .structure-function {
+            background: #ffccbc;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #bf360c;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        /* 文章標示版 */
+        .article-box {
+            background: #fafafa;
+            border-radius: 15px;
             padding: 30px;
-            border-radius: 10px;
-            font-size: 1.1em;
-            line-height: 2;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 2px solid #e0e0e0;
+            font-size: 1.08em;
+            line-height: 2.2;
         }
         
         .core-sentence {
-            color: #d32f2f;
+            color: #c62828;
             font-weight: bold;
+            background: linear-gradient(transparent 60%, #ffcdd2 60%);
         }
         
         .transition-word {
-            color: #7b1fa2;
+            color: #6a1b9a;
             font-weight: bold;
+            background: linear-gradient(transparent 60%, #e1bee7 60%);
         }
         
-        .topic-word {
-            color: #388e3c;
+        .theme-word {
+            color: #2e7d32;
             font-weight: bold;
         }
         
         .blank {
-            color: #1976d2;
+            display: inline-block;
+            min-width: 70px;
+            border-bottom: 3px solid #d32f2f;
+            text-align: center;
             font-weight: bold;
-            text-decoration: underline;
+            color: #d32f2f;
+            margin: 0 5px;
+            padding: 0 8px;
         }
         
-        /* 解題思維樣式 */
-        .question-block {
-            background: white;
+        /* 選項區塊 */
+        .options-box {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border-radius: 15px;
             padding: 25px;
-            margin-bottom: 25px;
+            margin: 25px 0;
+            border: 2px solid #ef9a9a;
+        }
+        
+        .options-title {
+            font-weight: bold;
+            color: #c62828;
+            margin-bottom: 15px;
+            font-size: 1.15em;
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+        
+        .option-item {
+            background: white;
+            padding: 12px;
             border-radius: 10px;
-            border-left: 5px solid #ff6b6b;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        
+        .option-item .letter { color: #c62828; font-weight: bold; font-size: 1.1em; }
+        .option-item .word { color: #1565c0; font-weight: 500; }
+        .option-item .pos { color: #757575; font-size: 0.85em; }
+        
+        /* 解題卡片 */
+        .question-card {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+        }
+        
+        .question-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
         }
         
         .question-number {
-            display: inline-block;
-            background: #ff6b6b;
+            background: linear-gradient(135deg, #d32f2f 0%, #ff5722 100%);
             color: white;
-            padding: 8px 15px;
-            border-radius: 50px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
+            font-size: 1.3em;
+        }
+        
+        .difficulty-tag {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        
+        .difficulty-easy { background: #c8e6c9; color: #2e7d32; }
+        .difficulty-medium { background: #fff3e0; color: #ef6c00; }
+        .difficulty-hard { background: #ffcdd2; color: #c62828; }
+        
+        .options-reminder {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border: 1px solid #90caf9;
+            border-radius: 10px;
+            padding: 12px 18px;
             margin-bottom: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
         }
         
-        .options {
-            background: #fff3cd;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-left: 4px solid #ffc107;
+        .options-reminder-title {
+            color: #1565c0;
+            font-weight: bold;
+            margin-right: 5px;
         }
         
-        .answer {
-            background: #d4edda;
-            padding: 12px;
-            border-radius: 8px;
-            margin: 10px 0;
-            border-left: 4px solid #28a745;
+        .options-reminder .opt {
+            background: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #1565c0;
+            border: 1px solid #90caf9;
+        }
+        
+        .question-sentence {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+            padding: 20px 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #ffc107;
+            font-size: 1.1em;
+        }
+        
+        .answer-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .answer-tag {
+            background: linear-gradient(135deg, #43a047 0%, #66bb6a 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
             font-weight: bold;
         }
         
-        .step {
-            background: #e3f2fd;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 8px;
-            border-left: 4px solid #2196f3;
+        .kill-point {
+            background: linear-gradient(135deg, #c62828 0%, #e53935 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.95em;
         }
         
-        .step-title {
-            color: #1976d2;
+        /* 秒殺判斷 */
+        .instant-kill {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border: 2px solid #ff9800;
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin: 15px 0;
+        }
+        
+        .instant-kill-title {
+            color: #e65100;
             font-weight: bold;
             margin-bottom: 8px;
         }
         
-        .quote {
+        /* 解題邏輯鏈 */
+        .logic-chain {
             background: #f5f5f5;
-            padding: 12px;
-            border-left: 4px solid #9e9e9e;
-            margin: 10px 0;
-            font-style: italic;
-            color: #555;
-        }
-        
-        /* 單字分類樣式 */
-        .vocab-category {
-            background: white;
+            border-radius: 12px;
             padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .vocab-category h3 {
-            color: #667eea;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-        
-        .vocab-item {
-            padding: 10px;
-            margin: 8px 0;
-            background: #f8f9fa;
-            border-radius: 5px;
-            border-left: 3px solid #667eea;
-        }
-        
-        .vocab-word {
-            font-weight: bold;
-            color: #d32f2f;
-            margin-right: 10px;
-        }
-        
-        /* 考前衝刺樣式 */
-        .exam-prep {
-            background: #fffbea;
-            padding: 30px;
-            border-radius: 15px;
-            border: 3px solid #ffd54f;
-        }
-        
-        .exam-prep h3 {
-            color: #0d47a1;
-            font-weight: bold;
-            margin: 25px 0 15px 0;
-            font-size: 1.4em;
-        }
-        
-        .exam-prep ul {
-            list-style-position: inside;
-            margin-left: 20px;
-        }
-        
-        .exam-prep li {
-            margin: 10px 0;
-            color: #1565c0;
-            font-weight: bold;
-        }
-        
-        .highlight-box {
-            background: #fff9c4;
-            padding: 20px;
-            border-radius: 10px;
             margin: 15px 0;
-            border: 2px solid #ffd54f;
         }
         
-        .formula {
-            background: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 1.2em;
+        .logic-chain-title {
+            color: #d32f2f;
             font-weight: bold;
-            color: #0d47a1;
-            margin: 10px 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 12px;
         }
         
-        table {
+        .logic-step {
+            display: flex;
+            align-items: flex-start;
+            margin: 12px 0;
+            padding-left: 10px;
+        }
+        
+        .logic-step-num {
+            background: #ff5722;
+            color: white;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        /* 原文錨點 */
+        .anchor-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px 20px;
+            margin: 12px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .anchor-label {
+            color: #2e7d32;
+            font-weight: bold;
+            font-size: 0.95em;
+            margin-bottom: 5px;
+        }
+        
+        .anchor-text {
+            color: #1b5e20;
+            font-style: italic;
+        }
+        
+        .anchor-highlight {
+            background: #a5d6a7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-style: normal;
+        }
+        
+        /* 誘答分析 */
+        .trap-analysis {
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin: 15px 0;
+            border: 2px solid #ec407a;
+        }
+        
+        .trap-title {
+            color: #c2185b;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .trap-item {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .trap-item::before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: #c62828;
+            font-weight: bold;
+        }
+        
+        .trap-option { color: #c62828; font-weight: bold; }
+        .trap-reason { color: #616161; }
+        
+        /* 單字表格 */
+        .vocab-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 15px 0;
-            background: white;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            overflow: hidden;
         }
         
-        th {
-            background: #667eea;
+        .vocab-table th {
+            background: linear-gradient(135deg, #d32f2f 0%, #e53935 100%);
             color: white;
-            padding: 12px;
+            padding: 15px;
             text-align: left;
         }
         
-        td {
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
+        .vocab-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
         }
         
-        tr:hover {
+        .vocab-table tr:nth-child(even) { background: #f8f9fa; }
+        .vocab-table tr:hover { background: #ffebee; }
+        
+        .vocab-word { color: #c62828; font-weight: bold; font-size: 1.1em; }
+        
+        .trap-type {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        
+        .trap-type-multi { background: #ffcdd2; color: #c62828; }
+        .trap-type-collocation { background: #c8e6c9; color: #2e7d32; }
+        .trap-type-pos { background: #fff3e0; color: #ef6c00; }
+        .trap-type-context { background: #e1bee7; color: #6a1b9a; }
+        
+        .exam-focus {
+            background: #e3f2fd;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            color: #1565c0;
+            font-weight: 500;
+        }
+        
+        .eng-example { color: #1565c0; }
+        .eng-keyword { color: #c62828; font-weight: bold; }
+        .chi-example { color: #616161; }
+        .chi-keyword { color: #c62828; font-weight: bold; }
+        
+        /* 轉折詞分類 */
+        .transition-category {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid #e0e0e0;
+        }
+        
+        .transition-category-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .category-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            color: white;
+        }
+        
+        .category-contrast { background: linear-gradient(135deg, #e91e63 0%, #f06292 100%); }
+        .category-cause { background: linear-gradient(135deg, #ff9800 0%, #ffb74d 100%); }
+        .category-addition { background: linear-gradient(135deg, #4caf50 0%, #81c784 100%); }
+        .category-example { background: linear-gradient(135deg, #2196f3 0%, #64b5f6 100%); }
+        .category-concession { background: linear-gradient(135deg, #9c27b0 0%, #ba68c8 100%); }
+        .category-condition { background: linear-gradient(135deg, #00bcd4 0%, #4dd0e1 100%); }
+        .category-sequence { background: linear-gradient(135deg, #795548 0%, #a1887f 100%); }
+        
+        .category-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #1b262c;
+        }
+        
+        .category-subtitle {
+            color: #757575;
+            font-size: 0.95em;
+        }
+        
+        .transition-words-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .transition-word-tag {
             background: #f5f5f5;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 500;
+            border: 1px solid #e0e0e0;
         }
         
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.8em;
-            }
-            
-            .content {
-                padding: 20px;
-            }
-            
-            .section {
-                padding: 20px;
-            }
+        .strategy-action {
+            background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+        
+        .strategy-action-title {
+            color: #283593;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .strategy-action-steps {
+            color: #3949ab;
+            font-weight: 500;
+        }
+        
+        .strategy-arrow {
+            color: #5c6bc0;
+            margin: 0 8px;
+        }
+        
+        .real-example {
+            background: #fafafa;
+            border-left: 4px solid #6a1b9a;
+            padding: 15px 20px;
+            margin-top: 15px;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .real-example-title {
+            color: #6a1b9a;
+            font-weight: bold;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+        
+        .real-example-eng { color: #1565c0; }
+        
+        .real-example-keyword {
+            color: #6a1b9a;
+            font-weight: bold;
+            background: #f3e5f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        
+        .real-example-chi { color: #616161; margin-top: 5px; }
+        .real-example-chi-keyword { color: #6a1b9a; font-weight: bold; }
+        
+        /* 考前衝刺 */
+        .sprint-section {
+            background: linear-gradient(135deg, #fffbea 0%, #fff9c4 100%);
+            border-radius: 18px;
+            padding: 35px;
+            margin: 25px 0;
+            border: 3px solid #ffd54f;
+        }
+        
+        .sprint-main-title {
+            color: #0d47a1;
+            font-weight: bold;
+            font-size: 1.5em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .sprint-item {
+            background: white;
+            border-radius: 12px;
+            padding: 22px;
+            margin: 18px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .sprint-item h4 {
+            color: #0d47a1;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.15em;
+        }
+        
+        .sprint-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sprint-item li {
+            padding: 10px 0;
+            padding-left: 28px;
+            position: relative;
+            color: #1565c0;
+            font-weight: 500;
+        }
+        
+        .sprint-item li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        .three-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .step-card {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .step-card-num {
+            background: #0d47a1;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 10px;
+        }
+        
+        .step-card-title {
+            color: #0d47a1;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        
+        .step-card-desc {
+            color: #1565c0;
+            font-size: 0.95em;
+        }
+        
+        /* 錯題警示 */
+        .danger-zone {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 2px solid #e57373;
+        }
+        
+        .danger-title {
+            color: #c62828;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        
+        .danger-item {
+            background: white;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin: 12px 0;
+            border-left: 4px solid #c62828;
+        }
+        
+        .danger-q { color: #c62828; font-weight: bold; margin-bottom: 5px; }
+        .danger-reason { color: #616161; }
+        .danger-solution { color: #2e7d32; font-weight: 500; margin-top: 5px; }
+        
+        /* 口訣 */
+        .mantra-box {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            border-radius: 18px;
+            padding: 35px;
+            text-align: center;
+            margin-top: 30px;
+            color: white;
+        }
+        
+        .mantra-title {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+        }
+        
+        .mantra-text {
+            font-size: 1.5em;
+            font-weight: bold;
+            line-height: 2.2;
+        }
+        
+        .mantra-highlight {
+            background: rgba(255,255,255,0.2);
+            padding: 3px 12px;
+            border-radius: 8px;
+        }
+        
+        /* 答案總覽 */
+        .answer-overview {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .answer-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            max-width: 700px;
+            margin: 20px auto;
+        }
+        
+        .answer-cell {
+            background: white;
+            padding: 18px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .answer-cell-num { color: #d32f2f; font-weight: bold; font-size: 1.1em; }
+        .answer-cell-ans { color: #2e7d32; font-weight: bold; font-size: 1.3em; margin-top: 5px; }
+        
+        .footer {
+            background: linear-gradient(135deg, #d32f2f 0%, #ff5722 100%);
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+        
+        .legend-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 15px 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎯 學測英文克漏字解題訓練系統</h1>
-            <p>特技演員的發展史 | Stunt People in Film Industry</p>
+            <h1>🎬 學測文意選填</h1>
+            <div class="subtitle">專業教學分析版 ｜ 111年學測</div>
+            <div class="theme-tag">🎯 主題：特技演員 Stunt Person｜電影產業發展</div>
         </div>
         
         <div class="content">
+            
+            <!-- 選項總覽 -->
+            <div class="options-box">
+                <div class="options-title">📋 選項總覽 ｜ 先分類再作答</div>
+                <div class="options-grid">
+                    <div class="option-item">
+                        <div class="letter">(A)</div>
+                        <div class="word">possible</div>
+                        <div class="pos">adj. 可能的</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="letter">(B)</div>
+                        <div class="word">sensation</div>
+                        <div class="pos">n. 感覺；轟動</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="letter">(C)</div>
+                        <div class="word">risky</div>
+                        <div class="pos">adj. 有風險的</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="letter">(D)</div>
+                        <div class="word">cost</div>
+                        <div class="pos">v. 使付出代價</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="letter">(E)</div>
+                        <div class="word">witnessed</div>
+                        <div class="pos">v. 見證</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="letter">(F)</div>
+                        <div class="word">professional</div>
+                        <div class="pos">adj. 專業的</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="letter">(G)</div>
+                        <div class="word">called for</div>
+                        <div class="pos">phr.v. 需要；要求</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="letter">(H)</div>
+                        <div class="word">tried out</div>
+                        <div class="pos">phr.v. 試驗；嘗試</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="letter">(I)</div>
+                        <div class="word">necessity</div>
+                        <div class="pos">n. 必要性；需求</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="letter">(J)</div>
+                        <div class="word">career</div>
+                        <div class="pos">n. 職業；生涯</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 文章結構分析 -->
+            <div class="section">
+                <h2 class="section-title">🏗️ 文章結構分析</h2>
+                
+                <div class="structure-box">
+                    <div class="structure-function">第一段功能：定義介紹</div>
+                    <p>特技演員的定義 → 執行危險動作 → 對一般演員而言太過<strong>有風險</strong>的動作</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第21題（risky）測試形容詞 + too...to 結構</p>
+                </div>
+                
+                <div class="structure-box">
+                    <div class="structure-function">第二段功能：歷史起源</div>
+                    <p>特技工作源於<strong>必要性</strong> → 早期沒有<strong>專業</strong>人員 → 首次<strong>嘗試</strong>危險動作 → 錯誤<strong>使付出</strong>生命代價</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第22-25題集中在此段，測試名詞搭配、形容詞、動詞片語</p>
+                </div>
+                
+                <div class="structure-box">
+                    <div class="structure-function">第三段功能：產業發展</div>
+                    <p>1910年代觀眾喜好動作片 → <strong>需要</strong>專職特技演員 → 牛仔找到新<strong>職業</strong> → 1960-70年代<strong>見證</strong>技術發展</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第26-28題，測試動詞片語、名詞搭配</p>
+                </div>
+                
+                <div class="structure-box">
+                    <div class="structure-function">第四段功能：現今與未來</div>
+                    <p>CGI 技術使創造逼真場景成為<strong>可能</strong> → <strong>然而</strong>，真實特技的<strong>刺激感</strong>仍有需求</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第29-30題，測試轉折理解、名詞判斷</p>
+                </div>
+            </div>
+            
             <!-- 文章標示版 -->
             <div class="section">
-                <h2 class="section-title">📝 文章標示版</h2>
-                <div class="article-text">
-                    <p><span class="topic-word">A stunt person</span> is a man or a woman who <span class="core-sentence">performs dangerous acts</span>, usually in the television or movie industry. In this line of work, the person is paid to do daring actions that are deemed <span class="blank">too 21 (risky)</span> regular actor to perform, including jumping from heights, crashing cars, or fighting with weapons.</p>
+                <h2 class="section-title">📖 文章標示版</h2>
+                <div class="article-box">
+                    <p>A <span class="theme-word">stunt person</span> is a man or a woman who performs <span class="theme-word">dangerous</span> acts, usually in the television or movie industry. In this line of work, the person is paid to do daring actions that are deemed too <span class="blank">21</span> for a regular actor to perform, including jumping from heights, crashing cars, or fighting with weapons.</p>
                     
-                    <p><span class="topic-word">Stunt work</span> emerged out of <span class="blank">22 (necessity)</span> over time. In the early days of the film industry, actors themselves shot acrobatic acts and dangerous scenes, <span class="transition-word">until</span> they began to get injured. <span class="transition-word">There were, however</span>, no <span class="blank">23 (professional)</span> crew members to perform impressive stunts at that time. If something dangerous needed to be done for a scene, the producers would hire anyone crazy or desperate enough to do it. These people were not trained to perform stunts, so they often <span class="blank">24 (tried out)</span> things for the first time during the actual shooting. They had to learn from their own mistakes, which <span class="blank">25 (cost)</span> some their lives, and <span class="core-sentence">almost all suffered light or severe injuries</span>.</p>
+                    <p><span class="theme-word">Stunt work</span> emerged out of <span class="blank">22</span> over time. In the early days of the film industry, actors themselves shot acrobatic acts and <span class="theme-word">dangerous</span> scenes, <span class="transition-word">until</span> they began to get injured. There were, <span class="transition-word">however</span>, no <span class="blank">23</span> crew members to perform impressive <span class="theme-word">stunts</span> at that time. <span class="transition-word">If</span> something <span class="theme-word">dangerous</span> needed to be done for a scene, the producers would hire anyone crazy or desperate enough to do it. <span class="core-sentence">These people were not trained to perform <span class="theme-word">stunts</span>, <span class="transition-word">so</span> they often <span class="blank">24</span> things for the first time during the actual shooting.</span> They had to learn from their own mistakes, which <span class="blank">25</span> some their lives, and almost all suffered light or severe injuries.</p>
                     
-                    <p>Beginning around 1910, audiences developed a taste for serial action movies, which <span class="blank">26 (called for)</span> the use of dedicated <span class="topic-word">stunt people</span> to perform in dangerous scenes. Such demand increased with the rise of western movies, and many cowboys with masterful skills on horseback found a new <span class="blank">27 (career)</span> as a <span class="topic-word">stunt person</span>. Tom Mix and Yakima Canutt were among the most famous. The 1960s and '70s <span class="blank">28 (witnessed)</span> the development of most modern stunt technology, like air rams and bullet squibs. That technology has continued to evolve into the present.</p>
+                    <p><span class="transition-word">Beginning around</span> 1910, audiences developed a taste for serial action movies, which <span class="blank">26</span> the use of dedicated <span class="theme-word">stunt people</span> to perform in <span class="theme-word">dangerous</span> scenes. <span class="transition-word">Such</span> demand increased with the rise of western movies, and many cowboys with masterful skills on horseback found a new <span class="blank">27</span> as a <span class="theme-word">stunt person</span>. Tom Mix and Yakima Canutt were among the most famous. <span class="core-sentence">The 1960s and '70s <span class="blank">28</span> the development of most modern <span class="theme-word">stunt</span> technology, like air rams and bullet squibs.</span> That technology has continued to evolve into the present.</p>
                     
-                    <p>Today, CGI (computer generated imagery) is widely used in filmmaking, and <span class="core-sentence">it is now <span class="blank">29 (possible)</span> to create very lifelike scenes without using real stunt people</span>. <span class="transition-word">However</span>, CGI has difficulties of its own, and <span class="core-sentence">there will always be a demand for the realism and thrilling <span class="blank">30 (sensation)</span> of an actual stunt</span>. So the <span class="topic-word">stunt industry</span> is probably in no immediate danger of dying off.</p>
+                    <p>Today, CGI (computer generated imagery) is widely used in filmmaking, and it is now <span class="blank">29</span> to create very lifelike scenes without using real <span class="theme-word">stunt people</span>. <span class="transition-word">However</span>, CGI has difficulties of its own, and <span class="core-sentence">there will always be a demand for the realism and thrilling <span class="blank">30</span> of an actual <span class="theme-word">stunt</span>.</span> <span class="transition-word">So</span> the <span class="theme-word">stunt</span> industry is probably in no immediate danger of dying off.</p>
+                </div>
+                
+                <div class="legend-box">
+                    <div class="legend-item"><span class="core-sentence">紅色底線</span> = 核心句/主旨</div>
+                    <div class="legend-item"><span class="transition-word">紫色底線</span> = 轉折詞</div>
+                    <div class="legend-item"><span class="theme-word">綠色粗體</span> = 主題詞</div>
                 </div>
             </div>
             
             <!-- 解題思維 -->
             <div class="section">
-                <h2 class="section-title">🧠 解題思維</h2>
+                <h2 class="section-title">🧠 解題思維 ｜ 逐題攻破</h2>
                 
-                <div class="question-block">
-                    <span class="question-number">題目 21</span>
-                    <div class="options">
-                        <strong>選項:</strong><br>
-                        (A) possible (B) sensation (C) risky (D) cost (E) witnessed<br>
-                        (F) professional (G) called for (H) tried out (I) necessity (J) career
-                    </div>
-                    <p><strong>完整句子:</strong> In this line of work, the person is paid to do daring actions that are deemed too _____ regular actor to perform.</p>
-                    
-                    <div class="answer">✅ 正解: (C) risky</div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 1: 辨識句型結構</div>
-                        • <strong>too + 形容詞 + for sb to V</strong> (太...以至於某人無法...)<br>
-                        • 需填入<strong>形容詞</strong>
+                <!-- 第21題 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">21</div>
+                        <span class="difficulty-tag difficulty-easy">簡單</span>
                     </div>
                     
-                    <div class="step">
-                        <div class="step-title">步驟 2: 分析上下文語意</div>
-                        <div class="quote">
-                            "performs dangerous acts" ... "jumping from heights, crashing cars, or fighting with weapons"
+                    <div class="options-reminder">
+                        <span class="options-reminder-title">📋 選項：</span>
+                        <span class="opt">(A) possible</span>
+                        <span class="opt">(B) sensation</span>
+                        <span class="opt">(C) risky</span>
+                        <span class="opt">(D) cost</span>
+                        <span class="opt">(E) witnessed</span>
+                        <span class="opt">(F) professional</span>
+                        <span class="opt">(G) called for</span>
+                        <span class="opt">(H) tried out</span>
+                        <span class="opt">(I) necessity</span>
+                        <span class="opt">(J) career</span>
+                    </div>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句：</strong>...the person is paid to do daring actions that are deemed too <u>&nbsp;&nbsp;<strong>____</strong>&nbsp;&nbsp;</u> for a regular actor to perform...
+                    </div>
+                    
+                    <div class="answer-row">
+                        <div class="answer-tag">✓ 正解：(C) risky</div>
+                        <div class="kill-point">⚡ 秒殺點：too ____ for sb. to do</div>
+                    </div>
+                    
+                    <div class="instant-kill">
+                        <div class="instant-kill-title">⚡ 秒殺判斷</div>
+                        <p><strong>too ____ for a regular actor to perform</strong> → 「對一般演員而言太____而無法執行」→ 主題是危險動作 → <strong>risky</strong>（有風險的）</p>
+                    </div>
+                    
+                    <div class="logic-chain">
+                        <div class="logic-chain-title">🔗 解題邏輯鏈</div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">1</span>
+                            <span>判斷結構：too ____ for sb. to do → 需要<strong>形容詞</strong></span>
                         </div>
-                        • 前後文強調<strong>危險動作</strong><br>
-                        • 一般演員<strong>無法執行</strong>這些動作
+                        <div class="logic-step">
+                            <span class="logic-step-num">2</span>
+                            <span>篩選範圍：形容詞有 (A) possible、(C) risky、(F) professional</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">3</span>
+                            <span>語意判斷：dangerous acts → 一般演員做不來 → risky ✓</span>
+                        </div>
                     </div>
                     
-                    <div class="step">
-                        <div class="step-title">步驟 3: 詞性+語意篩選</div>
-                        • 形容詞選項: possible, risky, professional<br>
-                        • possible (可能的) ❌ 語意不通<br>
-                        • professional (專業的) ❌ 不符合「太...而不能」的負面語境<br>
-                        • <strong>risky (危險的) ✅ 呼應dangerous acts</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">🔑 關鍵思維</div>
-                        <strong>同義呼應法則:</strong> risky = dangerous<br>
-                        <strong>句型提示:</strong> too...to 通常表達「過度而導致無法」的負面情境
+                    <div class="anchor-box">
+                        <div class="anchor-label">📍 原文錨點</div>
+                        <div class="anchor-text">"<span class="anchor-highlight">dangerous</span> acts... too <span class="anchor-highlight">risky</span> for a regular actor"</div>
+                        <p style="margin-top: 8px; color: #616161;">→ dangerous 與 risky 同義呼應，都指「危險的」</p>
                     </div>
                 </div>
-
-                <div class="question-block">
-                    <span class="question-number">題目 22</span>
-                    <div class="options">
-                        <strong>選項:</strong><br>
-                        (A) possible (D) cost (E) witnessed (F) professional<br>
-                        (G) called for (H) tried out (I) necessity (J) career
-                    </div>
-                    <p><strong>完整句子:</strong> Stunt work emerged out of _____ over time.</p>
-                    
-                    <div class="answer">✅ 正解: (I) necessity</div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 1: 辨識介系詞片語</div>
-                        • <strong>out of + 名詞</strong> (出於...、因為...)<br>
-                        • 需填入<strong>抽象名詞</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 2: 分析因果邏輯</div>
-                        <div class="quote">
-                            "actors themselves shot acrobatic acts and dangerous scenes, until they began to get injured"
-                        </div>
-                        • 演員受傷 → 需要替身<br>
-                        • 特技工作是出於<strong>必要性而產生</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 3: 詞性+搭配詞篩選</div>
-                        • 名詞選項: cost, necessity, career, sensation<br>
-                        • <strong>emerge out of necessity</strong> ✅ 固定搭配<br>
-                        • 其他選項無法與emerge out of搭配
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">🔑 關鍵思維</div>
-                        <strong>邏輯推理:</strong> 演員受傷 → 需要專業替身 → 出於必要<br>
-                        <strong>搭配詞記憶:</strong> out of necessity (出於必要)
-                    </div>
-                </div>
-
-                <div class="question-block">
-                    <span class="question-number">題目 23</span>
-                    <div class="options">
-                        <strong>選項:</strong><br>
-                        (A) possible (D) cost (E) witnessed (F) professional<br>
-                        (G) called for (H) tried out (J) career
-                    </div>
-                    <p><strong>完整句子:</strong> There were, however, no _____ crew members to perform impressive stunts at that time.</p>
-                    
-                    <div class="answer">✅ 正解: (F) professional</div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 1: 辨識語法結構</div>
-                        • <strong>形容詞 + 名詞</strong> (crew members)<br>
-                        • 需填入<strong>形容詞</strong>修飾crew members
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 2: 掌握轉折關鍵詞</div>
-                        <div class="quote">
-                            "There were, <span style="color:#7b1fa2; font-weight:bold;">however</span>, no _____ crew members"
-                        </div>
-                        • <strong>however</strong> 表達對比<br>
-                        • 前文: 特技工作出現<br>
-                        • 後文: <strong>但沒有專業人員</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 3: 分析後續邏輯</div>
-                        <div class="quote">
-                            "producers would hire anyone crazy or desperate enough to do it. These people were not trained"
-                        </div>
-                        • 雇用任何人 → <strong>缺乏專業訓練</strong><br>
-                        • 對比: professional ↔ not trained
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">🔑 關鍵思維</div>
-                        <strong>轉折對比法:</strong> however提示前後對比<br>
-                        <strong>語意呼應:</strong> professional ↔ not trained (反義對照)
-                    </div>
-                </div>
-
-                <div class="question-block">
-                    <span class="question-number">題目 24</span>
-                    <div class="options">
-                        <strong>選項:</strong><br>
-                        (A) possible (D) cost (E) witnessed<br>
-                        (G) called for (H) tried out (J) career
-                    </div>
-                    <p><strong>完整句子:</strong> These people were not trained to perform stunts, so they often _____ things for the first time during the actual shooting.</p>
-                    
-                    <div class="answer">✅ 正解: (H) tried out</div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 1: 辨識動詞時態</div>
-                        • 需填入<strong>過去式動詞</strong><br>
-                        • 主詞: they (這些人)
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 2: 分析因果邏輯</div>
-                        <div class="quote">
-                            "were not trained... so they often _____ things <span style="color:#d32f2f; font-weight:bold;">for the first time</span> during actual shooting"
-                        </div>
-                        • <strong>so</strong> 表因果關係<br>
-                        • 原因: 未受訓練<br>
-                        • 結果: 第一次<strong>嘗試</strong>這些動作
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 3: 詞義辨析</div>
-                        • tried out (嘗試) ✅ 符合「第一次做」的語境<br>
-                        • called for (需要) ❌ 不符合<br>
-                        • witnessed (見證) ❌ 主詞錯誤
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">🔑 關鍵思維</div>
-                        <strong>關鍵詞呼應:</strong> for the first time → tried out<br>
-                        <strong>因果推理:</strong> 沒訓練 → 只能邊拍邊嘗試
-                    </div>
-                </div>
-
-                <div class="question-block">
-                    <span class="question-number">題目 25</span>
-                    <div class="options">
-                        <strong>選項:</strong><br>
-                        (A) possible (D) cost (E) witnessed<br>
-                        (G) called for (J) career
-                    </div>
-                    <p><strong>完整句子:</strong> They had to learn from their own mistakes, which _____ some their lives.</p>
-                    
-                    <div class="answer">✅ 正解: (D) cost</div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 1: 辨識關係代名詞子句</div>
-                        • <strong>which</strong> 代替mistakes<br>
-                        • 需填入<strong>過去式動詞</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 2: 分析雙受詞結構</div>
-                        • <strong>cost + 人 + 物</strong> (使某人失去...)<br>
-                        • cost some (people) their lives (奪走某些人的生命)
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 3: 語意邏輯檢驗</div>
-                        <div class="quote">
-                            "learn from their own mistakes... almost all suffered light or severe injuries"
-                        </div>
-                        • 從錯誤中學習 → <strong>付出代價</strong><br>
-                        • 有些人付出生命代價 → cost their lives
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">🔑 關鍵思維</div>
-                        <strong>固定用法:</strong> cost sb sth (使某人付出...代價)<br>
-                        <strong>語意遞進:</strong> mistakes → injuries → cost lives (嚴重性遞增)
-                    </div>
-                </div>
-
-                <div class="question-block">
-                    <span class="question-number">題目 26</span>
-                    <div class="options">
-                        <strong>選項:</strong><br>
-                        (A) possible (E) witnessed<br>
-                        (G) called for (J) career
-                    </div>
-                    <p><strong>完整句子:</strong> Beginning around 1910, audiences developed a taste for serial action movies, which _____ the use of dedicated stunt people.</p>
-                    
-                    <div class="answer">✅ 正解: (G) called for</div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 1: 辨識關係代名詞子句</div>
-                        • <strong>which</strong> 代替serial action movies<br>
-                        • 需填入<strong>過去式動詞片語</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 2: 分析因果關係</div>
-                        <div class="quote">
-                            "audiences developed a taste for action movies... the use of dedicated stunt people"
-                        </div>
-                        • 觀眾喜歡動作片 → <strong>需要</strong>專業特技人員<br>
-                        • call for = require (需要、要求)
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 3: 片語用法確認</div>
-                        • called for + 名詞 ✅ (要求使用...)<br>
-                        • witnessed + 名詞 ❌ (見證...發展,語意不通)
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">🔑 關鍵思維</div>
-                        <strong>片語記憶:</strong> call for = require/demand<br>
-                        <strong>邏輯推理:</strong> 電影類型需求 → 專業人才需求
-                    </div>
-                </div>
-
-                <div class="question-block">
-                    <span class="question-number">題目 27</span>
-                    <div class="options">
-                        <strong>選項:</strong><br>
-                        (A) possible (E) witnessed (J) career
-                    </div>
-                    <p><strong>完整句子:</strong> Many cowboys with masterful skills on horseback found a new _____ as a stunt person.</p>
-                    
-                    <div class="answer">✅ 正解: (J) career</div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 1: 辨識名詞位置</div>
-                        • <strong>a new + 單數名詞</strong><br>
-                        • 需填入<strong>可數名詞</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 2: 分析語意搭配</div>
-                        <div class="quote">
-                            "cowboys... found a new _____ as a stunt person"
-                        </div>
-                        • 牛仔找到新的<strong>職業</strong><br>
-                        • <strong>as a stunt person</strong> 提示職業轉換
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 3: 詞性篩選</div>
-                        • possible (形容詞) ❌<br>
-                        • witnessed (動詞) ❌<br>
-                        • career (名詞) ✅ 職業、生涯
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">🔑 關鍵思維</div>
-                        <strong>語意提示:</strong> as + 職業身分 → 前面填職業相關詞<br>
-                        <strong>邏輯推理:</strong> 牛仔技能 → 轉行當特技演員
-                    </div>
-                </div>
-
-                <div class="question-block">
-                    <span class="question-number">題目 28</span>
-                    <div class="options">
-                        <strong>選項:</strong><br>
-                        (A) possible (E) witnessed
-                    </div>
-                    <p><strong>完整句子:</strong> The 1960s and '70s _____ the development of most modern stunt technology.</p>
-                    
-                    <div class="answer">✅ 正解: (E) witnessed</div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 1: 辨識動詞時態</div>
-                        • 主詞: The 1960s and '70s (複數)<br>
-                        • 需填入<strong>過去式動詞</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 2: 分析主詞特性</div>
-                        <div class="quote">
-                            "The 1960s and '70s _____ the development"
-                        </div>
-                        • <strong>時間作主詞</strong>的特殊句型<br>
-                        • witness = 見證 (時間見證發展)
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 3: 詞義確認</div>
-                        • witnessed the development ✅ (見證了...的發展)<br>
-                        • possible ❌ (形容詞,無法作動詞)
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">🔑 關鍵思維</div>
-                        <strong>特殊句型:</strong> 時間/地點 + witness + 事件<br>
-                        <strong>例句:</strong> The 20th century witnessed great changes.
-                    </div>
-                </div>
-
-                <div class="question-block">
-                    <span class="question-number">題目 29</span>
-                    <div class="options">
-                        <strong>選項:</strong><br>
-                        (A) possible (B) sensation
-                    </div>
-                    <p><strong>完整句子:</strong> It is now _____ to create very lifelike scenes without using real stunt people.</p>
-                    
-                    <div class="answer">✅ 正解: (A) possible</div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 1: 辨識句型結構</div>
-                        • <strong>It is + 形容詞 + to V</strong> (做...是...的)<br>
-                        • 需填入<strong>形容詞</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 2: 分析科技發展脈絡</div>
-                        <div class="quote">
-                            "Today, CGI is widely used... now _____ to create lifelike scenes"
-                        </div>
-                        • CGI科技使得某事變得<strong>可能</strong><br>
-                        • 科技進步 → 不需真人也能做到
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 3: 詞性+語意檢驗</div>
-                        • possible (可能的) ✅ 形容詞<br>
-                        • sensation (感覺) ❌ 名詞,不符句型
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">🔑 關鍵思維</div>
-                        <strong>句型記憶:</strong> It is possible to V (做...是可能的)<br>
-                        <strong>邏輯推理:</strong> 科技發展 → 新方法變得可能
-                    </div>
-                </div>
-
-                <div class="question-block">
-                    <span class="question-number">題目 30</span>
-                    <div class="options">
-                        <strong>選項:</strong><br>
-                        (B) sensation
-                    </div>
-                    <p><strong>完整句子:</strong> There will always be a demand for the realism and thrilling _____ of an actual stunt.</p>
-                    
-                    <div class="answer">✅ 正解: (B) sensation</div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 1: 辨識並列結構</div>
-                        • <strong>the realism and thrilling _____</strong><br>
-                        • and 連接兩個<strong>名詞</strong><br>
-                        • thrilling (形容詞) + 名詞
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 2: 分析轉折對比</div>
-                        <div class="quote">
-                            "<span style='color:#7b1fa2; font-weight:bold;'>However</span>, CGI has difficulties... there will always be a demand for... actual stunt"
-                        </div>
-                        • CGI的<strong>缺陷</strong> vs 真實特技的<strong>優勢</strong><br>
-                        • 真實特技能帶來<strong>真實感和刺激感</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 3: 詞義確認</div>
-                        • sensation (感覺、轟動) ✅<br>
-                        • thrilling sensation = 刺激的感覺<br>
-                        • 與realism (真實感) 並列呼應
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">🔑 關鍵思維</div>
-                        <strong>並列對稱:</strong> realism (真實感) + sensation (刺激感)<br>
-                        <strong>對比邏輯:</strong> CGI缺點 → 真人特技的irreplaceable價值
-                    </div>
-                </div>
-            </div>
-
-            <!-- 單字依解題邏輯分類 -->
-            <div class="section">
-                <h2 class="section-title">📚 單字依解題邏輯分類</h2>
                 
-                <div class="vocab-category">
-                    <h3>🎯 主旨理解必備詞</h3>
-                    <div class="vocab-item">
-                        <span class="vocab-word">stunt person</span>
-                        <span>特技演員 (主題詞,全文核心)</span>
+                <!-- 第22題 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">22</div>
+                        <span class="difficulty-tag difficulty-medium">中等</span>
                     </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">dangerous acts</span>
-                        <span>危險動作 (定義特技工作的核心特徵)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">emerged</span>
-                        <span>出現、浮現 (emerge from/out of: 從...產生)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">demand</span>
-                        <span>需求 (產業發展的關鍵因素)</span>
-                    </div>
-                </div>
-
-                <div class="vocab-category">
-                    <h3>🔀 轉折判斷關鍵詞</h3>
-                    <div class="vocab-item">
-                        <span class="vocab-word">until</span>
-                        <span>直到 (時間轉折: 演員自己做 → 受傷 → 需要替身)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">however</span>
-                        <span>然而 (對比轉折: 特技工作出現 ↔ 沒有專業人員)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">However (段首)</span>
-                        <span>然而 (CGI優勢 ↔ 真人特技不可取代)</span>
-                    </div>
-                </div>
-
-                <div class="vocab-category">
-                    <h3>🔍 細節定位詞彙</h3>
-                    <div class="vocab-item">
-                        <span class="vocab-word">risky</span>
-                        <span>危險的 (= dangerous, 呼應主題)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">necessity</span>
-                        <span>必要性 (out of necessity: 出於必要)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">professional</span>
-                        <span>專業的 (↔ not trained 對比詞)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">tried out</span>
-                        <span>嘗試 (try out: 試驗、試用)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">cost</span>
-                        <span>使付出代價 (cost sb sth: 固定用法)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">called for</span>
-                        <span>需要、要求 (call for = require/demand)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">career</span>
-                        <span>職業、生涯 (find a career: 找到職業)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">witnessed</span>
-                        <span>見證 (時間/地點作主詞的特殊用法)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">possible</span>
-                        <span>可能的 (It is possible to V: 句型)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">sensation</span>
-                        <span>感覺、轟動 (thrilling sensation: 刺激感)</span>
-                    </div>
-                </div>
-
-                <div class="vocab-category">
-                    <h3>📖 延伸重要詞彙</h3>
-                    <div class="vocab-item">
-                        <span class="vocab-word">daring</span>
-                        <span>大膽的 (= bold, brave)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">deemed</span>
-                        <span>認為、視為 (be deemed + adj: 被視為...)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">acrobatic</span>
-                        <span>特技的、雜技的</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">dedicated</span>
-                        <span>專門的、專注的</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">masterful</span>
-                        <span>精湛的、熟練的</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">lifelike</span>
-                        <span>栩栩如生的 (life + like)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">realism</span>
-                        <span>真實感 (real + ism)</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 考前衝刺重點整理 -->
-            <div class="section">
-                <h2 class="section-title">⚡ 考前衝刺重點整理</h2>
-                <div class="exam-prep">
                     
-                    <h3>🎯 解題三步驟</h3>
-                    <div class="formula">
-                        1️⃣ 詞性判斷 → 2️⃣ 語意分析 → 3️⃣ 邏輯驗證
+                    <div class="options-reminder">
+                        <span class="options-reminder-title">📋 選項：</span>
+                        <span class="opt">(A) possible</span>
+                        <span class="opt">(B) sensation</span>
+                        <span class="opt">(C) risky</span>
+                        <span class="opt">(D) cost</span>
+                        <span class="opt">(E) witnessed</span>
+                        <span class="opt">(F) professional</span>
+                        <span class="opt">(G) called for</span>
+                        <span class="opt">(H) tried out</span>
+                        <span class="opt">(I) necessity</span>
+                        <span class="opt">(J) career</span>
                     </div>
-                    <div class="highlight-box">
-                        <strong>步驟 1: 詞性判斷</strong><br>
-                        • 看空格前後的詞性提示<br>
-                        • a/an/the + _____ → 名詞<br>
-                        • too/very/so + _____ → 形容詞/副詞<br>
-                        • 主詞 + _____ + 受詞 → 動詞<br><br>
-                        
-                        <strong>步驟 2: 語意分析</strong><br>
-                        • 找上下文的同義詞/反義詞<br>
-                        • 注意轉折詞 (however, but, although)<br>
-                        • 找因果關係 (so, because, therefore)<br><br>
-                        
-                        <strong>步驟 3: 邏輯驗證</strong><br>
-                        • 代入選項讀一遍<br>
-                        • 確認語意通順<br>
-                        • 檢查固定搭配
+                    
+                    <div class="question-sentence">
+                        <strong>完整句：</strong>Stunt work emerged out of <u>&nbsp;&nbsp;<strong>____</strong>&nbsp;&nbsp;</u> over time.
                     </div>
-
-                    <h3>🔑 高頻轉折詞彙表</h3>
-                    <table>
-                        <tr>
-                            <th>轉折詞</th>
-                            <th>功能</th>
-                            <th>本文範例</th>
-                        </tr>
-                        <tr>
-                            <td><strong>however</strong></td>
-                            <td>對比轉折</td>
-                            <td>特技工作出現 ↔ 但沒專業人員</td>
-                        </tr>
-                        <tr>
-                            <td><strong>until</strong></td>
-                            <td>時間轉折</td>
-                            <td>演員自己做 → 直到受傷</td>
-                        </tr>
-                        <tr>
-                            <td><strong>so</strong></td>
-                            <td>因果關係</td>
-                            <td>沒訓練 → 所以現場嘗試</td>
-                        </tr>
-                        <tr>
-                            <td><strong>which</strong></td>
-                            <td>補充說明</td>
-                            <td>關係代名詞連接前後文</td>
-                        </tr>
-                    </table>
-
-                    <h3>🎨 主題詞辨識技巧</h3>
-                    <div class="highlight-box">
-                        <strong>✅ 主題詞特徵:</strong><br>
-                        • 在文章中<strong>重複出現</strong> 3次以上<br>
-                        • 通常是<strong>名詞或名詞片語</strong><br>
-                        • 出現在文章開頭和結尾<br><br>
-                        
-                        <strong>本文主題詞:</strong><br>
-                        🟢 <strong>stunt person / stunt work / stunt industry</strong><br>
-                        → 出現7次,貫穿全文<br><br>
-                        
-                        <strong>快速判斷法:</strong><br>
-                        看到重複的詞 → 用螢光筆標記 → 就是主題詞!
+                    
+                    <div class="answer-row">
+                        <div class="answer-tag">✓ 正解：(I) necessity</div>
+                        <div class="kill-point">⚡ 秒殺點：emerged out of ____ = 源於____</div>
                     </div>
-
-                    <h3>⚡ 快速判斷詞性技巧</h3>
-                    <div class="highlight-box">
-                        <strong>名詞信號:</strong><br>
-                        • a/an/the/this/that/his + <span style="color:#d32f2f;">名詞</span><br>
-                        • 形容詞 + <span style="color:#d32f2f;">名詞</span><br>
-                        • 介系詞 + <span style="color:#d32f2f;">名詞</span><br><br>
-                        
-                        <strong>形容詞信號:</strong><br>
-                        • too/very/so + <span style="color:#d32f2f;">形容詞</span><br>
-                        • <span style="color:#d32f2f;">形容詞</span> + 名詞<br>
-                        • be動詞 + <span style="color:#d32f2f;">形容詞</span><br><br>
-                        
-                        <strong>動詞信號:</strong><br>
-                        • 主詞 + <span style="color:#d32f2f;">動詞</span> + 受詞<br>
-                        • 助動詞 + <span style="color:#d32f2f;">原形動詞</span><br>
-                        • to + <span style="color:#d32f2f;">原形動詞</span>
+                    
+                    <div class="instant-kill">
+                        <div class="instant-kill-title">⚡ 秒殺判斷</div>
+                        <p><strong>emerged out of ____</strong> → 「源於____」→ 後文說演員受傷才需要特技人員 → <strong>necessity</strong>（必要性）</p>
                     </div>
-
-                    <h3>🚨 常見陷阱與破解</h3>
-                    <table>
-                        <tr>
-                            <th>陷阱類型</th>
-                            <th>破解方法</th>
-                        </tr>
-                        <tr>
-                            <td>❌ 詞性混淆</td>
-                            <td>✅ 先判斷空格需要的詞性,再選答案</td>
-                        </tr>
-                        <tr>
-                            <td>❌ 看到認識的字就選</td>
-                            <td>✅ 一定要代入句子確認語意通順</td>
-                        </tr>
-                        <tr>
-                            <td>❌ 忽略轉折詞</td>
-                            <td>✅ however/but/although 一定要特別注意</td>
-                        </tr>
-                        <tr>
-                            <td>❌ 只看空格前後</td>
-                            <td>✅ 要看整句甚至整段的邏輯關係</td>
-                        </tr>
-                        <tr>
-                            <td>❌ 固定搭配不熟</td>
-                            <td>✅ 平時多背片語 (如: call for, cost sb sth)</td>
-                        </tr>
-                    </table>
-
-                    <h3>🏆 考前終極口訣</h3>
-                    <div class="formula">
-                        <strong style="font-size:1.3em;">詞性→語意→邏輯→代入→檢查</strong>
+                    
+                    <div class="logic-chain">
+                        <div class="logic-chain-title">🔗 解題邏輯鏈</div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">1</span>
+                            <span>判斷詞性：out of ____ → 需要<strong>名詞</strong></span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">2</span>
+                            <span>篩選範圍：名詞有 (B) sensation、(I) necessity、(J) career</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">3</span>
+                            <span>語意判斷：emerge out of necessity = 因需要而產生 ✓</span>
+                        </div>
                     </div>
-                    <div class="highlight-box">
-                        <strong>🔴 紅色標記:</strong> 核心句/主旨 (每段第一句&最後一句通常是重點!)<br>
-                        <strong>🟣 紫色標記:</strong> 轉折詞 (however/but/although/until → 前後對比必考!)<br>
-                        <strong>🟢 綠色標記:</strong> 主題詞 (重複3次以上 → 文章核心!)<br><br>
-                        
-                        <strong>⚡ 秒殺技巧:</strong><br>
-                        1. 先看選項分類詞性 (5秒)<br>
-                        2. 判斷空格需要的詞性 (3秒)<br>
-                        3. 找上下文語意提示 (10秒)<br>
-                        4. 選答案代入檢查 (5秒)<br>
-                        <strong>→ 一題控制在 20-25 秒!</strong>
+                    
+                    <div class="anchor-box">
+                        <div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div>
+                        <div class="anchor-text">"Stunt work emerged out of <span class="anchor-highlight">necessity</span>"</div>
+                        <p style="margin-top: 8px; color: #616161;">→ out of necessity = 出於必要，是固定搭配</p>
                     </div>
-
-                    <div class="formula" style="background:#d4edda; color:#155724; margin-top:20px;">
-                        💪 記住: 克漏字不是考單字量,是考<strong>邏輯思維</strong>!
+                </div>
+                
+                <!-- 第23題 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">23</div>
+                        <span class="difficulty-tag difficulty-easy">簡單</span>
+                    </div>
+                    
+                    <div class="options-reminder">
+                        <span class="options-reminder-title">📋 選項：</span>
+                        <span class="opt">(A) possible</span>
+                        <span class="opt">(B) sensation</span>
+                        <span class="opt">(C) risky</span>
+                        <span class="opt">(D) cost</span>
+                        <span class="opt">(E) witnessed</span>
+                        <span class="opt">(F) professional</span>
+                        <span class="opt">(G) called for</span>
+                        <span class="opt">(H) tried out</span>
+                        <span class="opt">(I) necessity</span>
+                        <span class="opt">(J) career</span>
+                    </div>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句：</strong>There were, however, no <u>&nbsp;&nbsp;<strong>____</strong>&nbsp;&nbsp;</u> crew members to perform impressive stunts at that time.
+                    </div>
+                    
+                    <div class="answer-row">
+                        <div class="answer-tag">✓ 正解：(F) professional</div>
+                        <div class="kill-point">⚡ 秒殺點：no ____ crew members = 沒有專業人員</div>
+                    </div>
+                    
+                    <div class="instant-kill">
+                        <div class="instant-kill-title">⚡ 秒殺判斷</div>
+                        <p><strong>no ____ crew members</strong> → 需要<strong>形容詞</strong>修飾 crew members → 早期沒有「專業」人員 → <strong>professional</strong></p>
+                    </div>
+                    
+                    <div class="logic-chain">
+                        <div class="logic-chain-title">🔗 解題邏輯鏈</div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">1</span>
+                            <span>判斷詞性：no ____ crew members → 需要<strong>形容詞</strong></span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">2</span>
+                            <span>篩選範圍：剩餘形容詞有 (A) possible、(F) professional</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">3</span>
+                            <span>語意判斷：後文說 "not trained" → 沒有「專業」人員 → professional ✓</span>
+                        </div>
+                    </div>
+                    
+                    <div class="anchor-box">
+                        <div class="anchor-label">📍 原文錨點 ｜ 語意呼應</div>
+                        <div class="anchor-text">"no <span class="anchor-highlight">professional</span> crew members... These people were <span class="anchor-highlight">not trained</span>"</div>
+                        <p style="margin-top: 8px; color: #616161;">→ not trained（未受訓）說明了為何沒有 professional（專業的）人員</p>
+                    </div>
+                </div>
+                
+                <!-- 第24題 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">24</div>
+                        <span class="difficulty-tag difficulty-medium">中等</span>
+                    </div>
+                    
+                    <div class="options-reminder">
+                        <span class="options-reminder-title">📋 選項：</span>
+                        <span class="opt">(A) possible</span>
+                        <span class="opt">(B) sensation</span>
+                        <span class="opt">(C) risky</span>
+                        <span class="opt">(D) cost</span>
+                        <span class="opt">(E) witnessed</span>
+                        <span class="opt">(F) professional</span>
+                        <span class="opt">(G) called for</span>
+                        <span class="opt">(H) tried out</span>
+                        <span class="opt">(I) necessity</span>
+                        <span class="opt">(J) career</span>
+                    </div>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句：</strong>These people were not trained to perform stunts, so they often <u>&nbsp;&nbsp;<strong>____</strong>&nbsp;&nbsp;</u> things for the first time during the actual shooting.
+                    </div>
+                    
+                    <div class="answer-row">
+                        <div class="answer-tag">✓ 正解：(H) tried out</div>
+                        <div class="kill-point">⚡ 秒殺點：not trained + so + for the first time</div>
+                    </div>
+                    
+                    <div class="instant-kill">
+                        <div class="instant-kill-title">⚡ 秒殺判斷</div>
+                        <p><strong>not trained</strong> + <strong>so</strong> + <strong>for the first time</strong> → 因為沒受訓，所以「嘗試/試驗」→ <strong>tried out</strong></p>
+                    </div>
+                    
+                    <div class="logic-chain">
+                        <div class="logic-chain-title">🔗 解題邏輯鏈</div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">1</span>
+                            <span>判斷詞性：they + ____ + things → 需要<strong>動詞</strong></span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">2</span>
+                            <span>篩選範圍：動詞有 (D) cost、(E) witnessed、(G) called for、(H) tried out</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">3</span>
+                            <span>因果判斷：so 因果關係 → 沒受訓 → 第一次嘗試 → tried out ✓</span>
+                        </div>
+                    </div>
+                    
+                    <div class="anchor-box">
+                        <div class="anchor-label">📍 原文錨點 ｜ 因果結構</div>
+                        <div class="anchor-text">"were <span class="anchor-highlight">not trained</span>... <span class="anchor-highlight">so</span> they often <span class="anchor-highlight">tried out</span> things for the <span class="anchor-highlight">first time</span>"</div>
+                        <p style="margin-top: 8px; color: #616161;">→ so 連接因果：沒受訓 → 所以第一次嘗試</p>
+                    </div>
+                </div>
+                
+                <!-- 第25題 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">25</div>
+                        <span class="difficulty-tag difficulty-hard">困難</span>
+                    </div>
+                    
+                    <div class="options-reminder">
+                        <span class="options-reminder-title">📋 選項：</span>
+                        <span class="opt">(A) possible</span>
+                        <span class="opt">(B) sensation</span>
+                        <span class="opt">(C) risky</span>
+                        <span class="opt">(D) cost</span>
+                        <span class="opt">(E) witnessed</span>
+                        <span class="opt">(F) professional</span>
+                        <span class="opt">(G) called for</span>
+                        <span class="opt">(H) tried out</span>
+                        <span class="opt">(I) necessity</span>
+                        <span class="opt">(J) career</span>
+                    </div>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句：</strong>They had to learn from their own mistakes, which <u>&nbsp;&nbsp;<strong>____</strong>&nbsp;&nbsp;</u> some their lives, and almost all suffered light or severe injuries.
+                    </div>
+                    
+                    <div class="answer-row">
+                        <div class="answer-tag">✓ 正解：(D) cost</div>
+                        <div class="kill-point">⚡ 秒殺點：which ____ some their lives</div>
+                    </div>
+                    
+                    <div class="instant-kill">
+                        <div class="instant-kill-title">⚡ 秒殺判斷</div>
+                        <p><strong>which ____ some their lives</strong> → 「____了某些人的生命」→ <strong>cost</strong>（使付出代價）→ cost sb. sth.</p>
+                    </div>
+                    
+                    <div class="logic-chain">
+                        <div class="logic-chain-title">🔗 解題邏輯鏈</div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">1</span>
+                            <span>判斷詞性：which + ____ → 關係子句，需要<strong>動詞</strong></span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">2</span>
+                            <span>篩選範圍：剩餘動詞有 (D) cost、(E) witnessed、(G) called for</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">3</span>
+                            <span>句型判斷：____ some their lives → cost sb. sth. = 使某人付出某代價 ✓</span>
+                        </div>
+                    </div>
+                    
+                    <div class="anchor-box">
+                        <div class="anchor-label">📍 原文錨點 ｜ 特殊句型</div>
+                        <div class="anchor-text">"which <span class="anchor-highlight">cost</span> some their lives"</div>
+                        <p style="margin-top: 8px; color: #616161;">→ cost sb. sth. = 使某人付出某代價（cost 過去式仍為 cost）</p>
+                    </div>
+                    
+                    <div class="trap-analysis">
+                        <div class="trap-title">🚨 誘答分析 ｜ 高頻錯題</div>
+                        <div class="trap-item">
+                            <span class="trap-option">不熟悉 cost sb. sth. 句型</span>
+                            <span class="trap-reason"> → cost 後面直接接「人 + 代價」，不需要介系詞</span>
+                        </div>
+                        <div class="trap-item">
+                            <span class="trap-option">不知道 cost 過去式仍是 cost</span>
+                            <span class="trap-reason"> → cost - cost - cost 三態同形</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 第26題 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">26</div>
+                        <span class="difficulty-tag difficulty-medium">中等</span>
+                    </div>
+                    
+                    <div class="options-reminder">
+                        <span class="options-reminder-title">📋 選項：</span>
+                        <span class="opt">(A) possible</span>
+                        <span class="opt">(B) sensation</span>
+                        <span class="opt">(C) risky</span>
+                        <span class="opt">(D) cost</span>
+                        <span class="opt">(E) witnessed</span>
+                        <span class="opt">(F) professional</span>
+                        <span class="opt">(G) called for</span>
+                        <span class="opt">(H) tried out</span>
+                        <span class="opt">(I) necessity</span>
+                        <span class="opt">(J) career</span>
+                    </div>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句：</strong>Beginning around 1910, audiences developed a taste for serial action movies, which <u>&nbsp;&nbsp;<strong>____</strong>&nbsp;&nbsp;</u> the use of dedicated stunt people...
+                    </div>
+                    
+                    <div class="answer-row">
+                        <div class="answer-tag">✓ 正解：(G) called for</div>
+                        <div class="kill-point">⚡ 秒殺點：which ____ the use of = 需要使用</div>
+                    </div>
+                    
+                    <div class="instant-kill">
+                        <div class="instant-kill-title">⚡ 秒殺判斷</div>
+                        <p><strong>which ____ the use of stunt people</strong> → 「____使用特技人員」→ 動作片「需要」特技人員 → <strong>called for</strong></p>
+                    </div>
+                    
+                    <div class="logic-chain">
+                        <div class="logic-chain-title">🔗 解題邏輯鏈</div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">1</span>
+                            <span>判斷詞性：which + ____ → 關係子句，需要<strong>動詞</strong></span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">2</span>
+                            <span>篩選範圍：剩餘動詞有 (E) witnessed、(G) called for</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">3</span>
+                            <span>語意判斷：動作片需要特技人員 → call for = 需要、要求 ✓</span>
+                        </div>
+                    </div>
+                    
+                    <div class="anchor-box">
+                        <div class="anchor-label">📍 原文錨點</div>
+                        <div class="anchor-text">"serial action movies, which <span class="anchor-highlight">called for</span> the use of dedicated stunt people"</div>
+                        <p style="margin-top: 8px; color: #616161;">→ call for = 需要、要求，常用於描述某事物需要某條件</p>
+                    </div>
+                </div>
+                
+                <!-- 第27題 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">27</div>
+                        <span class="difficulty-tag difficulty-easy">簡單</span>
+                    </div>
+                    
+                    <div class="options-reminder">
+                        <span class="options-reminder-title">📋 選項：</span>
+                        <span class="opt">(A) possible</span>
+                        <span class="opt">(B) sensation</span>
+                        <span class="opt">(C) risky</span>
+                        <span class="opt">(D) cost</span>
+                        <span class="opt">(E) witnessed</span>
+                        <span class="opt">(F) professional</span>
+                        <span class="opt">(G) called for</span>
+                        <span class="opt">(H) tried out</span>
+                        <span class="opt">(I) necessity</span>
+                        <span class="opt">(J) career</span>
+                    </div>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句：</strong>...many cowboys with masterful skills on horseback found a new <u>&nbsp;&nbsp;<strong>____</strong>&nbsp;&nbsp;</u> as a stunt person.
+                    </div>
+                    
+                    <div class="answer-row">
+                        <div class="answer-tag">✓ 正解：(J) career</div>
+                        <div class="kill-point">⚡ 秒殺點：found a new ____ as a stunt person</div>
+                    </div>
+                    
+                    <div class="instant-kill">
+                        <div class="instant-kill-title">⚡ 秒殺判斷</div>
+                        <p><strong>found a new ____ as a stunt person</strong> → 「找到新____作為特技演員」→ <strong>career</strong>（職業）</p>
+                    </div>
+                    
+                    <div class="logic-chain">
+                        <div class="logic-chain-title">🔗 解題邏輯鏈</div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">1</span>
+                            <span>判斷詞性：a new ____ → 需要<strong>名詞</strong></span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">2</span>
+                            <span>篩選範圍：剩餘名詞有 (B) sensation、(J) career</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">3</span>
+                            <span>語意判斷：cowboys → stunt person = 職業轉換 → career ✓</span>
+                        </div>
+                    </div>
+                    
+                    <div class="anchor-box">
+                        <div class="anchor-label">📍 原文錨點</div>
+                        <div class="anchor-text">"cowboys... found a new <span class="anchor-highlight">career</span> as a stunt person"</div>
+                        <p style="margin-top: 8px; color: #616161;">→ career = 職業、生涯，牛仔轉行成為特技演員</p>
+                    </div>
+                </div>
+                
+                <!-- 第28題 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">28</div>
+                        <span class="difficulty-tag difficulty-medium">中等</span>
+                    </div>
+                    
+                    <div class="options-reminder">
+                        <span class="options-reminder-title">📋 選項：</span>
+                        <span class="opt">(A) possible</span>
+                        <span class="opt">(B) sensation</span>
+                        <span class="opt">(C) risky</span>
+                        <span class="opt">(D) cost</span>
+                        <span class="opt">(E) witnessed</span>
+                        <span class="opt">(F) professional</span>
+                        <span class="opt">(G) called for</span>
+                        <span class="opt">(H) tried out</span>
+                        <span class="opt">(I) necessity</span>
+                        <span class="opt">(J) career</span>
+                    </div>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句：</strong>The 1960s and '70s <u>&nbsp;&nbsp;<strong>____</strong>&nbsp;&nbsp;</u> the development of most modern stunt technology...
+                    </div>
+                    
+                    <div class="answer-row">
+                        <div class="answer-tag">✓ 正解：(E) witnessed</div>
+                        <div class="kill-point">⚡ 秒殺點：時代 + ____ + 發展 = 見證</div>
+                    </div>
+                    
+                    <div class="instant-kill">
+                        <div class="instant-kill-title">⚡ 秒殺判斷</div>
+                        <p><strong>The 1960s and '70s ____ the development</strong> → 時代作主詞 + 「____發展」→ <strong>witnessed</strong>（見證）</p>
+                    </div>
+                    
+                    <div class="logic-chain">
+                        <div class="logic-chain-title">🔗 解題邏輯鏈</div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">1</span>
+                            <span>判斷詞性：The 1960s + ____ → 需要<strong>動詞</strong></span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">2</span>
+                            <span>篩選範圍：剩餘動詞只有 (E) witnessed</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">3</span>
+                            <span>搭配驗證：時代 + witness = 「某年代見證了...」✓</span>
+                        </div>
+                    </div>
+                    
+                    <div class="anchor-box">
+                        <div class="anchor-label">📍 原文錨點 ｜ 擬人用法</div>
+                        <div class="anchor-text">"The 1960s and '70s <span class="anchor-highlight">witnessed</span> the development"</div>
+                        <p style="margin-top: 8px; color: #616161;">→ 時代作主詞 + witness = 擬人用法，表示「某年代見證了...」</p>
+                    </div>
+                </div>
+                
+                <!-- 第29題 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">29</div>
+                        <span class="difficulty-tag difficulty-easy">簡單</span>
+                    </div>
+                    
+                    <div class="options-reminder">
+                        <span class="options-reminder-title">📋 選項：</span>
+                        <span class="opt">(A) possible</span>
+                        <span class="opt">(B) sensation</span>
+                        <span class="opt">(C) risky</span>
+                        <span class="opt">(D) cost</span>
+                        <span class="opt">(E) witnessed</span>
+                        <span class="opt">(F) professional</span>
+                        <span class="opt">(G) called for</span>
+                        <span class="opt">(H) tried out</span>
+                        <span class="opt">(I) necessity</span>
+                        <span class="opt">(J) career</span>
+                    </div>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句：</strong>...it is now <u>&nbsp;&nbsp;<strong>____</strong>&nbsp;&nbsp;</u> to create very lifelike scenes without using real stunt people.
+                    </div>
+                    
+                    <div class="answer-row">
+                        <div class="answer-tag">✓ 正解：(A) possible</div>
+                        <div class="kill-point">⚡ 秒殺點：it is ____ to V = 做...是____的</div>
+                    </div>
+                    
+                    <div class="instant-kill">
+                        <div class="instant-kill-title">⚡ 秒殺判斷</div>
+                        <p><strong>it is now ____ to create</strong> → 「現在____創造」→ CGI 使創造逼真場景成為「可能」→ <strong>possible</strong></p>
+                    </div>
+                    
+                    <div class="logic-chain">
+                        <div class="logic-chain-title">🔗 解題邏輯鏈</div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">1</span>
+                            <span>判斷結構：it is ____ to V → 虛主詞結構，需要<strong>形容詞</strong></span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">2</span>
+                            <span>篩選範圍：剩餘形容詞只有 (A) possible</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">3</span>
+                            <span>語意驗證：CGI technology → 創造逼真場景成為可能 ✓</span>
+                        </div>
+                    </div>
+                    
+                    <div class="anchor-box">
+                        <div class="anchor-label">📍 原文錨點</div>
+                        <div class="anchor-text">"it is now <span class="anchor-highlight">possible</span> to create very lifelike scenes"</div>
+                        <p style="margin-top: 8px; color: #616161;">→ it is possible to V = 做...是可能的</p>
+                    </div>
+                </div>
+                
+                <!-- 第30題 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">30</div>
+                        <span class="difficulty-tag difficulty-medium">中等</span>
+                    </div>
+                    
+                    <div class="options-reminder">
+                        <span class="options-reminder-title">📋 選項：</span>
+                        <span class="opt">(A) possible</span>
+                        <span class="opt">(B) sensation</span>
+                        <span class="opt">(C) risky</span>
+                        <span class="opt">(D) cost</span>
+                        <span class="opt">(E) witnessed</span>
+                        <span class="opt">(F) professional</span>
+                        <span class="opt">(G) called for</span>
+                        <span class="opt">(H) tried out</span>
+                        <span class="opt">(I) necessity</span>
+                        <span class="opt">(J) career</span>
+                    </div>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句：</strong>However, CGI has difficulties of its own, and there will always be a demand for the realism and thrilling <u>&nbsp;&nbsp;<strong>____</strong>&nbsp;&nbsp;</u> of an actual stunt.
+                    </div>
+                    
+                    <div class="answer-row">
+                        <div class="answer-tag">✓ 正解：(B) sensation</div>
+                        <div class="kill-point">⚡ 秒殺點：thrilling ____ = 刺激的感覺</div>
+                    </div>
+                    
+                    <div class="instant-kill">
+                        <div class="instant-kill-title">⚡ 秒殺判斷</div>
+                        <p><strong>realism and thrilling ____</strong> → 「真實感和刺激的____」→ <strong>sensation</strong>（感覺/刺激感）</p>
+                    </div>
+                    
+                    <div class="logic-chain">
+                        <div class="logic-chain-title">🔗 解題邏輯鏈</div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">1</span>
+                            <span>判斷詞性：thrilling ____ → 需要<strong>名詞</strong></span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">2</span>
+                            <span>篩選範圍：剩餘名詞只有 (B) sensation</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">3</span>
+                            <span>對等結構：realism AND sensation → 兩個名詞對等並列 ✓</span>
+                        </div>
+                    </div>
+                    
+                    <div class="anchor-box">
+                        <div class="anchor-label">📍 原文錨點 ｜ 轉折結構</div>
+                        <div class="anchor-text">"<span class="anchor-highlight">However</span>, CGI has difficulties... demand for the realism and thrilling <span class="anchor-highlight">sensation</span>"</div>
+                        <p style="margin-top: 8px; color: #616161;">→ However 轉折：CGI 雖好，但真實特技的刺激感仍有需求</p>
                     </div>
                 </div>
             </div>
-
+            
+            <!-- 單字戰略分類 -->
+            <div class="section">
+                <h2 class="section-title">📚 單字戰略分類 ｜ 依陷阱類型</h2>
+                
+                <table class="vocab-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 15%;">單字</th>
+                            <th style="width: 15%;">陷阱類型</th>
+                            <th style="width: 15%;">高頻考法</th>
+                            <th style="width: 55%;">實戰例句</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="vocab-word">cost</span><br>(v.) 使付出代價</td>
+                            <td><span class="trap-type trap-type-collocation">特殊句型</span></td>
+                            <td><span class="exam-focus">cost sb. sth.</span></td>
+                            <td>
+                                <span class="eng-example">The mistakes <span class="eng-keyword">cost</span> some their lives.</span><br>
+                                <span class="chi-example">這些錯誤<span class="chi-keyword">使</span>某些人<span class="chi-keyword">付出</span>生命<span class="chi-keyword">代價</span>。</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="vocab-word">called for</span><br>(phr.v.) 需要</td>
+                            <td><span class="trap-type trap-type-multi">一詞多義</span></td>
+                            <td><span class="exam-focus">call for = require</span></td>
+                            <td>
+                                <span class="eng-example">Action movies <span class="eng-keyword">called for</span> the use of stunt people.</span><br>
+                                <span class="chi-example">動作片<span class="chi-keyword">需要</span>使用特技人員。</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="vocab-word">tried out</span><br>(phr.v.) 嘗試</td>
+                            <td><span class="trap-type trap-type-collocation">固定搭配</span></td>
+                            <td><span class="exam-focus">try out = test</span></td>
+                            <td>
+                                <span class="eng-example">They often <span class="eng-keyword">tried out</span> things for the first time.</span><br>
+                                <span class="chi-example">他們經常第一次<span class="chi-keyword">嘗試</span>這些事。</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="vocab-word">witnessed</span><br>(v.) 見證</td>
+                            <td><span class="trap-type trap-type-context">擬人用法</span></td>
+                            <td><span class="exam-focus">時代 + witness</span></td>
+                            <td>
+                                <span class="eng-example">The 1960s <span class="eng-keyword">witnessed</span> the development of stunt technology.</span><br>
+                                <span class="chi-example">1960年代<span class="chi-keyword">見證</span>了特技技術的發展。</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="vocab-word">necessity</span><br>(n.) 必要性</td>
+                            <td><span class="trap-type trap-type-collocation">固定搭配</span></td>
+                            <td><span class="exam-focus">out of necessity</span></td>
+                            <td>
+                                <span class="eng-example">Stunt work emerged out of <span class="eng-keyword">necessity</span>.</span><br>
+                                <span class="chi-example">特技工作源於<span class="chi-keyword">必要</span>。</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="vocab-word">sensation</span><br>(n.) 感覺；刺激感</td>
+                            <td><span class="trap-type trap-type-pos">名詞搭配</span></td>
+                            <td><span class="exam-focus">thrilling sensation</span></td>
+                            <td>
+                                <span class="eng-example">the thrilling <span class="eng-keyword">sensation</span> of an actual stunt</span><br>
+                                <span class="chi-example">真實特技的<span class="chi-keyword">刺激感</span></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- 轉折詞解題策略總表 -->
+            <div class="section">
+                <h2 class="section-title">🔄 轉折詞解題策略總表</h2>
+                
+                <!-- 因果邏輯類 -->
+                <div class="transition-category">
+                    <div class="transition-category-header">
+                        <div class="category-icon category-cause">🔗</div>
+                        <div>
+                            <div class="category-title">1. 因果邏輯類 Cause & Effect</div>
+                            <div class="category-subtitle">前面是原因，後面是結果，空格要符合因果邏輯</div>
+                        </div>
+                    </div>
+                    <div class="transition-words-list">
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">So</span> <span style="color: #616161;">所以</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Therefore</span> <span style="color: #616161;">因此</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Thus</span> <span style="color: #616161;">因此</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">As a result</span> <span style="color: #616161;">結果</span></span>
+                    </div>
+                    <div class="strategy-action">
+                        <div class="strategy-action-title">🎯 解題動作</div>
+                        <div class="strategy-action-steps">
+                            看到因果詞 <span class="strategy-arrow">→</span> 找出原因與結果 <span class="strategy-arrow">→</span> 空格填合理推論
+                        </div>
+                    </div>
+                    <div class="real-example">
+                        <div class="real-example-title">📍 本篇實戰</div>
+                        <p class="real-example-eng">"were not trained to perform stunts, <span class="real-example-keyword">so</span> they often tried out things for the first time"</p>
+                        <p class="real-example-chi">沒有受過特技訓練，<span class="real-example-chi-keyword">所以</span>他們經常第一次嘗試</p>
+                    </div>
+                </div>
+                
+                <!-- 對比轉折類 -->
+                <div class="transition-category">
+                    <div class="transition-category-header">
+                        <div class="category-icon category-contrast">⚡</div>
+                        <div>
+                            <div class="category-title">2. 對比轉折類 Contrast</div>
+                            <div class="category-subtitle">前後語意相反，空格填與前文相反的概念</div>
+                        </div>
+                    </div>
+                    <div class="transition-words-list">
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">However</span> <span style="color: #616161;">然而</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">But</span> <span style="color: #616161;">但是</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Yet</span> <span style="color: #616161;">然而</span></span>
+                    </div>
+                    <div class="strategy-action">
+                        <div class="strategy-action-title">🎯 解題動作</div>
+                        <div class="strategy-action-steps">
+                            看到轉折詞 <span class="strategy-arrow">→</span> 找前後對比點 <span class="strategy-arrow">→</span> 空格填相反概念
+                        </div>
+                    </div>
+                    <div class="real-example">
+                        <div class="real-example-title">📍 本篇實戰</div>
+                        <p class="real-example-eng">"There were, <span class="real-example-keyword">however</span>, no professional crew members"</p>
+                        <p class="real-example-chi"><span class="real-example-chi-keyword">然而</span>，當時沒有專業人員</p>
+                        <p style="color: #757575; margin-top: 8px;">→ 與前文「演員自己拍攝」形成對比：沒有專業人員可以替代</p>
+                    </div>
+                </div>
+                
+                <!-- 時序先後類 -->
+                <div class="transition-category">
+                    <div class="transition-category-header">
+                        <div class="category-icon category-sequence">📅</div>
+                        <div>
+                            <div class="category-title">3. 時序先後類 Sequence</div>
+                            <div class="category-subtitle">標示時間順序，注意事件發生的先後</div>
+                        </div>
+                    </div>
+                    <div class="transition-words-list">
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Until</span> <span style="color: #616161;">直到</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Beginning around</span> <span style="color: #616161;">大約從...開始</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Then</span> <span style="color: #616161;">然後</span></span>
+                    </div>
+                    <div class="strategy-action">
+                        <div class="strategy-action-title">🎯 解題動作</div>
+                        <div class="strategy-action-steps">
+                            看到時序詞 <span class="strategy-arrow">→</span> 確認時間先後 <span class="strategy-arrow">→</span> 空格填符合時間邏輯的詞
+                        </div>
+                    </div>
+                    <div class="real-example">
+                        <div class="real-example-title">📍 本篇實戰</div>
+                        <p class="real-example-eng">"actors themselves shot... <span class="real-example-keyword">until</span> they began to get injured"</p>
+                        <p class="real-example-chi">演員自己拍攝...<span class="real-example-chi-keyword">直到</span>他們開始受傷</p>
+                    </div>
+                </div>
+                
+                <!-- 條件假設類 -->
+                <div class="transition-category">
+                    <div class="transition-category-header">
+                        <div class="category-icon category-condition">❓</div>
+                        <div>
+                            <div class="category-title">4. 條件假設類 Condition</div>
+                            <div class="category-subtitle">建立條件關係，空格要符合條件邏輯</div>
+                        </div>
+                    </div>
+                    <div class="transition-words-list">
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">If</span> <span style="color: #616161;">如果</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Unless</span> <span style="color: #616161;">除非</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">When</span> <span style="color: #616161;">當...時</span></span>
+                    </div>
+                    <div class="strategy-action">
+                        <div class="strategy-action-title">🎯 解題動作</div>
+                        <div class="strategy-action-steps">
+                            看到條件詞 <span class="strategy-arrow">→</span> 確認條件與結果 <span class="strategy-arrow">→</span> 空格填符合邏輯的詞
+                        </div>
+                    </div>
+                    <div class="real-example">
+                        <div class="real-example-title">📍 本篇實戰</div>
+                        <p class="real-example-eng">"<span class="real-example-keyword">If</span> something dangerous needed to be done... the producers would hire anyone"</p>
+                        <p class="real-example-chi"><span class="real-example-chi-keyword">如果</span>需要完成危險動作...製作人會雇用任何人</p>
+                    </div>
+                </div>
+                
+                <!-- 補充說明類 -->
+                <div class="transition-category">
+                    <div class="transition-category-header">
+                        <div class="category-icon category-addition">➕</div>
+                        <div>
+                            <div class="category-title">5. 補充說明類 Addition</div>
+                            <div class="category-subtitle">補充前面的資訊，同向延伸</div>
+                        </div>
+                    </div>
+                    <div class="transition-words-list">
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Such</span> <span style="color: #616161;">這樣的</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Also</span> <span style="color: #616161;">也</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Moreover</span> <span style="color: #616161;">此外</span></span>
+                    </div>
+                    <div class="strategy-action">
+                        <div class="strategy-action-title">🎯 解題動作</div>
+                        <div class="strategy-action-steps">
+                            看到補充詞 <span class="strategy-arrow">→</span> 確認前文方向 <span class="strategy-arrow">→</span> 空格填同向延伸概念
+                        </div>
+                    </div>
+                    <div class="real-example">
+                        <div class="real-example-title">📍 本篇實戰</div>
+                        <p class="real-example-eng">"<span class="real-example-keyword">Such</span> demand increased with the rise of western movies"</p>
+                        <p class="real-example-chi"><span class="real-example-chi-keyword">這樣的</span>需求隨著西部片興起而增加</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 考前衝刺重點 -->
+            <div class="section">
+                <h2 class="section-title">🚀 考前衝刺重點整理</h2>
+                
+                <div class="sprint-section">
+                    <div class="sprint-main-title">🏆 文意選填必勝攻略</div>
+                    
+                    <!-- 解題三步驟 -->
+                    <div class="sprint-item">
+                        <h4>🎯 解題三步驟</h4>
+                        <div class="three-steps">
+                            <div class="step-card">
+                                <div class="step-card-num">1</div>
+                                <div class="step-card-title">判斷詞性</div>
+                                <div class="step-card-desc">看空格前後結構<br>確定需要什麼詞性</div>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-card-num">2</div>
+                                <div class="step-card-title">篩選選項</div>
+                                <div class="step-card-desc">依詞性刪除選項<br>縮小作答範圍</div>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-card-num">3</div>
+                                <div class="step-card-title">語意驗證</div>
+                                <div class="step-card-desc">結合上下文邏輯<br>確認最佳答案</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 本篇重點句型 -->
+                    <div class="sprint-item">
+                        <h4>📝 本篇重點句型</h4>
+                        <ul>
+                            <li><strong>too + adj. + for sb. to V：</strong>對某人而言太...而無法做...</li>
+                            <li><strong>it is + adj. + to V：</strong>做...是...的（虛主詞結構）</li>
+                            <li><strong>cost sb. sth.：</strong>使某人付出某代價（三態同形）</li>
+                            <li><strong>時代 + witness：</strong>某年代見證了...（擬人用法）</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 高頻錯題警示 -->
+                    <div class="danger-zone">
+                        <div class="danger-title">🚨 本篇高頻錯題 TOP 3</div>
+                        
+                        <div class="danger-item">
+                            <div class="danger-q">第25題：which cost some their lives</div>
+                            <div class="danger-reason">❌ 錯因：不熟悉 cost sb. sth. 句型</div>
+                            <div class="danger-solution">✓ 破解：cost + 人 + 代價（cost 三態同形）</div>
+                        </div>
+                        
+                        <div class="danger-item">
+                            <div class="danger-q">第26題：which called for the use of</div>
+                            <div class="danger-reason">❌ 錯因：不知道 call for = 需要</div>
+                            <div class="danger-solution">✓ 破解：call for = require = 需要、要求</div>
+                        </div>
+                        
+                        <div class="danger-item">
+                            <div class="danger-q">第28題：The 1960s witnessed</div>
+                            <div class="danger-reason">❌ 錯因：不熟悉時代作主詞的擬人用法</div>
+                            <div class="danger-solution">✓ 破解：年代 + witness = 某年代見證了...</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 主題詞辨識 -->
+                    <div class="sprint-item">
+                        <h4>🎨 主題詞辨識技巧</h4>
+                        <ul>
+                            <li><strong>核心主題詞：</strong>stunt person、stunt work、stunts、dangerous</li>
+                            <li><strong>產業發展詞：</strong>film industry、action movies、western movies、CGI</li>
+                            <li><strong>時間詞：</strong>early days、1910、1960s and '70s、today</li>
+                            <li><strong>辨識方法：</strong>stunt 相關詞出現超過 10 次 = 絕對主題詞</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 終極口訣 -->
+                    <div class="mantra-box">
+                        <div class="mantra-title">🏆 考前終極口訣</div>
+                        <div class="mantra-text">
+                            <span class="mantra-highlight">詞性先行</span>，結構定位<br>
+                            <span class="mantra-highlight">轉折必看</span>，前後對照<br>
+                            <span class="mantra-highlight">搭配優先</span>，固定用法<br>
+                            <span class="mantra-highlight">一詞多義</span>，語境判斷
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 答案總覽 -->
+            <div class="section">
+                <h2 class="section-title">✅ 答案總覽</h2>
+                <div class="answer-overview">
+                    <div class="answer-grid">
+                        <div class="answer-cell">
+                            <div class="answer-cell-num">21</div>
+                            <div class="answer-cell-ans">(C)</div>
+                        </div>
+                        <div class="answer-cell">
+                            <div class="answer-cell-num">22</div>
+                            <div class="answer-cell-ans">(I)</div>
+                        </div>
+                        <div class="answer-cell">
+                            <div class="answer-cell-num">23</div>
+                            <div class="answer-cell-ans">(F)</div>
+                        </div>
+                        <div class="answer-cell">
+                            <div class="answer-cell-num">24</div>
+                            <div class="answer-cell-ans">(H)</div>
+                        </div>
+                        <div class="answer-cell">
+                            <div class="answer-cell-num">25</div>
+                            <div class="answer-cell-ans">(D)</div>
+                        </div>
+                        <div class="answer-cell">
+                            <div class="answer-cell-num">26</div>
+                            <div class="answer-cell-ans">(G)</div>
+                        </div>
+                        <div class="answer-cell">
+                            <div class="answer-cell-num">27</div>
+                            <div class="answer-cell-ans">(J)</div>
+                        </div>
+                        <div class="answer-cell">
+                            <div class="answer-cell-num">28</div>
+                            <div class="answer-cell-ans">(E)</div>
+                        </div>
+                        <div class="answer-cell">
+                            <div class="answer-cell-num">29</div>
+                            <div class="answer-cell-ans">(A)</div>
+                        </div>
+                        <div class="answer-cell">
+                            <div class="answer-cell-num">30</div>
+                            <div class="answer-cell-ans">(B)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>🎬 學測英文文意選填 ｜ 專業教學分析版 ｜ 111年學測</p>
+            <p>主題：特技演員 Stunt Person｜電影產業發展</p>
         </div>
     </div>
 </body>
