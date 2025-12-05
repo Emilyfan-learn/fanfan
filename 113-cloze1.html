@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學測文意選填 - 風之電話 專業教學分析版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif;
+            line-height: 1.9;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 35px 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.4em;
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .header .theme-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 1.6em;
+            color: #2c3e50;
+            border-left: 6px solid #3498db;
+            padding-left: 18px;
+            margin-bottom: 25px;
+        }
+        
+        /* 文章結構分析 */
+        .structure-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .structure-function {
+            background: #85c1e9;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #1a5276;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        /* 文章標示版 */
+        .article-box {
+            background: #fafafa;
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid #e0e0e0;
+            font-size: 1.08em;
+            line-height: 2.2;
+        }
+        
+        .core-sentence {
+            color: #c62828;
+            font-weight: bold;
+            background: linear-gradient(transparent 60%, #ffcdd2 60%);
+        }
+        
+        .transition-word {
+            color: #6a1b9a;
+            font-weight: bold;
+            background: linear-gradient(transparent 60%, #e1bee7 60%);
+        }
+        
+        .theme-word {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        
+        .blank {
+            display: inline-block;
+            min-width: 70px;
+            border-bottom: 3px solid #2c3e50;
+            text-align: center;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 0 5px;
+            padding: 0 8px;
+        }
+        
+        /* 選項區塊 */
+        .options-box {
+            background: linear-gradient(135deg, #e8f6f3 0%, #d1f2eb 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 2px solid #48c9b0;
+        }
+        
+        .options-title {
+            font-weight: bold;
+            color: #1e8449;
+            margin-bottom: 15px;
+            font-size: 1.15em;
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+        
+        .option-item {
+            background: white;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        
+        .option-item .letter { color: #c62828; font-weight: bold; font-size: 1.1em; }
+        .option-item .word { color: #1565c0; font-weight: 500; }
+        .option-item .pos { color: #757575; font-size: 0.85em; }
+        
+        /* 解題卡片 */
+        .question-card {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+        }
+        
+        .question-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .question-number {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+        
+        .difficulty-tag {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        
+        .difficulty-easy { background: #c8e6c9; color: #2e7d32; }
+        .difficulty-medium { background: #fff3e0; color: #ef6c00; }
+        .difficulty-hard { background: #ffcdd2; color: #c62828; }
+        
+        .question-sentence {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+            padding: 20px 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #ffc107;
+            font-size: 1.1em;
+        }
+        
+        .answer-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .answer-tag {
+            background: linear-gradient(135deg, #43a047 0%, #66bb6a 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+        
+        .kill-point {
+            background: linear-gradient(135deg, #c62828 0%, #e53935 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        
+        /* 秒殺判斷 */
+        .instant-kill {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border: 2px solid #ff9800;
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin: 15px 0;
+        }
+        
+        .instant-kill-title {
+            color: #e65100;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        /* 解題邏輯鏈 */
+        .logic-chain {
+            background: #f5f5f5;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .logic-chain-title {
+            color: #2c3e50;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .logic-step {
+            display: flex;
+            align-items: flex-start;
+            margin: 12px 0;
+            padding-left: 10px;
+        }
+        
+        .logic-step-num {
+            background: #3498db;
+            color: white;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        /* 原文錨點 */
+        .anchor-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px 20px;
+            margin: 12px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .anchor-label {
+            color: #2e7d32;
+            font-weight: bold;
+            font-size: 0.95em;
+            margin-bottom: 5px;
+        }
+        
+        .anchor-text {
+            color: #1b5e20;
+            font-style: italic;
+        }
+        
+        .anchor-highlight {
+            background: #a5d6a7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-style: normal;
+        }
+        
+        /* 誘答分析 */
+        .trap-analysis {
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin: 15px 0;
+            border: 2px solid #ec407a;
+        }
+        
+        .trap-title {
+            color: #c2185b;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .trap-item {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .trap-item::before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: #c62828;
+            font-weight: bold;
+        }
+        
+        .trap-option { color: #c62828; font-weight: bold; }
+        .trap-reason { color: #616161; }
+        
+        /* 單字表格 */
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .vocab-table th {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .vocab-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+        }
+        
+        .vocab-table tr:nth-child(even) { background: #f8f9fa; }
+        .vocab-table tr:hover { background: #e3f2fd; }
+        
+        .vocab-word { color: #c62828; font-weight: bold; font-size: 1.1em; }
+        
+        .trap-type {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        
+        .trap-type-multi { background: #ffcdd2; color: #c62828; }
+        .trap-type-collocation { background: #c8e6c9; color: #2e7d32; }
+        .trap-type-pos { background: #fff3e0; color: #ef6c00; }
+        .trap-type-context { background: #e1bee7; color: #6a1b9a; }
+        
+        .exam-focus {
+            background: #e3f2fd;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            color: #1565c0;
+            font-weight: 500;
+        }
+        
+        .eng-example { color: #1565c0; }
+        .eng-keyword { color: #c62828; font-weight: bold; }
+        .chi-example { color: #616161; }
+        .chi-keyword { color: #c62828; font-weight: bold; }
+        
+        /* 轉折詞分類 */
+        .transition-category {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid #e0e0e0;
+        }
+        
+        .transition-category-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .category-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            color: white;
+        }
+        
+        .category-contrast { background: linear-gradient(135deg, #e91e63 0%, #f06292 100%); }
+        .category-cause { background: linear-gradient(135deg, #ff9800 0%, #ffb74d 100%); }
+        .category-addition { background: linear-gradient(135deg, #4caf50 0%, #81c784 100%); }
+        .category-example { background: linear-gradient(135deg, #2196f3 0%, #64b5f6 100%); }
+        .category-concession { background: linear-gradient(135deg, #9c27b0 0%, #ba68c8 100%); }
+        .category-condition { background: linear-gradient(135deg, #00bcd4 0%, #4dd0e1 100%); }
+        .category-sequence { background: linear-gradient(135deg, #795548 0%, #a1887f 100%); }
+        
+        .category-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #1b262c;
+        }
+        
+        .category-subtitle {
+            color: #757575;
+            font-size: 0.95em;
+        }
+        
+        .transition-words-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .transition-word-tag {
+            background: #f5f5f5;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 500;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .strategy-action {
+            background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+        
+        .strategy-action-title {
+            color: #283593;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .strategy-action-steps {
+            color: #3949ab;
+            font-weight: 500;
+        }
+        
+        .strategy-arrow {
+            color: #5c6bc0;
+            margin: 0 8px;
+        }
+        
+        .real-example {
+            background: #fafafa;
+            border-left: 4px solid #6a1b9a;
+            padding: 15px 20px;
+            margin-top: 15px;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .real-example-title {
+            color: #6a1b9a;
+            font-weight: bold;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+        
+        .real-example-eng { color: #1565c0; }
+        
+        .real-example-keyword {
+            color: #6a1b9a;
+            font-weight: bold;
+            background: #f3e5f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        
+        .real-example-chi { color: #616161; margin-top: 5px; }
+        .real-example-chi-keyword { color: #6a1b9a; font-weight: bold; }
+        
+        /* 考前衝刺 */
+        .sprint-section {
+            background: linear-gradient(135deg, #fffbea 0%, #fff9c4 100%);
+            border-radius: 18px;
+            padding: 35px;
+            margin: 25px 0;
+            border: 3px solid #ffd54f;
+        }
+        
+        .sprint-main-title {
+            color: #0d47a1;
+            font-weight: bold;
+            font-size: 1.5em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .sprint-item {
+            background: white;
+            border-radius: 12px;
+            padding: 22px;
+            margin: 18px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .sprint-item h4 {
+            color: #0d47a1;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.15em;
+        }
+        
+        .sprint-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sprint-item li {
+            padding: 10px 0;
+            padding-left: 28px;
+            position: relative;
+            color: #1565c0;
+            font-weight: 500;
+        }
+        
+        .sprint-item li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        .three-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .step-card {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .step-card-num {
+            background: #0d47a1;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 10px;
+        }
+        
+        .step-card-title {
+            color: #0d47a1;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        
+        .step-card-desc {
+            color: #1565c0;
+            font-size: 0.95em;
+        }
+        
+        /* 錯題警示 */
+        .danger-zone {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 2px solid #e57373;
+        }
+        
+        .danger-title {
+            color: #c62828;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        
+        .danger-item {
+            background: white;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin: 12px 0;
+            border-left: 4px solid #c62828;
+        }
+        
+        .danger-q { color: #c62828; font-weight: bold; margin-bottom: 5px; }
+        .danger-reason { color: #616161; }
+        .danger-solution { color: #2e7d32; font-weight: 500; margin-top: 5px; }
+        
+        /* 口訣 */
+        .mantra-box {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            border-radius: 18px;
+            padding: 35px;
+            text-align: center;
+            margin-top: 30px;
+            color: white;
+        }
+        
+        .mantra-title {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+        }
+        
+        .mantra-text {
+            font-size: 1.5em;
+            font-weight: bold;
+            line-height: 2.2;
+        }
+        
+        .mantra-highlight {
+            background: rgba(255,255,255,0.2);
+            padding: 3px 12px;
+            border-radius: 8px;
+        }
+        
+        /* 答案總覽 */
+        .answer-overview {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .answer-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            max-width: 700px;
+            margin: 20px auto;
+        }
+        
+        .answer-cell {
+            background: white;
+            padding: 18px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .answer-cell-num { color: #2c3e50; font-weight: bold; font-size: 1.1em; }
+        .answer-cell-ans { color: #2e7d32; font-weight: bold; font-size: 1.3em; margin-top: 5px; }
+        
+        .footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+        
+        .legend-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 15px 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📞 學測文意選填</h1>
+            <div class="subtitle">專業教學分析版</div>
+            <div class="theme-tag">🎯 主題：風之電話 The Wind Phone｜療癒與悲傷</div>
+        </div>
+        
+        <div class="content">
+            
+            <!-- 選項總覽 -->
+            <div class="options-box">
+                <div class="options-title">📋 選項總覽 ｜ 先分類再作答</div>
+                <div class="options-grid">
+                    <div class="option-item">
+                        <div class="letter">(A)</div>
+                        <div class="word">passed on</div>
+                        <div class="pos">phr.v. 傳遞</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="letter">(B)</div>
+                        <div class="word">bridge</div>
+                        <div class="pos">n. 橋樑</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="letter">(C)</div>
+                        <div class="word">sorrow</div>
+                        <div class="pos">n. 悲傷</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="letter">(D)</div>
+                        <div class="word">hope</div>
+                        <div class="pos">n. 希望</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="letter">(E)</div>
+                        <div class="word">departed</div>
+                        <div class="pos">adj. 已故的</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="letter">(F)</div>
+                        <div class="word">mechanism</div>
+                        <div class="pos">n. 機制</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="letter">(G)</div>
+                        <div class="word">housed</div>
+                        <div class="pos">v. 容納</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="letter">(H)</div>
+                        <div class="word">manageable</div>
+                        <div class="pos">adj. 可處理的</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="letter">(I)</div>
+                        <div class="word">fateful</div>
+                        <div class="pos">adj. 命運的；決定性的</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="letter">(J)</div>
+                        <div class="word">brought forth</div>
+                        <div class="pos">phr.v. 提出</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 文章結構分析 -->
+            <div class="section">
+                <h2 class="section-title">🏗️ 文章結構分析</h2>
+                
+                <div class="structure-box">
+                    <div class="structure-function">第一段功能：引言 + 場景描述</div>
+                    <p>描述風之電話的地點與功能 → 讓家屬與海嘯中<strong>逝去的</strong>親人對話 → 說出那<strong>命運般</strong>的一天未能說出的話</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第21題（departed）、第22題（fateful）測試形容詞的情感色彩</p>
+                </div>
+                
+                <div class="structure-box">
+                    <div class="structure-function">第二段功能：背景故事 + 創作動機</div>
+                    <p>佐佐木格因堂兄去世而悲傷 → 需要私人空間處理<strong>悲傷</strong> → 電話亭只<strong>容納</strong>一部老電話 → 想法無法透過一般電話<strong>傳遞</strong> → 讓悲傷過程更<strong>易於處理</strong></p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第23-27題集中在此段，測試動詞用法、名詞搭配、形容詞修飾</p>
+                </div>
+                
+                <div class="structure-box">
+                    <div class="structure-function">第三段功能：影響擴展 + 總結意義</div>
+                    <p>2011年開放給大眾 → 成為生者與逝者間的<strong>橋樑</strong> → 悲傷是自然的<strong>機制</strong> → 使用者心中永遠有<strong>希望</strong></p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第28-30題，測試比喻用法、抽象名詞</p>
+                </div>
+            </div>
+            
+            <!-- 文章標示版 -->
+            <div class="section">
+                <h2 class="section-title">📖 文章標示版</h2>
+                <div class="article-box">
+                    <p>On a hilltop overlooking the 2011-tsunami hit Otsuchi Town in northeastern Japan, there is a white phone booth standing all alone in the wind. <span class="core-sentence">The lonely "wind phone" serves to connect family members to their <span class="blank">21</span> loved ones who died in the tsunami that claimed 18,000 lives.</span> People come to speak to those they have lost, to say the words they never got to say on that <span class="blank">22</span> day.</p>
+                    
+                    <p>The idea for the <span class="theme-word">wind phone</span> was first <span class="blank">23</span> by a Japanese garden designer named Itaru Sasaki, who was <span class="theme-word">grieving</span> over the death of his cousin in 2010, <span class="transition-word">before</span> the tsunami. Feeling that he needed a private space to help him navigate through the <span class="blank">24</span>, Sasaki positioned a booth where he could "speak" to the dead relative. The booth he built <span class="blank">25</span> only an old dial phone with a disconnected phone line. <span class="transition-word">When</span> he stepped into the booth, he could pick up the phone to call his cousin, telling him how he was, and how he missed him. Sasaki stated in an interview: <span class="core-sentence">"<span class="transition-word">Because</span> my thoughts couldn't be <span class="blank">26</span> through a regular phone line, I wanted them to be carried on the wind."</span> <span class="transition-word">Hence</span>, the <span class="theme-word">wind phone</span> allows Sasaki to create a one-way conversation with deep, soulful personal meaning, and renders the <span class="theme-word">grieving</span> process more <span class="blank">27</span> for him.</p>
+                    
+                    <p>Sasaki opened his <span class="theme-word">wind phone</span> to the public in 2011, <span class="transition-word">after</span> the devastating tsunami. News about the phone gradually spread, and <span class="core-sentence">the booth has become a <span class="blank">28</span> between the living and the dead.</span> Phones resembling the wind phone have <span class="transition-word">since</span> been built around the world. Some were even set up to allow people to call their loved ones lost in the COVID-19 pandemic.</p>
+                    
+                    <p><span class="core-sentence"><span class="theme-word">Grieving</span> is a natural <span class="blank">29</span> for coping with loss of a loved one</span>, and people grieve in various ways. <span class="transition-word">For</span> those who speak into the <span class="theme-word">wind phone</span>, <span class="blank">30</span> is always there: They believe that their messages will—through some unknown way—reach the deceased.</p>
+                </div>
+                
+                <div class="legend-box">
+                    <div class="legend-item"><span class="core-sentence">紅色底線</span> = 核心句/主旨</div>
+                    <div class="legend-item"><span class="transition-word">紫色底線</span> = 轉折詞</div>
+                    <div class="legend-item"><span class="theme-word">綠色粗體</span> = 主題詞</div>
+                </div>
+            </div>
+            
+            <!-- 解題思維 -->
+            <div class="section">
+                <h2 class="section-title">🧠 解題思維 ｜ 逐題攻破</h2>
+                
+                <!-- 第21題 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">21</div>
+                        <span class="difficulty-tag difficulty-medium">中等</span>
+                    </div>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句：</strong>The lonely "wind phone" serves to connect family members to their <u>&nbsp;&nbsp;<strong>____</strong>&nbsp;&nbsp;</u> loved ones who died in the tsunami...
+                    </div>
+                    
+                    <div class="answer-row">
+                        <div class="answer-tag">✓ 正解：(E) departed</div>
+                        <div class="kill-point">⚡ 秒殺點：____ + loved ones + who died</div>
+                    </div>
+                    
+                    <div class="instant-kill">
+                        <div class="instant-kill-title">⚡ 秒殺判斷</div>
+                        <p>空格修飾 <strong>loved ones</strong>（親人）→ 需要<strong>形容詞</strong> → 後文 "who died" 說明親人已逝 → <strong>departed</strong>（已故的）最符合</p>
+                    </div>
+                    
+                    <div class="logic-chain">
+                        <div class="logic-chain-title">🔗 解題邏輯鏈</div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">1</span>
+                            <span>判斷詞性：their ____ loved ones → 需要<strong>形容詞</strong>修飾名詞</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">2</span>
+                            <span>篩選範圍：形容詞有 (E) departed、(H) manageable、(I) fateful</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">3</span>
+                            <span>語意搭配：後文 "who died in the tsunami" → 親人「已故」→ departed ✓</span>
+                        </div>
+                    </div>
+                    
+                    <div class="anchor-box">
+                        <div class="anchor-label">📍 原文錨點</div>
+                        <div class="anchor-text">"their <span class="anchor-highlight">departed</span> loved ones who <span class="anchor-highlight">died</span> in the tsunami"</div>
+                        <p style="margin-top: 8px; color: #616161;">→ departed 與 died 形成語意呼應，都指「已逝去」</p>
+                    </div>
+                    
+                    <div class="trap-analysis">
+                        <div class="trap-title">🚨 誘答分析</div>
+                        <div class="trap-item">
+                            <span class="trap-option">(I) fateful</span>
+                            <span class="trap-reason"> → 意為「命運的」，不能修飾「親人」</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 第22題 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">22</div>
+                        <span class="difficulty-tag difficulty-medium">中等</span>
+                    </div>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句：</strong>People come to speak to those they have lost, to say the words they never got to say on that <u>&nbsp;&nbsp;<strong>____</strong>&nbsp;&nbsp;</u> day.
+                    </div>
+                    
+                    <div class="answer-row">
+                        <div class="answer-tag">✓ 正解：(I) fateful</div>
+                        <div class="kill-point">⚡ 秒殺點：that ____ day = 海嘯當天</div>
+                    </div>
+                    
+                    <div class="instant-kill">
+                        <div class="instant-kill-title">⚡ 秒殺判斷</div>
+                        <p><strong>that ____ day</strong> 指海嘯發生的那一天 → 改變命運的日子 → <strong>fateful</strong>（命運般的、決定性的）</p>
+                    </div>
+                    
+                    <div class="logic-chain">
+                        <div class="logic-chain-title">🔗 解題邏輯鏈</div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">1</span>
+                            <span>判斷詞性：that ____ day → 需要<strong>形容詞</strong></span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">2</span>
+                            <span>篩選範圍：剩餘形容詞有 (H) manageable、(I) fateful</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">3</span>
+                            <span>語意判斷：海嘯當天 = 改變許多人命運的日子 → fateful ✓</span>
+                        </div>
+                    </div>
+                    
+                    <div class="anchor-box">
+                        <div class="anchor-label">📍 原文錨點 ｜ 情感色彩</div>
+                        <div class="anchor-text">"say the words they never got to say on that <span class="anchor-highlight">fateful</span> day"</div>
+                        <p style="margin-top: 8px; color: #616161;">→ fateful day 是固定搭配，指「改變命運的那一天」，帶有悲劇色彩</p>
+                    </div>
+                </div>
+                
+                <!-- 第23題 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">23</div>
+                        <span class="difficulty-tag difficulty-hard">困難</span>
+                    </div>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句：</strong>The idea for the wind phone was first <u>&nbsp;&nbsp;<strong>____</strong>&nbsp;&nbsp;</u> by a Japanese garden designer named Itaru Sasaki...
+                    </div>
+                    
+                    <div class="answer-row">
+                        <div class="answer-tag">✓ 正解：(J) brought forth</div>
+                        <div class="kill-point">⚡ 秒殺點：idea + was + ____ + by</div>
+                    </div>
+                    
+                    <div class="instant-kill">
+                        <div class="instant-kill-title">⚡ 秒殺判斷</div>
+                        <p><strong>The idea was ____ by</strong> → 被動語態 → 「想法被____」→ <strong>brought forth</strong>（提出）</p>
+                    </div>
+                    
+                    <div class="logic-chain">
+                        <div class="logic-chain-title">🔗 解題邏輯鏈</div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">1</span>
+                            <span>判斷結構：was + ____ + by → 被動語態，需要<strong>過去分詞</strong></span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">2</span>
+                            <span>篩選範圍：過去分詞有 (A) passed on、(G) housed、(J) brought forth</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">3</span>
+                            <span>搭配判斷：idea + brought forth = 想法被提出 ✓</span>
+                        </div>
+                    </div>
+                    
+                    <div class="anchor-box">
+                        <div class="anchor-label">📍 原文錨點</div>
+                        <div class="anchor-text">"The idea for the wind phone was first <span class="anchor-highlight">brought forth</span> by..."</div>
+                        <p style="margin-top: 8px; color: #616161;">→ bring forth 意為「提出、產生」，常用於想法、計畫的提出</p>
+                    </div>
+                    
+                    <div class="trap-analysis">
+                        <div class="trap-title">🚨 誘答分析</div>
+                        <div class="trap-item">
+                            <span class="trap-option">(A) passed on</span>
+                            <span class="trap-reason"> → 意為「傳遞」，想法是「提出」而非「傳遞」</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 第24題 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">24</div>
+                        <span class="difficulty-tag difficulty-easy">簡單</span>
+                    </div>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句：</strong>Feeling that he needed a private space to help him navigate through the <u>&nbsp;&nbsp;<strong>____</strong>&nbsp;&nbsp;</u>, Sasaki positioned a booth...
+                    </div>
+                    
+                    <div class="answer-row">
+                        <div class="answer-tag">✓ 正解：(C) sorrow</div>
+                        <div class="kill-point">⚡ 秒殺點：grieving → navigate through the ____</div>
+                    </div>
+                    
+                    <div class="instant-kill">
+                        <div class="instant-kill-title">⚡ 秒殺判斷</div>
+                        <p>前文提到 <strong>grieving</strong>（悲傷）→ navigate through the ____ → 「度過____」→ <strong>sorrow</strong>（悲傷）</p>
+                    </div>
+                    
+                    <div class="logic-chain">
+                        <div class="logic-chain-title">🔗 解題邏輯鏈</div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">1</span>
+                            <span>判斷詞性：the ____ → 需要<strong>名詞</strong></span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">2</span>
+                            <span>上下文線索：前文 "grieving over the death" → 主題是悲傷</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">3</span>
+                            <span>搭配驗證：navigate through the sorrow = 度過悲傷 ✓</span>
+                        </div>
+                    </div>
+                    
+                    <div class="anchor-box">
+                        <div class="anchor-label">📍 原文錨點 ｜ 主題呼應</div>
+                        <div class="anchor-text">"who was <span class="anchor-highlight">grieving</span> over the death... navigate through the <span class="anchor-highlight">sorrow</span>"</div>
+                        <p style="margin-top: 8px; color: #616161;">→ grieving（悲傷）與 sorrow（悲傷）形成語意呼應</p>
+                    </div>
+                </div>
+                
+                <!-- 第25題 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">25</div>
+                        <span class="difficulty-tag difficulty-hard">困難</span>
+                    </div>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句：</strong>The booth he built <u>&nbsp;&nbsp;<strong>____</strong>&nbsp;&nbsp;</u> only an old dial phone with a disconnected phone line.
+                    </div>
+                    
+                    <div class="answer-row">
+                        <div class="answer-tag">✓ 正解：(G) housed</div>
+                        <div class="kill-point">⚡ 秒殺點：booth + ____ + only an old phone</div>
+                    </div>
+                    
+                    <div class="instant-kill">
+                        <div class="instant-kill-title">⚡ 秒殺判斷</div>
+                        <p><strong>The booth ____ only an old phone</strong> → 電話亭「容納/裝有」一部老電話 → <strong>housed</strong>（容納）</p>
+                    </div>
+                    
+                    <div class="logic-chain">
+                        <div class="logic-chain-title">🔗 解題邏輯鏈</div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">1</span>
+                            <span>判斷詞性：主詞 + ____ + 受詞 → 需要<strong>動詞</strong></span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">2</span>
+                            <span>篩選範圍：動詞有 (G) housed</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">3</span>
+                            <span>語意驗證：booth housed a phone = 電話亭容納一部電話 ✓</span>
+                        </div>
+                    </div>
+                    
+                    <div class="anchor-box">
+                        <div class="anchor-label">📍 原文錨點</div>
+                        <div class="anchor-text">"The booth he built <span class="anchor-highlight">housed</span> only an old dial phone"</div>
+                        <p style="margin-top: 8px; color: #616161;">→ house 作動詞意為「容納、收容」，是進階用法</p>
+                    </div>
+                    
+                    <div class="trap-analysis">
+                        <div class="trap-title">🚨 誘答分析 ｜ 高頻錯題</div>
+                        <div class="trap-item">
+                            <span class="trap-option">不認識 house 的動詞用法</span>
+                            <span class="trap-reason"> → house 不只是名詞「房子」，也可作動詞「容納」</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 第26題 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">26</div>
+                        <span class="difficulty-tag difficulty-medium">中等</span>
+                    </div>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句：</strong>"Because my thoughts couldn't be <u>&nbsp;&nbsp;<strong>____</strong>&nbsp;&nbsp;</u> through a regular phone line, I wanted them to be carried on the wind."
+                    </div>
+                    
+                    <div class="answer-row">
+                        <div class="answer-tag">✓ 正解：(A) passed on</div>
+                        <div class="kill-point">⚡ 秒殺點：thoughts + be ____ + through phone line</div>
+                    </div>
+                    
+                    <div class="instant-kill">
+                        <div class="instant-kill-title">⚡ 秒殺判斷</div>
+                        <p><strong>thoughts couldn't be ____ through a phone line</strong> → 想法無法透過電話線「傳遞」→ <strong>passed on</strong></p>
+                    </div>
+                    
+                    <div class="logic-chain">
+                        <div class="logic-chain-title">🔗 解題邏輯鏈</div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">1</span>
+                            <span>判斷結構：be + ____ → 被動語態，需要<strong>過去分詞</strong></span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">2</span>
+                            <span>篩選範圍：剩餘過去分詞有 (A) passed on</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">3</span>
+                            <span>語意驗證：thoughts passed on = 想法被傳遞 ✓</span>
+                        </div>
+                    </div>
+                    
+                    <div class="anchor-box">
+                        <div class="anchor-label">📍 原文錨點 ｜ 對比結構</div>
+                        <div class="anchor-text">"thoughts couldn't be <span class="anchor-highlight">passed on</span> through a regular phone line... be <span class="anchor-highlight">carried on the wind</span>"</div>
+                        <p style="margin-top: 8px; color: #616161;">→ passed on（傳遞）與 carried（承載）形成對比：電話線無法傳遞，但風可以承載</p>
+                    </div>
+                </div>
+                
+                <!-- 第27題 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">27</div>
+                        <span class="difficulty-tag difficulty-easy">簡單</span>
+                    </div>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句：</strong>...and renders the grieving process more <u>&nbsp;&nbsp;<strong>____</strong>&nbsp;&nbsp;</u> for him.
+                    </div>
+                    
+                    <div class="answer-row">
+                        <div class="answer-tag">✓ 正解：(H) manageable</div>
+                        <div class="kill-point">⚡ 秒殺點：more ____ = 比較級 + 形容詞</div>
+                    </div>
+                    
+                    <div class="instant-kill">
+                        <div class="instant-kill-title">⚡ 秒殺判斷</div>
+                        <p><strong>more ____</strong> → 比較級結構 → 需要<strong>形容詞</strong> → 剩餘形容詞只有 (H) manageable</p>
+                    </div>
+                    
+                    <div class="logic-chain">
+                        <div class="logic-chain-title">🔗 解題邏輯鏈</div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">1</span>
+                            <span>判斷詞性：more ____ → 需要<strong>形容詞</strong></span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">2</span>
+                            <span>篩選範圍：剩餘形容詞只有 (H) manageable</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">3</span>
+                            <span>語意驗證：grieving process more manageable = 悲傷過程更易處理 ✓</span>
+                        </div>
+                    </div>
+                    
+                    <div class="anchor-box">
+                        <div class="anchor-label">📍 原文錨點</div>
+                        <div class="anchor-text">"renders the grieving process more <span class="anchor-highlight">manageable</span>"</div>
+                        <p style="margin-top: 8px; color: #616161;">→ manageable 意為「可處理的、可控制的」，風之電話讓悲傷變得更容易面對</p>
+                    </div>
+                </div>
+                
+                <!-- 第28題 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">28</div>
+                        <span class="difficulty-tag difficulty-medium">中等</span>
+                    </div>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句：</strong>...the booth has become a <u>&nbsp;&nbsp;<strong>____</strong>&nbsp;&nbsp;</u> between the living and the dead.
+                    </div>
+                    
+                    <div class="answer-row">
+                        <div class="answer-tag">✓ 正解：(B) bridge</div>
+                        <div class="kill-point">⚡ 秒殺點：a ____ between A and B</div>
+                    </div>
+                    
+                    <div class="instant-kill">
+                        <div class="instant-kill-title">⚡ 秒殺判斷</div>
+                        <p><strong>a ____ between the living and the dead</strong> → 生者與逝者之間的「橋樑」→ <strong>bridge</strong>（比喻用法）</p>
+                    </div>
+                    
+                    <div class="logic-chain">
+                        <div class="logic-chain-title">🔗 解題邏輯鏈</div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">1</span>
+                            <span>判斷詞性：a ____ → 需要<strong>名詞</strong></span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">2</span>
+                            <span>篩選範圍：名詞有 (B) bridge、(C) sorrow、(D) hope、(F) mechanism</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">3</span>
+                            <span>搭配判斷：bridge between A and B = A與B之間的橋樑（比喻連結）✓</span>
+                        </div>
+                    </div>
+                    
+                    <div class="anchor-box">
+                        <div class="anchor-label">📍 原文錨點 ｜ 比喻用法</div>
+                        <div class="anchor-text">"the booth has become a <span class="anchor-highlight">bridge</span> between the living and the dead"</div>
+                        <p style="margin-top: 8px; color: #616161;">→ bridge 在此為比喻，指電話亭成為連結生者與逝者的「橋樑」</p>
+                    </div>
+                </div>
+                
+                <!-- 第29題 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">29</div>
+                        <span class="difficulty-tag difficulty-medium">中等</span>
+                    </div>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句：</strong>Grieving is a natural <u>&nbsp;&nbsp;<strong>____</strong>&nbsp;&nbsp;</u> for coping with loss of a loved one...
+                    </div>
+                    
+                    <div class="answer-row">
+                        <div class="answer-tag">✓ 正解：(F) mechanism</div>
+                        <div class="kill-point">⚡ 秒殺點：natural ____ for coping with</div>
+                    </div>
+                    
+                    <div class="instant-kill">
+                        <div class="instant-kill-title">⚡ 秒殺判斷</div>
+                        <p><strong>a natural ____ for coping with loss</strong> → 應對失去的自然「機制」→ <strong>mechanism</strong></p>
+                    </div>
+                    
+                    <div class="logic-chain">
+                        <div class="logic-chain-title">🔗 解題邏輯鏈</div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">1</span>
+                            <span>判斷詞性：a natural ____ → 需要<strong>名詞</strong></span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">2</span>
+                            <span>篩選範圍：剩餘名詞有 (D) hope、(F) mechanism</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">3</span>
+                            <span>搭配判斷：natural mechanism for coping = 應對的自然機制 ✓</span>
+                        </div>
+                    </div>
+                    
+                    <div class="anchor-box">
+                        <div class="anchor-label">📍 原文錨點</div>
+                        <div class="anchor-text">"Grieving is a natural <span class="anchor-highlight">mechanism</span> for coping with loss"</div>
+                        <p style="margin-top: 8px; color: #616161;">→ mechanism 意為「機制」，悲傷是人類應對失去的自然心理機制</p>
+                    </div>
+                </div>
+                
+                <!-- 第30題 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">30</div>
+                        <span class="difficulty-tag difficulty-easy">簡單</span>
+                    </div>
+                    
+                    <div class="question-sentence">
+                        <strong>完整句：</strong>For those who speak into the wind phone, <u>&nbsp;&nbsp;<strong>____</strong>&nbsp;&nbsp;</u> is always there: They believe that their messages will... reach the deceased.
+                    </div>
+                    
+                    <div class="answer-row">
+                        <div class="answer-tag">✓ 正解：(D) hope</div>
+                        <div class="kill-point">⚡ 秒殺點：剩餘名詞 + believe 語意</div>
+                    </div>
+                    
+                    <div class="instant-kill">
+                        <div class="instant-kill-title">⚡ 秒殺判斷</div>
+                        <p><strong>____ is always there: They believe...</strong> → 他們相信訊息會傳達 → 這是「希望」→ <strong>hope</strong></p>
+                    </div>
+                    
+                    <div class="logic-chain">
+                        <div class="logic-chain-title">🔗 解題邏輯鏈</div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">1</span>
+                            <span>判斷詞性：____ is → 需要<strong>名詞</strong>作主詞</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">2</span>
+                            <span>篩選範圍：剩餘名詞只有 (D) hope</span>
+                        </div>
+                        <div class="logic-step">
+                            <span class="logic-step-num">3</span>
+                            <span>語意驗證：believe messages will reach → 這種信念就是「希望」✓</span>
+                        </div>
+                    </div>
+                    
+                    <div class="anchor-box">
+                        <div class="anchor-label">📍 原文錨點 ｜ 總結全文</div>
+                        <div class="anchor-text">"<span class="anchor-highlight">hope</span> is always there: They <span class="anchor-highlight">believe</span> that their messages will... reach the deceased"</div>
+                        <p style="margin-top: 8px; color: #616161;">→ hope 與 believe 形成語意呼應，使用者心中永遠懷抱希望</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 單字戰略分類 -->
+            <div class="section">
+                <h2 class="section-title">📚 單字戰略分類 ｜ 依陷阱類型</h2>
+                
+                <table class="vocab-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 15%;">單字</th>
+                            <th style="width: 15%;">陷阱類型</th>
+                            <th style="width: 15%;">高頻考法</th>
+                            <th style="width: 55%;">實戰例句</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="vocab-word">housed</span><br>(v.) 容納</td>
+                            <td><span class="trap-type trap-type-multi">一詞多義</span></td>
+                            <td><span class="exam-focus">house 作動詞</span></td>
+                            <td>
+                                <span class="eng-example">The booth he built <span class="eng-keyword">housed</span> only an old dial phone.</span><br>
+                                <span class="chi-example">他建的電話亭只<span class="chi-keyword">容納</span>一部老式轉盤電話。</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="vocab-word">departed</span><br>(adj.) 已故的</td>
+                            <td><span class="trap-type trap-type-context">語境判斷</span></td>
+                            <td><span class="exam-focus">修飾「逝去的人」</span></td>
+                            <td>
+                                <span class="eng-example">connect family members to their <span class="eng-keyword">departed</span> loved ones</span><br>
+                                <span class="chi-example">讓家人與他們<span class="chi-keyword">已故的</span>親人連結</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="vocab-word">fateful</span><br>(adj.) 命運的</td>
+                            <td><span class="trap-type trap-type-collocation">固定搭配</span></td>
+                            <td><span class="exam-focus">fateful day</span></td>
+                            <td>
+                                <span class="eng-example">say the words they never got to say on that <span class="eng-keyword">fateful</span> day</span><br>
+                                <span class="chi-example">說出那<span class="chi-keyword">命運般</span>的一天未能說出的話</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="vocab-word">brought forth</span><br>(phr.v.) 提出</td>
+                            <td><span class="trap-type trap-type-collocation">固定搭配</span></td>
+                            <td><span class="exam-focus">idea + brought forth</span></td>
+                            <td>
+                                <span class="eng-example">The idea was first <span class="eng-keyword">brought forth</span> by Itaru Sasaki.</span><br>
+                                <span class="chi-example">這個想法最初由佐佐木格<span class="chi-keyword">提出</span>。</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="vocab-word">bridge</span><br>(n.) 橋樑</td>
+                            <td><span class="trap-type trap-type-context">比喻用法</span></td>
+                            <td><span class="exam-focus">bridge between A and B</span></td>
+                            <td>
+                                <span class="eng-example">the booth has become a <span class="eng-keyword">bridge</span> between the living and the dead</span><br>
+                                <span class="chi-example">電話亭成為生者與逝者之間的<span class="chi-keyword">橋樑</span></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="vocab-word">mechanism</span><br>(n.) 機制</td>
+                            <td><span class="trap-type trap-type-pos">詞性判斷</span></td>
+                            <td><span class="exam-focus">natural mechanism</span></td>
+                            <td>
+                                <span class="eng-example">Grieving is a natural <span class="eng-keyword">mechanism</span> for coping with loss.</span><br>
+                                <span class="chi-example">悲傷是應對失去的自然<span class="chi-keyword">機制</span>。</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- 轉折詞解題策略總表 -->
+            <div class="section">
+                <h2 class="section-title">🔄 轉折詞解題策略總表</h2>
+                
+                <!-- 對比結構類 -->
+                <div class="transition-category">
+                    <div class="transition-category-header">
+                        <div class="category-icon category-contrast">⚡</div>
+                        <div>
+                            <div class="category-title">1. 對比結構類 Contrast</div>
+                            <div class="category-subtitle">前後形成對比，注意隱含的對照關係</div>
+                        </div>
+                    </div>
+                    <div class="transition-words-list">
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">However</span> <span style="color: #616161;">然而</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">But</span> <span style="color: #616161;">但是</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Yet</span> <span style="color: #616161;">然而</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">In contrast</span> <span style="color: #616161;">相比之下</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">（隱含對比）</span> <span style="color: #616161;">無轉折詞但語意對立</span></span>
+                    </div>
+                    <div class="strategy-action">
+                        <div class="strategy-action-title">🎯 解題動作</div>
+                        <div class="strategy-action-steps">
+                            看到對比結構 <span class="strategy-arrow">→</span> 找前後對照點 <span class="strategy-arrow">→</span> 空格填與前文相反/對立的概念
+                        </div>
+                    </div>
+                    <div class="real-example">
+                        <div class="real-example-title">📍 本篇實戰 ｜ 隱含對比</div>
+                        <p class="real-example-eng">"thoughts couldn't be <span class="real-example-keyword">passed on</span> through a regular phone line, I wanted them to be <span class="real-example-keyword">carried on the wind</span>"</p>
+                        <p class="real-example-chi">想法無法透過一般電話線<span class="real-example-chi-keyword">傳遞</span>，我希望它們能被<span class="real-example-chi-keyword">風承載</span></p>
+                        <p style="color: #757575; margin-top: 8px;">→ 「電話線」vs.「風」形成對比：電話線無法傳遞 ↔ 風可以承載</p>
+                    </div>
+                </div>
+                
+                <!-- 因果邏輯類 -->
+                <div class="transition-category">
+                    <div class="transition-category-header">
+                        <div class="category-icon category-cause">🔗</div>
+                        <div>
+                            <div class="category-title">2. 因果邏輯類 Cause & Effect</div>
+                            <div class="category-subtitle">前面是原因，後面是結果，空格要符合因果邏輯</div>
+                        </div>
+                    </div>
+                    <div class="transition-words-list">
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Because</span> <span style="color: #616161;">因為</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Hence</span> <span style="color: #616161;">因此</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Therefore</span> <span style="color: #616161;">因此</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Thus</span> <span style="color: #616161;">因此</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">As a result</span> <span style="color: #616161;">結果</span></span>
+                    </div>
+                    <div class="strategy-action">
+                        <div class="strategy-action-title">🎯 解題動作</div>
+                        <div class="strategy-action-steps">
+                            看到因果詞 <span class="strategy-arrow">→</span> 找出原因與結果 <span class="strategy-arrow">→</span> 空格填合理推論
+                        </div>
+                    </div>
+                    <div class="real-example">
+                        <div class="real-example-title">📍 本篇實戰</div>
+                        <p class="real-example-eng">"<span class="real-example-keyword">Because</span> my thoughts couldn't be passed on... <span class="real-example-keyword">Hence</span>, the wind phone allows..."</p>
+                        <p class="real-example-chi"><span class="real-example-chi-keyword">因為</span>我的想法無法傳遞...<span class="real-example-chi-keyword">因此</span>，風之電話讓...</p>
+                    </div>
+                </div>
+                
+                <!-- 時序先後類 -->
+                <div class="transition-category">
+                    <div class="transition-category-header">
+                        <div class="category-icon category-sequence">📅</div>
+                        <div>
+                            <div class="category-title">3. 時序先後類 Sequence</div>
+                            <div class="category-subtitle">標示時間順序，注意事件發生的先後</div>
+                        </div>
+                    </div>
+                    <div class="transition-words-list">
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Before</span> <span style="color: #616161;">在...之前</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">After</span> <span style="color: #616161;">在...之後</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">When</span> <span style="color: #616161;">當...時</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Since</span> <span style="color: #616161;">自從</span></span>
+                    </div>
+                    <div class="strategy-action">
+                        <div class="strategy-action-title">🎯 解題動作</div>
+                        <div class="strategy-action-steps">
+                            看到時序詞 <span class="strategy-arrow">→</span> 確認時間先後 <span class="strategy-arrow">→</span> 空格填符合時間邏輯的詞
+                        </div>
+                    </div>
+                    <div class="real-example">
+                        <div class="real-example-title">📍 本篇實戰</div>
+                        <p class="real-example-eng">"<span class="real-example-keyword">before</span> the tsunami... <span class="real-example-keyword">after</span> the devastating tsunami... have <span class="real-example-keyword">since</span> been built"</p>
+                        <p class="real-example-chi">在海嘯<span class="real-example-chi-keyword">之前</span>...在毀滅性海嘯<span class="real-example-chi-keyword">之後</span>...<span class="real-example-chi-keyword">自從</span>那時便建造了</p>
+                    </div>
+                </div>
+                
+                <!-- 條件假設類 -->
+                <div class="transition-category">
+                    <div class="transition-category-header">
+                        <div class="category-icon category-condition">❓</div>
+                        <div>
+                            <div class="category-title">4. 目的說明類 Purpose</div>
+                            <div class="category-subtitle">說明目的或對象，空格要符合目的邏輯</div>
+                        </div>
+                    </div>
+                    <div class="transition-words-list">
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">For</span> <span style="color: #616161;">為了/對於</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">To</span> <span style="color: #616161;">為了</span></span>
+                        <span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">In order to</span> <span style="color: #616161;">為了</span></span>
+                    </div>
+                    <div class="strategy-action">
+                        <div class="strategy-action-title">🎯 解題動作</div>
+                        <div class="strategy-action-steps">
+                            看到目的詞 <span class="strategy-arrow">→</span> 找出目的與行動 <span class="strategy-arrow">→</span> 空格填達成目的的詞
+                        </div>
+                    </div>
+                    <div class="real-example">
+                        <div class="real-example-title">📍 本篇實戰</div>
+                        <p class="real-example-eng">"<span class="real-example-keyword">For</span> those who speak into the wind phone, hope is always there"</p>
+                        <p class="real-example-chi"><span class="real-example-chi-keyword">對於</span>那些對著風之電話說話的人，希望永遠存在</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 考前衝刺重點 -->
+            <div class="section">
+                <h2 class="section-title">🚀 考前衝刺重點整理</h2>
+                
+                <div class="sprint-section">
+                    <div class="sprint-main-title">🏆 文意選填必勝攻略</div>
+                    
+                    <!-- 解題三步驟 -->
+                    <div class="sprint-item">
+                        <h4>🎯 解題三步驟</h4>
+                        <div class="three-steps">
+                            <div class="step-card">
+                                <div class="step-card-num">1</div>
+                                <div class="step-card-title">判斷詞性</div>
+                                <div class="step-card-desc">看空格前後結構<br>確定需要什麼詞性</div>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-card-num">2</div>
+                                <div class="step-card-title">篩選選項</div>
+                                <div class="step-card-desc">依詞性刪除選項<br>縮小作答範圍</div>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-card-num">3</div>
+                                <div class="step-card-title">語意驗證</div>
+                                <div class="step-card-desc">結合上下文邏輯<br>確認最佳答案</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 快速判斷詞性 -->
+                    <div class="sprint-item">
+                        <h4>⚡ 快速判斷詞性技巧</h4>
+                        <ul>
+                            <li><strong>名詞位置：</strong>冠詞(a/an/the)後、形容詞後、介系詞後 → 填名詞</li>
+                            <li><strong>動詞位置：</strong>主詞後、助動詞後、被動 be + ____ + by → 填動詞/過去分詞</li>
+                            <li><strong>形容詞位置：</strong>名詞前、more 後、be 動詞後 → 填形容詞</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 高頻錯題警示 -->
+                    <div class="danger-zone">
+                        <div class="danger-title">🚨 本篇高頻錯題 TOP 3</div>
+                        
+                        <div class="danger-item">
+                            <div class="danger-q">第25題：housed only an old phone</div>
+                            <div class="danger-reason">❌ 錯因：不認識 house 的動詞用法</div>
+                            <div class="danger-solution">✓ 破解：house 作動詞 = 容納、收容</div>
+                        </div>
+                        
+                        <div class="danger-item">
+                            <div class="danger-q">第23題：idea was brought forth</div>
+                            <div class="danger-reason">❌ 錯因：混淆 brought forth 與 passed on</div>
+                            <div class="danger-solution">✓ 破解：想法是「提出」(brought forth)，不是「傳遞」(passed on)</div>
+                        </div>
+                        
+                        <div class="danger-item">
+                            <div class="danger-q">第28題：a bridge between</div>
+                            <div class="danger-reason">❌ 錯因：沒注意到比喻用法</div>
+                            <div class="danger-solution">✓ 破解：bridge between A and B = A與B之間的橋樑（比喻連結）</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 主題詞辨識 -->
+                    <div class="sprint-item">
+                        <h4>🎨 主題詞辨識技巧</h4>
+                        <ul>
+                            <li><strong>核心主題詞：</strong>wind phone（風之電話）、grieving（悲傷）、deceased（逝者）</li>
+                            <li><strong>情感詞彙：</strong>sorrow（悲傷）、hope（希望）、loss（失去）</li>
+                            <li><strong>連結詞彙：</strong>connect（連結）、bridge（橋樑）、reach（觸及）</li>
+                            <li><strong>辨識方法：</strong>重複出現的詞彙 = 主題詞，幫助預測文章走向</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 終極口訣 -->
+                    <div class="mantra-box">
+                        <div class="mantra-title">🏆 考前終極口訣</div>
+                        <div class="mantra-text">
+                            <span class="mantra-highlight">詞性先行</span>，結構定位<br>
+                            <span class="mantra-highlight">轉折必看</span>，前後對照<br>
+                            <span class="mantra-highlight">搭配優先</span>，固定用法<br>
+                            <span class="mantra-highlight">一詞多義</span>，語境判斷
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 答案總覽 -->
+            <div class="section">
+                <h2 class="section-title">✅ 答案總覽</h2>
+                <div class="answer-overview">
+                    <div class="answer-grid">
+                        <div class="answer-cell">
+                            <div class="answer-cell-num">21</div>
+                            <div class="answer-cell-ans">(E)</div>
+                        </div>
+                        <div class="answer-cell">
+                            <div class="answer-cell-num">22</div>
+                            <div class="answer-cell-ans">(I)</div>
+                        </div>
+                        <div class="answer-cell">
+                            <div class="answer-cell-num">23</div>
+                            <div class="answer-cell-ans">(J)</div>
+                        </div>
+                        <div class="answer-cell">
+                            <div class="answer-cell-num">24</div>
+                            <div class="answer-cell-ans">(C)</div>
+                        </div>
+                        <div class="answer-cell">
+                            <div class="answer-cell-num">25</div>
+                            <div class="answer-cell-ans">(G)</div>
+                        </div>
+                        <div class="answer-cell">
+                            <div class="answer-cell-num">26</div>
+                            <div class="answer-cell-ans">(A)</div>
+                        </div>
+                        <div class="answer-cell">
+                            <div class="answer-cell-num">27</div>
+                            <div class="answer-cell-ans">(H)</div>
+                        </div>
+                        <div class="answer-cell">
+                            <div class="answer-cell-num">28</div>
+                            <div class="answer-cell-ans">(B)</div>
+                        </div>
+                        <div class="answer-cell">
+                            <div class="answer-cell-num">29</div>
+                            <div class="answer-cell-ans">(F)</div>
+                        </div>
+                        <div class="answer-cell">
+                            <div class="answer-cell-num">30</div>
+                            <div class="answer-cell-ans">(D)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>📞 學測英文文意選填 ｜ 專業教學分析版</p>
+            <p>主題：風之電話 The Wind Phone｜療癒與悲傷</p>
+        </div>
+    </div>
+</body>
+</html>
