@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學測文意選填 - 幸運餅乾 專業教學分析版</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif; line-height: 1.9; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: #fff; border-radius: 20px; box-shadow: 0 25px 80px rgba(0,0,0,0.4); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #ff8f00 0%, #ffb300 100%); color: white; padding: 35px 40px; text-align: center; }
+        .header h1 { font-size: 2.4em; margin-bottom: 10px; }
+        .header .subtitle { font-size: 1.2em; opacity: 0.9; }
+        .header .theme-tag { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 20px; margin-top: 10px; }
+        .content { padding: 40px; }
+        .section { margin-bottom: 50px; }
+        .section-title { font-size: 1.6em; color: #e65100; border-left: 6px solid #ff8f00; padding-left: 18px; margin-bottom: 25px; }
+        .structure-box { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 15px; padding: 25px; margin-bottom: 20px; border-left: 5px solid #ff8f00; }
+        .structure-function { background: #ffe0b2; display: inline-block; padding: 4px 12px; border-radius: 15px; font-size: 0.9em; color: #e65100; font-weight: bold; margin-bottom: 10px; }
+        .article-box { background: #fafafa; border-radius: 15px; padding: 30px; border: 2px solid #e0e0e0; font-size: 1.08em; line-height: 2.2; }
+        .core-sentence { color: #c62828; font-weight: bold; background: linear-gradient(transparent 60%, #ffcdd2 60%); }
+        .transition-word { color: #6a1b9a; font-weight: bold; background: linear-gradient(transparent 60%, #e1bee7 60%); }
+        .theme-word { color: #2e7d32; font-weight: bold; }
+        .blank { display: inline-block; min-width: 70px; border-bottom: 3px solid #e65100; text-align: center; font-weight: bold; color: #e65100; margin: 0 5px; padding: 0 8px; }
+        .options-box { background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-radius: 15px; padding: 25px; margin: 25px 0; border: 2px solid #ffb74d; }
+        .options-title { font-weight: bold; color: #e65100; margin-bottom: 15px; font-size: 1.15em; }
+        .options-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+        .option-item { background: white; padding: 12px; border-radius: 10px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+        .option-item .letter { color: #c62828; font-weight: bold; font-size: 1.1em; }
+        .option-item .word { color: #1565c0; font-weight: 500; }
+        .option-item .pos { color: #757575; font-size: 0.85em; }
+        .question-card { background: white; border-radius: 18px; padding: 30px; margin-bottom: 30px; box-shadow: 0 6px 25px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; }
+        .question-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .question-number { background: linear-gradient(135deg, #e65100 0%, #ff8f00 100%); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.3em; }
+        .difficulty-tag { padding: 5px 15px; border-radius: 20px; font-size: 0.85em; font-weight: bold; }
+        .difficulty-easy { background: #c8e6c9; color: #2e7d32; }
+        .difficulty-medium { background: #fff3e0; color: #ef6c00; }
+        .difficulty-hard { background: #ffcdd2; color: #c62828; }
+        .options-reminder { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border: 1px solid #90caf9; border-radius: 10px; padding: 12px 18px; margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .options-reminder-title { color: #1565c0; font-weight: bold; margin-right: 5px; }
+        .options-reminder .opt { background: white; padding: 4px 10px; border-radius: 15px; font-size: 0.9em; color: #1565c0; border: 1px solid #90caf9; }
+        .question-sentence { background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%); padding: 20px 25px; border-radius: 12px; margin: 20px 0; border-left: 5px solid #ffc107; font-size: 1.1em; }
+        .answer-row { display: flex; align-items: center; gap: 20px; margin: 20px 0; flex-wrap: wrap; }
+        .answer-tag { background: linear-gradient(135deg, #43a047 0%, #66bb6a 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: bold; }
+        .kill-point { background: linear-gradient(135deg, #c62828 0%, #e53935 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: bold; font-size: 0.95em; }
+        .instant-kill { background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border: 2px solid #ff9800; border-radius: 12px; padding: 18px 22px; margin: 15px 0; }
+        .instant-kill-title { color: #e65100; font-weight: bold; margin-bottom: 8px; }
+        .logic-chain { background: #f5f5f5; border-radius: 12px; padding: 20px; margin: 15px 0; }
+        .logic-chain-title { color: #e65100; font-weight: bold; margin-bottom: 12px; }
+        .logic-step { display: flex; align-items: flex-start; margin: 12px 0; padding-left: 10px; }
+        .logic-step-num { background: #ff8f00; color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85em; font-weight: bold; margin-right: 12px; flex-shrink: 0; }
+        .anchor-box { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px 20px; margin: 12px 0; border-radius: 0 10px 10px 0; }
+        .anchor-label { color: #2e7d32; font-weight: bold; font-size: 0.95em; margin-bottom: 5px; }
+        .anchor-text { color: #1b5e20; font-style: italic; }
+        .anchor-highlight { background: #a5d6a7; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-style: normal; }
+        .trap-analysis { background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%); border-radius: 12px; padding: 18px 22px; margin: 15px 0; border: 2px solid #ec407a; }
+        .trap-title { color: #c2185b; font-weight: bold; margin-bottom: 10px; }
+        .trap-item { margin: 8px 0; padding-left: 20px; position: relative; }
+        .trap-item::before { content: "✗"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
+        .trap-option { color: #c62828; font-weight: bold; }
+        .trap-reason { color: #616161; }
+        .vocab-table { width: 100%; border-collapse: collapse; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 12px; overflow: hidden; }
+        .vocab-table th { background: linear-gradient(135deg, #e65100 0%, #ff8f00 100%); color: white; padding: 15px; text-align: left; }
+        .vocab-table td { padding: 15px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+        .vocab-table tr:nth-child(even) { background: #f8f9fa; }
+        .vocab-table tr:hover { background: #fff3e0; }
+        .vocab-word { color: #c62828; font-weight: bold; font-size: 1.1em; }
+        .trap-type { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+        .trap-type-multi { background: #ffcdd2; color: #c62828; }
+        .trap-type-collocation { background: #c8e6c9; color: #2e7d32; }
+        .trap-type-pos { background: #fff3e0; color: #ef6c00; }
+        .trap-type-context { background: #e1bee7; color: #6a1b9a; }
+        .exam-focus { background: #e3f2fd; padding: 3px 10px; border-radius: 12px; font-size: 0.85em; color: #1565c0; font-weight: 500; }
+        .eng-example { color: #1565c0; }
+        .eng-keyword { color: #c62828; font-weight: bold; }
+        .chi-example { color: #616161; }
+        .chi-keyword { color: #c62828; font-weight: bold; }
+        .transition-category { background: white; border-radius: 15px; padding: 25px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid #e0e0e0; }
+        .transition-category-header { display: flex; align-items: center; gap: 15px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 2px solid #e0e0e0; }
+        .category-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3em; color: white; }
+        .category-contrast { background: linear-gradient(135deg, #e91e63 0%, #f06292 100%); }
+        .category-cause { background: linear-gradient(135deg, #ff9800 0%, #ffb74d 100%); }
+        .category-addition { background: linear-gradient(135deg, #4caf50 0%, #81c784 100%); }
+        .category-example { background: linear-gradient(135deg, #2196f3 0%, #64b5f6 100%); }
+        .category-concession { background: linear-gradient(135deg, #9c27b0 0%, #ba68c8 100%); }
+        .category-title { font-size: 1.2em; font-weight: bold; color: #1b262c; }
+        .category-subtitle { color: #757575; font-size: 0.95em; }
+        .transition-words-list { display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0; }
+        .transition-word-tag { background: #f5f5f5; padding: 6px 14px; border-radius: 20px; font-weight: 500; border: 1px solid #e0e0e0; }
+        .strategy-action { background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%); border-radius: 10px; padding: 15px 20px; margin: 15px 0; }
+        .strategy-action-title { color: #283593; font-weight: bold; margin-bottom: 8px; }
+        .strategy-action-steps { color: #3949ab; font-weight: 500; }
+        .strategy-arrow { color: #5c6bc0; margin: 0 8px; }
+        .real-example { background: #fafafa; border-left: 4px solid #6a1b9a; padding: 15px 20px; margin-top: 15px; border-radius: 0 10px 10px 0; }
+        .real-example-title { color: #6a1b9a; font-weight: bold; font-size: 0.95em; margin-bottom: 8px; }
+        .real-example-eng { color: #1565c0; }
+        .real-example-keyword { color: #6a1b9a; font-weight: bold; background: #f3e5f5; padding: 2px 6px; border-radius: 4px; }
+        .real-example-chi { color: #616161; margin-top: 5px; }
+        .real-example-chi-keyword { color: #6a1b9a; font-weight: bold; }
+        .sprint-section { background: linear-gradient(135deg, #fffbea 0%, #fff9c4 100%); border-radius: 18px; padding: 35px; margin: 25px 0; border: 3px solid #ffd54f; }
+        .sprint-main-title { color: #0d47a1; font-weight: bold; font-size: 1.5em; text-align: center; margin-bottom: 30px; }
+        .sprint-item { background: white; border-radius: 12px; padding: 22px; margin: 18px 0; box-shadow: 0 3px 10px rgba(0,0,0,0.08); }
+        .sprint-item h4 { color: #0d47a1; font-weight: bold; margin-bottom: 15px; font-size: 1.15em; }
+        .sprint-item ul { list-style: none; padding: 0; }
+        .sprint-item li { padding: 10px 0; padding-left: 28px; position: relative; color: #1565c0; font-weight: 500; }
+        .sprint-item li::before { content: "✓"; position: absolute; left: 0; color: #4caf50; font-weight: bold; }
+        .three-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 15px 0; }
+        .step-card { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: 12px; padding: 20px; text-align: center; }
+        .step-card-num { background: #0d47a1; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin: 0 auto 10px; }
+        .step-card-title { color: #0d47a1; font-weight: bold; font-size: 1.1em; margin-bottom: 8px; }
+        .step-card-desc { color: #1565c0; font-size: 0.95em; }
+        .danger-zone { background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); border-radius: 15px; padding: 25px; margin: 20px 0; border: 2px solid #e57373; }
+        .danger-title { color: #c62828; font-weight: bold; font-size: 1.2em; margin-bottom: 15px; }
+        .danger-item { background: white; border-radius: 10px; padding: 15px 20px; margin: 12px 0; border-left: 4px solid #c62828; }
+        .danger-q { color: #c62828; font-weight: bold; margin-bottom: 5px; }
+        .danger-reason { color: #616161; }
+        .danger-solution { color: #2e7d32; font-weight: 500; margin-top: 5px; }
+        .mantra-box { background: linear-gradient(135deg, #1a237e 0%, #283593 100%); border-radius: 18px; padding: 35px; text-align: center; margin-top: 30px; color: white; }
+        .mantra-title { font-size: 1.4em; margin-bottom: 20px; }
+        .mantra-text { font-size: 1.5em; font-weight: bold; line-height: 2.2; }
+        .mantra-highlight { background: rgba(255,255,255,0.2); padding: 3px 12px; border-radius: 8px; }
+        .answer-overview { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: 15px; padding: 30px; text-align: center; }
+        .answer-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; max-width: 700px; margin: 20px auto; }
+        .answer-cell { background: white; padding: 18px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+        .answer-cell-num { color: #e65100; font-weight: bold; font-size: 1.1em; }
+        .answer-cell-ans { color: #2e7d32; font-weight: bold; font-size: 1.3em; margin-top: 5px; }
+        .footer { background: linear-gradient(135deg, #e65100 0%, #ff8f00 100%); color: white; text-align: center; padding: 25px; }
+        .legend-box { display: flex; flex-wrap: wrap; gap: 20px; padding: 15px 20px; background: #f5f5f5; border-radius: 10px; margin-top: 20px; }
+        .legend-item { display: flex; align-items: center; gap: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🥠 學測文意選填</h1>
+            <div class="subtitle">專業教學分析版 ｜ 107年學測</div>
+            <div class="theme-tag">🎯 主題：幸運餅乾 Fortune Cookies</div>
+        </div>
+        
+        <div class="content">
+            <!-- 選項總覽 -->
+            <div class="options-box">
+                <div class="options-title">📋 選項總覽 ｜ 先分類再作答</div>
+                <div class="options-grid">
+                    <div class="option-item"><div class="letter">(A)</div><div class="word">account</div><div class="pos">n. 說法；敘述</div></div>
+                    <div class="option-item"><div class="letter">(B)</div><div class="word">appeared</div><div class="pos">v. 出現</div></div>
+                    <div class="option-item"><div class="letter">(C)</div><div class="word">competing</div><div class="pos">adj. 競爭的</div></div>
+                    <div class="option-item"><div class="letter">(D)</div><div class="word">contained</div><div class="pos">v. 包含</div></div>
+                    <div class="option-item"><div class="letter">(E)</div><div class="word">replaced</div><div class="pos">v. 取代</div></div>
+                    <div class="option-item"><div class="letter">(F)</div><div class="word">secret</div><div class="pos">adj. 秘密的</div></div>
+                    <div class="option-item"><div class="letter">(G)</div><div class="word">successful</div><div class="pos">adj. 成功的</div></div>
+                    <div class="option-item"><div class="letter">(H)</div><div class="word">tastes</div><div class="pos">n. 口味；品味</div></div>
+                    <div class="option-item"><div class="letter">(I)</div><div class="word">traces</div><div class="pos">v. 追溯</div></div>
+                    <div class="option-item"><div class="letter">(J)</div><div class="word">treats</div><div class="pos">n. 點心；招待</div></div>
+                </div>
+            </div>
+            
+            <!-- 文章結構分析 -->
+            <div class="section">
+                <h2 class="section-title">🏗️ 文章結構分析</h2>
+                <div class="structure-box">
+                    <div class="structure-function">第一段功能：引言 + 起源爭議</div>
+                    <p>幸運餅乾的定義 → 有幾個<strong>相互競爭的</strong>說法關於起源 → 沒有一個被完全證實</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第31題，測試形容詞用法</p>
+                </div>
+                <div class="structure-box">
+                    <div class="structure-function">第二段功能：起源說法一（中國月餅傳說）</div>
+                    <p><strong>追溯</strong>到13-14世紀中國 → <strong>秘密</strong>革命計畫藏在月餅中 → 革命<strong>成功</strong> → 但沒有證據證明與今天的<strong>點心</strong>有關</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第32-35題，測試動詞、形容詞、名詞</p>
+                </div>
+                <div class="structure-box">
+                    <div class="structure-function">第三段功能：起源說法二（洛杉磯華人）</div>
+                    <p>另一個<strong>說法</strong>聲稱 David Jung 創造 → 每個餅乾<strong>包含</strong>一張聖經語錄紙條</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第36-37題，測試名詞、動詞</p>
+                </div>
+                <div class="structure-box">
+                    <div class="structure-function">第四段功能：起源說法三（舊金山日本移民）</div>
+                    <p>幸運餅乾首次<strong>出現</strong> → 日本移民創造 → 迎合美國人<strong>口味</strong> → <strong>取代</strong>感謝紙條為幸運紙條</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第38-40題，測試動詞、名詞搭配</p>
+                </div>
+            </div>
+            
+            <!-- 文章標示版 -->
+            <div class="section">
+                <h2 class="section-title">📖 文章標示版</h2>
+                <div class="article-box">
+                    <p><span class="theme-word">Fortune cookies</span>, commonly served after meals at Chinese restaurants in the U.S., are characterized by a fortune, which is written on a small piece of paper tucked inside the cookie. <span class="core-sentence">There are several <span class="blank">31</span> about the origin of the <span class="theme-word">fortune cookie</span>.</span> <span class="transition-word">None of them, however</span>, has been proven to be entirely true.</p>
+                    
+                    <p>One of these stories <span class="blank">32</span> the cookie's origin back to 13th- and 14th-century China, which was then occupied by the Mongols. <span class="transition-word">According to</span> the legend, notes of <span class="blank">33</span> plans for a revolution to overthrow the Mongols were hidden in mooncakes that would ordinarily have been stuffed with sweet bean paste. The revolution turned out to be <span class="blank">34</span> and <span class="transition-word">eventually</span> led to the formation of the Ming Dynasty. This story may sound highly credible, <span class="transition-word">but</span> there seems to be no solid evidence that it inspired the creation of the <span class="blank">35</span> we know of today as <span class="theme-word">fortune cookies</span>.</p>
+                    
+                    <p>Another <span class="blank">36</span> claims that David Jung, a Chinese immigrant living in Los Angeles, created the <span class="theme-word">fortune cookie</span> in 1918. Concerned about the poor people he saw wandering near his shop, he made cookies and passed them out free on the streets. Each cookie <span class="blank">37</span> a strip of paper inside with an inspirational Bible quotation on it.</p>
+                    
+                    <p><span class="transition-word">However</span>, the more generally accepted story is that the <span class="theme-word">fortune cookie</span> first <span class="blank">38</span> in either 1907 or 1914 in San Francisco, created by a Japanese immigrant, Makoto Hagiwara. The <span class="theme-word">fortune cookie</span> was based on a Japanese snack, <span class="transition-word">but</span> Hagiwara sweetened the recipe to appeal to American <span class="blank">39</span>. He enclosed thank-you notes in the cookies and served them to his guests with tea. <span class="transition-word">Within a few years</span>, Chinese restaurant owners in San Francisco had copied the recipe and <span class="blank">40</span> the thank-you notes with fortune notes. Such <span class="theme-word">fortune cookies</span> became common in Chinese restaurants in the U.S. after World War II.</p>
+                </div>
+                <div class="legend-box">
+                    <div class="legend-item"><span class="core-sentence">紅色底線</span> = 核心句</div>
+                    <div class="legend-item"><span class="transition-word">紫色底線</span> = 轉折詞</div>
+                    <div class="legend-item"><span class="theme-word">綠色粗體</span> = 主題詞</div>
+                </div>
+            </div>
+            
+            <!-- 解題思維 -->
+            <div class="section">
+                <h2 class="section-title">🧠 解題思維 ｜ 逐題攻破</h2>
+                
+                <!-- 第31題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">31</div><span class="difficulty-tag difficulty-hard">困難</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) account</span><span class="opt">(B) appeared</span><span class="opt">(C) competing</span><span class="opt">(D) contained</span><span class="opt">(E) replaced</span><span class="opt">(F) secret</span><span class="opt">(G) successful</span><span class="opt">(H) tastes</span><span class="opt">(I) traces</span><span class="opt">(J) treats</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>There are several <u><strong>____</strong></u> about the origin of the fortune cookie.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(C) competing</div><div class="kill-point">⚡ 秒殺點：several ____ + None proven = 多個相互競爭的說法</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>several</strong> + <strong>None... proven entirely true</strong> → 多個「相互競爭」的說法 → <strong>competing</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：several ____ → 需要<strong>名詞</strong>或修飾stories的詞</span></div><div class="logic-step"><span class="logic-step-num">2</span><span>語境判斷：後文有多個不同說法 → 相互競爭</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配驗證：competing stories/accounts = 相互競爭的說法 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"several <span class="anchor-highlight">competing</span>... <span class="anchor-highlight">None</span> of them... has been proven"</div></div>
+                    <div class="trap-analysis"><div class="trap-title">🚨 誘答分析 ｜ 高頻錯題</div><div class="trap-item"><span class="trap-option">誤填 accounts</span><span class="trap-reason"> → 題目考的是形容詞 competing，而非名詞 accounts</span></div></div>
+                </div>
+                
+                <!-- 第32題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">32</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) account</span><span class="opt">(B) appeared</span><span class="opt">(C) competing</span><span class="opt">(D) contained</span><span class="opt">(E) replaced</span><span class="opt">(F) secret</span><span class="opt">(G) successful</span><span class="opt">(H) tastes</span><span class="opt">(I) traces</span><span class="opt">(J) treats</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>One of these stories <u><strong>____</strong></u> the cookie's origin back to 13th- and 14th-century China...</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(I) traces</div><div class="kill-point">⚡ 秒殺點：____ back to = 追溯到</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>____ ... back to</strong> + 時間（13th-14th century）→ 追溯 → <strong>traces</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：stories ____ → 需要<strong>動詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：動詞有 (B)(D)(E)(I)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配判斷：trace... back to = 追溯到... ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div><div class="anchor-text">"<span class="anchor-highlight">traces</span> the cookie's origin <span class="anchor-highlight">back to</span> 13th-century"</div></div>
+                </div>
+                
+                <!-- 第33題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">33</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) account</span><span class="opt">(B) appeared</span><span class="opt">(C) competing</span><span class="opt">(D) contained</span><span class="opt">(E) replaced</span><span class="opt">(F) secret</span><span class="opt">(G) successful</span><span class="opt">(H) tastes</span><span class="opt">(I) traces</span><span class="opt">(J) treats</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...notes of <u><strong>____</strong></u> plans for a revolution to overthrow the Mongols were hidden in mooncakes...</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(F) secret</div><div class="kill-point">⚡ 秒殺點：____ plans + hidden = 秘密計畫被藏起來</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>revolution</strong>（革命）+ <strong>hidden</strong>（藏起來）→ 秘密計畫 → <strong>secret</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：____ plans → 需要<strong>形容詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：形容詞有 (C)(F)(G)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：revolution + hidden → secret ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"<span class="anchor-highlight">secret</span> plans for a revolution... were <span class="anchor-highlight">hidden</span>"</div></div>
+                </div>
+                
+                <!-- 第34題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">34</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) account</span><span class="opt">(B) appeared</span><span class="opt">(C) competing</span><span class="opt">(D) contained</span><span class="opt">(E) replaced</span><span class="opt">(F) secret</span><span class="opt">(G) successful</span><span class="opt">(H) tastes</span><span class="opt">(I) traces</span><span class="opt">(J) treats</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>The revolution turned out to be <u><strong>____</strong></u> and eventually led to the formation of the Ming Dynasty.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(G) successful</div><div class="kill-point">⚡ 秒殺點：turned out to be ____ + led to Ming Dynasty = 成功</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>led to the formation of Ming Dynasty</strong>（建立明朝）→ 革命「成功」→ <strong>successful</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：turned out to be ____ → 需要<strong>形容詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘形容詞有 (G) successful</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>因果驗證：革命成功 → 建立明朝 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 因果關係</div><div class="anchor-text">"revolution... <span class="anchor-highlight">successful</span>... <span class="anchor-highlight">led to</span> the formation of Ming Dynasty"</div></div>
+                </div>
+                
+                <!-- 第35題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">35</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) account</span><span class="opt">(B) appeared</span><span class="opt">(C) competing</span><span class="opt">(D) contained</span><span class="opt">(E) replaced</span><span class="opt">(F) secret</span><span class="opt">(G) successful</span><span class="opt">(H) tastes</span><span class="opt">(I) traces</span><span class="opt">(J) treats</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...there seems to be no solid evidence that it inspired the creation of the <u><strong>____</strong></u> we know of today as fortune cookies.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(J) treats</div><div class="kill-point">⚡ 秒殺點：the ____ we know of today = 我們所知的點心</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>the ____ we know of today as fortune cookies</strong> → 今天所知的「點心」→ <strong>treats</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：the ____ we know → 需要<strong>名詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：名詞有 (A)(H)(J)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：fortune cookies = treats（點心）✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"the <span class="anchor-highlight">treats</span> we know of today as <span class="anchor-highlight">fortune cookies</span>"</div></div>
+                </div>
+                
+                <!-- 第36題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">36</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) account</span><span class="opt">(B) appeared</span><span class="opt">(C) competing</span><span class="opt">(D) contained</span><span class="opt">(E) replaced</span><span class="opt">(F) secret</span><span class="opt">(G) successful</span><span class="opt">(H) tastes</span><span class="opt">(I) traces</span><span class="opt">(J) treats</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>Another <u><strong>____</strong></u> claims that David Jung... created the fortune cookie in 1918.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(A) account</div><div class="kill-point">⚡ 秒殺點：Another ____ claims = 另一個說法聲稱</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>Another ____ claims</strong> → 與前文「One of these stories」對應 → 另一個「說法」→ <strong>account</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：Another ____ claims → 需要<strong>名詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘名詞有 (A) account、(H) tastes</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>平行結構：One story... Another account → account ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 平行結構</div><div class="anchor-text">"One of these <span class="anchor-highlight">stories</span>... Another <span class="anchor-highlight">account</span> claims"</div></div>
+                </div>
+                
+                <!-- 第37題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">37</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) account</span><span class="opt">(B) appeared</span><span class="opt">(C) competing</span><span class="opt">(D) contained</span><span class="opt">(E) replaced</span><span class="opt">(F) secret</span><span class="opt">(G) successful</span><span class="opt">(H) tastes</span><span class="opt">(I) traces</span><span class="opt">(J) treats</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>Each cookie <u><strong>____</strong></u> a strip of paper inside with an inspirational Bible quotation on it.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(D) contained</div><div class="kill-point">⚡ 秒殺點：cookie ____ a strip of paper inside = 餅乾裡包含紙條</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>cookie ____ ... inside</strong> → 餅乾「包含」裡面的東西 → <strong>contained</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：Each cookie ____ → 需要<strong>過去式動詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：過去式動詞有 (B)(D)(E)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：cookie + paper inside → contained ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"Each cookie <span class="anchor-highlight">contained</span> a strip of paper <span class="anchor-highlight">inside</span>"</div></div>
+                </div>
+                
+                <!-- 第38題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">38</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) account</span><span class="opt">(B) appeared</span><span class="opt">(C) competing</span><span class="opt">(D) contained</span><span class="opt">(E) replaced</span><span class="opt">(F) secret</span><span class="opt">(G) successful</span><span class="opt">(H) tastes</span><span class="opt">(I) traces</span><span class="opt">(J) treats</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...the fortune cookie first <u><strong>____</strong></u> in either 1907 or 1914 in San Francisco...</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(B) appeared</div><div class="kill-point">⚡ 秒殺點：first ____ in + 時間地點 = 首次出現</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>first ____ in 1907... in San Francisco</strong> → 首次「出現」→ <strong>appeared</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：first ____ in → 需要<strong>過去式動詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘動詞有 (B) appeared、(E) replaced</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配驗證：first appeared = 首次出現 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div><div class="anchor-text">"fortune cookie <span class="anchor-highlight">first appeared</span> in 1907... in San Francisco"</div></div>
+                </div>
+                
+                <!-- 第39題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">39</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) account</span><span class="opt">(B) appeared</span><span class="opt">(C) competing</span><span class="opt">(D) contained</span><span class="opt">(E) replaced</span><span class="opt">(F) secret</span><span class="opt">(G) successful</span><span class="opt">(H) tastes</span><span class="opt">(I) traces</span><span class="opt">(J) treats</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...Hagiwara sweetened the recipe to appeal to American <u><strong>____</strong></u>.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(H) tastes</div><div class="kill-point">⚡ 秒殺點：sweetened + appeal to ____ = 迎合口味</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>sweetened</strong>（加甜）+ <strong>appeal to</strong>（迎合）→ 口味 → <strong>tastes</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：American ____ → 需要<strong>名詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘名詞只有 (H) tastes</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配驗證：appeal to tastes = 迎合口味 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div><div class="anchor-text">"<span class="anchor-highlight">sweetened</span>... to appeal to American <span class="anchor-highlight">tastes</span>"</div></div>
+                </div>
+                
+                <!-- 第40題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">40</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) account</span><span class="opt">(B) appeared</span><span class="opt">(C) competing</span><span class="opt">(D) contained</span><span class="opt">(E) replaced</span><span class="opt">(F) secret</span><span class="opt">(G) successful</span><span class="opt">(H) tastes</span><span class="opt">(I) traces</span><span class="opt">(J) treats</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...Chinese restaurant owners... had copied the recipe and <u><strong>____</strong></u> the thank-you notes with fortune notes.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(E) replaced</div><div class="kill-point">⚡ 秒殺點：____ A with B = 用B取代A</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>____ ... with fortune notes</strong> → 用幸運紙條「取代」感謝紙條 → <strong>replaced</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：had copied and ____ → 需要<strong>過去分詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘動詞只有 (E) replaced</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配驗證：replace A with B = 用B取代A ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div><div class="anchor-text">"<span class="anchor-highlight">replaced</span> the thank-you notes <span class="anchor-highlight">with</span> fortune notes"</div></div>
+                </div>
+            </div>
+            
+            <!-- 單字戰略分類 -->
+            <div class="section">
+                <h2 class="section-title">📚 單字戰略分類 ｜ 依陷阱類型</h2>
+                <table class="vocab-table">
+                    <thead>
+                        <tr><th style="width: 15%;">單字</th><th style="width: 15%;">陷阱類型</th><th style="width: 15%;">高頻考法</th><th style="width: 55%;">實戰例句</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="vocab-word">competing</span><br>(adj.) 相互競爭的</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">competing stories/accounts</span></td><td><span class="eng-example">several <span class="eng-keyword">competing</span> stories about the origin</span><br><span class="chi-example">關於起源的幾個<span class="chi-keyword">相互競爭的</span>說法</span></td></tr>
+                        <tr><td><span class="vocab-word">traces</span><br>(v.) 追溯</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">trace...back to</span></td><td><span class="eng-example"><span class="eng-keyword">traces</span> the origin back to 13th century</span><br><span class="chi-example"><span class="chi-keyword">追溯</span>起源到13世紀</span></td></tr>
+                        <tr><td><span class="vocab-word">secret</span><br>(adj.) 秘密的</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">secret plans</span></td><td><span class="eng-example">notes of <span class="eng-keyword">secret</span> plans... were hidden</span><br><span class="chi-example"><span class="chi-keyword">秘密</span>計畫的紙條...被藏起來</span></td></tr>
+                        <tr><td><span class="vocab-word">successful</span><br>(adj.) 成功的</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">turned out to be successful</span></td><td><span class="eng-example">The revolution turned out to be <span class="eng-keyword">successful</span></span><br><span class="chi-example">革命結果是<span class="chi-keyword">成功的</span></span></td></tr>
+                        <tr><td><span class="vocab-word">treats</span><br>(n.) 點心；招待</td><td><span class="trap-type trap-type-multi">一詞多義</span></td><td><span class="exam-focus">the treats we know</span></td><td><span class="eng-example">the <span class="eng-keyword">treats</span> we know of today as fortune cookies</span><br><span class="chi-example">我們今天所知的幸運餅乾<span class="chi-keyword">點心</span></span></td></tr>
+                        <tr><td><span class="vocab-word">account</span><br>(n.) 說法；敘述</td><td><span class="trap-type trap-type-multi">一詞多義</span></td><td><span class="exam-focus">another account claims</span></td><td><span class="eng-example">Another <span class="eng-keyword">account</span> claims that...</span><br><span class="chi-example">另一個<span class="chi-keyword">說法</span>聲稱...</span></td></tr>
+                        <tr><td><span class="vocab-word">contained</span><br>(v.) 包含</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">contained...inside</span></td><td><span class="eng-example">Each cookie <span class="eng-keyword">contained</span> a strip of paper inside</span><br><span class="chi-example">每個餅乾裡面<span class="chi-keyword">包含</span>一張紙條</span></td></tr>
+                        <tr><td><span class="vocab-word">appeared</span><br>(v.) 出現</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">first appeared in</span></td><td><span class="eng-example">fortune cookie first <span class="eng-keyword">appeared</span> in 1907</span><br><span class="chi-example">幸運餅乾首次<span class="chi-keyword">出現</span>於1907年</span></td></tr>
+                        <tr><td><span class="vocab-word">tastes</span><br>(n.) 口味；品味</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">appeal to...tastes</span></td><td><span class="eng-example">to appeal to American <span class="eng-keyword">tastes</span></span><br><span class="chi-example">迎合美國人的<span class="chi-keyword">口味</span></span></td></tr>
+                        <tr><td><span class="vocab-word">replaced</span><br>(v.) 取代</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">replace A with B</span></td><td><span class="eng-example"><span class="eng-keyword">replaced</span> thank-you notes with fortune notes</span><br><span class="chi-example">用幸運紙條<span class="chi-keyword">取代</span>感謝紙條</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- 轉折詞解題策略總表 -->
+            <div class="section">
+                <h2 class="section-title">🔄 轉折詞解題策略總表</h2>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-concession">⚠️</div><div><div class="category-title">1. 讓步否定類 Concession</div><div class="category-subtitle">前面肯定，後面否定</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">None of them, however</span> <span style="color: #616161;">然而，沒有一個</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到讓步否定 <span class="strategy-arrow">→</span> 前文是多個選項 <span class="strategy-arrow">→</span> 後文否定全部</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"There are several competing... <span class="real-example-keyword">None of them, however</span>, has been proven"</p><p class="real-example-chi">有幾個相互競爭的說法...<span class="real-example-chi-keyword">然而，沒有一個</span>被證實</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-example">📌</div><div><div class="category-title">2. 來源依據類 Source</div><div class="category-subtitle">說明資訊來源</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">According to</span> <span style="color: #616161;">根據</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到來源詞 <span class="strategy-arrow">→</span> 後面是傳說或資料內容 <span class="strategy-arrow">→</span> 空格填符合傳說的詞</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"<span class="real-example-keyword">According to</span> the legend, notes of secret plans..."</p><p class="real-example-chi"><span class="real-example-chi-keyword">根據</span>傳說，秘密計畫的紙條...</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-contrast">⚡</div><div><div class="category-title">3. 對比轉折類 Contrast</div><div class="category-subtitle">前後形成對比或轉折</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">but</span> <span style="color: #616161;">但是</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">However</span> <span style="color: #616161;">然而</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到轉折詞 <span class="strategy-arrow">→</span> 前後對比 <span class="strategy-arrow">→</span> 空格填相反或不同的概念</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"This story may sound highly credible, <span class="real-example-keyword">but</span> there seems to be no solid evidence"</p><p class="real-example-chi">這個故事聽起來很可信，<span class="real-example-chi-keyword">但</span>似乎沒有確實的證據</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-cause">🔗</div><div><div class="category-title">4. 結果順序類 Result/Sequence</div><div class="category-subtitle">表示結果或時間順序</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">eventually</span> <span style="color: #616161;">最終</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Within a few years</span> <span style="color: #616161;">幾年之內</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到順序詞 <span class="strategy-arrow">→</span> 後面是結果 <span class="strategy-arrow">→</span> 空格填符合時間發展的詞</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"The revolution... <span class="real-example-keyword">eventually</span> led to the formation of the Ming Dynasty"</p><p class="real-example-chi">革命...<span class="real-example-chi-keyword">最終</span>導致明朝的建立</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-addition">➕</div><div><div class="category-title">5. 更普遍接受類 More Accepted</div><div class="category-subtitle">引出更被接受的說法</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">However, the more generally accepted</span> <span style="color: #616161;">然而，更被普遍接受的</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到「更被接受」<span class="strategy-arrow">→</span> 後面是主要說法 <span class="strategy-arrow">→</span> 空格填重點資訊</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"<span class="real-example-keyword">However, the more generally accepted</span> story is that the fortune cookie first appeared..."</p><p class="real-example-chi"><span class="real-example-chi-keyword">然而，更被普遍接受的</span>說法是幸運餅乾首次出現...</p></div>
+                </div>
+            </div>
+            
+            <!-- 考前衝刺重點 -->
+            <div class="section">
+                <h2 class="section-title">🚀 考前衝刺重點整理</h2>
+                <div class="sprint-section">
+                    <div class="sprint-main-title">🏆 文意選填必勝攻略</div>
+                    <div class="sprint-item">
+                        <h4>🎯 解題三步驟</h4>
+                        <div class="three-steps">
+                            <div class="step-card"><div class="step-card-num">1</div><div class="step-card-title">判斷詞性</div><div class="step-card-desc">看空格前後結構<br>確定需要什麼詞性</div></div>
+                            <div class="step-card"><div class="step-card-num">2</div><div class="step-card-title">篩選選項</div><div class="step-card-desc">依詞性刪除選項<br>縮小作答範圍</div></div>
+                            <div class="step-card"><div class="step-card-num">3</div><div class="step-card-title">語意驗證</div><div class="step-card-desc">結合上下文邏輯<br>確認最佳答案</div></div>
+                        </div>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>📝 本篇重點片語</h4>
+                        <ul>
+                            <li><strong>trace...back to：</strong>追溯到...</li>
+                            <li><strong>turn out to be：</strong>結果是...</li>
+                            <li><strong>first appeared in：</strong>首次出現於...</li>
+                            <li><strong>appeal to：</strong>吸引；迎合</li>
+                            <li><strong>replace A with B：</strong>用B取代A</li>
+                        </ul>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>📖 本篇重點句型</h4>
+                        <ul>
+                            <li><strong>None of them + has/have been V-en：</strong>沒有一個被...</li>
+                            <li><strong>According to + N：</strong>根據...</li>
+                            <li><strong>the more generally accepted story is that...：</strong>更被普遍接受的說法是...</li>
+                            <li><strong>within a few years：</strong>幾年之內</li>
+                        </ul>
+                    </div>
+                    <div class="danger-zone">
+                        <div class="danger-title">🚨 本篇高頻錯題 TOP 3</div>
+                        <div class="danger-item"><div class="danger-q">第31題：several competing (stories)</div><div class="danger-reason">❌ 錯因：誤認為填名詞 accounts</div><div class="danger-solution">✓ 破解：competing 是形容詞，修飾後面省略的 stories</div></div>
+                        <div class="danger-item"><div class="danger-q">第35題：the treats we know of today</div><div class="danger-reason">❌ 錯因：不知道 treats 可指「點心」</div><div class="danger-solution">✓ 破解：treats = 點心、小食</div></div>
+                        <div class="danger-item"><div class="danger-q">第36題：Another account claims</div><div class="danger-reason">❌ 錯因：混淆 account 和 story</div><div class="danger-solution">✓ 破解：account = 說法、敘述（與 story 同義）</div></div>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>🎨 主題詞辨識技巧</h4>
+                        <ul>
+                            <li><strong>核心主題詞：</strong>fortune cookie(s)（幸運餅乾）出現超過 8 次</li>
+                            <li><strong>相關詞彙：</strong>origin, story, account, mooncakes, cookie</li>
+                            <li><strong>結構特點：</strong>多個說法並列（One story... Another account... However, the more generally accepted...）</li>
+                            <li><strong>辨識方法：</strong>fortune cookie 反覆出現 = 絕對主題詞</li>
+                        </ul>
+                    </div>
+                    <div class="mantra-box">
+                        <div class="mantra-title">🏆 考前終極口訣</div>
+                        <div class="mantra-text"><span class="mantra-highlight">詞性先行</span>，結構定位<br><span class="mantra-highlight">轉折必看</span>，前後對照<br><span class="mantra-highlight">搭配優先</span>，固定用法<br><span class="mantra-highlight">一詞多義</span>，語境判斷</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 答案總覽 -->
+            <div class="section">
+                <h2 class="section-title">✅ 答案總覽</h2>
+                <div class="answer-overview">
+                    <div class="answer-grid">
+                        <div class="answer-cell"><div class="answer-cell-num">31</div><div class="answer-cell-ans">(C)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">32</div><div class="answer-cell-ans">(I)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">33</div><div class="answer-cell-ans">(F)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">34</div><div class="answer-cell-ans">(G)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">35</div><div class="answer-cell-ans">(J)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">36</div><div class="answer-cell-ans">(A)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">37</div><div class="answer-cell-ans">(D)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">38</div><div class="answer-cell-ans">(B)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">39</div><div class="answer-cell-ans">(H)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">40</div><div class="answer-cell-ans">(E)</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>🥠 學測英文文意選填 ｜ 專業教學分析版 ｜ 107年學測</p>
+            <p>主題：幸運餅乾 Fortune Cookies</p>
+        </div>
+    </div>
+</body>
+</html>

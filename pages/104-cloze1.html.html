@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學測文意選填 - 迴紋針 專業教學分析版</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif; line-height: 1.9; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: #fff; border-radius: 20px; box-shadow: 0 25px 80px rgba(0,0,0,0.4); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #546e7a 0%, #78909c 100%); color: white; padding: 35px 40px; text-align: center; }
+        .header h1 { font-size: 2.4em; margin-bottom: 10px; }
+        .header .subtitle { font-size: 1.2em; opacity: 0.9; }
+        .header .theme-tag { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 20px; margin-top: 10px; }
+        .content { padding: 40px; }
+        .section { margin-bottom: 50px; }
+        .section-title { font-size: 1.6em; color: #37474f; border-left: 6px solid #78909c; padding-left: 18px; margin-bottom: 25px; }
+        .structure-box { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 15px; padding: 25px; margin-bottom: 20px; border-left: 5px solid #78909c; }
+        .structure-function { background: #cfd8dc; display: inline-block; padding: 4px 12px; border-radius: 15px; font-size: 0.9em; color: #37474f; font-weight: bold; margin-bottom: 10px; }
+        .article-box { background: #fafafa; border-radius: 15px; padding: 30px; border: 2px solid #e0e0e0; font-size: 1.08em; line-height: 2.2; }
+        .core-sentence { color: #c62828; font-weight: bold; background: linear-gradient(transparent 60%, #ffcdd2 60%); }
+        .transition-word { color: #6a1b9a; font-weight: bold; background: linear-gradient(transparent 60%, #e1bee7 60%); }
+        .theme-word { color: #2e7d32; font-weight: bold; }
+        .blank { display: inline-block; min-width: 70px; border-bottom: 3px solid #546e7a; text-align: center; font-weight: bold; color: #546e7a; margin: 0 5px; padding: 0 8px; }
+        .options-box { background: linear-gradient(135deg, #eceff1 0%, #cfd8dc 100%); border-radius: 15px; padding: 25px; margin: 25px 0; border: 2px solid #b0bec5; }
+        .options-title { font-weight: bold; color: #37474f; margin-bottom: 15px; font-size: 1.15em; }
+        .options-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+        .option-item { background: white; padding: 12px; border-radius: 10px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+        .option-item .letter { color: #c62828; font-weight: bold; font-size: 1.1em; }
+        .option-item .word { color: #1565c0; font-weight: 500; }
+        .option-item .pos { color: #757575; font-size: 0.85em; }
+        .question-card { background: white; border-radius: 18px; padding: 30px; margin-bottom: 30px; box-shadow: 0 6px 25px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; }
+        .question-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .question-number { background: linear-gradient(135deg, #37474f 0%, #546e7a 100%); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.3em; }
+        .difficulty-tag { padding: 5px 15px; border-radius: 20px; font-size: 0.85em; font-weight: bold; }
+        .difficulty-easy { background: #c8e6c9; color: #2e7d32; }
+        .difficulty-medium { background: #fff3e0; color: #ef6c00; }
+        .difficulty-hard { background: #ffcdd2; color: #c62828; }
+        .options-reminder { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border: 1px solid #90caf9; border-radius: 10px; padding: 12px 18px; margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .options-reminder-title { color: #1565c0; font-weight: bold; margin-right: 5px; }
+        .options-reminder .opt { background: white; padding: 4px 10px; border-radius: 15px; font-size: 0.9em; color: #1565c0; border: 1px solid #90caf9; }
+        .question-sentence { background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%); padding: 20px 25px; border-radius: 12px; margin: 20px 0; border-left: 5px solid #ffc107; font-size: 1.1em; }
+        .answer-row { display: flex; align-items: center; gap: 20px; margin: 20px 0; flex-wrap: wrap; }
+        .answer-tag { background: linear-gradient(135deg, #43a047 0%, #66bb6a 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: bold; }
+        .kill-point { background: linear-gradient(135deg, #c62828 0%, #e53935 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: bold; font-size: 0.95em; }
+        .instant-kill { background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border: 2px solid #ff9800; border-radius: 12px; padding: 18px 22px; margin: 15px 0; }
+        .instant-kill-title { color: #e65100; font-weight: bold; margin-bottom: 8px; }
+        .logic-chain { background: #f5f5f5; border-radius: 12px; padding: 20px; margin: 15px 0; }
+        .logic-chain-title { color: #37474f; font-weight: bold; margin-bottom: 12px; }
+        .logic-step { display: flex; align-items: flex-start; margin: 12px 0; padding-left: 10px; }
+        .logic-step-num { background: #78909c; color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85em; font-weight: bold; margin-right: 12px; flex-shrink: 0; }
+        .anchor-box { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px 20px; margin: 12px 0; border-radius: 0 10px 10px 0; }
+        .anchor-label { color: #2e7d32; font-weight: bold; font-size: 0.95em; margin-bottom: 5px; }
+        .anchor-text { color: #1b5e20; font-style: italic; }
+        .anchor-highlight { background: #a5d6a7; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-style: normal; }
+        .trap-analysis { background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%); border-radius: 12px; padding: 18px 22px; margin: 15px 0; border: 2px solid #ec407a; }
+        .trap-title { color: #c2185b; font-weight: bold; margin-bottom: 10px; }
+        .trap-item { margin: 8px 0; padding-left: 20px; position: relative; }
+        .trap-item::before { content: "✗"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
+        .trap-option { color: #c62828; font-weight: bold; }
+        .trap-reason { color: #616161; }
+        .vocab-table { width: 100%; border-collapse: collapse; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 12px; overflow: hidden; }
+        .vocab-table th { background: linear-gradient(135deg, #37474f 0%, #546e7a 100%); color: white; padding: 15px; text-align: left; }
+        .vocab-table td { padding: 15px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+        .vocab-table tr:nth-child(even) { background: #f8f9fa; }
+        .vocab-table tr:hover { background: #eceff1; }
+        .vocab-word { color: #c62828; font-weight: bold; font-size: 1.1em; }
+        .trap-type { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+        .trap-type-multi { background: #ffcdd2; color: #c62828; }
+        .trap-type-collocation { background: #c8e6c9; color: #2e7d32; }
+        .trap-type-pos { background: #fff3e0; color: #ef6c00; }
+        .trap-type-context { background: #e1bee7; color: #6a1b9a; }
+        .exam-focus { background: #e3f2fd; padding: 3px 10px; border-radius: 12px; font-size: 0.85em; color: #1565c0; font-weight: 500; }
+        .eng-example { color: #1565c0; }
+        .eng-keyword { color: #c62828; font-weight: bold; }
+        .chi-example { color: #616161; }
+        .chi-keyword { color: #c62828; font-weight: bold; }
+        .transition-category { background: white; border-radius: 15px; padding: 25px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid #e0e0e0; }
+        .transition-category-header { display: flex; align-items: center; gap: 15px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 2px solid #e0e0e0; }
+        .category-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3em; color: white; }
+        .category-contrast { background: linear-gradient(135deg, #e91e63 0%, #f06292 100%); }
+        .category-cause { background: linear-gradient(135deg, #ff9800 0%, #ffb74d 100%); }
+        .category-addition { background: linear-gradient(135deg, #4caf50 0%, #81c784 100%); }
+        .category-example { background: linear-gradient(135deg, #2196f3 0%, #64b5f6 100%); }
+        .category-concession { background: linear-gradient(135deg, #9c27b0 0%, #ba68c8 100%); }
+        .category-title { font-size: 1.2em; font-weight: bold; color: #1b262c; }
+        .category-subtitle { color: #757575; font-size: 0.95em; }
+        .transition-words-list { display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0; }
+        .transition-word-tag { background: #f5f5f5; padding: 6px 14px; border-radius: 20px; font-weight: 500; border: 1px solid #e0e0e0; }
+        .strategy-action { background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%); border-radius: 10px; padding: 15px 20px; margin: 15px 0; }
+        .strategy-action-title { color: #283593; font-weight: bold; margin-bottom: 8px; }
+        .strategy-action-steps { color: #3949ab; font-weight: 500; }
+        .strategy-arrow { color: #5c6bc0; margin: 0 8px; }
+        .real-example { background: #fafafa; border-left: 4px solid #6a1b9a; padding: 15px 20px; margin-top: 15px; border-radius: 0 10px 10px 0; }
+        .real-example-title { color: #6a1b9a; font-weight: bold; font-size: 0.95em; margin-bottom: 8px; }
+        .real-example-eng { color: #1565c0; }
+        .real-example-keyword { color: #6a1b9a; font-weight: bold; background: #f3e5f5; padding: 2px 6px; border-radius: 4px; }
+        .real-example-chi { color: #616161; margin-top: 5px; }
+        .real-example-chi-keyword { color: #6a1b9a; font-weight: bold; }
+        .sprint-section { background: linear-gradient(135deg, #fffbea 0%, #fff9c4 100%); border-radius: 18px; padding: 35px; margin: 25px 0; border: 3px solid #ffd54f; }
+        .sprint-main-title { color: #0d47a1; font-weight: bold; font-size: 1.5em; text-align: center; margin-bottom: 30px; }
+        .sprint-item { background: white; border-radius: 12px; padding: 22px; margin: 18px 0; box-shadow: 0 3px 10px rgba(0,0,0,0.08); }
+        .sprint-item h4 { color: #0d47a1; font-weight: bold; margin-bottom: 15px; font-size: 1.15em; }
+        .sprint-item ul { list-style: none; padding: 0; }
+        .sprint-item li { padding: 10px 0; padding-left: 28px; position: relative; color: #1565c0; font-weight: 500; }
+        .sprint-item li::before { content: "✓"; position: absolute; left: 0; color: #4caf50; font-weight: bold; }
+        .three-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 15px 0; }
+        .step-card { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: 12px; padding: 20px; text-align: center; }
+        .step-card-num { background: #0d47a1; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin: 0 auto 10px; }
+        .step-card-title { color: #0d47a1; font-weight: bold; font-size: 1.1em; margin-bottom: 8px; }
+        .step-card-desc { color: #1565c0; font-size: 0.95em; }
+        .danger-zone { background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); border-radius: 15px; padding: 25px; margin: 20px 0; border: 2px solid #e57373; }
+        .danger-title { color: #c62828; font-weight: bold; font-size: 1.2em; margin-bottom: 15px; }
+        .danger-item { background: white; border-radius: 10px; padding: 15px 20px; margin: 12px 0; border-left: 4px solid #c62828; }
+        .danger-q { color: #c62828; font-weight: bold; margin-bottom: 5px; }
+        .danger-reason { color: #616161; }
+        .danger-solution { color: #2e7d32; font-weight: 500; margin-top: 5px; }
+        .mantra-box { background: linear-gradient(135deg, #1a237e 0%, #283593 100%); border-radius: 18px; padding: 35px; text-align: center; margin-top: 30px; color: white; }
+        .mantra-title { font-size: 1.4em; margin-bottom: 20px; }
+        .mantra-text { font-size: 1.5em; font-weight: bold; line-height: 2.2; }
+        .mantra-highlight { background: rgba(255,255,255,0.2); padding: 3px 12px; border-radius: 8px; }
+        .answer-overview { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: 15px; padding: 30px; text-align: center; }
+        .answer-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; max-width: 700px; margin: 20px auto; }
+        .answer-cell { background: white; padding: 18px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+        .answer-cell-num { color: #37474f; font-weight: bold; font-size: 1.1em; }
+        .answer-cell-ans { color: #2e7d32; font-weight: bold; font-size: 1.3em; margin-top: 5px; }
+        .footer { background: linear-gradient(135deg, #37474f 0%, #546e7a 100%); color: white; text-align: center; padding: 25px; }
+        .legend-box { display: flex; flex-wrap: wrap; gap: 20px; padding: 15px 20px; background: #f5f5f5; border-radius: 10px; margin-top: 20px; }
+        .legend-item { display: flex; align-items: center; gap: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📎 學測文意選填</h1>
+            <div class="subtitle">專業教學分析版 ｜ 104年學測</div>
+            <div class="theme-tag">🎯 主題：迴紋針 Paperclip</div>
+        </div>
+        
+        <div class="content">
+            <!-- 選項總覽 -->
+            <div class="options-box">
+                <div class="options-title">📋 選項總覽 ｜ 先分類再作答</div>
+                <div class="options-grid">
+                    <div class="option-item"><div class="letter">(A)</div><div class="word">familiar</div><div class="pos">adj. 熟悉的</div></div>
+                    <div class="option-item"><div class="letter">(B)</div><div class="word">honor</div><div class="pos">v. 紀念；表彰</div></div>
+                    <div class="option-item"><div class="letter">(C)</div><div class="word">device</div><div class="pos">n. 裝置</div></div>
+                    <div class="option-item"><div class="letter">(D)</div><div class="word">removable</div><div class="pos">adj. 可移除的</div></div>
+                    <div class="option-item"><div class="letter">(E)</div><div class="word">known as</div><div class="pos">phr. 被稱為</div></div>
+                    <div class="option-item"><div class="letter">(F)</div><div class="word">protest</div><div class="pos">n. 抗議</div></div>
+                    <div class="option-item"><div class="letter">(G)</div><div class="word">symbol</div><div class="pos">n. 象徵</div></div>
+                    <div class="option-item"><div class="letter">(H)</div><div class="word">twisted into</div><div class="pos">phr. 扭成</div></div>
+                    <div class="option-item"><div class="letter">(I)</div><div class="word">associated with</div><div class="pos">phr. 與...相關</div></div>
+                    <div class="option-item"><div class="letter">(J)</div><div class="word">historical</div><div class="pos">adj. 歷史的</div></div>
+                </div>
+            </div>
+            
+            <!-- 文章結構分析 -->
+            <div class="section">
+                <h2 class="section-title">🏗️ 文章結構分析</h2>
+                <div class="structure-box">
+                    <div class="structure-function">第一段功能：引言 + 定義 + 提問</div>
+                    <p>迴紋針是用來固定紙張的鋼絲 → 這個常見的<strong>裝置</strong>是簡單與功能的奇蹟 → 這個發明從何而來？</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第31題，測試名詞</p>
+                </div>
+                <div class="structure-box">
+                    <div class="structure-function">第二段功能：發明歷史 + 發明者</div>
+                    <p>19世紀用針固定 → 雖便宜但易<strong>移除</strong>，會留洞 → 鋼絲可被<strong>扭成</strong>各種夾子 → 最常<strong>與...相關聯</strong>的名字是 Vaaler → 但他的設計沒有內圈 → 有內圈的設計<strong>被稱為</strong> Gem夾</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第32-35題，測試形容詞、片語</p>
+                </div>
+                <div class="structure-box">
+                    <div class="structure-function">第三段功能：歷史意義 + 二戰象徵</div>
+                    <p>迴紋針在挪威有重要<strong>歷史</strong>角色 → 被納粹佔領時禁止佩戴國家團結的<strong>象徵</strong> → 為了<strong>抗議</strong>，他們戴迴紋針 → 原因：迴紋針功能是把東西綁在一起</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第36-38題，測試形容詞、名詞</p>
+                </div>
+                <div class="structure-box">
+                    <div class="structure-function">第四段功能：戰後紀念</div>
+                    <p>戰後建立巨大迴紋針雕像 → 為了<strong>紀念</strong> Vaaler</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第39-40題，測試形容詞、動詞</p>
+                </div>
+            </div>
+            
+            <!-- 文章標示版 -->
+            <div class="section">
+                <h2 class="section-title">📖 文章標示版</h2>
+                <div class="article-box">
+                    <p>A <span class="theme-word">paperclip</span>, made of steel wire bent into a hooped shape, is an instrument used to hold sheets of paper together. This common <span class="blank">31</span> is a wonder of simplicity and function. <span class="transition-word">But</span> where did this simple, cheap, and indispensable invention come from?</p>
+                    
+                    <p>In the late 19th century, the most common way to hold papers together was by using a pin. <span class="transition-word">Although</span> the pin was an inexpensive tool and was easily <span class="blank">32</span>, it would leave holes in the paper. <span class="transition-word">Later</span>, as steel wire became more common, inventors began to notice its elastic feature. With this feature, it could be stretched and <span class="blank">33</span> various clip-like objects. In the years just prior to 1900, quite a few <span class="theme-word">paperclip</span> designs emerged. <span class="core-sentence">The name most frequently <span class="blank">34</span> the <span class="theme-word">paperclip</span> invention is Johan Vaaler, a Norwegian inventor.</span> <span class="transition-word">However</span>, Vaaler's clips were not the same as the <span class="theme-word">paperclips</span> currently in use. <span class="transition-word">Specifically</span>, they did not have the interior loop we see today. The looped design was invented by Gem Manufacturing Ltd. in England. This clip is <span class="transition-word">therefore</span> sometimes <span class="blank">35</span> the Gem clip.</p>
+                    
+                    <p><span class="transition-word">Because of</span> Vaaler, the <span class="theme-word">paperclip</span> played an important <span class="blank">36</span> role in Norway. During World War II, Norway was occupied by the Nazis. Norwegians were prohibited from wearing any <span class="blank">37</span> of their national unity, <span class="transition-word">such as</span> buttons with the initials of their king. <span class="transition-word">Thus</span>, in <span class="blank">38</span>, they started wearing <span class="theme-word">paperclips</span> to show their solidarity. The reason for doing this was simple: <span class="theme-word">Paperclips</span> were a Norwegian invention whose original function was to bind together.</p>
+                    
+                    <p>After the war, a giant <span class="theme-word">paperclip</span> statue was erected in Oslo to <span class="blank">39</span> Vaaler—even though his design was never actually manufactured.</p>
+                </div>
+                <div class="legend-box">
+                    <div class="legend-item"><span class="core-sentence">紅色底線</span> = 核心句</div>
+                    <div class="legend-item"><span class="transition-word">紫色底線</span> = 轉折詞</div>
+                    <div class="legend-item"><span class="theme-word">綠色粗體</span> = 主題詞</div>
+                </div>
+            </div>
+            
+            <!-- 解題思維 -->
+            <div class="section">
+                <h2 class="section-title">🧠 解題思維 ｜ 逐題攻破</h2>
+                
+                <!-- 第31題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">31</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) familiar</span><span class="opt">(B) honor</span><span class="opt">(C) device</span><span class="opt">(D) removable</span><span class="opt">(E) known as</span><span class="opt">(F) protest</span><span class="opt">(G) symbol</span><span class="opt">(H) twisted into</span><span class="opt">(I) associated with</span><span class="opt">(J) historical</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>This common <u><strong>____</strong></u> is a wonder of simplicity and function.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(C) device</div><div class="kill-point">⚡ 秒殺點：This common ____ = 這個常見的裝置</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p>前句介紹 <strong>paperclip</strong>（迴紋針）→ <strong>This common ____</strong> 指代迴紋針 → 「裝置」→ <strong>device</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：This common ____ → 需要<strong>名詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：名詞有 (C)(F)(G)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：指代 paperclip → device ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 指代關係</div><div class="anchor-text">"A paperclip... This common <span class="anchor-highlight">device</span>"</div></div>
+                </div>
+                
+                <!-- 第32題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">32</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) familiar</span><span class="opt">(B) honor</span><span class="opt">(C) device</span><span class="opt">(D) removable</span><span class="opt">(E) known as</span><span class="opt">(F) protest</span><span class="opt">(G) symbol</span><span class="opt">(H) twisted into</span><span class="opt">(I) associated with</span><span class="opt">(J) historical</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>Although the pin was an inexpensive tool and was easily <u><strong>____</strong></u>, it would leave holes in the paper.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(D) removable</div><div class="kill-point">⚡ 秒殺點：easily ____ = 容易移除的（與 inexpensive 並列優點）</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>Although... inexpensive and easily ____</strong>（讓步）→ 列舉優點 → <strong>but</strong> leave holes（轉折缺點）→ <strong>removable</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：was easily ____ → 需要<strong>形容詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：形容詞有 (A)(D)(J)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：與 inexpensive 並列的優點 → removable ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 讓步轉折</div><div class="anchor-text">"<span class="anchor-highlight">Although</span>... inexpensive and easily <span class="anchor-highlight">removable</span>... <span class="anchor-highlight">it would</span> leave holes"</div></div>
+                </div>
+                
+                <!-- 第33題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">33</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) familiar</span><span class="opt">(B) honor</span><span class="opt">(C) device</span><span class="opt">(D) removable</span><span class="opt">(E) known as</span><span class="opt">(F) protest</span><span class="opt">(G) symbol</span><span class="opt">(H) twisted into</span><span class="opt">(I) associated with</span><span class="opt">(J) historical</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...it could be stretched and <u><strong>____</strong></u> various clip-like objects.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(H) twisted into</div><div class="kill-point">⚡ 秒殺點：stretched and ____ = 被拉伸並扭成</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>stretched and ____</strong>（被動並列）→ 鋼絲可以被「扭成」各種夾子 → <strong>twisted into</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：be stretched and ____ → 需要<strong>過去分詞片語</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：過去分詞片語有 (E)(H)(I)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：鋼絲被扭成夾子 → twisted into ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 平行結構</div><div class="anchor-text">"be <span class="anchor-highlight">stretched</span> and <span class="anchor-highlight">twisted into</span> various clip-like objects"</div></div>
+                </div>
+                
+                <!-- 第34題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">34</div><span class="difficulty-tag difficulty-hard">困難</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) familiar</span><span class="opt">(B) honor</span><span class="opt">(C) device</span><span class="opt">(D) removable</span><span class="opt">(E) known as</span><span class="opt">(F) protest</span><span class="opt">(G) symbol</span><span class="opt">(H) twisted into</span><span class="opt">(I) associated with</span><span class="opt">(J) historical</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>The name most frequently <u><strong>____</strong></u> the paperclip invention is Johan Vaaler...</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(I) associated with</div><div class="kill-point">⚡ 秒殺點：name ____ the invention = 與發明相關聯的名字</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>The name... ____ the paperclip invention</strong> → 與發明「相關聯的」名字 → <strong>associated with</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：name ____ the invention → 需要<strong>過去分詞片語</strong>（修飾 name）</span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘過去分詞片語有 (E)(I)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配判斷：be associated with = 與...相關 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div><div class="anchor-text">"The name... <span class="anchor-highlight">associated with</span> the paperclip invention"</div></div>
+                    <div class="trap-analysis"><div class="trap-title">🚨 誘答分析 ｜ 高頻錯題</div><div class="trap-item"><span class="trap-option">誤選 (E) known as</span><span class="trap-reason"> → known as 後接「名稱/稱呼」，不接「發明」</span></div></div>
+                </div>
+                
+                <!-- 第35題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">35</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) familiar</span><span class="opt">(B) honor</span><span class="opt">(C) device</span><span class="opt">(D) removable</span><span class="opt">(E) known as</span><span class="opt">(F) protest</span><span class="opt">(G) symbol</span><span class="opt">(H) twisted into</span><span class="opt">(I) associated with</span><span class="opt">(J) historical</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>This clip is therefore sometimes <u><strong>____</strong></u> the Gem clip.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(E) known as</div><div class="kill-point">⚡ 秒殺點：is ____ the Gem clip = 被稱為 Gem 夾</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>is sometimes ____ the Gem clip</strong> → 有時「被稱為」Gem 夾 → <strong>known as</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：is ____ → 需要<strong>過去分詞片語</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘過去分詞片語只有 (E) known as</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配驗證：be known as = 被稱為... ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div><div class="anchor-text">"is therefore sometimes <span class="anchor-highlight">known as</span> the <span class="anchor-highlight">Gem clip</span>"</div></div>
+                </div>
+                
+                <!-- 第36題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">36</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) familiar</span><span class="opt">(B) honor</span><span class="opt">(C) device</span><span class="opt">(D) removable</span><span class="opt">(E) known as</span><span class="opt">(F) protest</span><span class="opt">(G) symbol</span><span class="opt">(H) twisted into</span><span class="opt">(I) associated with</span><span class="opt">(J) historical</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...the paperclip played an important <u><strong>____</strong></u> role in Norway.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(J) historical</div><div class="kill-point">⚡ 秒殺點：important ____ role = 重要的歷史角色</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p>後文提到 <strong>World War II</strong>（二戰）→ 「歷史」角色 → <strong>historical</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：important ____ role → 需要<strong>形容詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘形容詞有 (A)(J)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：後文提及二戰 → historical ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"played an important <span class="anchor-highlight">historical</span> role... <span class="anchor-highlight">World War II</span>"</div></div>
+                </div>
+                
+                <!-- 第37題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">37</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) familiar</span><span class="opt">(B) honor</span><span class="opt">(C) device</span><span class="opt">(D) removable</span><span class="opt">(E) known as</span><span class="opt">(F) protest</span><span class="opt">(G) symbol</span><span class="opt">(H) twisted into</span><span class="opt">(I) associated with</span><span class="opt">(J) historical</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>Norwegians were prohibited from wearing any <u><strong>____</strong></u> of their national unity...</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(G) symbol</div><div class="kill-point">⚡ 秒殺點：any ____ of national unity = 任何國家團結的象徵</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>prohibited from wearing... of national unity</strong> → 國家團結的「象徵」→ <strong>symbol</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：any ____ of → 需要<strong>名詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘名詞有 (F)(G)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配判斷：symbol of = ...的象徵 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div><div class="anchor-text">"any <span class="anchor-highlight">symbol</span> of their <span class="anchor-highlight">national unity</span>"</div></div>
+                </div>
+                
+                <!-- 第38題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">38</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) familiar</span><span class="opt">(B) honor</span><span class="opt">(C) device</span><span class="opt">(D) removable</span><span class="opt">(E) known as</span><span class="opt">(F) protest</span><span class="opt">(G) symbol</span><span class="opt">(H) twisted into</span><span class="opt">(I) associated with</span><span class="opt">(J) historical</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>Thus, in <u><strong>____</strong></u>, they started wearing paperclips to show their solidarity.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(F) protest</div><div class="kill-point">⚡ 秒殺點：in ____ = 為了抗議</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>Thus</strong>（因此）+ <strong>prohibited</strong>（被禁止）→ 為了「抗議」→ <strong>in protest</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：in ____ → 需要<strong>名詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘名詞只有 (F) protest</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>因果驗證：被禁止 → 抗議 → 戴迴紋針 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div><div class="anchor-text">"prohibited... <span class="anchor-highlight">Thus</span>, in <span class="anchor-highlight">protest</span>"</div></div>
+                </div>
+                
+                <!-- 第39題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">39</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) familiar</span><span class="opt">(B) honor</span><span class="opt">(C) device</span><span class="opt">(D) removable</span><span class="opt">(E) known as</span><span class="opt">(F) protest</span><span class="opt">(G) symbol</span><span class="opt">(H) twisted into</span><span class="opt">(I) associated with</span><span class="opt">(J) historical</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>After the war, a giant paperclip statue was erected in Oslo to <u><strong>____</strong></u> Vaaler...</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(B) honor</div><div class="kill-point">⚡ 秒殺點：statue was erected to ____ = 建雕像紀念</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>statue was erected to ____</strong> → 建造雕像是為了「紀念」→ <strong>honor</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：to ____ Vaaler → 需要<strong>動詞原形</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘動詞只有 (B) honor</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意驗證：建雕像紀念發明者 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"<span class="anchor-highlight">statue</span> was erected... to <span class="anchor-highlight">honor</span> Vaaler"</div></div>
+                </div>
+            </div>
+            
+            <!-- 單字戰略分類 -->
+            <div class="section">
+                <h2 class="section-title">📚 單字戰略分類 ｜ 依陷阱類型</h2>
+                <table class="vocab-table">
+                    <thead>
+                        <tr><th style="width: 15%;">單字</th><th style="width: 15%;">陷阱類型</th><th style="width: 15%;">高頻考法</th><th style="width: 55%;">實戰例句</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="vocab-word">device</span><br>(n.) 裝置</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">common device</span></td><td><span class="eng-example">This common <span class="eng-keyword">device</span> is a wonder</span><br><span class="chi-example">這個常見的<span class="chi-keyword">裝置</span>是一個奇蹟</span></td></tr>
+                        <tr><td><span class="vocab-word">removable</span><br>(adj.) 可移除的</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">easily removable</span></td><td><span class="eng-example">inexpensive and easily <span class="eng-keyword">removable</span></span><br><span class="chi-example">便宜且容易<span class="chi-keyword">移除</span></span></td></tr>
+                        <tr><td><span class="vocab-word">twisted into</span><br>(phr.) 扭成</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">be twisted into</span></td><td><span class="eng-example">stretched and <span class="eng-keyword">twisted into</span> various objects</span><br><span class="chi-example">被拉伸並<span class="chi-keyword">扭成</span>各種物品</span></td></tr>
+                        <tr><td><span class="vocab-word">associated with</span><br>(phr.) 與...相關</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">be associated with</span></td><td><span class="eng-example">name most frequently <span class="eng-keyword">associated with</span></span><br><span class="chi-example">最常<span class="chi-keyword">與...相關聯</span>的名字</span></td></tr>
+                        <tr><td><span class="vocab-word">known as</span><br>(phr.) 被稱為</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">be known as</span></td><td><span class="eng-example">sometimes <span class="eng-keyword">known as</span> the Gem clip</span><br><span class="chi-example">有時<span class="chi-keyword">被稱為</span> Gem 夾</span></td></tr>
+                        <tr><td><span class="vocab-word">historical</span><br>(adj.) 歷史的</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">historical role</span></td><td><span class="eng-example">played an important <span class="eng-keyword">historical</span> role</span><br><span class="chi-example">扮演重要的<span class="chi-keyword">歷史</span>角色</span></td></tr>
+                        <tr><td><span class="vocab-word">symbol</span><br>(n.) 象徵</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">symbol of</span></td><td><span class="eng-example">any <span class="eng-keyword">symbol</span> of their national unity</span><br><span class="chi-example">任何國家團結的<span class="chi-keyword">象徵</span></span></td></tr>
+                        <tr><td><span class="vocab-word">protest</span><br>(n.) 抗議</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">in protest</span></td><td><span class="eng-example">in <span class="eng-keyword">protest</span>, they started wearing paperclips</span><br><span class="chi-example">為了<span class="chi-keyword">抗議</span>，他們開始戴迴紋針</span></td></tr>
+                        <tr><td><span class="vocab-word">honor</span><br>(v.) 紀念；表彰</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">to honor</span></td><td><span class="eng-example">statue was erected to <span class="eng-keyword">honor</span> Vaaler</span><br><span class="chi-example">建造雕像以<span class="chi-keyword">紀念</span> Vaaler</span></td></tr>
+                        <tr><td><span class="vocab-word">familiar</span><br>(adj.) 熟悉的</td><td><span class="trap-type trap-type-multi">多餘選項</span></td><td><span class="exam-focus">be familiar with</span></td><td><span class="eng-example">This word is <span class="eng-keyword">familiar</span> to students</span><br><span class="chi-example">這個字對學生來說很<span class="chi-keyword">熟悉</span>（本篇未使用）</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- 轉折詞解題策略總表 -->
+            <div class="section">
+                <h2 class="section-title">🔄 轉折詞解題策略總表</h2>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-concession">⚠️</div><div><div class="category-title">1. 讓步類 Concession</div><div class="category-subtitle">雖然...但是</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Although</span> <span style="color: #616161;">雖然</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到讓步詞 <span class="strategy-arrow">→</span> 前後對比 <span class="strategy-arrow">→</span> 前面優點，後面缺點</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"<span class="real-example-keyword">Although</span> the pin was inexpensive and easily removable, it would leave holes"</p><p class="real-example-chi"><span class="real-example-chi-keyword">雖然</span>針便宜且容易移除，但會留下洞</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-contrast">⚡</div><div><div class="category-title">2. 對比轉折類 Contrast</div><div class="category-subtitle">然而、但是</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">But</span> <span style="color: #616161;">但是</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">However</span> <span style="color: #616161;">然而</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到轉折詞 <span class="strategy-arrow">→</span> 前後相反 <span class="strategy-arrow">→</span> 空格填與前文相反的概念</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"The name... is Johan Vaaler. <span class="real-example-keyword">However</span>, Vaaler's clips were not the same as..."</p><p class="real-example-chi">名字是 Vaaler。<span class="real-example-chi-keyword">然而</span>，Vaaler 的夾子與現在的不同</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-example">📌</div><div><div class="category-title">3. 舉例說明類 Example</div><div class="category-subtitle">具體地說、例如</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Specifically</span> <span style="color: #616161;">具體地說</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">such as</span> <span style="color: #616161;">例如</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到舉例詞 <span class="strategy-arrow">→</span> 後面是具體例子 <span class="strategy-arrow">→</span> 空格填符合例子的詞</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"any symbol... <span class="real-example-keyword">such as</span> buttons with the initials of their king"</p><p class="real-example-chi">任何象徵...<span class="real-example-chi-keyword">例如</span>印有國王姓名縮寫的鈕扣</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-cause">🔗</div><div><div class="category-title">4. 因果說明類 Cause/Result</div><div class="category-subtitle">因為、因此、所以</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Because of</span> <span style="color: #616161;">因為</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Thus</span> <span style="color: #616161;">因此</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">therefore</span> <span style="color: #616161;">因此</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到因果詞 <span class="strategy-arrow">→</span> 找因果關係 <span class="strategy-arrow">→</span> 空格填符合因果的詞</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"prohibited... <span class="real-example-keyword">Thus</span>, in protest, they started wearing paperclips"</p><p class="real-example-chi">被禁止...<span class="real-example-chi-keyword">因此</span>，為了抗議，他們開始戴迴紋針</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-addition">➕</div><div><div class="category-title">5. 時間順序類 Sequence</div><div class="category-subtitle">後來、之後</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Later</span> <span style="color: #616161;">後來</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">After the war</span> <span style="color: #616161;">戰後</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到時間詞 <span class="strategy-arrow">→</span> 注意時間發展 <span class="strategy-arrow">→</span> 空格填符合時序的詞</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"<span class="real-example-keyword">Later</span>, as steel wire became more common..."</p><p class="real-example-chi"><span class="real-example-chi-keyword">後來</span>，當鋼絲變得更常見...</p></div>
+                </div>
+            </div>
+            
+            <!-- 考前衝刺重點 -->
+            <div class="section">
+                <h2 class="section-title">🚀 考前衝刺重點整理</h2>
+                <div class="sprint-section">
+                    <div class="sprint-main-title">🏆 文意選填必勝攻略</div>
+                    <div class="sprint-item">
+                        <h4>🎯 解題三步驟</h4>
+                        <div class="three-steps">
+                            <div class="step-card"><div class="step-card-num">1</div><div class="step-card-title">判斷詞性</div><div class="step-card-desc">看空格前後結構<br>確定需要什麼詞性</div></div>
+                            <div class="step-card"><div class="step-card-num">2</div><div class="step-card-title">篩選選項</div><div class="step-card-desc">依詞性刪除選項<br>縮小作答範圍</div></div>
+                            <div class="step-card"><div class="step-card-num">3</div><div class="step-card-title">語意驗證</div><div class="step-card-desc">結合上下文邏輯<br>確認最佳答案</div></div>
+                        </div>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>📝 本篇重點片語</h4>
+                        <ul>
+                            <li><strong>be associated with：</strong>與...相關聯</li>
+                            <li><strong>be known as：</strong>被稱為</li>
+                            <li><strong>be twisted into：</strong>被扭成</li>
+                            <li><strong>symbol of：</strong>...的象徵</li>
+                            <li><strong>in protest：</strong>為了抗議</li>
+                        </ul>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>📖 本篇重點句型</h4>
+                        <ul>
+                            <li><strong>Although + S + V, S + V：</strong>雖然...，但是...（讓步轉折）</li>
+                            <li><strong>be prohibited from + Ving：</strong>被禁止做...</li>
+                            <li><strong>be erected to V：</strong>被建立以...</li>
+                            <li><strong>The reason for doing this was simple：</strong>這樣做的原因很簡單</li>
+                        </ul>
+                    </div>
+                    <div class="danger-zone">
+                        <div class="danger-title">🚨 本篇高頻錯題 TOP 3</div>
+                        <div class="danger-item"><div class="danger-q">第34題：associated with vs. known as</div><div class="danger-reason">❌ 錯因：混淆兩個片語的用法</div><div class="danger-solution">✓ 破解：associated with + 事物；known as + 名稱/稱呼</div></div>
+                        <div class="danger-item"><div class="danger-q">第32題：easily removable</div><div class="danger-reason">❌ 錯因：不熟悉 removable 這個形容詞</div><div class="danger-solution">✓ 破解：remove（動詞）→ removable（可移除的）</div></div>
+                        <div class="danger-item"><div class="danger-q">第38題：in protest</div><div class="danger-reason">❌ 錯因：不知道 in protest 是固定搭配</div><div class="danger-solution">✓ 破解：in protest = 為了抗議（介詞片語）</div></div>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>🎨 主題詞辨識技巧</h4>
+                        <ul>
+                            <li><strong>核心主題詞：</strong>paperclip(s)（迴紋針）出現超過 8 次</li>
+                            <li><strong>相關詞彙：</strong>steel wire, clip, Gem clip, invention</li>
+                            <li><strong>歷史背景：</strong>挪威發明者、二戰反抗象徵</li>
+                            <li><strong>辨識方法：</strong>paperclip 反覆出現 = 絕對主題詞</li>
+                        </ul>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>⚠️ 本篇特殊提醒</h4>
+                        <ul>
+                            <li><strong>多餘選項：</strong>(A) familiar 未使用（10選9格局）</li>
+                            <li><strong>片語辨析：</strong>associated with ≠ known as</li>
+                            <li><strong>歷史知識：</strong>二戰挪威被納粹佔領、迴紋針成為反抗象徵</li>
+                        </ul>
+                    </div>
+                    <div class="mantra-box">
+                        <div class="mantra-title">🏆 考前終極口訣</div>
+                        <div class="mantra-text"><span class="mantra-highlight">詞性先行</span>，結構定位<br><span class="mantra-highlight">轉折必看</span>，前後對照<br><span class="mantra-highlight">搭配優先</span>，固定用法<br><span class="mantra-highlight">片語辨析</span>，細心區分</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 答案總覽 -->
+            <div class="section">
+                <h2 class="section-title">✅ 答案總覽</h2>
+                <div class="answer-overview">
+                    <div class="answer-grid">
+                        <div class="answer-cell"><div class="answer-cell-num">31</div><div class="answer-cell-ans">(C)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">32</div><div class="answer-cell-ans">(D)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">33</div><div class="answer-cell-ans">(H)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">34</div><div class="answer-cell-ans">(I)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">35</div><div class="answer-cell-ans">(E)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">36</div><div class="answer-cell-ans">(J)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">37</div><div class="answer-cell-ans">(G)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">38</div><div class="answer-cell-ans">(F)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">39</div><div class="answer-cell-ans">(B)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">多餘</div><div class="answer-cell-ans">(A)</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>📎 學測英文文意選填 ｜ 專業教學分析版 ｜ 104年學測</p>
+            <p>主題：迴紋針 Paperclip</p>
+        </div>
+    </div>
+</body>
+</html>

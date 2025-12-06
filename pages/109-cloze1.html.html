@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學測文意選填 - 酒窩 專業教學分析版</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif; line-height: 1.9; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: #fff; border-radius: 20px; box-shadow: 0 25px 80px rgba(0,0,0,0.4); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #ec407a 0%, #f48fb1 100%); color: white; padding: 35px 40px; text-align: center; }
+        .header h1 { font-size: 2.4em; margin-bottom: 10px; }
+        .header .subtitle { font-size: 1.2em; opacity: 0.9; }
+        .header .theme-tag { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 20px; margin-top: 10px; }
+        .content { padding: 40px; }
+        .section { margin-bottom: 50px; }
+        .section-title { font-size: 1.6em; color: #c2185b; border-left: 6px solid #ec407a; padding-left: 18px; margin-bottom: 25px; }
+        .structure-box { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 15px; padding: 25px; margin-bottom: 20px; border-left: 5px solid #ec407a; }
+        .structure-function { background: #f8bbd9; display: inline-block; padding: 4px 12px; border-radius: 15px; font-size: 0.9em; color: #880e4f; font-weight: bold; margin-bottom: 10px; }
+        .article-box { background: #fafafa; border-radius: 15px; padding: 30px; border: 2px solid #e0e0e0; font-size: 1.08em; line-height: 2.2; }
+        .core-sentence { color: #c62828; font-weight: bold; background: linear-gradient(transparent 60%, #ffcdd2 60%); }
+        .transition-word { color: #6a1b9a; font-weight: bold; background: linear-gradient(transparent 60%, #e1bee7 60%); }
+        .theme-word { color: #2e7d32; font-weight: bold; }
+        .blank { display: inline-block; min-width: 70px; border-bottom: 3px solid #c2185b; text-align: center; font-weight: bold; color: #c2185b; margin: 0 5px; padding: 0 8px; }
+        .options-box { background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%); border-radius: 15px; padding: 25px; margin: 25px 0; border: 2px solid #f48fb1; }
+        .options-title { font-weight: bold; color: #c2185b; margin-bottom: 15px; font-size: 1.15em; }
+        .options-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+        .option-item { background: white; padding: 12px; border-radius: 10px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+        .option-item .letter { color: #c62828; font-weight: bold; font-size: 1.1em; }
+        .option-item .word { color: #1565c0; font-weight: 500; }
+        .option-item .pos { color: #757575; font-size: 0.85em; }
+        .question-card { background: white; border-radius: 18px; padding: 30px; margin-bottom: 30px; box-shadow: 0 6px 25px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; }
+        .question-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .question-number { background: linear-gradient(135deg, #c2185b 0%, #ec407a 100%); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.3em; }
+        .difficulty-tag { padding: 5px 15px; border-radius: 20px; font-size: 0.85em; font-weight: bold; }
+        .difficulty-easy { background: #c8e6c9; color: #2e7d32; }
+        .difficulty-medium { background: #fff3e0; color: #ef6c00; }
+        .difficulty-hard { background: #ffcdd2; color: #c62828; }
+        .options-reminder { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border: 1px solid #90caf9; border-radius: 10px; padding: 12px 18px; margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .options-reminder-title { color: #1565c0; font-weight: bold; margin-right: 5px; }
+        .options-reminder .opt { background: white; padding: 4px 10px; border-radius: 15px; font-size: 0.9em; color: #1565c0; border: 1px solid #90caf9; }
+        .question-sentence { background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%); padding: 20px 25px; border-radius: 12px; margin: 20px 0; border-left: 5px solid #ffc107; font-size: 1.1em; }
+        .answer-row { display: flex; align-items: center; gap: 20px; margin: 20px 0; flex-wrap: wrap; }
+        .answer-tag { background: linear-gradient(135deg, #43a047 0%, #66bb6a 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: bold; }
+        .kill-point { background: linear-gradient(135deg, #c62828 0%, #e53935 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: bold; font-size: 0.95em; }
+        .instant-kill { background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border: 2px solid #ff9800; border-radius: 12px; padding: 18px 22px; margin: 15px 0; }
+        .instant-kill-title { color: #e65100; font-weight: bold; margin-bottom: 8px; }
+        .logic-chain { background: #f5f5f5; border-radius: 12px; padding: 20px; margin: 15px 0; }
+        .logic-chain-title { color: #c2185b; font-weight: bold; margin-bottom: 12px; }
+        .logic-step { display: flex; align-items: flex-start; margin: 12px 0; padding-left: 10px; }
+        .logic-step-num { background: #ec407a; color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85em; font-weight: bold; margin-right: 12px; flex-shrink: 0; }
+        .anchor-box { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px 20px; margin: 12px 0; border-radius: 0 10px 10px 0; }
+        .anchor-label { color: #2e7d32; font-weight: bold; font-size: 0.95em; margin-bottom: 5px; }
+        .anchor-text { color: #1b5e20; font-style: italic; }
+        .anchor-highlight { background: #a5d6a7; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-style: normal; }
+        .trap-analysis { background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%); border-radius: 12px; padding: 18px 22px; margin: 15px 0; border: 2px solid #ec407a; }
+        .trap-title { color: #c2185b; font-weight: bold; margin-bottom: 10px; }
+        .trap-item { margin: 8px 0; padding-left: 20px; position: relative; }
+        .trap-item::before { content: "✗"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
+        .trap-option { color: #c62828; font-weight: bold; }
+        .trap-reason { color: #616161; }
+        .vocab-table { width: 100%; border-collapse: collapse; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 12px; overflow: hidden; }
+        .vocab-table th { background: linear-gradient(135deg, #c2185b 0%, #e91e63 100%); color: white; padding: 15px; text-align: left; }
+        .vocab-table td { padding: 15px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+        .vocab-table tr:nth-child(even) { background: #f8f9fa; }
+        .vocab-table tr:hover { background: #fce4ec; }
+        .vocab-word { color: #c62828; font-weight: bold; font-size: 1.1em; }
+        .trap-type { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+        .trap-type-multi { background: #ffcdd2; color: #c62828; }
+        .trap-type-collocation { background: #c8e6c9; color: #2e7d32; }
+        .trap-type-pos { background: #fff3e0; color: #ef6c00; }
+        .trap-type-context { background: #e1bee7; color: #6a1b9a; }
+        .exam-focus { background: #e3f2fd; padding: 3px 10px; border-radius: 12px; font-size: 0.85em; color: #1565c0; font-weight: 500; }
+        .eng-example { color: #1565c0; }
+        .eng-keyword { color: #c62828; font-weight: bold; }
+        .chi-example { color: #616161; }
+        .chi-keyword { color: #c62828; font-weight: bold; }
+        .transition-category { background: white; border-radius: 15px; padding: 25px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid #e0e0e0; }
+        .transition-category-header { display: flex; align-items: center; gap: 15px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 2px solid #e0e0e0; }
+        .category-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3em; color: white; }
+        .category-contrast { background: linear-gradient(135deg, #e91e63 0%, #f06292 100%); }
+        .category-cause { background: linear-gradient(135deg, #ff9800 0%, #ffb74d 100%); }
+        .category-addition { background: linear-gradient(135deg, #4caf50 0%, #81c784 100%); }
+        .category-example { background: linear-gradient(135deg, #2196f3 0%, #64b5f6 100%); }
+        .category-concession { background: linear-gradient(135deg, #9c27b0 0%, #ba68c8 100%); }
+        .category-title { font-size: 1.2em; font-weight: bold; color: #1b262c; }
+        .category-subtitle { color: #757575; font-size: 0.95em; }
+        .transition-words-list { display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0; }
+        .transition-word-tag { background: #f5f5f5; padding: 6px 14px; border-radius: 20px; font-weight: 500; border: 1px solid #e0e0e0; }
+        .strategy-action { background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%); border-radius: 10px; padding: 15px 20px; margin: 15px 0; }
+        .strategy-action-title { color: #283593; font-weight: bold; margin-bottom: 8px; }
+        .strategy-action-steps { color: #3949ab; font-weight: 500; }
+        .strategy-arrow { color: #5c6bc0; margin: 0 8px; }
+        .real-example { background: #fafafa; border-left: 4px solid #6a1b9a; padding: 15px 20px; margin-top: 15px; border-radius: 0 10px 10px 0; }
+        .real-example-title { color: #6a1b9a; font-weight: bold; font-size: 0.95em; margin-bottom: 8px; }
+        .real-example-eng { color: #1565c0; }
+        .real-example-keyword { color: #6a1b9a; font-weight: bold; background: #f3e5f5; padding: 2px 6px; border-radius: 4px; }
+        .real-example-chi { color: #616161; margin-top: 5px; }
+        .real-example-chi-keyword { color: #6a1b9a; font-weight: bold; }
+        .sprint-section { background: linear-gradient(135deg, #fffbea 0%, #fff9c4 100%); border-radius: 18px; padding: 35px; margin: 25px 0; border: 3px solid #ffd54f; }
+        .sprint-main-title { color: #0d47a1; font-weight: bold; font-size: 1.5em; text-align: center; margin-bottom: 30px; }
+        .sprint-item { background: white; border-radius: 12px; padding: 22px; margin: 18px 0; box-shadow: 0 3px 10px rgba(0,0,0,0.08); }
+        .sprint-item h4 { color: #0d47a1; font-weight: bold; margin-bottom: 15px; font-size: 1.15em; }
+        .sprint-item ul { list-style: none; padding: 0; }
+        .sprint-item li { padding: 10px 0; padding-left: 28px; position: relative; color: #1565c0; font-weight: 500; }
+        .sprint-item li::before { content: "✓"; position: absolute; left: 0; color: #4caf50; font-weight: bold; }
+        .three-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 15px 0; }
+        .step-card { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: 12px; padding: 20px; text-align: center; }
+        .step-card-num { background: #0d47a1; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin: 0 auto 10px; }
+        .step-card-title { color: #0d47a1; font-weight: bold; font-size: 1.1em; margin-bottom: 8px; }
+        .step-card-desc { color: #1565c0; font-size: 0.95em; }
+        .danger-zone { background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); border-radius: 15px; padding: 25px; margin: 20px 0; border: 2px solid #e57373; }
+        .danger-title { color: #c62828; font-weight: bold; font-size: 1.2em; margin-bottom: 15px; }
+        .danger-item { background: white; border-radius: 10px; padding: 15px 20px; margin: 12px 0; border-left: 4px solid #c62828; }
+        .danger-q { color: #c62828; font-weight: bold; margin-bottom: 5px; }
+        .danger-reason { color: #616161; }
+        .danger-solution { color: #2e7d32; font-weight: 500; margin-top: 5px; }
+        .mantra-box { background: linear-gradient(135deg, #1a237e 0%, #283593 100%); border-radius: 18px; padding: 35px; text-align: center; margin-top: 30px; color: white; }
+        .mantra-title { font-size: 1.4em; margin-bottom: 20px; }
+        .mantra-text { font-size: 1.5em; font-weight: bold; line-height: 2.2; }
+        .mantra-highlight { background: rgba(255,255,255,0.2); padding: 3px 12px; border-radius: 8px; }
+        .answer-overview { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: 15px; padding: 30px; text-align: center; }
+        .answer-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; max-width: 700px; margin: 20px auto; }
+        .answer-cell { background: white; padding: 18px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+        .answer-cell-num { color: #c2185b; font-weight: bold; font-size: 1.1em; }
+        .answer-cell-ans { color: #2e7d32; font-weight: bold; font-size: 1.3em; margin-top: 5px; }
+        .footer { background: linear-gradient(135deg, #c2185b 0%, #ec407a 100%); color: white; text-align: center; padding: 25px; }
+        .legend-box { display: flex; flex-wrap: wrap; gap: 20px; padding: 15px 20px; background: #f5f5f5; border-radius: 10px; margin-top: 20px; }
+        .legend-item { display: flex; align-items: center; gap: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>😊 學測文意選填</h1>
+            <div class="subtitle">專業教學分析版 ｜ 學測真題</div>
+            <div class="theme-tag">🎯 主題：酒窩 Dimples</div>
+        </div>
+        
+        <div class="content">
+            <!-- 選項總覽 -->
+            <div class="options-box">
+                <div class="options-title">📋 選項總覽 ｜ 先分類再作答</div>
+                <div class="options-grid">
+                    <div class="option-item"><div class="letter">(A)</div><div class="word">flaw</div><div class="pos">n. 缺陷</div></div>
+                    <div class="option-item"><div class="letter">(B)</div><div class="word">exhibit</div><div class="pos">v. 表現出</div></div>
+                    <div class="option-item"><div class="letter">(C)</div><div class="word">chubby</div><div class="pos">adj. 圓胖的</div></div>
+                    <div class="option-item"><div class="letter">(D)</div><div class="word">attractiveness</div><div class="pos">n. 吸引力</div></div>
+                    <div class="option-item"><div class="letter">(E)</div><div class="word">fade</div><div class="pos">v. 消退</div></div>
+                    <div class="option-item"><div class="letter">(F)</div><div class="word">rare</div><div class="pos">adj. 罕見的</div></div>
+                    <div class="option-item"><div class="letter">(G)</div><div class="word">range</div><div class="pos">v. 範圍從...到...</div></div>
+                    <div class="option-item"><div class="letter">(H)</div><div class="word">transfer</div><div class="pos">n./v. 傳遞</div></div>
+                    <div class="option-item"><div class="letter">(I)</div><div class="word">natural</div><div class="pos">adj. 天生的</div></div>
+                    <div class="option-item"><div class="letter">(J)</div><div class="word">presence</div><div class="pos">n. 存在</div></div>
+                </div>
+            </div>
+            
+            <!-- 文章結構分析 -->
+            <div class="section">
+                <h2 class="section-title">🏗️ 文章結構分析</h2>
+                <div class="structure-box">
+                    <div class="structure-function">第一段功能：定義 + 文化意義</div>
+                    <p>酒窩的定義（臉頰上的小凹陷）→ 通常雙邊出現，單邊是<strong>罕見</strong>現象 → 某些文化認為是<strong>吸引力</strong>的象徵</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第31-32題，測試形容詞、名詞搭配</p>
+                </div>
+                <div class="structure-box">
+                    <div class="structure-function">第二段功能：科學成因 + 遺傳機制</div>
+                    <p>酒窩是基因<strong>缺陷</strong>造成 → 臉部肌肉較短 → 酒窩的<strong>傳遞</strong>只需一個基因 → 父母沒有，孩子不會<strong>表現出</strong>此特徵</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第33-35題，測試名詞、動詞搭配</p>
+                </div>
+                <div class="structure-box">
+                    <div class="structure-function">第三段功能：例外情況 + 嬰兒脂肪</div>
+                    <p>非遺傳酒窩：臉部脂肪過多的<strong>存在</strong> → 嬰兒<strong>圓胖的</strong>臉頰有酒窩 → 長大後酒窩會<strong>消退</strong></p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第36-38題，測試名詞、形容詞、動詞</p>
+                </div>
+                <div class="structure-box">
+                    <div class="structure-function">第四段功能：人工方法</div>
+                    <p>沒有<strong>天生</strong>酒窩的人 → 各種方法<strong>範圍從</strong>化妝到手術</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第39-40題，測試形容詞、動詞固定用法</p>
+                </div>
+            </div>
+            
+            <!-- 文章標示版 -->
+            <div class="section">
+                <h2 class="section-title">📖 文章標示版</h2>
+                <div class="article-box">
+                    <p><span class="theme-word">Dimples</span> are small folds or indentations on the cheeks of one's face. <span class="transition-word">Generally</span>, they appear on both cheeks; a single <span class="theme-word">dimple</span> on one cheek is a relatively <span class="blank">31</span> phenomenon. Some cultures are found to show preference for <span class="theme-word">dimples</span> on one's cheeks, as the feature is claimed to be a sign of <span class="blank">32</span>.</p>
+                    
+                    <p><span class="transition-word">Though</span> often associated with beauty, <span class="core-sentence">most <span class="theme-word">dimples</span> are actually a genetic <span class="blank">33</span> caused by shortened facial muscles.</span> When a person smiles, the shorter-than-normal muscle pulls up the facial skin, which in turn creates a small indentation—or <span class="theme-word">dimple</span>—in the skin. Such <span class="theme-word">dimples</span> tend to occur in families, and are assumed to be an inherited feature. <span class="transition-word">In fact</span>, some researchers believe that the <span class="blank">34</span> of <span class="theme-word">dimples</span> from parents to children takes only one gene. If neither of the parents has <span class="theme-word">dimple</span> genes, their children will not <span class="blank">35</span> the trait.</p>
+                    
+                    <p>Not all <span class="theme-word">dimples</span> are formed by a genetic defect, <span class="transition-word">though</span>; some may appear due to the <span class="blank">36</span> of excessive fat on the face. Such <span class="theme-word">dimples</span> are not a permanent trait, <span class="transition-word">for</span> they vanish when the excessive fat goes away. Many babies, <span class="transition-word">for example</span>, have <span class="theme-word">dimples</span> on their <span class="blank">37</span> cheeks. As they grow older and lose their baby fat, the <span class="theme-word">dimples</span> may <span class="blank">38</span> with time.</p>
+                    
+                    <p>For those people who were born without <span class="blank">39</span> <span class="theme-word">dimples</span>, various methods can be applied to successfully create them. <span class="core-sentence">These methods <span class="blank">40</span> from a simple step like makeup to a drastic one like surgery.</span> It all depends on whether you think it is worth the effort.</p>
+                </div>
+                <div class="legend-box">
+                    <div class="legend-item"><span class="core-sentence">紅色底線</span> = 核心句</div>
+                    <div class="legend-item"><span class="transition-word">紫色底線</span> = 轉折詞</div>
+                    <div class="legend-item"><span class="theme-word">綠色粗體</span> = 主題詞</div>
+                </div>
+            </div>
+            
+            <!-- 解題思維 -->
+            <div class="section">
+                <h2 class="section-title">🧠 解題思維 ｜ 逐題攻破</h2>
+                
+                <!-- 第31題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">31</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) flaw</span><span class="opt">(B) exhibit</span><span class="opt">(C) chubby</span><span class="opt">(D) attractiveness</span><span class="opt">(E) fade</span><span class="opt">(F) rare</span><span class="opt">(G) range</span><span class="opt">(H) transfer</span><span class="opt">(I) natural</span><span class="opt">(J) presence</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...a single dimple on one cheek is a relatively <u><strong>____</strong></u> phenomenon.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(F) rare</div><div class="kill-point">⚡ 秒殺點：single vs. both → 單邊 = 罕見</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p>前文說 <strong>generally... both cheeks</strong>（通常雙邊）→ <strong>single</strong>（單邊）= 例外 → <strong>rare</strong>（罕見）</p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：a relatively ____ phenomenon → 需要<strong>形容詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：形容詞有 (C) chubby、(F) rare、(I) natural</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>對比線索：generally both ↔ single → 對比 = rare ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 對比結構</div><div class="anchor-text">"<span class="anchor-highlight">Generally</span>... both cheeks; a <span class="anchor-highlight">single</span> dimple... is a relatively <span class="anchor-highlight">rare</span> phenomenon"</div></div>
+                </div>
+                
+                <!-- 第32題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">32</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) flaw</span><span class="opt">(B) exhibit</span><span class="opt">(C) chubby</span><span class="opt">(D) attractiveness</span><span class="opt">(E) fade</span><span class="opt">(F) rare</span><span class="opt">(G) range</span><span class="opt">(H) transfer</span><span class="opt">(I) natural</span><span class="opt">(J) presence</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...the feature is claimed to be a sign of <u><strong>____</strong></u>.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(D) attractiveness</div><div class="kill-point">⚡ 秒殺點：a sign of ____ = 吸引力的象徵</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>show preference for</strong>（偏好）+ <strong>a sign of</strong> → 正面特質 → <strong>attractiveness</strong>（吸引力）</p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：a sign of ____ → 需要<strong>名詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：名詞有 (A) flaw、(D) attractiveness、(H) transfer、(J) presence</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：preference（偏好）→ 正面意義 → attractiveness ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"<span class="anchor-highlight">show preference</span> for dimples... a sign of <span class="anchor-highlight">attractiveness</span>"</div></div>
+                </div>
+                
+                <!-- 第33題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">33</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) flaw</span><span class="opt">(B) exhibit</span><span class="opt">(C) chubby</span><span class="opt">(D) attractiveness</span><span class="opt">(E) fade</span><span class="opt">(F) rare</span><span class="opt">(G) range</span><span class="opt">(H) transfer</span><span class="opt">(I) natural</span><span class="opt">(J) presence</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...most dimples are actually a genetic <u><strong>____</strong></u> caused by shortened facial muscles.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(A) flaw</div><div class="kill-point">⚡ 秒殺點：genetic ____ caused by = 基因缺陷</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>Though... beauty</strong>（雖然美）+ <strong>actually</strong>（實際上）→ 轉折 → 負面意義 → <strong>flaw</strong>（缺陷）</p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：a genetic ____ → 需要<strong>名詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>轉折線索：Though + beauty → actually → 轉向負面</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配驗證：genetic flaw = 基因缺陷 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 讓步轉折</div><div class="anchor-text">"<span class="anchor-highlight">Though</span> often associated with beauty... <span class="anchor-highlight">actually</span> a genetic <span class="anchor-highlight">flaw</span>"</div></div>
+                </div>
+                
+                <!-- 第34題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">34</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) flaw</span><span class="opt">(B) exhibit</span><span class="opt">(C) chubby</span><span class="opt">(D) attractiveness</span><span class="opt">(E) fade</span><span class="opt">(F) rare</span><span class="opt">(G) range</span><span class="opt">(H) transfer</span><span class="opt">(I) natural</span><span class="opt">(J) presence</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...the <u><strong>____</strong></u> of dimples from parents to children takes only one gene.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(H) transfer</div><div class="kill-point">⚡ 秒殺點：____ from parents to children = 傳遞</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>from parents to children</strong> → 遺傳/傳遞 → <strong>transfer</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：the ____ of dimples → 需要<strong>名詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘名詞有 (H) transfer、(J) presence</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配判斷：from A to B + transfer = 從A傳遞到B ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"the <span class="anchor-highlight">transfer</span> of dimples <span class="anchor-highlight">from parents to children</span>"</div></div>
+                </div>
+                
+                <!-- 第35題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">35</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) flaw</span><span class="opt">(B) exhibit</span><span class="opt">(C) chubby</span><span class="opt">(D) attractiveness</span><span class="opt">(E) fade</span><span class="opt">(F) rare</span><span class="opt">(G) range</span><span class="opt">(H) transfer</span><span class="opt">(I) natural</span><span class="opt">(J) presence</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>If neither of the parents has dimple genes, their children will not <u><strong>____</strong></u> the trait.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(B) exhibit</div><div class="kill-point">⚡ 秒殺點：will not ____ the trait = 不會表現出特徵</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>____ the trait</strong> → 「表現出」特徵 → <strong>exhibit</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：will not ____ → 需要<strong>動詞原形</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：動詞有 (B) exhibit、(E) fade、(G) range</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配判斷：exhibit the trait = 表現出特徵 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div><div class="anchor-text">"children will not <span class="anchor-highlight">exhibit</span> the <span class="anchor-highlight">trait</span>"</div></div>
+                    <div class="trap-analysis"><div class="trap-title">🚨 誘答分析</div><div class="trap-item"><span class="trap-option">誤選 (E) fade</span><span class="trap-reason"> → fade = 消退，但 trait 是「特徵」，需要 exhibit（表現出）</span></div></div>
+                </div>
+                
+                <!-- 第36題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">36</div><span class="difficulty-tag difficulty-hard">困難</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) flaw</span><span class="opt">(B) exhibit</span><span class="opt">(C) chubby</span><span class="opt">(D) attractiveness</span><span class="opt">(E) fade</span><span class="opt">(F) rare</span><span class="opt">(G) range</span><span class="opt">(H) transfer</span><span class="opt">(I) natural</span><span class="opt">(J) presence</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...some may appear due to the <u><strong>____</strong></u> of excessive fat on the face.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(J) presence</div><div class="kill-point">⚡ 秒殺點：the ____ of excessive fat = 脂肪的存在</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>due to the ____ of</strong>（由於____的）+ <strong>excessive fat</strong> → 脂肪的「存在」→ <strong>presence</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：the ____ of → 需要<strong>名詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘名詞只有 (J) presence</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意驗證：the presence of = ...的存在 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"due to the <span class="anchor-highlight">presence</span> of excessive fat"</div></div>
+                    <div class="trap-analysis"><div class="trap-title">🚨 誘答分析 ｜ 高頻錯題</div><div class="trap-item"><span class="trap-option">不熟悉 presence 用法</span><span class="trap-reason"> → the presence of = ...的存在，是學術文章常見用法</span></div></div>
+                </div>
+                
+                <!-- 第37題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">37</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) flaw</span><span class="opt">(B) exhibit</span><span class="opt">(C) chubby</span><span class="opt">(D) attractiveness</span><span class="opt">(E) fade</span><span class="opt">(F) rare</span><span class="opt">(G) range</span><span class="opt">(H) transfer</span><span class="opt">(I) natural</span><span class="opt">(J) presence</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>Many babies, for example, have dimples on their <u><strong>____</strong></u> cheeks.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(C) chubby</div><div class="kill-point">⚡ 秒殺點：babies + ____ cheeks = 嬰兒圓胖臉頰</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>babies</strong> + <strong>baby fat</strong>（嬰兒脂肪）→ 圓胖 → <strong>chubby</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：their ____ cheeks → 需要<strong>形容詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘形容詞有 (C) chubby、(I) natural</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：babies + baby fat → chubby（圓胖）✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 同位解釋</div><div class="anchor-text">"babies... <span class="anchor-highlight">chubby</span> cheeks... lose their <span class="anchor-highlight">baby fat</span>"</div></div>
+                </div>
+                
+                <!-- 第38題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">38</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) flaw</span><span class="opt">(B) exhibit</span><span class="opt">(C) chubby</span><span class="opt">(D) attractiveness</span><span class="opt">(E) fade</span><span class="opt">(F) rare</span><span class="opt">(G) range</span><span class="opt">(H) transfer</span><span class="opt">(I) natural</span><span class="opt">(J) presence</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>As they grow older and lose their baby fat, the dimples may <u><strong>____</strong></u> with time.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(E) fade</div><div class="kill-point">⚡ 秒殺點：may ____ with time = 隨時間消退</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>lose their baby fat</strong>（失去嬰兒脂肪）→ 酒窩會隨時間「消退」→ <strong>fade</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：may ____ → 需要<strong>動詞原形</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘動詞有 (E) fade、(G) range</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配驗證：fade with time = 隨時間消退 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 因果關係</div><div class="anchor-text">"<span class="anchor-highlight">lose</span> their baby fat → dimples may <span class="anchor-highlight">fade</span> with time"</div></div>
+                </div>
+                
+                <!-- 第39題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">39</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) flaw</span><span class="opt">(B) exhibit</span><span class="opt">(C) chubby</span><span class="opt">(D) attractiveness</span><span class="opt">(E) fade</span><span class="opt">(F) rare</span><span class="opt">(G) range</span><span class="opt">(H) transfer</span><span class="opt">(I) natural</span><span class="opt">(J) presence</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>For those people who were born without <u><strong>____</strong></u> dimples...</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(I) natural</div><div class="kill-point">⚡ 秒殺點：born without ____ dimples = 沒有天生酒窩</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>were born without</strong>（出生時沒有）→ 天生 → <strong>natural</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：without ____ dimples → 需要<strong>形容詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘形容詞只有 (I) natural</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意驗證：born without natural dimples = 沒有天生酒窩 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"<span class="anchor-highlight">born</span> without <span class="anchor-highlight">natural</span> dimples"</div></div>
+                </div>
+                
+                <!-- 第40題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">40</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) flaw</span><span class="opt">(B) exhibit</span><span class="opt">(C) chubby</span><span class="opt">(D) attractiveness</span><span class="opt">(E) fade</span><span class="opt">(F) rare</span><span class="opt">(G) range</span><span class="opt">(H) transfer</span><span class="opt">(I) natural</span><span class="opt">(J) presence</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>These methods <u><strong>____</strong></u> from a simple step like makeup to a drastic one like surgery.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(G) range</div><div class="kill-point">⚡ 秒殺點：____ from A to B = 範圍從A到B</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>____ from... to...</strong> → 固定搭配 → <strong>range from A to B</strong>（範圍從A到B）</p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：methods ____ → 需要<strong>動詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘動詞只有 (G) range</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配驗證：range from A to B = 從A到B的範圍 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div><div class="anchor-text">"methods <span class="anchor-highlight">range from</span> makeup <span class="anchor-highlight">to</span> surgery"</div></div>
+                    <div class="trap-analysis"><div class="trap-title">🚨 誘答分析</div><div class="trap-item"><span class="trap-option">不熟悉 range from...to... 片語</span><span class="trap-reason"> → range from A to B = 範圍從A到B，是常見固定用法</span></div></div>
+                </div>
+            </div>
+            
+            <!-- 單字戰略分類 -->
+            <div class="section">
+                <h2 class="section-title">📚 單字戰略分類 ｜ 依陷阱類型</h2>
+                <table class="vocab-table">
+                    <thead>
+                        <tr><th style="width: 15%;">單字</th><th style="width: 15%;">陷阱類型</th><th style="width: 15%;">高頻考法</th><th style="width: 55%;">實戰例句</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="vocab-word">rare</span><br>(adj.) 罕見的</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">rare phenomenon</span></td><td><span class="eng-example">a relatively <span class="eng-keyword">rare</span> phenomenon</span><br><span class="chi-example">相對<span class="chi-keyword">罕見的</span>現象</span></td></tr>
+                        <tr><td><span class="vocab-word">attractiveness</span><br>(n.) 吸引力</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">a sign of attractiveness</span></td><td><span class="eng-example">a sign of <span class="eng-keyword">attractiveness</span></span><br><span class="chi-example"><span class="chi-keyword">吸引力</span>的象徵</span></td></tr>
+                        <tr><td><span class="vocab-word">flaw</span><br>(n.) 缺陷</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">genetic flaw</span></td><td><span class="eng-example">a genetic <span class="eng-keyword">flaw</span></span><br><span class="chi-example">基因<span class="chi-keyword">缺陷</span></span></td></tr>
+                        <tr><td><span class="vocab-word">transfer</span><br>(n./v.) 傳遞</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">transfer from A to B</span></td><td><span class="eng-example">the <span class="eng-keyword">transfer</span> from parents to children</span><br><span class="chi-example">從父母到孩子的<span class="chi-keyword">傳遞</span></span></td></tr>
+                        <tr><td><span class="vocab-word">exhibit</span><br>(v.) 表現出</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">exhibit the trait</span></td><td><span class="eng-example">will not <span class="eng-keyword">exhibit</span> the trait</span><br><span class="chi-example">不會<span class="chi-keyword">表現出</span>該特徵</span></td></tr>
+                        <tr><td><span class="vocab-word">presence</span><br>(n.) 存在</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">the presence of</span></td><td><span class="eng-example">the <span class="eng-keyword">presence</span> of excessive fat</span><br><span class="chi-example">過多脂肪的<span class="chi-keyword">存在</span></span></td></tr>
+                        <tr><td><span class="vocab-word">chubby</span><br>(adj.) 圓胖的</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">chubby cheeks</span></td><td><span class="eng-example">babies... <span class="eng-keyword">chubby</span> cheeks</span><br><span class="chi-example">嬰兒<span class="chi-keyword">圓胖的</span>臉頰</span></td></tr>
+                        <tr><td><span class="vocab-word">fade</span><br>(v.) 消退</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">fade with time</span></td><td><span class="eng-example">dimples may <span class="eng-keyword">fade</span> with time</span><br><span class="chi-example">酒窩可能隨時間<span class="chi-keyword">消退</span></span></td></tr>
+                        <tr><td><span class="vocab-word">natural</span><br>(adj.) 天生的</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">natural dimples</span></td><td><span class="eng-example">born without <span class="eng-keyword">natural</span> dimples</span><br><span class="chi-example">出生時沒有<span class="chi-keyword">天生</span>酒窩</span></td></tr>
+                        <tr><td><span class="vocab-word">range</span><br>(v.) 範圍從...到...</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">range from A to B</span></td><td><span class="eng-example">methods <span class="eng-keyword">range</span> from makeup to surgery</span><br><span class="chi-example">方法<span class="chi-keyword">範圍從</span>化妝到手術</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- 轉折詞解題策略總表 -->
+            <div class="section">
+                <h2 class="section-title">🔄 轉折詞解題策略總表</h2>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-addition">📊</div><div><div class="category-title">1. 一般陳述類 General</div><div class="category-subtitle">一般性描述，後面常接常見情況</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Generally</span> <span style="color: #616161;">一般來說</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Usually</span> <span style="color: #616161;">通常</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到一般詞 <span class="strategy-arrow">→</span> 後面是常見情況 <span class="strategy-arrow">→</span> 找對比詞看例外</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"<span class="real-example-keyword">Generally</span>, they appear on both cheeks; a single dimple... is a relatively rare phenomenon"</p><p class="real-example-chi"><span class="real-example-chi-keyword">一般來說</span>，雙邊出現；單邊是罕見現象</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-concession">⚡</div><div><div class="category-title">2. 讓步轉折類 Concession</div><div class="category-subtitle">雖然...但是，前後形成對比</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Though</span> <span style="color: #616161;">雖然</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Although</span> <span style="color: #616161;">雖然</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到讓步詞 <span class="strategy-arrow">→</span> 找主句轉折點 <span class="strategy-arrow">→</span> 空格填相反概念</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"<span class="real-example-keyword">Though</span> often associated with beauty... actually a genetic flaw"</p><p class="real-example-chi"><span class="real-example-chi-keyword">雖然</span>常與美麗聯想...實際上是基因缺陷</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-cause">🔗</div><div><div class="category-title">3. 強調補充類 Emphasis</div><div class="category-subtitle">強調事實，後面是重要資訊</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">In fact</span> <span style="color: #616161;">事實上</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Actually</span> <span style="color: #616161;">實際上</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到強調詞 <span class="strategy-arrow">→</span> 後面是重點 <span class="strategy-arrow">→</span> 空格填符合強調的詞</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"<span class="real-example-keyword">In fact</span>, some researchers believe that the transfer of dimples..."</p><p class="real-example-chi"><span class="real-example-chi-keyword">事實上</span>，一些研究者相信酒窩的傳遞...</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-example">📌</div><div><div class="category-title">4. 舉例說明類 Example</div><div class="category-subtitle">舉例說明前文概念</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">for example</span> <span style="color: #616161;">例如</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">for instance</span> <span style="color: #616161;">例如</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到舉例詞 <span class="strategy-arrow">→</span> 後面是具體例子 <span class="strategy-arrow">→</span> 空格填符合例子特徵的詞</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"Many babies, <span class="real-example-keyword">for example</span>, have dimples on their chubby cheeks"</p><p class="real-example-chi">許多嬰兒，<span class="real-example-chi-keyword">例如</span>，臉頰圓胖有酒窩</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-contrast">📖</div><div><div class="category-title">5. 原因說明類 Reason</div><div class="category-subtitle">解釋原因</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">for</span> <span style="color: #616161;">因為</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">because</span> <span style="color: #616161;">因為</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到原因詞 <span class="strategy-arrow">→</span> 後面解釋前文 <span class="strategy-arrow">→</span> 空格填符合因果的詞</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"Such dimples are not permanent, <span class="real-example-keyword">for</span> they vanish when the fat goes away"</p><p class="real-example-chi">這種酒窩不是永久的，<span class="real-example-chi-keyword">因為</span>脂肪消失時它們也會消失</p></div>
+                </div>
+            </div>
+            
+            <!-- 考前衝刺重點 -->
+            <div class="section">
+                <h2 class="section-title">🚀 考前衝刺重點整理</h2>
+                <div class="sprint-section">
+                    <div class="sprint-main-title">🏆 文意選填必勝攻略</div>
+                    <div class="sprint-item">
+                        <h4>🎯 解題三步驟</h4>
+                        <div class="three-steps">
+                            <div class="step-card"><div class="step-card-num">1</div><div class="step-card-title">判斷詞性</div><div class="step-card-desc">看空格前後結構<br>確定需要什麼詞性</div></div>
+                            <div class="step-card"><div class="step-card-num">2</div><div class="step-card-title">篩選選項</div><div class="step-card-desc">依詞性刪除選項<br>縮小作答範圍</div></div>
+                            <div class="step-card"><div class="step-card-num">3</div><div class="step-card-title">語意驗證</div><div class="step-card-desc">結合上下文邏輯<br>確認最佳答案</div></div>
+                        </div>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>📝 本篇重點片語</h4>
+                        <ul>
+                            <li><strong>range from A to B：</strong>範圍從A到B</li>
+                            <li><strong>the presence of：</strong>...的存在</li>
+                            <li><strong>exhibit the trait：</strong>表現出特徵</li>
+                            <li><strong>fade with time：</strong>隨時間消退</li>
+                            <li><strong>a sign of：</strong>...的象徵</li>
+                        </ul>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>📖 本篇重點句型</h4>
+                        <ul>
+                            <li><strong>Though + 讓步子句, 主句：</strong>雖然...但是...</li>
+                            <li><strong>be associated with：</strong>與...相關聯</li>
+                            <li><strong>due to + N：</strong>由於...</li>
+                            <li><strong>It all depends on whether...：</strong>這完全取決於是否...</li>
+                        </ul>
+                    </div>
+                    <div class="danger-zone">
+                        <div class="danger-title">🚨 本篇高頻錯題 TOP 3</div>
+                        <div class="danger-item"><div class="danger-q">第36題：the presence of excessive fat</div><div class="danger-reason">❌ 錯因：不熟悉 presence 用法</div><div class="danger-solution">✓ 破解：the presence of = ...的存在</div></div>
+                        <div class="danger-item"><div class="danger-q">第35題：will not exhibit the trait</div><div class="danger-reason">❌ 錯因：誤選 fade（消退）</div><div class="danger-solution">✓ 破解：exhibit the trait = 表現出特徵</div></div>
+                        <div class="danger-item"><div class="danger-q">第40題：range from A to B</div><div class="danger-reason">❌ 錯因：不熟悉 range 的動詞用法</div><div class="danger-solution">✓ 破解：range from A to B = 範圍從A到B</div></div>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>🎨 主題詞辨識技巧</h4>
+                        <ul>
+                            <li><strong>核心主題詞：</strong>dimple(s)（酒窩）出現超過 10 次</li>
+                            <li><strong>相關詞彙：</strong>cheeks, facial, genetic, inherited</li>
+                            <li><strong>對比結構：</strong>beauty ↔ flaw，permanent ↔ fade</li>
+                            <li><strong>辨識方法：</strong>dimple 反覆出現 = 絕對主題詞</li>
+                        </ul>
+                    </div>
+                    <div class="mantra-box">
+                        <div class="mantra-title">🏆 考前終極口訣</div>
+                        <div class="mantra-text"><span class="mantra-highlight">詞性先行</span>，結構定位<br><span class="mantra-highlight">轉折必看</span>，前後對照<br><span class="mantra-highlight">搭配優先</span>，固定用法<br><span class="mantra-highlight">一詞多義</span>，語境判斷</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 答案總覽 -->
+            <div class="section">
+                <h2 class="section-title">✅ 答案總覽</h2>
+                <div class="answer-overview">
+                    <div class="answer-grid">
+                        <div class="answer-cell"><div class="answer-cell-num">31</div><div class="answer-cell-ans">(F)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">32</div><div class="answer-cell-ans">(D)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">33</div><div class="answer-cell-ans">(A)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">34</div><div class="answer-cell-ans">(H)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">35</div><div class="answer-cell-ans">(B)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">36</div><div class="answer-cell-ans">(J)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">37</div><div class="answer-cell-ans">(C)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">38</div><div class="answer-cell-ans">(E)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">39</div><div class="answer-cell-ans">(I)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">40</div><div class="answer-cell-ans">(G)</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>😊 學測英文文意選填 ｜ 專業教學分析版</p>
+            <p>主題：酒窩 Dimples</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學測文意選填 - 洋蔥與古埃及 專業教學分析版</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif; line-height: 1.9; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: #fff; border-radius: 20px; box-shadow: 0 25px 80px rgba(0,0,0,0.4); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #8d6e63 0%, #a1887f 100%); color: white; padding: 35px 40px; text-align: center; }
+        .header h1 { font-size: 2.4em; margin-bottom: 10px; }
+        .header .subtitle { font-size: 1.2em; opacity: 0.9; }
+        .header .theme-tag { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 20px; margin-top: 10px; }
+        .content { padding: 40px; }
+        .section { margin-bottom: 50px; }
+        .section-title { font-size: 1.6em; color: #5d4037; border-left: 6px solid #8d6e63; padding-left: 18px; margin-bottom: 25px; }
+        .structure-box { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 15px; padding: 25px; margin-bottom: 20px; border-left: 5px solid #8d6e63; }
+        .structure-function { background: #d7ccc8; display: inline-block; padding: 4px 12px; border-radius: 15px; font-size: 0.9em; color: #5d4037; font-weight: bold; margin-bottom: 10px; }
+        .article-box { background: #fafafa; border-radius: 15px; padding: 30px; border: 2px solid #e0e0e0; font-size: 1.08em; line-height: 2.2; }
+        .core-sentence { color: #c62828; font-weight: bold; background: linear-gradient(transparent 60%, #ffcdd2 60%); }
+        .transition-word { color: #6a1b9a; font-weight: bold; background: linear-gradient(transparent 60%, #e1bee7 60%); }
+        .theme-word { color: #2e7d32; font-weight: bold; }
+        .blank { display: inline-block; min-width: 70px; border-bottom: 3px solid #5d4037; text-align: center; font-weight: bold; color: #5d4037; margin: 0 5px; padding: 0 8px; }
+        .options-box { background: linear-gradient(135deg, #efebe9 0%, #d7ccc8 100%); border-radius: 15px; padding: 25px; margin: 25px 0; border: 2px solid #bcaaa4; }
+        .options-title { font-weight: bold; color: #5d4037; margin-bottom: 15px; font-size: 1.15em; }
+        .options-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+        .option-item { background: white; padding: 12px; border-radius: 10px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+        .option-item .letter { color: #c62828; font-weight: bold; font-size: 1.1em; }
+        .option-item .word { color: #1565c0; font-weight: 500; }
+        .option-item .pos { color: #757575; font-size: 0.85em; }
+        .question-card { background: white; border-radius: 18px; padding: 30px; margin-bottom: 30px; box-shadow: 0 6px 25px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; }
+        .question-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .question-number { background: linear-gradient(135deg, #5d4037 0%, #8d6e63 100%); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.3em; }
+        .difficulty-tag { padding: 5px 15px; border-radius: 20px; font-size: 0.85em; font-weight: bold; }
+        .difficulty-easy { background: #c8e6c9; color: #2e7d32; }
+        .difficulty-medium { background: #fff3e0; color: #ef6c00; }
+        .difficulty-hard { background: #ffcdd2; color: #c62828; }
+        .options-reminder { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border: 1px solid #90caf9; border-radius: 10px; padding: 12px 18px; margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .options-reminder-title { color: #1565c0; font-weight: bold; margin-right: 5px; }
+        .options-reminder .opt { background: white; padding: 4px 10px; border-radius: 15px; font-size: 0.9em; color: #1565c0; border: 1px solid #90caf9; }
+        .question-sentence { background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%); padding: 20px 25px; border-radius: 12px; margin: 20px 0; border-left: 5px solid #ffc107; font-size: 1.1em; }
+        .answer-row { display: flex; align-items: center; gap: 20px; margin: 20px 0; flex-wrap: wrap; }
+        .answer-tag { background: linear-gradient(135deg, #43a047 0%, #66bb6a 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: bold; }
+        .kill-point { background: linear-gradient(135deg, #c62828 0%, #e53935 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: bold; font-size: 0.95em; }
+        .instant-kill { background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border: 2px solid #ff9800; border-radius: 12px; padding: 18px 22px; margin: 15px 0; }
+        .instant-kill-title { color: #e65100; font-weight: bold; margin-bottom: 8px; }
+        .logic-chain { background: #f5f5f5; border-radius: 12px; padding: 20px; margin: 15px 0; }
+        .logic-chain-title { color: #5d4037; font-weight: bold; margin-bottom: 12px; }
+        .logic-step { display: flex; align-items: flex-start; margin: 12px 0; padding-left: 10px; }
+        .logic-step-num { background: #8d6e63; color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85em; font-weight: bold; margin-right: 12px; flex-shrink: 0; }
+        .anchor-box { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px 20px; margin: 12px 0; border-radius: 0 10px 10px 0; }
+        .anchor-label { color: #2e7d32; font-weight: bold; font-size: 0.95em; margin-bottom: 5px; }
+        .anchor-text { color: #1b5e20; font-style: italic; }
+        .anchor-highlight { background: #a5d6a7; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-style: normal; }
+        .trap-analysis { background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%); border-radius: 12px; padding: 18px 22px; margin: 15px 0; border: 2px solid #ec407a; }
+        .trap-title { color: #c2185b; font-weight: bold; margin-bottom: 10px; }
+        .trap-item { margin: 8px 0; padding-left: 20px; position: relative; }
+        .trap-item::before { content: "✗"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
+        .trap-option { color: #c62828; font-weight: bold; }
+        .trap-reason { color: #616161; }
+        .vocab-table { width: 100%; border-collapse: collapse; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 12px; overflow: hidden; }
+        .vocab-table th { background: linear-gradient(135deg, #5d4037 0%, #8d6e63 100%); color: white; padding: 15px; text-align: left; }
+        .vocab-table td { padding: 15px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+        .vocab-table tr:nth-child(even) { background: #f8f9fa; }
+        .vocab-table tr:hover { background: #efebe9; }
+        .vocab-word { color: #c62828; font-weight: bold; font-size: 1.1em; }
+        .trap-type { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+        .trap-type-multi { background: #ffcdd2; color: #c62828; }
+        .trap-type-collocation { background: #c8e6c9; color: #2e7d32; }
+        .trap-type-pos { background: #fff3e0; color: #ef6c00; }
+        .trap-type-context { background: #e1bee7; color: #6a1b9a; }
+        .exam-focus { background: #e3f2fd; padding: 3px 10px; border-radius: 12px; font-size: 0.85em; color: #1565c0; font-weight: 500; }
+        .eng-example { color: #1565c0; }
+        .eng-keyword { color: #c62828; font-weight: bold; }
+        .chi-example { color: #616161; }
+        .chi-keyword { color: #c62828; font-weight: bold; }
+        .transition-category { background: white; border-radius: 15px; padding: 25px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid #e0e0e0; }
+        .transition-category-header { display: flex; align-items: center; gap: 15px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 2px solid #e0e0e0; }
+        .category-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3em; color: white; }
+        .category-contrast { background: linear-gradient(135deg, #e91e63 0%, #f06292 100%); }
+        .category-cause { background: linear-gradient(135deg, #ff9800 0%, #ffb74d 100%); }
+        .category-addition { background: linear-gradient(135deg, #4caf50 0%, #81c784 100%); }
+        .category-example { background: linear-gradient(135deg, #2196f3 0%, #64b5f6 100%); }
+        .category-concession { background: linear-gradient(135deg, #9c27b0 0%, #ba68c8 100%); }
+        .category-title { font-size: 1.2em; font-weight: bold; color: #1b262c; }
+        .category-subtitle { color: #757575; font-size: 0.95em; }
+        .transition-words-list { display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0; }
+        .transition-word-tag { background: #f5f5f5; padding: 6px 14px; border-radius: 20px; font-weight: 500; border: 1px solid #e0e0e0; }
+        .strategy-action { background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%); border-radius: 10px; padding: 15px 20px; margin: 15px 0; }
+        .strategy-action-title { color: #283593; font-weight: bold; margin-bottom: 8px; }
+        .strategy-action-steps { color: #3949ab; font-weight: 500; }
+        .strategy-arrow { color: #5c6bc0; margin: 0 8px; }
+        .real-example { background: #fafafa; border-left: 4px solid #6a1b9a; padding: 15px 20px; margin-top: 15px; border-radius: 0 10px 10px 0; }
+        .real-example-title { color: #6a1b9a; font-weight: bold; font-size: 0.95em; margin-bottom: 8px; }
+        .real-example-eng { color: #1565c0; }
+        .real-example-keyword { color: #6a1b9a; font-weight: bold; background: #f3e5f5; padding: 2px 6px; border-radius: 4px; }
+        .real-example-chi { color: #616161; margin-top: 5px; }
+        .real-example-chi-keyword { color: #6a1b9a; font-weight: bold; }
+        .sprint-section { background: linear-gradient(135deg, #fffbea 0%, #fff9c4 100%); border-radius: 18px; padding: 35px; margin: 25px 0; border: 3px solid #ffd54f; }
+        .sprint-main-title { color: #0d47a1; font-weight: bold; font-size: 1.5em; text-align: center; margin-bottom: 30px; }
+        .sprint-item { background: white; border-radius: 12px; padding: 22px; margin: 18px 0; box-shadow: 0 3px 10px rgba(0,0,0,0.08); }
+        .sprint-item h4 { color: #0d47a1; font-weight: bold; margin-bottom: 15px; font-size: 1.15em; }
+        .sprint-item ul { list-style: none; padding: 0; }
+        .sprint-item li { padding: 10px 0; padding-left: 28px; position: relative; color: #1565c0; font-weight: 500; }
+        .sprint-item li::before { content: "✓"; position: absolute; left: 0; color: #4caf50; font-weight: bold; }
+        .three-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 15px 0; }
+        .step-card { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: 12px; padding: 20px; text-align: center; }
+        .step-card-num { background: #0d47a1; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin: 0 auto 10px; }
+        .step-card-title { color: #0d47a1; font-weight: bold; font-size: 1.1em; margin-bottom: 8px; }
+        .step-card-desc { color: #1565c0; font-size: 0.95em; }
+        .danger-zone { background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); border-radius: 15px; padding: 25px; margin: 20px 0; border: 2px solid #e57373; }
+        .danger-title { color: #c62828; font-weight: bold; font-size: 1.2em; margin-bottom: 15px; }
+        .danger-item { background: white; border-radius: 10px; padding: 15px 20px; margin: 12px 0; border-left: 4px solid #c62828; }
+        .danger-q { color: #c62828; font-weight: bold; margin-bottom: 5px; }
+        .danger-reason { color: #616161; }
+        .danger-solution { color: #2e7d32; font-weight: 500; margin-top: 5px; }
+        .mantra-box { background: linear-gradient(135deg, #1a237e 0%, #283593 100%); border-radius: 18px; padding: 35px; text-align: center; margin-top: 30px; color: white; }
+        .mantra-title { font-size: 1.4em; margin-bottom: 20px; }
+        .mantra-text { font-size: 1.5em; font-weight: bold; line-height: 2.2; }
+        .mantra-highlight { background: rgba(255,255,255,0.2); padding: 3px 12px; border-radius: 8px; }
+        .answer-overview { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: 15px; padding: 30px; text-align: center; }
+        .answer-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; max-width: 700px; margin: 20px auto; }
+        .answer-cell { background: white; padding: 18px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+        .answer-cell-num { color: #5d4037; font-weight: bold; font-size: 1.1em; }
+        .answer-cell-ans { color: #2e7d32; font-weight: bold; font-size: 1.3em; margin-top: 5px; }
+        .footer { background: linear-gradient(135deg, #5d4037 0%, #8d6e63 100%); color: white; text-align: center; padding: 25px; }
+        .legend-box { display: flex; flex-wrap: wrap; gap: 20px; padding: 15px 20px; background: #f5f5f5; border-radius: 10px; margin-top: 20px; }
+        .legend-item { display: flex; align-items: center; gap: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧅 學測文意選填</h1>
+            <div class="subtitle">專業教學分析版 ｜ 106年學測</div>
+            <div class="theme-tag">🎯 主題：洋蔥與古埃及 Onions & Ancient Egypt</div>
+        </div>
+        
+        <div class="content">
+            <!-- 選項總覽 -->
+            <div class="options-box">
+                <div class="options-title">📋 選項總覽 ｜ 先分類再作答</div>
+                <div class="options-grid">
+                    <div class="option-item"><div class="letter">(A)</div><div class="word">reflected</div><div class="pos">v. 反映</div></div>
+                    <div class="option-item"><div class="letter">(B)</div><div class="word">parts</div><div class="pos">n. 部位</div></div>
+                    <div class="option-item"><div class="letter">(C)</div><div class="word">admired</div><div class="pos">v. 崇拜；欽佩</div></div>
+                    <div class="option-item"><div class="letter">(D)</div><div class="word">functioned</div><div class="pos">v. 作為...功能</div></div>
+                    <div class="option-item"><div class="letter">(E)</div><div class="word">prompt</div><div class="pos">v. 促使</div></div>
+                    <div class="option-item"><div class="letter">(F)</div><div class="word">decorating</div><div class="pos">v. 裝飾</div></div>
+                    <div class="option-item"><div class="letter">(G)</div><div class="word">spiritual</div><div class="pos">adj. 精神的；靈性的</div></div>
+                    <div class="option-item"><div class="letter">(H)</div><div class="word">discovered</div><div class="pos">v./adj. 被發現的</div></div>
+                    <div class="option-item"><div class="letter">(I)</div><div class="word">symbols</div><div class="pos">n. 象徵</div></div>
+                    <div class="option-item"><div class="letter">(J)</div><div class="word">healing</div><div class="pos">adj. 治癒的</div></div>
+                </div>
+            </div>
+            
+            <!-- 文章結構分析 -->
+            <div class="section">
+                <h2 class="section-title">🏗️ 文章結構分析</h2>
+                <div class="structure-box">
+                    <div class="structure-function">第一段功能：引言 + 古埃及對洋蔥的特殊崇敬</div>
+                    <p>洋蔥自古就被使用 → 但沒有文化像古埃及那樣<strong>崇拜</strong>洋蔥 → 具有<strong>精神</strong>意義 → 是永生的<strong>象徵</strong> → 圓圈結構<strong>反映</strong>永恆 → <strong>治癒</strong>力量被視為神奇</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第31-35題，測試動詞、形容詞、名詞搭配</p>
+                </div>
+                <div class="structure-box">
+                    <div class="structure-function">第二段功能：考古證據 + 喪葬用途</div>
+                    <p>金字塔內<strong>發現</strong>的畫作 → 洋蔥<strong>作為</strong>葬禮供品 → 放在身體各<strong>部位</strong> → 木乃伊身上洋蔥<strong>裝飾</strong>著各處</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第36-39題，測試分詞、動詞、名詞</p>
+                </div>
+                <div class="structure-box">
+                    <div class="structure-function">第三段功能：學者理論 + 用途解釋</div>
+                    <p>學者理論：洋蔥氣味<strong>促使</strong>死者再次呼吸 → 或因為洋蔥的治癒特性</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第40題，測試動詞</p>
+                </div>
+            </div>
+            
+            <!-- 文章標示版 -->
+            <div class="section">
+                <h2 class="section-title">📖 文章標示版</h2>
+                <div class="article-box">
+                    <p>The widespread popularity of <span class="theme-word">onions</span> is not limited to modern-day kitchens. There is evidence of <span class="theme-word">onions</span> being used for culinary and medicinal purposes all over the ancient world. <span class="transition-word">Nonetheless</span>, <span class="core-sentence">no culture <span class="blank">31</span> <span class="theme-word">onions</span> quite as much as the ancient Egyptians.</span> For them, the <span class="theme-word">onion</span> was not just food or medicine; it held significant <span class="blank">32</span> meaning. <span class="theme-word">Onions</span> were considered to be <span class="blank">33</span> of eternal life. The circle-within-a-circle structure of an <span class="theme-word">onion</span>, for them, <span class="blank">34</span> the eternity of existence. <span class="transition-word">According to</span> certain documents, ancient Egyptians also used <span class="theme-word">onions</span> for medicinal purposes, <span class="transition-word">but</span> they likely would have viewed the <span class="blank">35</span> power of the vegetable as magical, <span class="transition-word">rather than</span> medical.</p>
+                    
+                    <p><span class="theme-word">Onions</span> are depicted in many paintings <span class="blank">36</span> inside pyramids and tombs that span the history of ancient Egypt. They <span class="blank">37</span> as a funeral offering shown upon the altars of the gods. The dead were buried with <span class="theme-word">onions</span> and <span class="theme-word">onion</span> flowers on or around various <span class="blank">38</span> of their bodies. Mummies have <span class="transition-word">also</span> been found with <span class="theme-word">onions</span> and <span class="theme-word">onion</span> flowers <span class="blank">39</span> their pelvis, chest, ears, eyes, and feet.</p>
+                    
+                    <p>Some scholars theorize that <span class="theme-word">onions</span> may have been used for the dead <span class="transition-word">because</span> it was believed that their strong scent would <span class="blank">40</span> the dead to breathe again. Other researchers believe it was <span class="transition-word">because</span> <span class="theme-word">onions</span> were known for their special curative properties, which would be helpful in the afterlife.</p>
+                </div>
+                <div class="legend-box">
+                    <div class="legend-item"><span class="core-sentence">紅色底線</span> = 核心句</div>
+                    <div class="legend-item"><span class="transition-word">紫色底線</span> = 轉折詞</div>
+                    <div class="legend-item"><span class="theme-word">綠色粗體</span> = 主題詞</div>
+                </div>
+            </div>
+            
+            <!-- 解題思維 -->
+            <div class="section">
+                <h2 class="section-title">🧠 解題思維 ｜ 逐題攻破</h2>
+                
+                <!-- 第31題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">31</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) reflected</span><span class="opt">(B) parts</span><span class="opt">(C) admired</span><span class="opt">(D) functioned</span><span class="opt">(E) prompt</span><span class="opt">(F) decorating</span><span class="opt">(G) spiritual</span><span class="opt">(H) discovered</span><span class="opt">(I) symbols</span><span class="opt">(J) healing</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...no culture <u><strong>____</strong></u> onions quite as much as the ancient Egyptians.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(C) admired</div><div class="kill-point">⚡ 秒殺點：no culture ____ ... as much as = 沒有文化像...那樣崇拜</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>no... as much as</strong>（沒有...像...那樣）→ 表達崇敬程度 → <strong>admired</strong>（崇拜/欽佩）</p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：no culture ____ → 需要<strong>過去式動詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：過去式動詞有 (A)(C)(D)(H)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：對洋蔥的崇敬 → admired ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"no culture <span class="anchor-highlight">admired</span> onions <span class="anchor-highlight">quite as much as</span> the ancient Egyptians"</div></div>
+                </div>
+                
+                <!-- 第32題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">32</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) reflected</span><span class="opt">(B) parts</span><span class="opt">(C) admired</span><span class="opt">(D) functioned</span><span class="opt">(E) prompt</span><span class="opt">(F) decorating</span><span class="opt">(G) spiritual</span><span class="opt">(H) discovered</span><span class="opt">(I) symbols</span><span class="opt">(J) healing</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...it held significant <u><strong>____</strong></u> meaning.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(G) spiritual</div><div class="kill-point">⚡ 秒殺點：significant ____ meaning = 重要的精神意義</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>not just food or medicine</strong>（不只是食物或藥物）→ 更深層的意義 → <strong>spiritual</strong>（精神的）</p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：significant ____ meaning → 需要<strong>形容詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：形容詞有 (G) spiritual、(J) healing</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：後文提到 eternal life（永生）→ spiritual ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"not just food or medicine; it held significant <span class="anchor-highlight">spiritual</span> meaning... <span class="anchor-highlight">eternal life</span>"</div></div>
+                </div>
+                
+                <!-- 第33題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">33</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) reflected</span><span class="opt">(B) parts</span><span class="opt">(C) admired</span><span class="opt">(D) functioned</span><span class="opt">(E) prompt</span><span class="opt">(F) decorating</span><span class="opt">(G) spiritual</span><span class="opt">(H) discovered</span><span class="opt">(I) symbols</span><span class="opt">(J) healing</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>Onions were considered to be <u><strong>____</strong></u> of eternal life.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(I) symbols</div><div class="kill-point">⚡ 秒殺點：be considered to be ____ of = 被視為...的象徵</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>be considered to be ____ of eternal life</strong> → 永生的「象徵」→ <strong>symbols</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：to be ____ of → 需要<strong>名詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：名詞有 (B) parts、(I) symbols</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配判斷：symbols of = ...的象徵 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div><div class="anchor-text">"considered to be <span class="anchor-highlight">symbols</span> of <span class="anchor-highlight">eternal life</span>"</div></div>
+                </div>
+                
+                <!-- 第34題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">34</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) reflected</span><span class="opt">(B) parts</span><span class="opt">(C) admired</span><span class="opt">(D) functioned</span><span class="opt">(E) prompt</span><span class="opt">(F) decorating</span><span class="opt">(G) spiritual</span><span class="opt">(H) discovered</span><span class="opt">(I) symbols</span><span class="opt">(J) healing</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>The circle-within-a-circle structure of an onion, for them, <u><strong>____</strong></u> the eternity of existence.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(A) reflected</div><div class="kill-point">⚡ 秒殺點：structure ____ eternity = 結構反映永恆</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>circle-within-a-circle</strong>（圈中圈）→ 「反映」永恆的概念 → <strong>reflected</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：structure ____ the eternity → 需要<strong>過去式動詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘過去式動詞有 (A) reflected、(D) functioned、(H) discovered</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：結構「反映」概念 → reflected ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"<span class="anchor-highlight">circle-within-a-circle</span> structure... <span class="anchor-highlight">reflected</span> the <span class="anchor-highlight">eternity</span>"</div></div>
+                </div>
+                
+                <!-- 第35題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">35</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) reflected</span><span class="opt">(B) parts</span><span class="opt">(C) admired</span><span class="opt">(D) functioned</span><span class="opt">(E) prompt</span><span class="opt">(F) decorating</span><span class="opt">(G) spiritual</span><span class="opt">(H) discovered</span><span class="opt">(I) symbols</span><span class="opt">(J) healing</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...they likely would have viewed the <u><strong>____</strong></u> power of the vegetable as magical, rather than medical.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(J) healing</div><div class="kill-point">⚡ 秒殺點：____ power + medicinal purposes = 治癒力量</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p>前文提到 <strong>medicinal purposes</strong>（藥用目的）→ <strong>healing power</strong>（治癒力量）</p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：the ____ power → 需要<strong>形容詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘形容詞只有 (J) healing</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意驗證：medicinal → healing power ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"used... for <span class="anchor-highlight">medicinal</span> purposes... the <span class="anchor-highlight">healing</span> power"</div></div>
+                </div>
+                
+                <!-- 第36題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">36</div><span class="difficulty-tag difficulty-hard">困難</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) reflected</span><span class="opt">(B) parts</span><span class="opt">(C) admired</span><span class="opt">(D) functioned</span><span class="opt">(E) prompt</span><span class="opt">(F) decorating</span><span class="opt">(G) spiritual</span><span class="opt">(H) discovered</span><span class="opt">(I) symbols</span><span class="opt">(J) healing</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>Onions are depicted in many paintings <u><strong>____</strong></u> inside pyramids and tombs...</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(H) discovered</div><div class="kill-point">⚡ 秒殺點：paintings ____ inside pyramids = 在金字塔內發現的畫作</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>paintings ____ inside pyramids</strong> → 畫作是「被發現」在金字塔裡 → <strong>discovered</strong>（過去分詞作形容詞）</p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：paintings ____ inside → 需要<strong>過去分詞/現在分詞</strong>修飾</span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：(F) decorating、(H) discovered</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：畫作是「被發現」的 → discovered ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"paintings <span class="anchor-highlight">discovered</span> inside <span class="anchor-highlight">pyramids and tombs</span>"</div></div>
+                    <div class="trap-analysis"><div class="trap-title">🚨 誘答分析 ｜ 高頻錯題</div><div class="trap-item"><span class="trap-option">誤選 (F) decorating</span><span class="trap-reason"> → decorating 語意不通：畫作不會「裝飾」金字塔內部作為主動動作</span></div></div>
+                </div>
+                
+                <!-- 第37題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">37</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) reflected</span><span class="opt">(B) parts</span><span class="opt">(C) admired</span><span class="opt">(D) functioned</span><span class="opt">(E) prompt</span><span class="opt">(F) decorating</span><span class="opt">(G) spiritual</span><span class="opt">(H) discovered</span><span class="opt">(I) symbols</span><span class="opt">(J) healing</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>They <u><strong>____</strong></u> as a funeral offering shown upon the altars of the gods.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(D) functioned</div><div class="kill-point">⚡ 秒殺點：____ as = 作為...的功能</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>____ as a funeral offering</strong> → 「作為」葬禮供品 → <strong>functioned as</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：They ____ as → 需要<strong>過去式動詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘過去式動詞有 (D) functioned</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配驗證：function as = 作為... ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div><div class="anchor-text">"They <span class="anchor-highlight">functioned as</span> a <span class="anchor-highlight">funeral offering</span>"</div></div>
+                </div>
+                
+                <!-- 第38題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">38</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) reflected</span><span class="opt">(B) parts</span><span class="opt">(C) admired</span><span class="opt">(D) functioned</span><span class="opt">(E) prompt</span><span class="opt">(F) decorating</span><span class="opt">(G) spiritual</span><span class="opt">(H) discovered</span><span class="opt">(I) symbols</span><span class="opt">(J) healing</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>The dead were buried with onions... on or around various <u><strong>____</strong></u> of their bodies.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(B) parts</div><div class="kill-point">⚡ 秒殺點：various ____ of their bodies = 身體的各個部位</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>various ____ of their bodies</strong> → 身體的各個「部位」→ <strong>parts</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：various ____ of → 需要<strong>名詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘名詞只有 (B) parts</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配驗證：parts of body = 身體部位 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div><div class="anchor-text">"various <span class="anchor-highlight">parts</span> of their <span class="anchor-highlight">bodies</span>"</div></div>
+                </div>
+                
+                <!-- 第39題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">39</div><span class="difficulty-tag difficulty-hard">困難</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) reflected</span><span class="opt">(B) parts</span><span class="opt">(C) admired</span><span class="opt">(D) functioned</span><span class="opt">(E) prompt</span><span class="opt">(F) decorating</span><span class="opt">(G) spiritual</span><span class="opt">(H) discovered</span><span class="opt">(I) symbols</span><span class="opt">(J) healing</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>Mummies have also been found with onions and onion flowers <u><strong>____</strong></u> their pelvis, chest, ears, eyes, and feet.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(F) decorating</div><div class="kill-point">⚡ 秒殺點：onions ____ pelvis, chest, ears = 洋蔥裝飾著各部位</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>with onions ____ their pelvis, chest...</strong> → 洋蔥「裝飾著」身體部位 → <strong>decorating</strong>（現在分詞表主動）</p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：with onions ____ → 需要<strong>現在分詞</strong>（with + O + Ving）</span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：現在分詞只有 (F) decorating</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意驗證：洋蔥主動裝飾身體 → decorating ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 文法結構</div><div class="anchor-text">"<span class="anchor-highlight">with</span> onions... <span class="anchor-highlight">decorating</span> their pelvis, chest..."</div></div>
+                    <div class="trap-analysis"><div class="trap-title">🚨 誘答分析 ｜ 高頻錯題</div><div class="trap-item"><span class="trap-option">文法重點：with + O + Ving</span><span class="trap-reason"> → with 後面的受詞（onions）主動執行動作，所以用現在分詞</span></div></div>
+                </div>
+                
+                <!-- 第40題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">40</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) reflected</span><span class="opt">(B) parts</span><span class="opt">(C) admired</span><span class="opt">(D) functioned</span><span class="opt">(E) prompt</span><span class="opt">(F) decorating</span><span class="opt">(G) spiritual</span><span class="opt">(H) discovered</span><span class="opt">(I) symbols</span><span class="opt">(J) healing</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...their strong scent would <u><strong>____</strong></u> the dead to breathe again.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(E) prompt</div><div class="kill-point">⚡ 秒殺點：would ____ sb. to V = 促使某人做某事</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>would ____ the dead to breathe</strong> → 「促使」死者呼吸 → <strong>prompt</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：would ____ → 需要<strong>動詞原形</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘動詞原形只有 (E) prompt</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配驗證：prompt sb. to V = 促使某人做... ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div><div class="anchor-text">"scent would <span class="anchor-highlight">prompt</span> the dead <span class="anchor-highlight">to breathe</span> again"</div></div>
+                </div>
+            </div>
+            
+            <!-- 單字戰略分類 -->
+            <div class="section">
+                <h2 class="section-title">📚 單字戰略分類 ｜ 依陷阱類型</h2>
+                <table class="vocab-table">
+                    <thead>
+                        <tr><th style="width: 15%;">單字</th><th style="width: 15%;">陷阱類型</th><th style="width: 15%;">高頻考法</th><th style="width: 55%;">實戰例句</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="vocab-word">admired</span><br>(v.) 崇拜；欽佩</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">admire...as much as</span></td><td><span class="eng-example">no culture <span class="eng-keyword">admired</span> onions quite as much as...</span><br><span class="chi-example">沒有文化像...那樣<span class="chi-keyword">崇拜</span>洋蔥</span></td></tr>
+                        <tr><td><span class="vocab-word">spiritual</span><br>(adj.) 精神的；靈性的</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">spiritual meaning</span></td><td><span class="eng-example">held significant <span class="eng-keyword">spiritual</span> meaning</span><br><span class="chi-example">具有重要的<span class="chi-keyword">精神</span>意義</span></td></tr>
+                        <tr><td><span class="vocab-word">symbols</span><br>(n.) 象徵</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">symbols of</span></td><td><span class="eng-example"><span class="eng-keyword">symbols</span> of eternal life</span><br><span class="chi-example">永生的<span class="chi-keyword">象徵</span></span></td></tr>
+                        <tr><td><span class="vocab-word">reflected</span><br>(v.) 反映</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">structure reflected</span></td><td><span class="eng-example">the structure <span class="eng-keyword">reflected</span> the eternity</span><br><span class="chi-example">結構<span class="chi-keyword">反映</span>了永恆</span></td></tr>
+                        <tr><td><span class="vocab-word">healing</span><br>(adj.) 治癒的</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">healing power</span></td><td><span class="eng-example">the <span class="eng-keyword">healing</span> power of the vegetable</span><br><span class="chi-example">蔬菜的<span class="chi-keyword">治癒</span>力量</span></td></tr>
+                        <tr><td><span class="vocab-word">discovered</span><br>(v./adj.) 被發現的</td><td><span class="trap-type trap-type-pos">分詞辨析</span></td><td><span class="exam-focus">paintings discovered</span></td><td><span class="eng-example">paintings <span class="eng-keyword">discovered</span> inside pyramids</span><br><span class="chi-example">在金字塔內<span class="chi-keyword">被發現</span>的畫作</span></td></tr>
+                        <tr><td><span class="vocab-word">functioned</span><br>(v.) 作為...功能</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">function as</span></td><td><span class="eng-example">They <span class="eng-keyword">functioned</span> as a funeral offering</span><br><span class="chi-example">它們<span class="chi-keyword">作為</span>葬禮供品</span></td></tr>
+                        <tr><td><span class="vocab-word">parts</span><br>(n.) 部位</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">parts of body</span></td><td><span class="eng-example">various <span class="eng-keyword">parts</span> of their bodies</span><br><span class="chi-example">身體的各個<span class="chi-keyword">部位</span></span></td></tr>
+                        <tr><td><span class="vocab-word">decorating</span><br>(v.) 裝飾</td><td><span class="trap-type trap-type-pos">分詞辨析</span></td><td><span class="exam-focus">with + O + Ving</span></td><td><span class="eng-example">with onions <span class="eng-keyword">decorating</span> their pelvis</span><br><span class="chi-example">洋蔥<span class="chi-keyword">裝飾著</span>他們的骨盆</span></td></tr>
+                        <tr><td><span class="vocab-word">prompt</span><br>(v.) 促使</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">prompt sb. to V</span></td><td><span class="eng-example"><span class="eng-keyword">prompt</span> the dead to breathe again</span><br><span class="chi-example"><span class="chi-keyword">促使</span>死者再次呼吸</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- 轉折詞解題策略總表 -->
+            <div class="section">
+                <h2 class="section-title">🔄 轉折詞解題策略總表</h2>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-concession">⚠️</div><div><div class="category-title">1. 讓步轉折類 Concession</div><div class="category-subtitle">雖然...但是，前面一般，後面特殊</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Nonetheless</span> <span style="color: #616161;">儘管如此</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到讓步詞 <span class="strategy-arrow">→</span> 後面是重點/例外 <span class="strategy-arrow">→</span> 空格填強調的內容</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"There is evidence... all over the ancient world. <span class="real-example-keyword">Nonetheless</span>, no culture admired onions quite as much as..."</p><p class="real-example-chi">有證據顯示全世界都使用...<span class="real-example-chi-keyword">儘管如此</span>，沒有文化像古埃及那樣崇拜...</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-example">📌</div><div><div class="category-title">2. 來源依據類 Source</div><div class="category-subtitle">說明資訊來源</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">According to</span> <span style="color: #616161;">根據</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到來源詞 <span class="strategy-arrow">→</span> 後面是文獻記載 <span class="strategy-arrow">→</span> 空格填符合史料的詞</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"<span class="real-example-keyword">According to</span> certain documents, ancient Egyptians also used onions..."</p><p class="real-example-chi"><span class="real-example-chi-keyword">根據</span>某些文獻，古埃及人也使用洋蔥...</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-contrast">⚡</div><div><div class="category-title">3. 對比轉折類 Contrast</div><div class="category-subtitle">前後形成對比</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">but</span> <span style="color: #616161;">但是</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">rather than</span> <span style="color: #616161;">而不是</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到轉折詞 <span class="strategy-arrow">→</span> 找對比點 <span class="strategy-arrow">→</span> 空格填與前文相反的詞</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"viewed the healing power... as magical, <span class="real-example-keyword">rather than</span> medical"</p><p class="real-example-chi">將治癒力量視為神奇的，<span class="real-example-chi-keyword">而不是</span>醫學的</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-addition">➕</div><div><div class="category-title">4. 補充說明類 Addition</div><div class="category-subtitle">額外補充資訊</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">also</span> <span style="color: #616161;">也；還</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到補充詞 <span class="strategy-arrow">→</span> 後面是類似例子 <span class="strategy-arrow">→</span> 空格填平行的內容</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"Mummies have <span class="real-example-keyword">also</span> been found with onions..."</p><p class="real-example-chi">木乃伊<span class="real-example-chi-keyword">也</span>被發現有洋蔥...</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-cause">🔗</div><div><div class="category-title">5. 因果說明類 Cause</div><div class="category-subtitle">解釋原因</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">because</span> <span style="color: #616161;">因為</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到因果詞 <span class="strategy-arrow">→</span> 後面是原因 <span class="strategy-arrow">→</span> 空格填符合因果的詞</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"onions may have been used <span class="real-example-keyword">because</span> it was believed that their strong scent would prompt..."</p><p class="real-example-chi">洋蔥可能被使用<span class="real-example-chi-keyword">因為</span>人們相信它們的強烈氣味會促使...</p></div>
+                </div>
+            </div>
+            
+            <!-- 考前衝刺重點 -->
+            <div class="section">
+                <h2 class="section-title">🚀 考前衝刺重點整理</h2>
+                <div class="sprint-section">
+                    <div class="sprint-main-title">🏆 文意選填必勝攻略</div>
+                    <div class="sprint-item">
+                        <h4>🎯 解題三步驟</h4>
+                        <div class="three-steps">
+                            <div class="step-card"><div class="step-card-num">1</div><div class="step-card-title">判斷詞性</div><div class="step-card-desc">看空格前後結構<br>確定需要什麼詞性</div></div>
+                            <div class="step-card"><div class="step-card-num">2</div><div class="step-card-title">篩選選項</div><div class="step-card-desc">依詞性刪除選項<br>縮小作答範圍</div></div>
+                            <div class="step-card"><div class="step-card-num">3</div><div class="step-card-title">語意驗證</div><div class="step-card-desc">結合上下文邏輯<br>確認最佳答案</div></div>
+                        </div>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>📝 本篇重點片語</h4>
+                        <ul>
+                            <li><strong>symbols of：</strong>...的象徵</li>
+                            <li><strong>function as：</strong>作為...的功能</li>
+                            <li><strong>parts of body：</strong>身體部位</li>
+                            <li><strong>prompt sb. to V：</strong>促使某人做某事</li>
+                            <li><strong>rather than：</strong>而不是</li>
+                        </ul>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>📖 本篇重點句型</h4>
+                        <ul>
+                            <li><strong>no... as much as...：</strong>沒有...像...那樣（強調程度）</li>
+                            <li><strong>be considered to be N：</strong>被視為...</li>
+                            <li><strong>with + O + Ving：</strong>伴隨著某物做某事</li>
+                            <li><strong>it was believed that...：</strong>人們相信...</li>
+                        </ul>
+                    </div>
+                    <div class="danger-zone">
+                        <div class="danger-title">🚨 本篇高頻錯題 TOP 3</div>
+                        <div class="danger-item"><div class="danger-q">第36題：paintings discovered inside pyramids</div><div class="danger-reason">❌ 錯因：混淆 discovered 和 decorating</div><div class="danger-solution">✓ 破解：畫作是「被發現」的（被動），用過去分詞 discovered</div></div>
+                        <div class="danger-item"><div class="danger-q">第39題：with onions decorating their pelvis</div><div class="danger-reason">❌ 錯因：不熟悉 with + O + Ving 結構</div><div class="danger-solution">✓ 破解：洋蔥主動裝飾，用現在分詞 decorating</div></div>
+                        <div class="danger-item"><div class="danger-q">第37題：functioned as a funeral offering</div><div class="danger-reason">❌ 錯因：不熟悉 function as 片語</div><div class="danger-solution">✓ 破解：function as = 作為...的功能</div></div>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>🎨 主題詞辨識技巧</h4>
+                        <ul>
+                            <li><strong>核心主題詞：</strong>onion(s)（洋蔥）出現超過 12 次</li>
+                            <li><strong>相關詞彙：</strong>ancient Egyptians, pyramids, tombs, mummies</li>
+                            <li><strong>文化背景：</strong>古埃及喪葬文化、永生信仰</li>
+                            <li><strong>辨識方法：</strong>onion 反覆出現 + 古埃及背景 = 雙重主題</li>
+                        </ul>
+                    </div>
+                    <div class="mantra-box">
+                        <div class="mantra-title">🏆 考前終極口訣</div>
+                        <div class="mantra-text"><span class="mantra-highlight">詞性先行</span>，結構定位<br><span class="mantra-highlight">轉折必看</span>，前後對照<br><span class="mantra-highlight">搭配優先</span>，固定用法<br><span class="mantra-highlight">分詞辨析</span>，主被動判</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 答案總覽 -->
+            <div class="section">
+                <h2 class="section-title">✅ 答案總覽</h2>
+                <div class="answer-overview">
+                    <div class="answer-grid">
+                        <div class="answer-cell"><div class="answer-cell-num">31</div><div class="answer-cell-ans">(C)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">32</div><div class="answer-cell-ans">(G)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">33</div><div class="answer-cell-ans">(I)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">34</div><div class="answer-cell-ans">(A)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">35</div><div class="answer-cell-ans">(J)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">36</div><div class="answer-cell-ans">(H)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">37</div><div class="answer-cell-ans">(D)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">38</div><div class="answer-cell-ans">(B)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">39</div><div class="answer-cell-ans">(F)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">40</div><div class="answer-cell-ans">(E)</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>🧅 學測英文文意選填 ｜ 專業教學分析版 ｜ 106年學測</p>
+            <p>主題：洋蔥與古埃及 Onions & Ancient Egypt</p>
+        </div>
+    </div>
+</body>
+</html>

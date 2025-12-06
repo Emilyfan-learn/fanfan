@@ -3,1048 +3,440 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>110學測文意選填解題訓練</title>
+    <title>學測文意選填 - 運動與健康 專業教學分析版</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
-            line-height: 1.8;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
-            color: #333;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 40px;
-            text-align: center;
-        }
-        
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .header p {
-            font-size: 1.2em;
-            opacity: 0.95;
-        }
-        
-        .content {
-            padding: 40px;
-        }
-        
-        .section {
-            margin-bottom: 50px;
-            padding: 30px;
-            background: #f8f9fa;
-            border-radius: 15px;
-            border-left: 5px solid #667eea;
-        }
-        
-        .section-title {
-            font-size: 1.8em;
-            color: #667eea;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #667eea;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        /* 文章標示版樣式 */
-        .article-text {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            font-size: 1.1em;
-            line-height: 2;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .core-sentence {
-            color: #d32f2f;
-            font-weight: bold;
-        }
-        
-        .transition-word {
-            color: #7b1fa2;
-            font-weight: bold;
-        }
-        
-        .topic-word {
-            color: #388e3c;
-            font-weight: bold;
-        }
-        
-        .blank {
-            color: #1976d2;
-            font-weight: bold;
-            text-decoration: underline;
-        }
-        
-        /* 解題思維樣式 */
-        .question-block {
-            background: white;
-            padding: 25px;
-            margin-bottom: 25px;
-            border-radius: 10px;
-            border-left: 5px solid #ff6b6b;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .question-number {
-            display: inline-block;
-            background: #ff6b6b;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 50px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        
-        .options {
-            background: #fff3cd;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-left: 4px solid #ffc107;
-        }
-        
-        .answer {
-            background: #d4edda;
-            padding: 12px;
-            border-radius: 8px;
-            margin: 10px 0;
-            border-left: 4px solid #28a745;
-            font-weight: bold;
-        }
-        
-        .step {
-            background: #e3f2fd;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 8px;
-            border-left: 4px solid #2196f3;
-        }
-        
-        .step-title {
-            color: #1976d2;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-        
-        .quote {
-            background: #f5f5f5;
-            padding: 12px;
-            border-left: 4px solid #9e9e9e;
-            margin: 10px 0;
-            font-style: italic;
-            color: #555;
-        }
-        
-        /* 單字分類樣式 */
-        .vocab-category {
-            background: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .vocab-category h3 {
-            color: #667eea;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-        
-        .vocab-item {
-            padding: 10px;
-            margin: 8px 0;
-            background: #f8f9fa;
-            border-radius: 5px;
-            border-left: 3px solid #667eea;
-        }
-        
-        .vocab-word {
-            font-weight: bold;
-            color: #d32f2f;
-            margin-right: 10px;
-        }
-        
-        /* 考前衝刺樣式 */
-        .exam-prep {
-            background: #fffbea;
-            padding: 30px;
-            border-radius: 15px;
-            border: 3px solid #ffd54f;
-        }
-        
-        .exam-prep h3 {
-            color: #0d47a1;
-            font-weight: bold;
-            margin: 25px 0 15px 0;
-            font-size: 1.4em;
-        }
-        
-        .exam-prep ul {
-            list-style-position: inside;
-            margin-left: 20px;
-        }
-        
-        .exam-prep li {
-            margin: 10px 0;
-            color: #1565c0;
-            font-weight: bold;
-        }
-        
-        .highlight-box {
-            background: #fff9c4;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 15px 0;
-            border: 2px solid #ffd54f;
-        }
-        
-        .formula {
-            background: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #0d47a1;
-            margin: 10px 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            background: white;
-        }
-        
-        th {
-            background: #667eea;
-            color: white;
-            padding: 12px;
-            text-align: left;
-        }
-        
-        td {
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        tr:hover {
-            background: #f5f5f5;
-        }
-        
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.8em;
-            }
-            
-            .content {
-                padding: 20px;
-            }
-            
-            .section {
-                padding: 20px;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif; line-height: 1.9; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: #fff; border-radius: 20px; box-shadow: 0 25px 80px rgba(0,0,0,0.4); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #00695c 0%, #26a69a 100%); color: white; padding: 35px 40px; text-align: center; }
+        .header h1 { font-size: 2.4em; margin-bottom: 10px; }
+        .header .subtitle { font-size: 1.2em; opacity: 0.9; }
+        .header .theme-tag { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 20px; margin-top: 10px; }
+        .content { padding: 40px; }
+        .section { margin-bottom: 50px; }
+        .section-title { font-size: 1.6em; color: #00695c; border-left: 6px solid #26a69a; padding-left: 18px; margin-bottom: 25px; }
+        .structure-box { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 15px; padding: 25px; margin-bottom: 20px; border-left: 5px solid #26a69a; }
+        .structure-function { background: #b2dfdb; display: inline-block; padding: 4px 12px; border-radius: 15px; font-size: 0.9em; color: #00695c; font-weight: bold; margin-bottom: 10px; }
+        .article-box { background: #fafafa; border-radius: 15px; padding: 30px; border: 2px solid #e0e0e0; font-size: 1.08em; line-height: 2.2; }
+        .core-sentence { color: #c62828; font-weight: bold; background: linear-gradient(transparent 60%, #ffcdd2 60%); }
+        .transition-word { color: #6a1b9a; font-weight: bold; background: linear-gradient(transparent 60%, #e1bee7 60%); }
+        .theme-word { color: #2e7d32; font-weight: bold; }
+        .blank { display: inline-block; min-width: 70px; border-bottom: 3px solid #00695c; text-align: center; font-weight: bold; color: #00695c; margin: 0 5px; padding: 0 8px; }
+        .options-box { background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%); border-radius: 15px; padding: 25px; margin: 25px 0; border: 2px solid #80cbc4; }
+        .options-title { font-weight: bold; color: #00695c; margin-bottom: 15px; font-size: 1.15em; }
+        .options-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+        .option-item { background: white; padding: 12px; border-radius: 10px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+        .option-item .letter { color: #c62828; font-weight: bold; font-size: 1.1em; }
+        .option-item .word { color: #1565c0; font-weight: 500; }
+        .option-item .pos { color: #757575; font-size: 0.85em; }
+        .question-card { background: white; border-radius: 18px; padding: 30px; margin-bottom: 30px; box-shadow: 0 6px 25px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; }
+        .question-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .question-number { background: linear-gradient(135deg, #00695c 0%, #26a69a 100%); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.3em; }
+        .difficulty-tag { padding: 5px 15px; border-radius: 20px; font-size: 0.85em; font-weight: bold; }
+        .difficulty-easy { background: #c8e6c9; color: #2e7d32; }
+        .difficulty-medium { background: #fff3e0; color: #ef6c00; }
+        .difficulty-hard { background: #ffcdd2; color: #c62828; }
+        .options-reminder { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border: 1px solid #90caf9; border-radius: 10px; padding: 12px 18px; margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .options-reminder-title { color: #1565c0; font-weight: bold; margin-right: 5px; }
+        .options-reminder .opt { background: white; padding: 4px 10px; border-radius: 15px; font-size: 0.9em; color: #1565c0; border: 1px solid #90caf9; }
+        .question-sentence { background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%); padding: 20px 25px; border-radius: 12px; margin: 20px 0; border-left: 5px solid #ffc107; font-size: 1.1em; }
+        .answer-row { display: flex; align-items: center; gap: 20px; margin: 20px 0; flex-wrap: wrap; }
+        .answer-tag { background: linear-gradient(135deg, #43a047 0%, #66bb6a 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: bold; }
+        .kill-point { background: linear-gradient(135deg, #c62828 0%, #e53935 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: bold; font-size: 0.95em; }
+        .instant-kill { background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border: 2px solid #ff9800; border-radius: 12px; padding: 18px 22px; margin: 15px 0; }
+        .instant-kill-title { color: #e65100; font-weight: bold; margin-bottom: 8px; }
+        .logic-chain { background: #f5f5f5; border-radius: 12px; padding: 20px; margin: 15px 0; }
+        .logic-chain-title { color: #00695c; font-weight: bold; margin-bottom: 12px; }
+        .logic-step { display: flex; align-items: flex-start; margin: 12px 0; padding-left: 10px; }
+        .logic-step-num { background: #26a69a; color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85em; font-weight: bold; margin-right: 12px; flex-shrink: 0; }
+        .anchor-box { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px 20px; margin: 12px 0; border-radius: 0 10px 10px 0; }
+        .anchor-label { color: #2e7d32; font-weight: bold; font-size: 0.95em; margin-bottom: 5px; }
+        .anchor-text { color: #1b5e20; font-style: italic; }
+        .anchor-highlight { background: #a5d6a7; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-style: normal; }
+        .trap-analysis { background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%); border-radius: 12px; padding: 18px 22px; margin: 15px 0; border: 2px solid #ec407a; }
+        .trap-title { color: #c2185b; font-weight: bold; margin-bottom: 10px; }
+        .trap-item { margin: 8px 0; padding-left: 20px; position: relative; }
+        .trap-item::before { content: "✗"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
+        .trap-option { color: #c62828; font-weight: bold; }
+        .trap-reason { color: #616161; }
+        .vocab-table { width: 100%; border-collapse: collapse; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 12px; overflow: hidden; }
+        .vocab-table th { background: linear-gradient(135deg, #00695c 0%, #00897b 100%); color: white; padding: 15px; text-align: left; }
+        .vocab-table td { padding: 15px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+        .vocab-table tr:nth-child(even) { background: #f8f9fa; }
+        .vocab-table tr:hover { background: #e0f2f1; }
+        .vocab-word { color: #c62828; font-weight: bold; font-size: 1.1em; }
+        .trap-type { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+        .trap-type-multi { background: #ffcdd2; color: #c62828; }
+        .trap-type-collocation { background: #c8e6c9; color: #2e7d32; }
+        .trap-type-pos { background: #fff3e0; color: #ef6c00; }
+        .trap-type-context { background: #e1bee7; color: #6a1b9a; }
+        .exam-focus { background: #e3f2fd; padding: 3px 10px; border-radius: 12px; font-size: 0.85em; color: #1565c0; font-weight: 500; }
+        .eng-example { color: #1565c0; }
+        .eng-keyword { color: #c62828; font-weight: bold; }
+        .chi-example { color: #616161; }
+        .chi-keyword { color: #c62828; font-weight: bold; }
+        .transition-category { background: white; border-radius: 15px; padding: 25px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid #e0e0e0; }
+        .transition-category-header { display: flex; align-items: center; gap: 15px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 2px solid #e0e0e0; }
+        .category-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3em; color: white; }
+        .category-contrast { background: linear-gradient(135deg, #e91e63 0%, #f06292 100%); }
+        .category-cause { background: linear-gradient(135deg, #ff9800 0%, #ffb74d 100%); }
+        .category-addition { background: linear-gradient(135deg, #4caf50 0%, #81c784 100%); }
+        .category-example { background: linear-gradient(135deg, #2196f3 0%, #64b5f6 100%); }
+        .category-concession { background: linear-gradient(135deg, #9c27b0 0%, #ba68c8 100%); }
+        .category-title { font-size: 1.2em; font-weight: bold; color: #1b262c; }
+        .category-subtitle { color: #757575; font-size: 0.95em; }
+        .transition-words-list { display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0; }
+        .transition-word-tag { background: #f5f5f5; padding: 6px 14px; border-radius: 20px; font-weight: 500; border: 1px solid #e0e0e0; }
+        .strategy-action { background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%); border-radius: 10px; padding: 15px 20px; margin: 15px 0; }
+        .strategy-action-title { color: #283593; font-weight: bold; margin-bottom: 8px; }
+        .strategy-action-steps { color: #3949ab; font-weight: 500; }
+        .strategy-arrow { color: #5c6bc0; margin: 0 8px; }
+        .real-example { background: #fafafa; border-left: 4px solid #6a1b9a; padding: 15px 20px; margin-top: 15px; border-radius: 0 10px 10px 0; }
+        .real-example-title { color: #6a1b9a; font-weight: bold; font-size: 0.95em; margin-bottom: 8px; }
+        .real-example-eng { color: #1565c0; }
+        .real-example-keyword { color: #6a1b9a; font-weight: bold; background: #f3e5f5; padding: 2px 6px; border-radius: 4px; }
+        .real-example-chi { color: #616161; margin-top: 5px; }
+        .real-example-chi-keyword { color: #6a1b9a; font-weight: bold; }
+        .sprint-section { background: linear-gradient(135deg, #fffbea 0%, #fff9c4 100%); border-radius: 18px; padding: 35px; margin: 25px 0; border: 3px solid #ffd54f; }
+        .sprint-main-title { color: #0d47a1; font-weight: bold; font-size: 1.5em; text-align: center; margin-bottom: 30px; }
+        .sprint-item { background: white; border-radius: 12px; padding: 22px; margin: 18px 0; box-shadow: 0 3px 10px rgba(0,0,0,0.08); }
+        .sprint-item h4 { color: #0d47a1; font-weight: bold; margin-bottom: 15px; font-size: 1.15em; }
+        .sprint-item ul { list-style: none; padding: 0; }
+        .sprint-item li { padding: 10px 0; padding-left: 28px; position: relative; color: #1565c0; font-weight: 500; }
+        .sprint-item li::before { content: "✓"; position: absolute; left: 0; color: #4caf50; font-weight: bold; }
+        .three-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 15px 0; }
+        .step-card { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: 12px; padding: 20px; text-align: center; }
+        .step-card-num { background: #0d47a1; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin: 0 auto 10px; }
+        .step-card-title { color: #0d47a1; font-weight: bold; font-size: 1.1em; margin-bottom: 8px; }
+        .step-card-desc { color: #1565c0; font-size: 0.95em; }
+        .danger-zone { background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); border-radius: 15px; padding: 25px; margin: 20px 0; border: 2px solid #e57373; }
+        .danger-title { color: #c62828; font-weight: bold; font-size: 1.2em; margin-bottom: 15px; }
+        .danger-item { background: white; border-radius: 10px; padding: 15px 20px; margin: 12px 0; border-left: 4px solid #c62828; }
+        .danger-q { color: #c62828; font-weight: bold; margin-bottom: 5px; }
+        .danger-reason { color: #616161; }
+        .danger-solution { color: #2e7d32; font-weight: 500; margin-top: 5px; }
+        .mantra-box { background: linear-gradient(135deg, #1a237e 0%, #283593 100%); border-radius: 18px; padding: 35px; text-align: center; margin-top: 30px; color: white; }
+        .mantra-title { font-size: 1.4em; margin-bottom: 20px; }
+        .mantra-text { font-size: 1.5em; font-weight: bold; line-height: 2.2; }
+        .mantra-highlight { background: rgba(255,255,255,0.2); padding: 3px 12px; border-radius: 8px; }
+        .answer-overview { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: 15px; padding: 30px; text-align: center; }
+        .answer-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; max-width: 700px; margin: 20px auto; }
+        .answer-cell { background: white; padding: 18px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+        .answer-cell-num { color: #00695c; font-weight: bold; font-size: 1.1em; }
+        .answer-cell-ans { color: #2e7d32; font-weight: bold; font-size: 1.3em; margin-top: 5px; }
+        .footer { background: linear-gradient(135deg, #00695c 0%, #26a69a 100%); color: white; text-align: center; padding: 25px; }
+        .legend-box { display: flex; flex-wrap: wrap; gap: 20px; padding: 15px 20px; background: #f5f5f5; border-radius: 10px; margin-top: 20px; }
+        .legend-item { display: flex; align-items: center; gap: 8px; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎯 111學測文意選填解題訓練系統</h1>
-            <p>運動與健康 | Exercise and Well-being</p>
+            <h1>🏃 學測文意選填</h1>
+            <div class="subtitle">專業教學分析版 ｜ 110年學測</div>
+            <div class="theme-tag">🎯 主題：運動與健康 Exercise & Health</div>
         </div>
         
         <div class="content">
+            <!-- 選項總覽 -->
+            <div class="options-box">
+                <div class="options-title">📋 選項總覽 ｜ 先分類再作答</div>
+                <div class="options-grid">
+                    <div class="option-item"><div class="letter">(A)</div><div class="word">means</div><div class="pos">n. 方法</div></div>
+                    <div class="option-item"><div class="letter">(B)</div><div class="word">soreness</div><div class="pos">n. 酸痛</div></div>
+                    <div class="option-item"><div class="letter">(C)</div><div class="word">point to</div><div class="pos">phr.v. 指向</div></div>
+                    <div class="option-item"><div class="letter">(D)</div><div class="word">argue</div><div class="pos">v. 主張</div></div>
+                    <div class="option-item"><div class="letter">(E)</div><div class="word">demanding</div><div class="pos">adj. 費力的</div></div>
+                    <div class="option-item"><div class="letter">(F)</div><div class="word">abide by</div><div class="pos">phr.v. 遵守</div></div>
+                    <div class="option-item"><div class="letter">(G)</div><div class="word">fanatic</div><div class="pos">n. 狂熱者</div></div>
+                    <div class="option-item"><div class="letter">(H)</div><div class="word">current</div><div class="pos">adj. 目前的</div></div>
+                    <div class="option-item"><div class="letter">(I)</div><div class="word">make time</div><div class="pos">phr.v. 抽時間</div></div>
+                    <div class="option-item"><div class="letter">(J)</div><div class="word">modest</div><div class="pos">adj. 適度的</div></div>
+                </div>
+            </div>
+            
+            <!-- 文章結構分析 -->
+            <div class="section">
+                <h2 class="section-title">🏗️ 文章結構分析</h2>
+                <div class="structure-box">
+                    <div class="structure-function">第一段功能：引言 + 鼓勵建議</div>
+                    <p>忙碌不用擔心 → <strong>適度</strong>運動（每天15分鐘）就有效 → 不需成為健身<strong>狂熱者</strong> → 遵守「慢慢來、享受樂趣」的座右銘</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第31-33題，測試形容詞修飾、名詞搭配、片語動詞</p>
+                </div>
+                <div class="structure-box">
+                    <div class="structure-function">第二段功能：破除迷思 + 科學論證</div>
+                    <p>「不痛苦就沒效果」是<strong>過時</strong>觀念 → <strong>目前的</strong>研究證明不用痛苦也有效 → <strong>費力的</strong>運動可能讓肌肉暫時酸痛，但不該疼痛 → 疼痛可能<strong>指向</strong>受傷</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第34-38題集中在此段</p>
+                </div>
+                <div class="structure-box">
+                    <div class="structure-function">第三段功能：總結 + 行動呼籲</div>
+                    <p>為了健康，定期運動 → 短時間運動也是有力的<strong>方法</strong> → 每天<strong>抽出時間</strong>運動</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第39-40題</p>
+                </div>
+            </div>
+            
             <!-- 文章標示版 -->
             <div class="section">
-                <h2 class="section-title">📝 文章標示版</h2>
-                <div class="article-text">
-                    <p>If you cannot find ways to fit <span class="topic-word">exercise</span> into your busy daily schedule, don't worry! <span class="core-sentence"><span class="topic-word">Exercise</span> doesn't always have to be laborious</span>. Research shows that <span class="blank">31 modest</span> amounts of <span class="topic-word">exercise</span>—even just 15 minutes a day—helps ease depression, enhance self-image, relieve stress, and much more. That's right. <span class="core-sentence">Doing <span class="topic-word">exercise</span> makes you happy</span>, and you don't have to be a fitness <span class="blank">32 fanatic</span> to do it. What you need to do is to make "start slow and have fun" a motto to <span class="blank">33 abide by</span>. Then you'll be well on your way to using physical activity as a tool to make you feel better every day.</p>
-                    
-                    <p>The "no pain, no gain" view of <span class="topic-word">exercise</span> is now considered old-fashioned. <span class="transition-word">In fact</span>, <span class="blank">34 current</span> health studies prove that <span class="core-sentence"><span class="topic-word">exercise</span> doesn't have to hurt to be effective</span>. You might <span class="blank">35 argue</span> that if working out doesn't give you pain, it isn't working. According to fitness trainers, physically <span class="blank">36 demanding</span> exercises may make you breathe heavily and your muscles may ache temporarily, but <span class="core-sentence"><span class="topic-word">exercise</span> should not be painful</span>. <span class="transition-word">In fact</span>, if it is, it may <span class="blank">37 point to</span> an injury or muscle strain. Many great forms of <span class="topic-word">exercise</span>—like walking, swimming, or gentle stretching—get results without the <span class="blank">38 soreness</span> or discomfort some people associate with <span class="topic-word">exercise</span>.</p>
-                    
-                    <p>For the sake of your health, it is time to make regular <span class="topic-word">exercise</span> a part of your life. Keep in mind that <span class="core-sentence">even short periods of low-impact <span class="topic-word">exercise</span> serve as a powerful <span class="blank">39 means</span> to improve your health</span>. <span class="transition-word">So</span>, no matter how busy you are, try to <span class="blank">40 make time</span> for <span class="topic-word">exercise</span> every day, like a 15-minute walk with your dog. Your body will thank you in many ways.</p>
+                <h2 class="section-title">📖 文章標示版</h2>
+                <div class="article-box">
+                    <p>If you cannot find ways to fit <span class="theme-word">exercise</span> into your busy daily schedule, don't worry! <span class="theme-word">Exercise</span> doesn't always have to be laborious. <span class="core-sentence">Research shows that <span class="blank">31</span> amounts of <span class="theme-word">exercise</span>—even just 15 minutes a day—helps ease depression, enhance self-image, relieve stress, and much more.</span> That's right. Doing <span class="theme-word">exercise</span> makes you happy, and you don't have to be a fitness <span class="blank">32</span> to do it. What you need to do is to make "start slow and have fun" a motto to <span class="blank">33</span>. Then you'll be well on your way to using physical activity as a tool to make you feel better every day.</p>
+                    <p>The "no pain, no gain" view of <span class="theme-word">exercise</span> is now considered old-fashioned. <span class="transition-word">In fact</span>, <span class="blank">34</span> health studies prove that <span class="theme-word">exercise</span> doesn't have to hurt to be effective. You might <span class="blank">35</span> that if working out doesn't give you pain, it isn't working. <span class="transition-word">According to</span> fitness trainers, physically <span class="blank">36</span> exercises may make you breathe heavily and your muscles may ache temporarily, <span class="transition-word">but</span> <span class="theme-word">exercise</span> should not be painful. <span class="transition-word">In fact</span>, <span class="core-sentence">if it is, it may <span class="blank">37</span> an injury or muscle strain.</span> Many great forms of <span class="theme-word">exercise</span>—like walking, swimming, or gentle stretching—get results without the <span class="blank">38</span> or discomfort some people associate with <span class="theme-word">exercise</span>.</p>
+                    <p><span class="transition-word">For the sake of</span> your health, it is time to make regular <span class="theme-word">exercise</span> a part of your life. Keep in mind that <span class="core-sentence">even short periods of low-impact <span class="theme-word">exercise</span> serve as a powerful <span class="blank">39</span> to improve your health.</span> <span class="transition-word">So</span>, no matter how busy you are, try to <span class="blank">40</span> for <span class="theme-word">exercise</span> every day, like a 15-minute walk with your dog. Your body will thank you in many ways.</p>
+                </div>
+                <div class="legend-box">
+                    <div class="legend-item"><span class="core-sentence">紅色底線</span> = 核心句</div>
+                    <div class="legend-item"><span class="transition-word">紫色底線</span> = 轉折詞</div>
+                    <div class="legend-item"><span class="theme-word">綠色粗體</span> = 主題詞</div>
                 </div>
             </div>
             
             <!-- 解題思維 -->
             <div class="section">
-                <h2 class="section-title">🧠 解題思維</h2>
+                <h2 class="section-title">🧠 解題思維 ｜ 逐題攻破</h2>
                 
-                <div class="question-block">
-                    <span class="question-number">題目 31</span>
-                    <div class="options">
-                        <strong>選項:</strong><br>
-                        (A) means (B) soreness (C) point to (D) argue (E) demanding<br>
-                        (F) abide by (G) fanatic (H) current (I) make time (J) modest
-                    </div>
-                    <p><strong>完整句子:</strong> Research shows that _____ amounts of exercise—even just 15 minutes a day—helps ease depression.</p>
-                    
-                    <div class="answer">✅ 正解: (J) modest</div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 1: 辨識詞性結構</div>
-                        • <strong>_____ amounts of exercise</strong><br>
-                        • 需填入<strong>形容詞</strong>修飾amounts
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 2: 分析語意提示</div>
-                        <div class="quote">
-                            "_____ amounts of exercise—<span style="color:#d32f2f; font-weight:bold;">even just 15 minutes a day</span>"
-                        </div>
-                        • 破折號後補充說明: <strong>只需15分鐘</strong><br>
-                        • 關鍵字: <strong>even just</strong> (甚至只需)<br>
-                        • 語意: 運動量<strong>不需要很多</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 3: 詞性+語意篩選</div>
-                        • 形容詞選項: demanding, current, modest<br>
-                        • demanding (要求高的) ❌ 與「只需15分鐘」矛盾<br>
-                        • current (當前的) ❌ 不符合語意<br>
-                        • <strong>modest (適度的、不多的) ✅</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">🔑 關鍵思維</div>
-                        <strong>破折號提示法:</strong> 破折號後的內容是對前面的<strong>具體說明</strong><br>
-                        <strong>語意呼應:</strong> modest amounts = just 15 minutes (少量)
-                    </div>
+                <!-- 第31題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">31</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) means</span><span class="opt">(B) soreness</span><span class="opt">(C) point to</span><span class="opt">(D) argue</span><span class="opt">(E) demanding</span><span class="opt">(F) abide by</span><span class="opt">(G) fanatic</span><span class="opt">(H) current</span><span class="opt">(I) make time</span><span class="opt">(J) modest</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>Research shows that <u><strong>____</strong></u> amounts of exercise—even just 15 minutes a day—helps...</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(J) modest</div><div class="kill-point">⚡ 秒殺點：even just 15 minutes = 適度的量</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>____ amounts</strong> + <strong>even just 15 minutes</strong> → 破折號補充「適度的」量 → <strong>modest</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：____ amounts → 需要<strong>形容詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：形容詞有 (E) demanding、(H) current、(J) modest</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：15分鐘 = 少量/適度 → modest ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"<span class="anchor-highlight">modest</span> amounts—<span class="anchor-highlight">even just 15 minutes</span>"</div></div>
                 </div>
-
-                <div class="question-block">
-                    <span class="question-number">題目 32</span>
-                    <div class="options">
-                        <strong>選項:</strong><br>
-                        (A) means (B) soreness (C) point to (D) argue (E) demanding<br>
-                        (F) abide by (G) fanatic (H) current (I) make time
-                    </div>
-                    <p><strong>完整句子:</strong> Doing exercise makes you happy, and you don't have to be a fitness _____ to do it.</p>
-                    
-                    <div class="answer">✅ 正解: (G) fanatic</div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 1: 辨識名詞位置</div>
-                        • <strong>a fitness + 名詞</strong><br>
-                        • 需填入<strong>可數名詞</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 2: 分析上下文邏輯</div>
-                        <div class="quote">
-                            "you <span style="color:#7b1fa2; font-weight:bold;">don't have to</span> be a fitness _____... What you need to do is make 'start slow and have fun' a motto"
-                        </div>
-                        • <strong>don't have to</strong> = 不需要<br>
-                        • 前文: 只需少量運動<br>
-                        • 後文: 慢慢開始、享受樂趣<br>
-                        • 語意: <strong>不需要成為運動狂熱者</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 3: 詞性+搭配詞篩選</div>
-                        • 名詞選項: means, soreness, fanatic<br>
-                        • <strong>fitness fanatic</strong> ✅ (健身狂、運動狂)<br>
-                        • fitness means ❌ 搭配不自然<br>
-                        • fitness soreness ❌ 語意不通
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">🔑 關鍵思維</div>
-                        <strong>搭配詞記憶:</strong> fitness fanatic = 健身狂熱者<br>
-                        <strong>邏輯對比:</strong> 少量運動就有效 ↔ 不需當健身狂
-                    </div>
-                </div>
-
-                <div class="question-block">
-                    <span class="question-number">題目 33</span>
-                    <div class="options">
-                        <strong>選項:</strong><br>
-                        (A) means (B) soreness (C) point to (D) argue (E) demanding<br>
-                        (F) abide by (H) current (I) make time
-                    </div>
-                    <p><strong>完整句子:</strong> What you need to do is to make "start slow and have fun" a motto to _____.</p>
-                    
-                    <div class="answer">✅ 正解: (F) abide by</div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 1: 辨識不定詞結構</div>
-                        • <strong>to + 原形動詞/片語動詞</strong><br>
-                        • a motto to _____ (一個要_____的座右銘)
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 2: 分析語意搭配</div>
-                        <div class="quote">
-                            "make 'start slow and have fun' <span style="color:#d32f2f; font-weight:bold;">a motto</span> to _____"
-                        </div>
-                        • motto (座右銘) 的用途是什麼?<br>
-                        • 座右銘是用來<strong>遵守、遵循</strong>的
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 3: 片語動詞辨析</div>
-                        • point to (指向) ❌<br>
-                        • make time (撥出時間) ❌<br>
-                        • <strong>abide by (遵守、遵循) ✅</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">🔑 關鍵思維</div>
-                        <strong>片語記憶:</strong> abide by = follow, obey (遵守)<br>
-                        <strong>邏輯搭配:</strong> motto (座右銘) → abide by (遵循)
-                    </div>
-                </div>
-
-                <div class="question-block">
-                    <span class="question-number">題目 34</span>
-                    <div class="options">
-                        <strong>選項:</strong><br>
-                        (A) means (B) soreness (C) point to (D) argue (E) demanding<br>
-                        (H) current (I) make time
-                    </div>
-                    <p><strong>完整句子:</strong> In fact, _____ health studies prove that exercise doesn't have to hurt to be effective.</p>
-                    
-                    <div class="answer">✅ 正解: (H) current</div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 1: 辨識形容詞位置</div>
-                        • <strong>_____ health studies</strong><br>
-                        • 需填入<strong>形容詞</strong>修飾studies
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 2: 分析時間對比</div>
-                        <div class="quote">
-                            "The 'no pain, no gain' view is <span style="color:#7b1fa2; font-weight:bold;">now considered old-fashioned</span>. In fact, _____ health studies prove..."
-                        </div>
-                        • 舊觀念: old-fashioned<br>
-                        • 新研究: <strong>current (當前的)</strong><br>
-                        • 時間對比: 過去 vs 現在
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 3: 詞性確認</div>
-                        • demanding (要求高的) ❌ 不符語意<br>
-                        • <strong>current (當前的、最新的) ✅</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">🔑 關鍵思維</div>
-                        <strong>時間對比:</strong> old-fashioned ↔ current<br>
-                        <strong>搭配詞:</strong> current studies = 最新研究
-                    </div>
-                </div>
-
-                <div class="question-block">
-                    <span class="question-number">題目 35</span>
-                    <div class="options">
-                        <strong>選項:</strong><br>
-                        (A) means (B) soreness (C) point to (D) argue (E) demanding<br>
-                        (I) make time
-                    </div>
-                    <p><strong>完整句子:</strong> You might _____ that if working out doesn't give you pain, it isn't working.</p>
-                    
-                    <div class="answer">✅ 正解: (D) argue</div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 1: 辨識動詞結構</div>
-                        • <strong>might + 原形動詞 + that子句</strong><br>
-                        • 需填入<strong>及物動詞</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 2: 分析語意邏輯</div>
-                        <div class="quote">
-                            "You might _____ that if working out doesn't give you pain, it isn't working."
-                        </div>
-                        • 後面接的是一個<strong>觀點/主張</strong><br>
-                        • 這是一個<strong>錯誤的觀念</strong> (前文已說明運動不需痛苦)<br>
-                        • 表達「你可能會<strong>主張/認為</strong>...」
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 3: 動詞辨析</div>
-                        • point to (指向) + 名詞 ❌ 不接that子句<br>
-                        • make time (撥時間) ❌ 語意不通<br>
-                        • <strong>argue (主張、認為) + that子句 ✅</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">🔑 關鍵思維</div>
-                        <strong>句型記憶:</strong> argue that... (主張/認為...)<br>
-                        <strong>語境判斷:</strong> 反駁錯誤觀念時使用
-                    </div>
-                </div>
-
-                <div class="question-block">
-                    <span class="question-number">題目 36</span>
-                    <div class="options">
-                        <strong>選項:</strong><br>
-                        (A) means (B) soreness (C) point to (E) demanding (I) make time
-                    </div>
-                    <p><strong>完整句子:</strong> According to fitness trainers, physically _____ exercises may make you breathe heavily and your muscles may ache temporarily.</p>
-                    
-                    <div class="answer">✅ 正解: (E) demanding</div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 1: 辨識形容詞位置</div>
-                        • <strong>physically _____ exercises</strong><br>
-                        • physically (副詞) 修飾形容詞<br>
-                        • 需填入<strong>形容詞</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 2: 分析語意描述</div>
-                        <div class="quote">
-                            "physically _____ exercises may make you <span style="color:#d32f2f; font-weight:bold;">breathe heavily</span> and your muscles may <span style="color:#d32f2f; font-weight:bold;">ache temporarily</span>"
-                        </div>
-                        • 描述運動的效果: 喘氣、肌肉暫時痠痛<br>
-                        • 表示運動<strong>有強度、有要求</strong><br>
-                        • 但後面接but說「不該痛苦」→ 有強度但不痛苦
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 3: 形容詞確認</div>
-                        • <strong>demanding (要求高的、費力的) ✅</strong><br>
-                        • physically demanding = 體能要求高的
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">🔑 關鍵思維</div>
-                        <strong>搭配詞:</strong> physically demanding = 體能要求高的<br>
-                        <strong>細微差別:</strong> demanding (有強度) ≠ painful (痛苦)
-                    </div>
-                </div>
-
-                <div class="question-block">
-                    <span class="question-number">題目 37</span>
-                    <div class="options">
-                        <strong>選項:</strong><br>
-                        (A) means (B) soreness (C) point to (I) make time
-                    </div>
-                    <p><strong>完整句子:</strong> In fact, if it is (painful), it may _____ an injury or muscle strain.</p>
-                    
-                    <div class="answer">✅ 正解: (C) point to</div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 1: 辨識助動詞結構</div>
-                        • <strong>may + 原形動詞 + 名詞</strong><br>
-                        • 需填入<strong>及物動詞/片語動詞</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 2: 分析因果邏輯</div>
-                        <div class="quote">
-                            "if it is <span style="color:#d32f2f; font-weight:bold;">painful</span>, it may _____ <span style="color:#d32f2f; font-weight:bold;">an injury or muscle strain</span>"
-                        </div>
-                        • 條件: 運動時感到痛苦<br>
-                        • 結果: 可能<strong>指向/暗示</strong>受傷<br>
-                        • 邏輯: 痛苦是受傷的<strong>徵兆</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 3: 片語動詞確認</div>
-                        • make time ❌ 語意不通<br>
-                        • <strong>point to (指向、暗示) ✅</strong><br>
-                        • point to = indicate, suggest (表明)
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">🔑 關鍵思維</div>
-                        <strong>片語記憶:</strong> point to = indicate/suggest (指向、暗示)<br>
-                        <strong>邏輯推理:</strong> 痛苦 → 指向受傷的可能
-                    </div>
-                </div>
-
-                <div class="question-block">
-                    <span class="question-number">題目 38</span>
-                    <div class="options">
-                        <strong>選項:</strong><br>
-                        (A) means (B) soreness (I) make time
-                    </div>
-                    <p><strong>完整句子:</strong> Many great forms of exercise get results without the _____ or discomfort some people associate with exercise.</p>
-                    
-                    <div class="answer">✅ 正解: (B) soreness</div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 1: 辨識並列結構</div>
-                        • <strong>without the _____ or discomfort</strong><br>
-                        • or 連接兩個<strong>名詞</strong><br>
-                        • 與discomfort (不適) 並列
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 2: 分析語意呼應</div>
-                        <div class="quote">
-                            "get results <span style="color:#7b1fa2; font-weight:bold;">without</span> the _____ or <span style="color:#d32f2f; font-weight:bold;">discomfort</span>"
-                        </div>
-                        • 前文提到: muscles may ache temporarily<br>
-                        • 這裡強調: 不需要_____或不適<br>
-                        • 與ache (痠痛) 相關的名詞
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 3: 名詞篩選</div>
-                        • means (方法) ❌<br>
-                        • <strong>soreness (痠痛) ✅</strong><br>
-                        • soreness = muscle ache (肌肉痠痛)
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">🔑 關鍵思維</div>
-                        <strong>並列對稱:</strong> soreness (痠痛) + discomfort (不適)<br>
-                        <strong>語意呼應:</strong> ache (動詞) → soreness (名詞)
-                    </div>
-                </div>
-
-                <div class="question-block">
-                    <span class="question-number">題目 39</span>
-                    <div class="options">
-                        <strong>選項:</strong><br>
-                        (A) means (I) make time
-                    </div>
-                    <p><strong>完整句子:</strong> Keep in mind that even short periods of low-impact exercise serve as a powerful _____ to improve your health.</p>
-                    
-                    <div class="answer">✅ 正解: (A) means</div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 1: 辨識名詞位置</div>
-                        • <strong>a powerful + 單數名詞</strong><br>
-                        • serve as a _____ (作為一種_____)<br>
-                        • 需填入<strong>可數/不可數名詞</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 2: 分析語意邏輯</div>
-                        <div class="quote">
-                            "exercise serve as a powerful _____ <span style="color:#d32f2f; font-weight:bold;">to improve your health</span>"
-                        </div>
-                        • 運動是一種<strong>方法/手段</strong><br>
-                        • 目的: 改善健康<br>
-                        • serve as = 作為、充當
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 3: 名詞辨析</div>
-                        • make time (片語動詞) ❌ 不是名詞<br>
-                        • <strong>means (方法、手段) ✅</strong><br>
-                        • means 單複數同形 (a means / many means)
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">🔑 關鍵思維</div>
-                        <strong>固定搭配:</strong> a means to V (做...的方法)<br>
-                        <strong>特殊用法:</strong> means 單複數同形
-                    </div>
-                </div>
-
-                <div class="question-block">
-                    <span class="question-number">題目 40</span>
-                    <div class="options">
-                        <strong>選項:</strong><br>
-                        (I) make time
-                    </div>
-                    <p><strong>完整句子:</strong> So, no matter how busy you are, try to _____ for exercise every day.</p>
-                    
-                    <div class="answer">✅ 正解: (I) make time</div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 1: 辨識不定詞結構</div>
-                        • <strong>try to + 原形動詞</strong><br>
-                        • 需填入<strong>動詞/片語動詞</strong>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 2: 分析語意邏輯</div>
-                        <div class="quote">
-                            "<span style="color:#7b1fa2; font-weight:bold;">no matter how busy you are</span>, try to _____ for exercise"
-                        </div>
-                        • 即使忙碌 → 也要為運動<strong>撥出時間</strong><br>
-                        • 前文呼應: fit exercise into your busy schedule
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">步驟 3: 片語確認</div>
-                        • <strong>make time for sth ✅</strong> (為...撥出時間)<br>
-                        • 剩餘唯一選項,語意完美符合
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-title">🔑 關鍵思維</div>
-                        <strong>片語記憶:</strong> make time for = find time for (撥出時間給...)<br>
-                        <strong>首尾呼應:</strong> 開頭提fit into schedule → 結尾make time
-                    </div>
-                </div>
-            </div>
-
-            <!-- 單字依解題邏輯分類 -->
-            <div class="section">
-                <h2 class="section-title">📚 單字依解題邏輯分類</h2>
                 
-                <div class="vocab-category">
-                    <h3>🎯 主旨理解必備詞</h3>
-                    <div class="vocab-item">
-                        <span class="vocab-word">exercise</span>
-                        <span>運動 (主題詞,全文出現13次)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">laborious</span>
-                        <span>費力的、辛苦的 (labor + ious)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">effective</span>
-                        <span>有效的 (effect + ive)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">low-impact</span>
-                        <span>低強度的 (低衝擊的運動)</span>
-                    </div>
+                <!-- 第32題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">32</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) means</span><span class="opt">(B) soreness</span><span class="opt">(C) point to</span><span class="opt">(D) argue</span><span class="opt">(E) demanding</span><span class="opt">(F) abide by</span><span class="opt">(G) fanatic</span><span class="opt">(H) current</span><span class="opt">(I) make time</span><span class="opt">(J) modest</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...you don't have to be a fitness <u><strong>____</strong></u> to do it.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(G) fanatic</div><div class="kill-point">⚡ 秒殺點：a fitness ____ = 健身狂熱者</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>a fitness ____</strong> → 不需成為「狂熱者」也能運動 → <strong>fanatic</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：a fitness ____ → 需要<strong>名詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：名詞有 (A) means、(B) soreness、(G) fanatic</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：fitness fanatic = 健身狂 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"you <span class="anchor-highlight">don't have to be</span> a fitness <span class="anchor-highlight">fanatic</span>"</div></div>
                 </div>
-
-                <div class="vocab-category">
-                    <h3>🔀 轉折判斷關鍵詞</h3>
-                    <div class="vocab-item">
-                        <span class="vocab-word">In fact</span>
-                        <span>事實上 (強調真相,出現2次)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">but</span>
-                        <span>但是 (對比: demanding ↔ should not be painful)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">So</span>
-                        <span>所以 (因果: 運動有益 → 要撥時間運動)</span>
-                    </div>
+                
+                <!-- 第33題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">33</div><span class="difficulty-tag difficulty-hard">困難</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) means</span><span class="opt">(B) soreness</span><span class="opt">(C) point to</span><span class="opt">(D) argue</span><span class="opt">(E) demanding</span><span class="opt">(F) abide by</span><span class="opt">(G) fanatic</span><span class="opt">(H) current</span><span class="opt">(I) make time</span><span class="opt">(J) modest</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...make "start slow and have fun" a motto to <u><strong>____</strong></u>.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(F) abide by</div><div class="kill-point">⚡ 秒殺點：a motto to ____ = 要遵守的座右銘</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>a motto to ____</strong> → 「要____的座右銘」→ <strong>abide by</strong>（遵守）</p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：to ____ → 需要<strong>動詞原形</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：動詞有 (C)(D)(F)(I)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配判斷：motto + abide by = 遵守座右銘 ✓</span></div></div>
+                    <div class="trap-analysis"><div class="trap-title">🚨 誘答分析 ｜ 高頻錯題</div><div class="trap-item"><span class="trap-option">不熟悉 abide by 片語</span><span class="trap-reason"> → abide by = 遵守，常搭配 rules, laws, motto</span></div></div>
                 </div>
-
-                <div class="vocab-category">
-                    <h3>🔍 細節定位詞彙</h3>
-                    <div class="vocab-item">
-                        <span class="vocab-word">modest</span>
-                        <span>適度的、不多的 (modest amounts = 少量)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">fanatic</span>
-                        <span>狂熱者 (fitness fanatic = 健身狂)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">abide by</span>
-                        <span>遵守、遵循 (= follow, obey)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">current</span>
-                        <span>當前的、最新的 (current studies = 最新研究)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">argue</span>
-                        <span>主張、認為 (argue that... = claim that...)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">demanding</span>
-                        <span>要求高的、費力的 (physically demanding = 體能要求高)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">point to</span>
-                        <span>指向、暗示 (= indicate, suggest)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">soreness</span>
-                        <span>痠痛 (sore + ness,名詞)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">means</span>
-                        <span>方法、手段 (單複數同形)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">make time</span>
-                        <span>撥出時間 (make time for sth = 為...撥時間)</span>
-                    </div>
+                
+                <!-- 第34題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">34</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) means</span><span class="opt">(B) soreness</span><span class="opt">(C) point to</span><span class="opt">(D) argue</span><span class="opt">(E) demanding</span><span class="opt">(F) abide by</span><span class="opt">(G) fanatic</span><span class="opt">(H) current</span><span class="opt">(I) make time</span><span class="opt">(J) modest</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>In fact, <u><strong>____</strong></u> health studies prove that exercise doesn't have to hurt...</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(H) current</div><div class="kill-point">⚡ 秒殺點：old-fashioned vs. ____ studies</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p>前文說 <strong>old-fashioned</strong>（過時的）→ 對比 → <strong>current</strong>（目前的）研究</p></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 對比結構</div><div class="anchor-text">"<span class="anchor-highlight">old-fashioned</span>... <span class="anchor-highlight">current</span> health studies"</div></div>
                 </div>
-
-                <div class="vocab-category">
-                    <h3>📖 延伸重要詞彙</h3>
-                    <div class="vocab-item">
-                        <span class="vocab-word">fit into</span>
-                        <span>融入、安排進 (fit exercise into schedule)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">ease</span>
-                        <span>減輕、緩和 (ease depression = 緩解憂鬱)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">enhance</span>
-                        <span>增強、提高 (enhance self-image)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">relieve</span>
-                        <span>減輕、舒緩 (relieve stress = 紓壓)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">motto</span>
-                        <span>座右銘、格言</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">old-fashioned</span>
-                        <span>過時的、老式的</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">temporarily</span>
-                        <span>暫時地 (temporary + ly)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">injury</span>
-                        <span>傷害、受傷 (injure的名詞)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">strain</span>
-                        <span>拉傷、扭傷 (muscle strain = 肌肉拉傷)</span>
-                    </div>
-                    <div class="vocab-item">
-                        <span class="vocab-word">associate with</span>
-                        <span>與...聯想、關聯</span>
-                    </div>
+                
+                <!-- 第35題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">35</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) means</span><span class="opt">(B) soreness</span><span class="opt">(C) point to</span><span class="opt">(D) argue</span><span class="opt">(E) demanding</span><span class="opt">(F) abide by</span><span class="opt">(G) fanatic</span><span class="opt">(H) current</span><span class="opt">(I) make time</span><span class="opt">(J) modest</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>You might <u><strong>____</strong></u> that if working out doesn't give you pain, it isn't working.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(D) argue</div><div class="kill-point">⚡ 秒殺點：might ____ that + 子句</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>might ____ that</strong> + 子句 → 「可能主張...」→ <strong>argue</strong></p></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"You might <span class="anchor-highlight">argue</span> that..."</div></div>
+                </div>
+                
+                <!-- 第36題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">36</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) means</span><span class="opt">(B) soreness</span><span class="opt">(C) point to</span><span class="opt">(D) argue</span><span class="opt">(E) demanding</span><span class="opt">(F) abide by</span><span class="opt">(G) fanatic</span><span class="opt">(H) current</span><span class="opt">(I) make time</span><span class="opt">(J) modest</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...physically <u><strong>____</strong></u> exercises may make you breathe heavily...</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(E) demanding</div><div class="kill-point">⚡ 秒殺點：physically ____ = 體力上費力的</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>physically ____</strong> + <strong>breathe heavily</strong> → 費力運動讓人喘 → <strong>demanding</strong></p></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"physically <span class="anchor-highlight">demanding</span> exercises... <span class="anchor-highlight">breathe heavily</span>"</div></div>
+                </div>
+                
+                <!-- 第37題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">37</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) means</span><span class="opt">(B) soreness</span><span class="opt">(C) point to</span><span class="opt">(D) argue</span><span class="opt">(E) demanding</span><span class="opt">(F) abide by</span><span class="opt">(G) fanatic</span><span class="opt">(H) current</span><span class="opt">(I) make time</span><span class="opt">(J) modest</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...if it is, it may <u><strong>____</strong></u> an injury or muscle strain.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(C) point to</div><div class="kill-point">⚡ 秒殺點：may ____ an injury = 可能指向受傷</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p>疼痛可能「指向/顯示」受傷 → <strong>point to</strong></p></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"<span class="anchor-highlight">if it is</span> (painful), it may <span class="anchor-highlight">point to</span> an injury"</div></div>
+                </div>
+                
+                <!-- 第38題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">38</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) means</span><span class="opt">(B) soreness</span><span class="opt">(C) point to</span><span class="opt">(D) argue</span><span class="opt">(E) demanding</span><span class="opt">(F) abide by</span><span class="opt">(G) fanatic</span><span class="opt">(H) current</span><span class="opt">(I) make time</span><span class="opt">(J) modest</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...get results without the <u><strong>____</strong></u> or discomfort...</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(B) soreness</div><div class="kill-point">⚡ 秒殺點：____ or discomfort = 並列結構</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>____ or discomfort</strong> → 並列結構需要同類詞 → <strong>soreness</strong>（酸痛）</p></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 並列結構</div><div class="anchor-text">"without the <span class="anchor-highlight">soreness</span> or <span class="anchor-highlight">discomfort</span>"</div></div>
+                </div>
+                
+                <!-- 第39題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">39</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) means</span><span class="opt">(B) soreness</span><span class="opt">(C) point to</span><span class="opt">(D) argue</span><span class="opt">(E) demanding</span><span class="opt">(F) abide by</span><span class="opt">(G) fanatic</span><span class="opt">(H) current</span><span class="opt">(I) make time</span><span class="opt">(J) modest</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...serve as a powerful <u><strong>____</strong></u> to improve your health.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(A) means</div><div class="kill-point">⚡ 秒殺點：a powerful ____ to improve = 改善的方法</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>a powerful ____ to improve</strong> → 「有力的____來改善」→ <strong>means</strong>（方法）</p></div>
+                    <div class="trap-analysis"><div class="trap-title">🚨 誘答分析</div><div class="trap-item"><span class="trap-option">不知道 means 單複數同形</span><span class="trap-reason"> → a means = 一個方法</span></div></div>
+                </div>
+                
+                <!-- 第40題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">40</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) means</span><span class="opt">(B) soreness</span><span class="opt">(C) point to</span><span class="opt">(D) argue</span><span class="opt">(E) demanding</span><span class="opt">(F) abide by</span><span class="opt">(G) fanatic</span><span class="opt">(H) current</span><span class="opt">(I) make time</span><span class="opt">(J) modest</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>So, no matter how busy you are, try to <u><strong>____</strong></u> for exercise every day...</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(I) make time</div><div class="kill-point">⚡ 秒殺點：try to ____ for exercise = 抽出時間運動</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>no matter how busy</strong> → 即使忙也要「抽出時間」→ <strong>make time</strong></p></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 首尾呼應</div><div class="anchor-text">"<span class="anchor-highlight">no matter how busy</span>... try to <span class="anchor-highlight">make time</span>"</div></div>
                 </div>
             </div>
-
-            <!-- 考前衝刺重點整理 -->
+            
+            <!-- 單字戰略分類 -->
             <div class="section">
-                <h2 class="section-title">⚡ 考前衝刺重點整理</h2>
-                <div class="exam-prep">
-                    
-                    <h3>🎯 解題三步驟</h3>
-                    <div class="formula">
-                        1️⃣ 詞性判斷 → 2️⃣ 語意分析 → 3️⃣ 邏輯驗證
+                <h2 class="section-title">📚 單字戰略分類 ｜ 依陷阱類型</h2>
+                <table class="vocab-table">
+                    <thead>
+                        <tr><th style="width: 15%;">單字</th><th style="width: 15%;">陷阱類型</th><th style="width: 15%;">高頻考法</th><th style="width: 55%;">實戰例句</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="vocab-word">modest</span><br>(adj.) 適度的；謙虛的</td><td><span class="trap-type trap-type-multi">一詞多義</span></td><td><span class="exam-focus">modest amount</span></td><td><span class="eng-example"><span class="eng-keyword">modest</span> amounts of exercise</span><br><span class="chi-example"><span class="chi-keyword">適度的</span>運動量</span></td></tr>
+                        <tr><td><span class="vocab-word">fanatic</span><br>(n.) 狂熱者</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">fitness fanatic</span></td><td><span class="eng-example">a fitness <span class="eng-keyword">fanatic</span></span><br><span class="chi-example">健身<span class="chi-keyword">狂熱者</span></span></td></tr>
+                        <tr><td><span class="vocab-word">abide by</span><br>(phr.v.) 遵守</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">abide by rules/motto</span></td><td><span class="eng-example">a motto to <span class="eng-keyword">abide by</span></span><br><span class="chi-example">要<span class="chi-keyword">遵守</span>的座右銘</span></td></tr>
+                        <tr><td><span class="vocab-word">current</span><br>(adj.) 目前的</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">current studies</span></td><td><span class="eng-example"><span class="eng-keyword">current</span> health studies</span><br><span class="chi-example"><span class="chi-keyword">目前的</span>健康研究</span></td></tr>
+                        <tr><td><span class="vocab-word">demanding</span><br>(adj.) 費力的</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">physically demanding</span></td><td><span class="eng-example">physically <span class="eng-keyword">demanding</span> exercises</span><br><span class="chi-example">體力上<span class="chi-keyword">費力的</span>運動</span></td></tr>
+                        <tr><td><span class="vocab-word">point to</span><br>(phr.v.) 指向；顯示</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">症狀 + point to</span></td><td><span class="eng-example">it may <span class="eng-keyword">point to</span> an injury</span><br><span class="chi-example">這可能<span class="chi-keyword">指向</span>受傷</span></td></tr>
+                        <tr><td><span class="vocab-word">soreness</span><br>(n.) 酸痛</td><td><span class="trap-type trap-type-pos">並列判斷</span></td><td><span class="exam-focus">soreness or discomfort</span></td><td><span class="eng-example">without the <span class="eng-keyword">soreness</span> or discomfort</span><br><span class="chi-example">沒有<span class="chi-keyword">酸痛</span>或不適</span></td></tr>
+                        <tr><td><span class="vocab-word">means</span><br>(n.) 方法；手段</td><td><span class="trap-type trap-type-pos">單複同形</span></td><td><span class="exam-focus">a means to V</span></td><td><span class="eng-example">a powerful <span class="eng-keyword">means</span> to improve</span><br><span class="chi-example">有力的<span class="chi-keyword">方法</span>來改善</span></td></tr>
+                        <tr><td><span class="vocab-word">make time</span><br>(phr.v.) 抽出時間</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">make time for</span></td><td><span class="eng-example">try to <span class="eng-keyword">make time</span> for exercise</span><br><span class="chi-example">試著<span class="chi-keyword">抽出時間</span>運動</span></td></tr>
+                        <tr><td><span class="vocab-word">argue</span><br>(v.) 主張；爭論</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">argue that + 子句</span></td><td><span class="eng-example">You might <span class="eng-keyword">argue</span> that...</span><br><span class="chi-example">你可能會<span class="chi-keyword">主張</span>...</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- 轉折詞解題策略總表 -->
+            <div class="section">
+                <h2 class="section-title">🔄 轉折詞解題策略總表</h2>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-cause">🔗</div><div><div class="category-title">1. 強調補充類 Emphasis</div><div class="category-subtitle">強調事實或補充說明</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">In fact</span> <span style="color: #616161;">事實上</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Actually</span> <span style="color: #616161;">實際上</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到強調詞 <span class="strategy-arrow">→</span> 後面是重點資訊 <span class="strategy-arrow">→</span> 空格填符合強調內容的詞</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"<span class="real-example-keyword">In fact</span>, current health studies prove..."</p><p class="real-example-chi"><span class="real-example-chi-keyword">事實上</span>，目前的健康研究證明...</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-contrast">⚡</div><div><div class="category-title">2. 對比轉折類 Contrast</div><div class="category-subtitle">前後語意相反</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">but</span> <span style="color: #616161;">但是</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">However</span> <span style="color: #616161;">然而</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到轉折詞 <span class="strategy-arrow">→</span> 找前後對比點 <span class="strategy-arrow">→</span> 空格填相反概念</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"exercises may make you breathe heavily... <span class="real-example-keyword">but</span> exercise should not be painful"</p><p class="real-example-chi">運動可能讓你喘氣...<span class="real-example-chi-keyword">但</span>不該是痛苦的</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-example">📌</div><div><div class="category-title">3. 來源依據類 Source</div><div class="category-subtitle">說明資訊來源</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">According to</span> <span style="color: #616161;">根據</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Based on</span> <span style="color: #616161;">基於</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到來源詞 <span class="strategy-arrow">→</span> 後面是專家意見 <span class="strategy-arrow">→</span> 空格填符合專業說法的詞</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"<span class="real-example-keyword">According to</span> fitness trainers, physically demanding exercises..."</p><p class="real-example-chi"><span class="real-example-chi-keyword">根據</span>健身教練，體力費力的運動...</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-concession">🎯</div><div><div class="category-title">4. 目的類 Purpose</div><div class="category-subtitle">說明目的或原因</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">For the sake of</span> <span style="color: #616161;">為了</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">In order to</span> <span style="color: #616161;">為了</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到目的詞 <span class="strategy-arrow">→</span> 確認目標 <span class="strategy-arrow">→</span> 空格填達成目標的方法</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"<span class="real-example-keyword">For the sake of</span> your health, it is time to make regular exercise..."</p><p class="real-example-chi"><span class="real-example-chi-keyword">為了</span>你的健康，是時候讓定期運動...</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-addition">➕</div><div><div class="category-title">5. 因果結論類 Conclusion</div><div class="category-subtitle">表示結論或結果</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">So</span> <span style="color: #616161;">所以</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Therefore</span> <span style="color: #616161;">因此</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到結論詞 <span class="strategy-arrow">→</span> 後面是行動建議 <span class="strategy-arrow">→</span> 空格填符合建議的動作</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"<span class="real-example-keyword">So</span>, no matter how busy you are, try to make time for exercise"</p><p class="real-example-chi"><span class="real-example-chi-keyword">所以</span>，無論多忙，都要抽出時間運動</p></div>
+                </div>
+            </div>
+            
+            <!-- 考前衝刺重點 -->
+            <div class="section">
+                <h2 class="section-title">🚀 考前衝刺重點整理</h2>
+                <div class="sprint-section">
+                    <div class="sprint-main-title">🏆 文意選填必勝攻略</div>
+                    <div class="sprint-item">
+                        <h4>🎯 解題三步驟</h4>
+                        <div class="three-steps">
+                            <div class="step-card"><div class="step-card-num">1</div><div class="step-card-title">判斷詞性</div><div class="step-card-desc">看空格前後結構<br>確定需要什麼詞性</div></div>
+                            <div class="step-card"><div class="step-card-num">2</div><div class="step-card-title">篩選選項</div><div class="step-card-desc">依詞性刪除選項<br>縮小作答範圍</div></div>
+                            <div class="step-card"><div class="step-card-num">3</div><div class="step-card-title">語意驗證</div><div class="step-card-desc">結合上下文邏輯<br>確認最佳答案</div></div>
+                        </div>
                     </div>
-                    <div class="highlight-box">
-                        <strong>步驟 1: 詞性判斷 (5秒)</strong><br>
-                        • 看空格前後的<strong>結構提示</strong><br>
-                        • 形容詞 + 名詞 → 名詞<br>
-                        • 副詞 + 形容詞 → 形容詞<br>
-                        • 助動詞 + _____ → 原形動詞<br>
-                        • to + _____ → 原形動詞/片語動詞<br><br>
-                        
-                        <strong>步驟 2: 語意分析 (10秒)</strong><br>
-                        • 找<strong>上下文提示</strong>: 同義詞、反義詞、例子<br>
-                        • 注意<strong>破折號</strong> (—) 後的補充說明<br>
-                        • 標記<strong>轉折詞</strong> (but, however, in fact)<br>
-                        • 找<strong>因果關係</strong> (so, because, if...then)<br><br>
-                        
-                        <strong>步驟 3: 邏輯驗證 (5秒)</strong><br>
-                        • 代入選項<strong>讀一遍</strong><br>
-                        • 確認<strong>搭配詞</strong>正確 (fitness fanatic, abide by)<br>
-                        • 檢查<strong>語意通順</strong>
+                    <div class="sprint-item">
+                        <h4>📝 本篇重點片語</h4>
+                        <ul>
+                            <li><strong>abide by：</strong>遵守（規則、座右銘）</li>
+                            <li><strong>point to：</strong>指向、顯示（症狀指向問題）</li>
+                            <li><strong>make time for：</strong>為...抽出時間</li>
+                            <li><strong>for the sake of：</strong>為了...</li>
+                            <li><strong>physically demanding：</strong>體力上費力的</li>
+                        </ul>
                     </div>
-
-                    <h3>🔑 高頻轉折詞彙表 + 範例</h3>
-                    
-                    <div class="highlight-box" style="margin-bottom:15px;">
-                        <strong style="color:#7b1fa2; font-size:1.2em;">對比轉折類</strong>
+                    <div class="sprint-item">
+                        <h4>📖 本篇重點句型</h4>
+                        <ul>
+                            <li><strong>a means to V：</strong>做某事的方法（means 單複同形）</li>
+                            <li><strong>argue that + 子句：</strong>主張、認為...</li>
+                            <li><strong>no matter how + adj.：</strong>無論多麼...</li>
+                            <li><strong>serve as + N：</strong>作為...</li>
+                        </ul>
                     </div>
-                    <table>
-                        <tr>
-                            <th style="width:12%;">轉折詞</th>
-                            <th style="width:43%;">英文範例</th>
-                            <th style="width:45%;">中文翻譯</th>
-                        </tr>
-                        <tr>
-                            <td><strong>but</strong></td>
-                            <td>Exercises may be demanding, <strong style="color:#7b1fa2;">but</strong> should not be painful.</td>
-                            <td>運動可能費力，<strong style="color:#7b1fa2;">但</strong>不該痛苦。</td>
-                        </tr>
-                        <tr>
-                            <td><strong>however</strong></td>
-                            <td>CGI is useful. <strong style="color:#7b1fa2;">However</strong>, real stunts remain popular.</td>
-                            <td>CGI很有用。<strong style="color:#7b1fa2;">然而</strong>，真人特技仍受歡迎。</td>
-                        </tr>
-                        <tr>
-                            <td><strong>although</strong></td>
-                            <td><strong style="color:#7b1fa2;">Although</strong> busy, make time for exercise.</td>
-                            <td><strong style="color:#7b1fa2;">雖然</strong>忙碌，也要撥時間運動。</td>
-                        </tr>
-                        <tr>
-                            <td><strong>while</strong></td>
-                            <td><strong style="color:#7b1fa2;">While</strong> demanding, exercise shouldn't hurt.</td>
-                            <td><strong style="color:#7b1fa2;">儘管</strong>費力，運動不該痛苦。</td>
-                        </tr>
-                    </table>
-
-                    <div class="highlight-box" style="margin:15px 0;">
-                        <strong style="color:#7b1fa2; font-size:1.2em;">補充說明類</strong>
+                    <div class="danger-zone">
+                        <div class="danger-title">🚨 本篇高頻錯題 TOP 3</div>
+                        <div class="danger-item"><div class="danger-q">第33題：a motto to abide by</div><div class="danger-reason">❌ 錯因：不熟悉 abide by 片語</div><div class="danger-solution">✓ 破解：abide by = 遵守，常搭配 rules, laws, motto</div></div>
+                        <div class="danger-item"><div class="danger-q">第39題：a powerful means to improve</div><div class="danger-reason">❌ 錯因：不知道 means 單複數同形</div><div class="danger-solution">✓ 破解：a means = 一個方法（單複同形）</div></div>
+                        <div class="danger-item"><div class="danger-q">第31題：modest amounts</div><div class="danger-reason">❌ 錯因：只知道 modest = 謙虛的</div><div class="danger-solution">✓ 破解：modest 也可指「適度的、不大的」</div></div>
                     </div>
-                    <table>
-                        <tr>
-                            <th style="width:12%;">轉折詞</th>
-                            <th style="width:43%;">英文範例</th>
-                            <th style="width:45%;">中文翻譯</th>
-                        </tr>
-                        <tr>
-                            <td><strong>in fact</strong></td>
-                            <td><strong style="color:#7b1fa2;">In fact</strong>, exercise doesn't have to hurt.</td>
-                            <td><strong style="color:#7b1fa2;">事實上</strong>，運動不需要痛苦。</td>
-                        </tr>
-                        <tr>
-                            <td><strong>for example</strong></td>
-                            <td>Many exercises, <strong style="color:#7b1fa2;">for example</strong>, walking, are gentle.</td>
-                            <td>許多運動，<strong style="color:#7b1fa2;">例如</strong>走路，很溫和。</td>
-                        </tr>
-                        <tr>
-                            <td><strong>that is</strong></td>
-                            <td>Exercise regularly, <strong style="color:#7b1fa2;">that is</strong>, every day.</td>
-                            <td>規律運動，<strong style="color:#7b1fa2;">也就是</strong>每天運動。</td>
-                        </tr>
-                    </table>
-
-                    <div class="highlight-box" style="margin:15px 0;">
-                        <strong style="color:#7b1fa2; font-size:1.2em;">因果關係類</strong>
+                    <div class="sprint-item">
+                        <h4>🎨 主題詞辨識技巧</h4>
+                        <ul>
+                            <li><strong>核心主題詞：</strong>exercise（運動）出現超過 10 次</li>
+                            <li><strong>相關詞彙：</strong>fitness, workout, physical activity, health</li>
+                            <li><strong>對比結構：</strong>old-fashioned ↔ current，pain ↔ no pain</li>
+                            <li><strong>辨識方法：</strong>exercise 反覆出現 = 絕對主題詞</li>
+                        </ul>
                     </div>
-                    <table>
-                        <tr>
-                            <th style="width:12%;">轉折詞</th>
-                            <th style="width:43%;">英文範例</th>
-                            <th style="width:45%;">中文翻譯</th>
-                        </tr>
-                        <tr>
-                            <td><strong>so</strong></td>
-                            <td>Exercise improves health, <strong style="color:#7b1fa2;">so</strong> make time for it.</td>
-                            <td>運動改善健康，<strong style="color:#7b1fa2;">所以</strong>要撥時間運動。</td>
-                        </tr>
-                        <tr>
-                            <td><strong>because</strong></td>
-                            <td>Exercise helps <strong style="color:#7b1fa2;">because</strong> it relieves stress.</td>
-                            <td>運動有幫助<strong style="color:#7b1fa2;">因為</strong>它紓壓。</td>
-                        </tr>
-                        <tr>
-                            <td><strong>therefore</strong></td>
-                            <td>It's effective; <strong style="color:#7b1fa2;">therefore</strong>, do it daily.</td>
-                            <td>這很有效；<strong style="color:#7b1fa2;">因此</strong>，每天做。</td>
-                        </tr>
-                    </table>
-
-                    <h3>🎨 主題詞辨識技巧</h3>
-                    <div class="highlight-box">
-                        <strong>✅ 主題詞特徵:</strong><br>
-                        • 在文章中<strong>重複出現</strong> 3次以上<br>
-                        • 通常是<strong>名詞或名詞片語</strong><br>
-                        • 出現在<strong>每段的關鍵位置</strong><br><br>
-                        
-                        <strong>本文主題詞:</strong><br>
-                        🟢 <strong>exercise</strong> → 出現13次,貫穿三段<br>
-                        🟢 <strong>health / fitness</strong> → 相關主題詞<br><br>
-                        
-                        <strong>快速判斷法:</strong><br>
-                        第1步: 掃描全文找<strong>重複的名詞</strong><br>
-                        第2步: 確認該詞在<strong>每段都出現</strong><br>
-                        第3步: 這就是主題詞! 用螢光筆標記
-                    </div>
-
-                    <h3>⚡ 快速判斷詞性技巧</h3>
-                    <div class="highlight-box">
-                        <strong>名詞信號:</strong><br>
-                        • a/an/the + <span style="color:#d32f2f;">名詞</span><br>
-                        • 形容詞 + <span style="color:#d32f2f;">名詞</span> (modest amounts, fitness fanatic)<br>
-                        • 介系詞 + <span style="color:#d32f2f;">名詞</span> (without soreness)<br><br>
-                        
-                        <strong>形容詞信號:</strong><br>
-                        • <span style="color:#d32f2f;">形容詞</span> + 名詞 (current studies)<br>
-                        • 副詞 + <span style="color:#d32f2f;">形容詞</span> (physically demanding)<br>
-                        • be動詞 + <span style="color:#d32f2f;">形容詞</span> (be effective)<br><br>
-                        
-                        <strong>動詞/片語動詞信號:</strong><br>
-                        • 助動詞 + <span style="color:#d32f2f;">原形動詞</span> (may point to)<br>
-                        • to + <span style="color:#d32f2f;">原形動詞</span> (to abide by, to make time)<br>
-                        • 主詞 + <span style="color:#d32f2f;">動詞</span> (you might argue)
-                    </div>
-
-                    <h3>🚨 常見陷阱與破解</h3>
-                    <table>
-                        <tr>
-                            <th style="width:35%;">陷阱類型</th>
-                            <th>破解方法</th>
-                        </tr>
-                        <tr>
-                            <td>❌ 詞性混淆 (means當動詞)</td>
-                            <td>✅ means可當名詞(方法)也可當動詞(意味),看結構!</td>
-                        </tr>
-                        <tr>
-                            <td>❌ 忽略破折號提示</td>
-                            <td>✅ 破折號後是<strong>補充說明</strong>,必看!(modest—15 minutes)</td>
-                        </tr>
-                        <tr>
-                            <td>❌ 搭配詞不熟</td>
-                            <td>✅ fitness fanatic, abide by, point to 要熟記</td>
-                        </tr>
-                        <tr>
-                            <td>❌ 同義詞不敏感</td>
-                            <td>✅ ache (動詞) = soreness (名詞), demanding ≠ painful</td>
-                        </tr>
-                        <tr>
-                            <td>❌ 只看單句不看全段</td>
-                            <td>✅ 有時答案提示在<strong>前一句或後一句</strong></td>
-                        </tr>
-                    </table>
-
-                    <h3>🏆 考前終極口訣</h3>
-                    <div class="formula">
-                        <strong style="font-size:1.3em;">詞性→破折號→轉折詞→搭配詞→代入檢查</strong>
-                    </div>
-                    <div class="highlight-box">
-                        <strong>🔴 紅色標記 (核心句/主旨):</strong><br>
-                        • Exercise doesn't always have to be laborious<br>
-                        • Exercise doesn't have to hurt to be effective<br>
-                        • Exercise should not be painful<br>
-                        → 全文主旨: <strong>運動不需痛苦也有效</strong><br><br>
-                        
-                        <strong>🟣 紫色標記 (轉折詞):</strong><br>
-                        • In fact (2次) → 強調真相<br>
-                        • but → demanding vs painful 的對比<br>
-                        • So → 因果: 運動有益→撥時間<br><br>
-                        
-                        <strong>🟢 綠色標記 (主題詞):</strong><br>
-                        • exercise (13次) → 絕對主題詞!<br><br>
-                        
-                        <strong>⚡ 文意選填秒殺技巧:</strong><br>
-                        1. <strong>先看選項分詞性</strong> (名/動/形/片語) - 10秒<br>
-                        2. <strong>判斷空格詞性</strong> (看前後結構) - 3秒/題<br>
-                        3. <strong>找破折號、轉折詞</strong> (語意提示) - 5秒/題<br>
-                        4. <strong>確認搭配詞</strong> (fitness fanatic, abide by) - 3秒/題<br>
-                        5. <strong>代入檢查</strong> (讀一遍語意) - 4秒/題<br>
-                        <strong>→ 一題控制在 15-20 秒!</strong><br>
-                        <strong>→ 10題完成時間: 2.5-3 分鐘</strong>
-                    </div>
-
-                    <div class="formula" style="background:#d4edda; color:#155724; margin-top:20px;">
-                        💪 記住: 文意選填考的是<strong>詞性+語意+搭配</strong>三合一!
+                    <div class="mantra-box">
+                        <div class="mantra-title">🏆 考前終極口訣</div>
+                        <div class="mantra-text"><span class="mantra-highlight">詞性先行</span>，結構定位<br><span class="mantra-highlight">轉折必看</span>，前後對照<br><span class="mantra-highlight">搭配優先</span>，固定用法<br><span class="mantra-highlight">一詞多義</span>，語境判斷</div>
                     </div>
                 </div>
             </div>
-
+            
+            <!-- 答案總覽 -->
+            <div class="section">
+                <h2 class="section-title">✅ 答案總覽</h2>
+                <div class="answer-overview">
+                    <div class="answer-grid">
+                        <div class="answer-cell"><div class="answer-cell-num">31</div><div class="answer-cell-ans">(J)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">32</div><div class="answer-cell-ans">(G)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">33</div><div class="answer-cell-ans">(F)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">34</div><div class="answer-cell-ans">(H)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">35</div><div class="answer-cell-ans">(D)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">36</div><div class="answer-cell-ans">(E)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">37</div><div class="answer-cell-ans">(C)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">38</div><div class="answer-cell-ans">(B)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">39</div><div class="answer-cell-ans">(A)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">40</div><div class="answer-cell-ans">(I)</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>🏃 學測英文文意選填 ｜ 專業教學分析版 ｜ 110年學測</p>
+            <p>主題：運動與健康 Exercise & Health</p>
         </div>
     </div>
 </body>
