@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學測文意選填 - 颱風命名 專業教學分析版</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif; line-height: 1.9; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: #fff; border-radius: 20px; box-shadow: 0 25px 80px rgba(0,0,0,0.4); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #455a64 0%, #607d8b 100%); color: white; padding: 35px 40px; text-align: center; }
+        .header h1 { font-size: 2.4em; margin-bottom: 10px; }
+        .header .subtitle { font-size: 1.2em; opacity: 0.9; }
+        .header .theme-tag { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 20px; margin-top: 10px; }
+        .content { padding: 40px; }
+        .section { margin-bottom: 50px; }
+        .section-title { font-size: 1.6em; color: #37474f; border-left: 6px solid #607d8b; padding-left: 18px; margin-bottom: 25px; }
+        .structure-box { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 15px; padding: 25px; margin-bottom: 20px; border-left: 5px solid #607d8b; }
+        .structure-function { background: #cfd8dc; display: inline-block; padding: 4px 12px; border-radius: 15px; font-size: 0.9em; color: #37474f; font-weight: bold; margin-bottom: 10px; }
+        .article-box { background: #fafafa; border-radius: 15px; padding: 30px; border: 2px solid #e0e0e0; font-size: 1.08em; line-height: 2.2; }
+        .core-sentence { color: #c62828; font-weight: bold; background: linear-gradient(transparent 60%, #ffcdd2 60%); }
+        .transition-word { color: #6a1b9a; font-weight: bold; background: linear-gradient(transparent 60%, #e1bee7 60%); }
+        .theme-word { color: #2e7d32; font-weight: bold; }
+        .blank { display: inline-block; min-width: 70px; border-bottom: 3px solid #455a64; text-align: center; font-weight: bold; color: #455a64; margin: 0 5px; padding: 0 8px; }
+        .options-box { background: linear-gradient(135deg, #eceff1 0%, #cfd8dc 100%); border-radius: 15px; padding: 25px; margin: 25px 0; border: 2px solid #b0bec5; }
+        .options-title { font-weight: bold; color: #37474f; margin-bottom: 15px; font-size: 1.15em; }
+        .options-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+        .option-item { background: white; padding: 12px; border-radius: 10px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+        .option-item .letter { color: #c62828; font-weight: bold; font-size: 1.1em; }
+        .option-item .word { color: #1565c0; font-weight: 500; }
+        .option-item .pos { color: #757575; font-size: 0.85em; }
+        .question-card { background: white; border-radius: 18px; padding: 30px; margin-bottom: 30px; box-shadow: 0 6px 25px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; }
+        .question-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .question-number { background: linear-gradient(135deg, #37474f 0%, #455a64 100%); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.3em; }
+        .difficulty-tag { padding: 5px 15px; border-radius: 20px; font-size: 0.85em; font-weight: bold; }
+        .difficulty-easy { background: #c8e6c9; color: #2e7d32; }
+        .difficulty-medium { background: #fff3e0; color: #ef6c00; }
+        .difficulty-hard { background: #ffcdd2; color: #c62828; }
+        .options-reminder { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border: 1px solid #90caf9; border-radius: 10px; padding: 12px 18px; margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .options-reminder-title { color: #1565c0; font-weight: bold; margin-right: 5px; }
+        .options-reminder .opt { background: white; padding: 4px 10px; border-radius: 15px; font-size: 0.9em; color: #1565c0; border: 1px solid #90caf9; }
+        .question-sentence { background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%); padding: 20px 25px; border-radius: 12px; margin: 20px 0; border-left: 5px solid #ffc107; font-size: 1.1em; }
+        .answer-row { display: flex; align-items: center; gap: 20px; margin: 20px 0; flex-wrap: wrap; }
+        .answer-tag { background: linear-gradient(135deg, #43a047 0%, #66bb6a 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: bold; }
+        .kill-point { background: linear-gradient(135deg, #c62828 0%, #e53935 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: bold; font-size: 0.95em; }
+        .instant-kill { background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border: 2px solid #ff9800; border-radius: 12px; padding: 18px 22px; margin: 15px 0; }
+        .instant-kill-title { color: #e65100; font-weight: bold; margin-bottom: 8px; }
+        .logic-chain { background: #f5f5f5; border-radius: 12px; padding: 20px; margin: 15px 0; }
+        .logic-chain-title { color: #37474f; font-weight: bold; margin-bottom: 12px; }
+        .logic-step { display: flex; align-items: flex-start; margin: 12px 0; padding-left: 10px; }
+        .logic-step-num { background: #607d8b; color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85em; font-weight: bold; margin-right: 12px; flex-shrink: 0; }
+        .anchor-box { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px 20px; margin: 12px 0; border-radius: 0 10px 10px 0; }
+        .anchor-label { color: #2e7d32; font-weight: bold; font-size: 0.95em; margin-bottom: 5px; }
+        .anchor-text { color: #1b5e20; font-style: italic; }
+        .anchor-highlight { background: #a5d6a7; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-style: normal; }
+        .trap-analysis { background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%); border-radius: 12px; padding: 18px 22px; margin: 15px 0; border: 2px solid #ec407a; }
+        .trap-title { color: #c2185b; font-weight: bold; margin-bottom: 10px; }
+        .trap-item { margin: 8px 0; padding-left: 20px; position: relative; }
+        .trap-item::before { content: "✗"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
+        .trap-option { color: #c62828; font-weight: bold; }
+        .trap-reason { color: #616161; }
+        .vocab-table { width: 100%; border-collapse: collapse; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 12px; overflow: hidden; }
+        .vocab-table th { background: linear-gradient(135deg, #37474f 0%, #455a64 100%); color: white; padding: 15px; text-align: left; }
+        .vocab-table td { padding: 15px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+        .vocab-table tr:nth-child(even) { background: #f8f9fa; }
+        .vocab-table tr:hover { background: #eceff1; }
+        .vocab-word { color: #c62828; font-weight: bold; font-size: 1.1em; }
+        .trap-type { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+        .trap-type-multi { background: #ffcdd2; color: #c62828; }
+        .trap-type-collocation { background: #c8e6c9; color: #2e7d32; }
+        .trap-type-pos { background: #fff3e0; color: #ef6c00; }
+        .trap-type-context { background: #e1bee7; color: #6a1b9a; }
+        .exam-focus { background: #e3f2fd; padding: 3px 10px; border-radius: 12px; font-size: 0.85em; color: #1565c0; font-weight: 500; }
+        .eng-example { color: #1565c0; }
+        .eng-keyword { color: #c62828; font-weight: bold; }
+        .chi-example { color: #616161; }
+        .chi-keyword { color: #c62828; font-weight: bold; }
+        .transition-category { background: white; border-radius: 15px; padding: 25px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid #e0e0e0; }
+        .transition-category-header { display: flex; align-items: center; gap: 15px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 2px solid #e0e0e0; }
+        .category-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3em; color: white; }
+        .category-contrast { background: linear-gradient(135deg, #e91e63 0%, #f06292 100%); }
+        .category-cause { background: linear-gradient(135deg, #ff9800 0%, #ffb74d 100%); }
+        .category-addition { background: linear-gradient(135deg, #4caf50 0%, #81c784 100%); }
+        .category-example { background: linear-gradient(135deg, #2196f3 0%, #64b5f6 100%); }
+        .category-concession { background: linear-gradient(135deg, #9c27b0 0%, #ba68c8 100%); }
+        .category-title { font-size: 1.2em; font-weight: bold; color: #1b262c; }
+        .category-subtitle { color: #757575; font-size: 0.95em; }
+        .transition-words-list { display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0; }
+        .transition-word-tag { background: #f5f5f5; padding: 6px 14px; border-radius: 20px; font-weight: 500; border: 1px solid #e0e0e0; }
+        .strategy-action { background: linear-gradient(135deg, #eceff1 0%, #cfd8dc 100%); border-radius: 10px; padding: 15px 20px; margin: 15px 0; }
+        .strategy-action-title { color: #37474f; font-weight: bold; margin-bottom: 8px; }
+        .strategy-action-steps { color: #455a64; font-weight: 500; }
+        .strategy-arrow { color: #607d8b; margin: 0 8px; }
+        .real-example { background: #fafafa; border-left: 4px solid #6a1b9a; padding: 15px 20px; margin-top: 15px; border-radius: 0 10px 10px 0; }
+        .real-example-title { color: #6a1b9a; font-weight: bold; font-size: 0.95em; margin-bottom: 8px; }
+        .real-example-eng { color: #1565c0; }
+        .real-example-keyword { color: #6a1b9a; font-weight: bold; background: #f3e5f5; padding: 2px 6px; border-radius: 4px; }
+        .real-example-chi { color: #616161; margin-top: 5px; }
+        .real-example-chi-keyword { color: #6a1b9a; font-weight: bold; }
+        .sprint-section { background: linear-gradient(135deg, #fffbea 0%, #fff9c4 100%); border-radius: 18px; padding: 35px; margin: 25px 0; border: 3px solid #ffd54f; }
+        .sprint-main-title { color: #0d47a1; font-weight: bold; font-size: 1.5em; text-align: center; margin-bottom: 30px; }
+        .sprint-item { background: white; border-radius: 12px; padding: 22px; margin: 18px 0; box-shadow: 0 3px 10px rgba(0,0,0,0.08); }
+        .sprint-item h4 { color: #0d47a1; font-weight: bold; margin-bottom: 15px; font-size: 1.15em; }
+        .sprint-item ul { list-style: none; padding: 0; }
+        .sprint-item li { padding: 10px 0; padding-left: 28px; position: relative; color: #1565c0; font-weight: 500; }
+        .sprint-item li::before { content: "✓"; position: absolute; left: 0; color: #4caf50; font-weight: bold; }
+        .three-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 15px 0; }
+        .step-card { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: 12px; padding: 20px; text-align: center; }
+        .step-card-num { background: #0d47a1; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin: 0 auto 10px; }
+        .step-card-title { color: #0d47a1; font-weight: bold; font-size: 1.1em; margin-bottom: 8px; }
+        .step-card-desc { color: #1565c0; font-size: 0.95em; }
+        .danger-zone { background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); border-radius: 15px; padding: 25px; margin: 20px 0; border: 2px solid #e57373; }
+        .danger-title { color: #c62828; font-weight: bold; font-size: 1.2em; margin-bottom: 15px; }
+        .danger-item { background: white; border-radius: 10px; padding: 15px 20px; margin: 12px 0; border-left: 4px solid #c62828; }
+        .danger-q { color: #c62828; font-weight: bold; margin-bottom: 5px; }
+        .danger-reason { color: #616161; }
+        .danger-solution { color: #2e7d32; font-weight: 500; margin-top: 5px; }
+        .mantra-box { background: linear-gradient(135deg, #1a237e 0%, #283593 100%); border-radius: 18px; padding: 35px; text-align: center; margin-top: 30px; color: white; }
+        .mantra-title { font-size: 1.4em; margin-bottom: 20px; }
+        .mantra-text { font-size: 1.5em; font-weight: bold; line-height: 2.2; }
+        .mantra-highlight { background: rgba(255,255,255,0.2); padding: 3px 12px; border-radius: 8px; }
+        .answer-overview { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: 15px; padding: 30px; text-align: center; }
+        .answer-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; max-width: 700px; margin: 20px auto; }
+        .answer-cell { background: white; padding: 18px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+        .answer-cell-num { color: #37474f; font-weight: bold; font-size: 1.1em; }
+        .answer-cell-ans { color: #2e7d32; font-weight: bold; font-size: 1.3em; margin-top: 5px; }
+        .footer { background: linear-gradient(135deg, #37474f 0%, #455a64 100%); color: white; text-align: center; padding: 25px; }
+        .legend-box { display: flex; flex-wrap: wrap; gap: 20px; padding: 15px 20px; background: #f5f5f5; border-radius: 10px; margin-top: 20px; }
+        .legend-item { display: flex; align-items: center; gap: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌀 學測文意選填</h1>
+            <div class="subtitle">專業教學分析版 ｜ 101年學測</div>
+            <div class="theme-tag">🎯 主題：颱風命名 Typhoon Naming</div>
+        </div>
+        
+        <div class="content">
+            <!-- 選項總覽 -->
+            <div class="options-box">
+                <div class="options-title">📋 選項總覽 ｜ 先分類再作答</div>
+                <div class="options-grid">
+                    <div class="option-item"><div class="letter">(A)</div><div class="word">request</div><div class="pos">v. 要求</div></div>
+                    <div class="option-item"><div class="letter">(B)</div><div class="word">favor</div><div class="pos">v. 偏好</div></div>
+                    <div class="option-item"><div class="letter">(C)</div><div class="word">disadvantage</div><div class="pos">n. 缺點</div></div>
+                    <div class="option-item"><div class="letter">(D)</div><div class="word">composed</div><div class="pos">adj. 組成的</div></div>
+                    <div class="option-item"><div class="letter">(E)</div><div class="word">recycled</div><div class="pos">v. 回收</div></div>
+                    <div class="option-item"><div class="letter">(F)</div><div class="word">practice</div><div class="pos">n. 慣例</div></div>
+                    <div class="option-item"><div class="letter">(G)</div><div class="word">replaced</div><div class="pos">v. 取代</div></div>
+                    <div class="option-item"><div class="letter">(H)</div><div class="word">raise</div><div class="pos">v. 提高</div></div>
+                    <div class="option-item"><div class="letter">(I)</div><div class="word">various</div><div class="pos">adj. 各種的</div></div>
+                    <div class="option-item"><div class="letter">(J)</div><div class="word">female</div><div class="pos">adj. 女性的</div></div>
+                </div>
+            </div>
+            
+            <!-- 文章結構分析 -->
+            <div class="section">
+                <h2 class="section-title">🏗️ 文章結構分析</h2>
+                <div class="structure-box">
+                    <div class="structure-function">第一段功能：兩種命名方式比較</div>
+                    <p>數字式 vs. 名單式 → 數字式用<strong>各種</strong>數字編碼 → 數字式的<strong>缺點</strong>：難記 → 名單式更廣泛使用</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第31-32題，測試形容詞、名詞</p>
+                </div>
+                <div class="structure-box">
+                    <div class="structure-function">第二段功能：名單式演變歷史</div>
+                    <p>最初只用<strong>女性</strong>名字 → 1979年加入男性名字 → 因為女性抗議原本的命名<strong>做法</strong></p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第33-34題，測試形容詞、名詞</p>
+                </div>
+                <div class="structure-box">
+                    <div class="structure-function">第三段功能：亞洲命名特色</div>
+                    <p>2000年改用亞洲名字 → <strong>提高</strong>意識 → 名字庫<strong>由</strong>140個名字<strong>組成</strong> → 韓日<strong>偏好</strong>動物名</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第35-37題，測試動詞、過去分詞、動詞</p>
+                </div>
+                <div class="structure-box">
+                    <div class="structure-function">第四段功能：名字回收與更換機制</div>
+                    <p>140個名字用完後會被<strong>回收</strong>使用 → 會員國可<strong>要求</strong>刪除名字 → 龍王等名字被<strong>取代</strong></p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第38-40題，測試動詞</p>
+                </div>
+            </div>
+            
+            <!-- 文章標示版 -->
+            <div class="section">
+                <h2 class="section-title">📖 文章標示版</h2>
+                <div class="article-box">
+                    <p><span class="transition-word">Generally</span> there are two ways to name <span class="theme-word">typhoons</span>: the number-based convention and the list-based convention. Following the number-based convention, <span class="theme-word">typhoons</span> are coded with <span class="blank">31</span> types of numbers such as a 4-digit or a 6-digit code. <span class="transition-word">For example</span>, the 14th <span class="theme-word">typhoon</span> in 2003 can be labeled either as <span class="theme-word">Typhoon</span> 0314 or <span class="theme-word">Typhoon</span> 200314. The <span class="blank">32</span> of this convention, <span class="transition-word">however</span>, is that a number is hard to remember. The list-based convention, <span class="transition-word">on the other hand</span>, is based on the list of <span class="theme-word">typhoon</span> <span class="theme-word">names</span> compiled in advance by a committee, and is more widely used.</p>
+                    
+                    <p><span class="transition-word">At the very beginning</span>, only <span class="blank">33</span> <span class="theme-word">names</span> were used <span class="transition-word">because</span> at that time <span class="theme-word">typhoons</span> were <span class="theme-word">named</span> after girlfriends or wives of the experts on the committee. In 1979, <span class="transition-word">however</span>, male <span class="theme-word">names</span> were <span class="transition-word">also</span> included <span class="transition-word">because</span> women protested against the original <span class="theme-word">naming</span> <span class="blank">34</span> for reasons of gender equality.</p>
+                    
+                    <p>In Asia, Western <span class="theme-word">names</span> were used until 2000 when the committee decided to use Asian <span class="theme-word">names</span> to <span class="blank">35</span> Asians' awareness of <span class="theme-word">typhoons</span>. The <span class="theme-word">names</span> were chosen from a <span class="theme-word">name</span> pool <span class="blank">36</span> of 140 <span class="theme-word">names</span>, 10 each from the 14 members of the committee. Each country has its unique <span class="theme-word">naming</span> preferences. Korea and Japan <span class="blank">37</span> animal <span class="theme-word">names</span> and China likes <span class="theme-word">names</span> of gods such as Longwang (dragon king) and Fengshen (god of the wind).</p>
+                    
+                    <p>After the 140 <span class="theme-word">names</span> are all used in order, they will be <span class="blank">38</span>. <span class="transition-word">But</span> the <span class="theme-word">names</span> can be changed. If a member country suffers great damage from a certain <span class="theme-word">typhoon</span>, it can <span class="blank">39</span> that the <span class="theme-word">name</span> of the <span class="theme-word">typhoon</span> be deleted from the list at the annual committee meeting. <span class="transition-word">For example</span>, the <span class="theme-word">names</span> of Nabi by South Korea, and Longwang by China were <span class="blank">40</span> with other <span class="theme-word">names</span> in 2007. The deletion of both <span class="theme-word">names</span> was due to the severe damage caused by the <span class="theme-word">typhoons</span> bearing the <span class="theme-word">names</span>.</p>
+                </div>
+                <div class="legend-box">
+                    <div class="legend-item"><span class="core-sentence">紅色底線</span> = 核心句</div>
+                    <div class="legend-item"><span class="transition-word">紫色底線</span> = 轉折詞</div>
+                    <div class="legend-item"><span class="theme-word">綠色粗體</span> = 主題詞</div>
+                </div>
+            </div>
+            
+            <!-- 解題思維 -->
+            <div class="section">
+                <h2 class="section-title">🧠 解題思維 ｜ 逐題攻破</h2>
+                
+                <!-- 第31題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">31</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) request</span><span class="opt">(B) favor</span><span class="opt">(C) disadvantage</span><span class="opt">(D) composed</span><span class="opt">(E) recycled</span><span class="opt">(F) practice</span><span class="opt">(G) replaced</span><span class="opt">(H) raise</span><span class="opt">(I) various</span><span class="opt">(J) female</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...typhoons are coded with <u><strong>____</strong></u> types of numbers such as a 4-digit or a 6-digit code.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(I) various</div><div class="kill-point">⚡ 秒殺點：____ types of = 各種類型的</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>such as 4-digit or 6-digit</strong>（舉例不同類型）→ 「各種」類型 → <strong>various</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：____ types of → 需要<strong>形容詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：形容詞有 (D)(I)(J)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：舉例多種類型 → various ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 舉例說明</div><div class="anchor-text">"<span class="anchor-highlight">various</span> types of numbers <span class="anchor-highlight">such as</span> a 4-digit or a 6-digit"</div></div>
+                </div>
+                
+                <!-- 第32題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">32</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) request</span><span class="opt">(B) favor</span><span class="opt">(C) disadvantage</span><span class="opt">(D) composed</span><span class="opt">(E) recycled</span><span class="opt">(F) practice</span><span class="opt">(G) replaced</span><span class="opt">(H) raise</span><span class="opt">(I) various</span><span class="opt">(J) female</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>The <u><strong>____</strong></u> of this convention, however, is that a number is hard to remember.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(C) disadvantage</div><div class="kill-point">⚡ 秒殺點：however + hard to remember = 缺點</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>however</strong>（轉折）+ <strong>hard to remember</strong>（難記）→ 這是「缺點」→ <strong>disadvantage</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：The ____ of → 需要<strong>名詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：名詞有 (C)(F)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>轉折判斷：however + 負面內容 → disadvantage ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 轉折關係</div><div class="anchor-text">"The <span class="anchor-highlight">disadvantage</span>... <span class="anchor-highlight">however</span>... <span class="anchor-highlight">hard to remember</span>"</div></div>
+                </div>
+                
+                <!-- 第33題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">33</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) request</span><span class="opt">(B) favor</span><span class="opt">(C) disadvantage</span><span class="opt">(D) composed</span><span class="opt">(E) recycled</span><span class="opt">(F) practice</span><span class="opt">(G) replaced</span><span class="opt">(H) raise</span><span class="opt">(I) various</span><span class="opt">(J) female</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>At the very beginning, only <u><strong>____</strong></u> names were used because at that time typhoons were named after girlfriends or wives...</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(J) female</div><div class="kill-point">⚡ 秒殺點：girlfriends or wives = 女性名字</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>named after girlfriends or wives</strong>（以女友或妻子命名）→ 「女性」名字 → <strong>female</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：only ____ names → 需要<strong>形容詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘形容詞有 (D)(J)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：女友、妻子 → female ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 因果關係</div><div class="anchor-text">"only <span class="anchor-highlight">female</span> names... <span class="anchor-highlight">girlfriends or wives</span>"</div></div>
+                </div>
+                
+                <!-- 第34題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">34</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) request</span><span class="opt">(B) favor</span><span class="opt">(C) disadvantage</span><span class="opt">(D) composed</span><span class="opt">(E) recycled</span><span class="opt">(F) practice</span><span class="opt">(G) replaced</span><span class="opt">(H) raise</span><span class="opt">(I) various</span><span class="opt">(J) female</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...women protested against the original naming <u><strong>____</strong></u> for reasons of gender equality.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(F) practice</div><div class="kill-point">⚡ 秒殺點：naming ____ = 命名慣例/做法</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>original naming ____</strong> → 原本的命名「做法/慣例」→ <strong>practice</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：naming ____ → 需要<strong>名詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘名詞只有 (F) practice</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意驗證：命名做法/慣例 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"original naming <span class="anchor-highlight">practice</span>"</div></div>
+                </div>
+                
+                <!-- 第35題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">35</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) request</span><span class="opt">(B) favor</span><span class="opt">(C) disadvantage</span><span class="opt">(D) composed</span><span class="opt">(E) recycled</span><span class="opt">(F) practice</span><span class="opt">(G) replaced</span><span class="opt">(H) raise</span><span class="opt">(I) various</span><span class="opt">(J) female</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...the committee decided to use Asian names to <u><strong>____</strong></u> Asians' awareness of typhoons.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(H) raise</div><div class="kill-point">⚡ 秒殺點：to ____ awareness = 提高意識</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>to ____ awareness</strong> → 「提高」意識 → <strong>raise</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：to ____ → 需要<strong>動詞原形</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：動詞原形有 (A)(B)(H)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配判斷：raise awareness = 提高意識 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div><div class="anchor-text">"to <span class="anchor-highlight">raise</span> Asians' <span class="anchor-highlight">awareness</span>"</div></div>
+                </div>
+                
+                <!-- 第36題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">36</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) request</span><span class="opt">(B) favor</span><span class="opt">(C) disadvantage</span><span class="opt">(D) composed</span><span class="opt">(E) recycled</span><span class="opt">(F) practice</span><span class="opt">(G) replaced</span><span class="opt">(H) raise</span><span class="opt">(I) various</span><span class="opt">(J) female</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>The names were chosen from a name pool <u><strong>____</strong></u> of 140 names...</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(D) composed</div><div class="kill-point">⚡ 秒殺點：pool ____ of = 由...組成</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>a name pool ____ of 140 names</strong> → 由140個名字「組成」的名字庫 → <strong>composed</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：pool ____ of → 需要<strong>過去分詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：過去分詞有 (D)(E)(G)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配判斷：be composed of = 由...組成 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div><div class="anchor-text">"a name pool <span class="anchor-highlight">composed</span> of 140 names"</div></div>
+                </div>
+                
+                <!-- 第37題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">37</div><span class="difficulty-tag difficulty-hard">困難</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) request</span><span class="opt">(B) favor</span><span class="opt">(C) disadvantage</span><span class="opt">(D) composed</span><span class="opt">(E) recycled</span><span class="opt">(F) practice</span><span class="opt">(G) replaced</span><span class="opt">(H) raise</span><span class="opt">(I) various</span><span class="opt">(J) female</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>Korea and Japan <u><strong>____</strong></u> animal names and China likes names of gods...</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(B) favor</div><div class="kill-point">⚡ 秒殺點：與 likes 平行 = 偏好</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p>後句 <strong>China likes</strong>（中國喜歡）→ <strong>Korea and Japan ____</strong> → 平行結構，同義 → <strong>favor</strong>（偏好）</p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：Korea and Japan ____ → 需要<strong>動詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘動詞有 (A)(B)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>平行驗證：____ animal names ≈ likes names → favor ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 平行結構</div><div class="anchor-text">"Korea and Japan <span class="anchor-highlight">favor</span> animal names and China <span class="anchor-highlight">likes</span> names of gods"</div></div>
+                    <div class="trap-analysis"><div class="trap-title">🚨 誘答分析 ｜ 高頻錯題</div><div class="trap-item"><span class="trap-option">誤選 (A) request</span><span class="trap-reason"> → request = 要求，與後文 likes 不平行</span></div></div>
+                </div>
+                
+                <!-- 第38題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">38</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) request</span><span class="opt">(B) favor</span><span class="opt">(C) disadvantage</span><span class="opt">(D) composed</span><span class="opt">(E) recycled</span><span class="opt">(F) practice</span><span class="opt">(G) replaced</span><span class="opt">(H) raise</span><span class="opt">(I) various</span><span class="opt">(J) female</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>After the 140 names are all used in order, they will be <u><strong>____</strong></u>.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(E) recycled</div><div class="kill-point">⚡ 秒殺點：用完後 will be ____ = 會被回收</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>After... all used... will be ____</strong> → 用完後會被「回收」使用 → <strong>recycled</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：will be ____ → 需要<strong>過去分詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘過去分詞有 (E)(G)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：用完後再次使用 → recycled ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"After... all used... will be <span class="anchor-highlight">recycled</span>"</div></div>
+                </div>
+                
+                <!-- 第39題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">39</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) request</span><span class="opt">(B) favor</span><span class="opt">(C) disadvantage</span><span class="opt">(D) composed</span><span class="opt">(E) recycled</span><span class="opt">(F) practice</span><span class="opt">(G) replaced</span><span class="opt">(H) raise</span><span class="opt">(I) various</span><span class="opt">(J) female</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>If a member country suffers great damage..., it can <u><strong>____</strong></u> that the name of the typhoon be deleted...</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(A) request</div><div class="kill-point">⚡ 秒殺點：can ____ that... be deleted = 可要求刪除</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>can ____ that... be deleted</strong> → 可以「要求」刪除 → <strong>request</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：can ____ that → 需要<strong>動詞原形</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘動詞原形只有 (A) request</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>句型驗證：request that + S + (should) V ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 假設語氣</div><div class="anchor-text">"can <span class="anchor-highlight">request</span> that... <span class="anchor-highlight">be</span> deleted"</div></div>
+                </div>
+                
+                <!-- 第40題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">40</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) request</span><span class="opt">(B) favor</span><span class="opt">(C) disadvantage</span><span class="opt">(D) composed</span><span class="opt">(E) recycled</span><span class="opt">(F) practice</span><span class="opt">(G) replaced</span><span class="opt">(H) raise</span><span class="opt">(I) various</span><span class="opt">(J) female</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...the names of Nabi by South Korea, and Longwang by China were <u><strong>____</strong></u> with other names in 2007.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(G) replaced</div><div class="kill-point">⚡ 秒殺點：were ____ with other names = 被其他名字取代</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>were ____ with other names</strong> → 被「取代」為其他名字 → <strong>replaced</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：were ____ with → 需要<strong>過去分詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘過去分詞只有 (G) replaced</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配驗證：be replaced with = 被...取代 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div><div class="anchor-text">"were <span class="anchor-highlight">replaced</span> with other names"</div></div>
+                </div>
+            </div>
+            
+            <!-- 單字戰略分類 -->
+            <div class="section">
+                <h2 class="section-title">📚 單字戰略分類 ｜ 依陷阱類型</h2>
+                <table class="vocab-table">
+                    <thead>
+                        <tr><th style="width: 15%;">單字</th><th style="width: 15%;">陷阱類型</th><th style="width: 15%;">高頻考法</th><th style="width: 55%;">實戰例句</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="vocab-word">various</span><br>(adj.) 各種的</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">various types of</span></td><td><span class="eng-example"><span class="eng-keyword">various</span> types of numbers</span><br><span class="chi-example"><span class="chi-keyword">各種</span>類型的數字</span></td></tr>
+                        <tr><td><span class="vocab-word">disadvantage</span><br>(n.) 缺點</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">the disadvantage of</span></td><td><span class="eng-example">The <span class="eng-keyword">disadvantage</span> of this convention</span><br><span class="chi-example">這個慣例的<span class="chi-keyword">缺點</span></span></td></tr>
+                        <tr><td><span class="vocab-word">female</span><br>(adj.) 女性的</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">female names</span></td><td><span class="eng-example">only <span class="eng-keyword">female</span> names were used</span><br><span class="chi-example">只用<span class="chi-keyword">女性</span>名字</span></td></tr>
+                        <tr><td><span class="vocab-word">practice</span><br>(n.) 慣例；做法</td><td><span class="trap-type trap-type-multi">一詞多義</span></td><td><span class="exam-focus">naming practice</span></td><td><span class="eng-example">the original naming <span class="eng-keyword">practice</span></span><br><span class="chi-example">原本的命名<span class="chi-keyword">做法</span></span></td></tr>
+                        <tr><td><span class="vocab-word">raise</span><br>(v.) 提高</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">raise awareness</span></td><td><span class="eng-example"><span class="eng-keyword">raise</span> Asians' awareness</span><br><span class="chi-example"><span class="chi-keyword">提高</span>亞洲人的意識</span></td></tr>
+                        <tr><td><span class="vocab-word">composed</span><br>(adj.) 組成的</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">be composed of</span></td><td><span class="eng-example">a pool <span class="eng-keyword">composed</span> of 140 names</span><br><span class="chi-example">由140個名字<span class="chi-keyword">組成</span>的庫</span></td></tr>
+                        <tr><td><span class="vocab-word">favor</span><br>(v.) 偏好</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">favor + N</span></td><td><span class="eng-example">Korea and Japan <span class="eng-keyword">favor</span> animal names</span><br><span class="chi-example">韓國和日本<span class="chi-keyword">偏好</span>動物名字</span></td></tr>
+                        <tr><td><span class="vocab-word">recycled</span><br>(v.) 回收</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">be recycled</span></td><td><span class="eng-example">they will be <span class="eng-keyword">recycled</span></span><br><span class="chi-example">它們將被<span class="chi-keyword">回收</span></span></td></tr>
+                        <tr><td><span class="vocab-word">request</span><br>(v.) 要求</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">request that + S + V</span></td><td><span class="eng-example"><span class="eng-keyword">request</span> that the name be deleted</span><br><span class="chi-example"><span class="chi-keyword">要求</span>名字被刪除</span></td></tr>
+                        <tr><td><span class="vocab-word">replaced</span><br>(v.) 取代</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">be replaced with</span></td><td><span class="eng-example">were <span class="eng-keyword">replaced</span> with other names</span><br><span class="chi-example">被其他名字<span class="chi-keyword">取代</span></span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- 轉折詞解題策略總表 -->
+            <div class="section">
+                <h2 class="section-title">🔄 轉折詞解題策略總表</h2>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-contrast">⚡</div><div><div class="category-title">1. 對比轉折類 Contrast</div><div class="category-subtitle">然而、另一方面</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">however</span> <span style="color: #616161;">然而</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">on the other hand</span> <span style="color: #616161;">另一方面</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">But</span> <span style="color: #616161;">但是</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到轉折詞 <span class="strategy-arrow">→</span> 前後對比 <span class="strategy-arrow">→</span> 空格填與前文相反的概念</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"The disadvantage..., <span class="real-example-keyword">however</span>, is that a number is hard to remember"</p><p class="real-example-chi"><span class="real-example-chi-keyword">然而</span>，這個慣例的缺點是數字難記</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-example">📌</div><div><div class="category-title">2. 舉例說明類 Example</div><div class="category-subtitle">例如、比如</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">For example</span> <span style="color: #616161;">例如</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">such as</span> <span style="color: #616161;">例如</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到舉例詞 <span class="strategy-arrow">→</span> 後面是具體例子 <span class="strategy-arrow">→</span> 前面是抽象概念</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"various types of numbers <span class="real-example-keyword">such as</span> a 4-digit or a 6-digit code"</p><p class="real-example-chi">各種類型的數字，<span class="real-example-chi-keyword">例如</span>4位數或6位數編碼</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-cause">🔗</div><div><div class="category-title">3. 因果說明類 Cause/Result</div><div class="category-subtitle">因為</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">because</span> <span style="color: #616161;">因為</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到因果詞 <span class="strategy-arrow">→</span> 前面是結果 <span class="strategy-arrow">→</span> 後面是原因</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"only female names were used <span class="real-example-keyword">because</span>... named after girlfriends or wives"</p><p class="real-example-chi">只用女性名字，<span class="real-example-chi-keyword">因為</span>...以女友或妻子命名</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-addition">➕</div><div><div class="category-title">4. 時間順序類 Sequence</div><div class="category-subtitle">一開始、總的來說</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Generally</span> <span style="color: #616161;">一般來說</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">At the very beginning</span> <span style="color: #616161;">一開始</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">also</span> <span style="color: #616161;">也</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到時間詞 <span class="strategy-arrow">→</span> 注意時間發展 <span class="strategy-arrow">→</span> 空格填符合時序的詞</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"<span class="real-example-keyword">At the very beginning</span>, only female names were used"</p><p class="real-example-chi"><span class="real-example-chi-keyword">一開始</span>，只用女性名字</p></div>
+                </div>
+            </div>
+            
+            <!-- 考前衝刺重點 -->
+            <div class="section">
+                <h2 class="section-title">🚀 考前衝刺重點整理</h2>
+                <div class="sprint-section">
+                    <div class="sprint-main-title">🏆 文意選填必勝攻略</div>
+                    <div class="sprint-item">
+                        <h4>🎯 解題三步驟</h4>
+                        <div class="three-steps">
+                            <div class="step-card"><div class="step-card-num">1</div><div class="step-card-title">判斷詞性</div><div class="step-card-desc">看空格前後結構<br>確定需要什麼詞性</div></div>
+                            <div class="step-card"><div class="step-card-num">2</div><div class="step-card-title">篩選選項</div><div class="step-card-desc">依詞性刪除選項<br>縮小作答範圍</div></div>
+                            <div class="step-card"><div class="step-card-num">3</div><div class="step-card-title">語意驗證</div><div class="step-card-desc">結合上下文邏輯<br>確認最佳答案</div></div>
+                        </div>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>📝 本篇重點片語</h4>
+                        <ul>
+                            <li><strong>raise awareness：</strong>提高意識</li>
+                            <li><strong>be composed of：</strong>由...組成</li>
+                            <li><strong>be replaced with：</strong>被...取代</li>
+                            <li><strong>request that + S + (should) V：</strong>要求...（假設語氣）</li>
+                            <li><strong>protest against：</strong>抗議</li>
+                        </ul>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>📖 本篇重點句型</h4>
+                        <ul>
+                            <li><strong>The disadvantage of... is that...：</strong>...的缺點是...</li>
+                            <li><strong>be named after：</strong>以...命名</li>
+                            <li><strong>for reasons of：</strong>基於...的原因</li>
+                            <li><strong>due to：</strong>由於</li>
+                        </ul>
+                    </div>
+                    <div class="danger-zone">
+                        <div class="danger-title">🚨 本篇高頻錯題 TOP 3</div>
+                        <div class="danger-item"><div class="danger-q">第37題：Korea and Japan favor animal names</div><div class="danger-reason">❌ 錯因：不知道 favor 可作動詞表示「偏好」</div><div class="danger-solution">✓ 破解：favor = 偏好（動詞），與後文 likes 平行</div></div>
+                        <div class="danger-item"><div class="danger-q">第34題：the original naming practice</div><div class="danger-reason">❌ 錯因：不知道 practice 可表示「慣例/做法」</div><div class="danger-solution">✓ 破解：practice = 練習/慣例/做法（一詞多義）</div></div>
+                        <div class="danger-item"><div class="danger-q">第36題：a name pool composed of 140 names</div><div class="danger-reason">❌ 錯因：不熟悉 be composed of 固定搭配</div><div class="danger-solution">✓ 破解：be composed of = 由...組成</div></div>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>🎨 主題詞辨識技巧</h4>
+                        <ul>
+                            <li><strong>核心主題詞：</strong>typhoon(s), name(s), naming 出現超過 20 次</li>
+                            <li><strong>相關詞彙：</strong>convention, committee, code, pool</li>
+                            <li><strong>文章結構：</strong>比較結構 + 歷史演變 + 特色說明 + 機制介紹</li>
+                            <li><strong>辨識方法：</strong>typhoon/name 反覆出現 = 絕對主題詞</li>
+                        </ul>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>⚠️ 本篇特殊提醒</h4>
+                        <ul>
+                            <li><strong>一詞多義：</strong>practice = 練習/慣例/做法；favor = 好感/偏好</li>
+                            <li><strong>平行結構：</strong>favor ≈ likes（偏好 ≈ 喜歡）</li>
+                            <li><strong>假設語氣：</strong>request that + S + (should) V</li>
+                        </ul>
+                    </div>
+                    <div class="mantra-box">
+                        <div class="mantra-title">🏆 考前終極口訣</div>
+                        <div class="mantra-text"><span class="mantra-highlight">詞性先行</span>，結構定位<br><span class="mantra-highlight">轉折必看</span>，前後對照<br><span class="mantra-highlight">搭配優先</span>，固定用法<br><span class="mantra-highlight">平行結構</span>，同義辨識</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 答案總覽 -->
+            <div class="section">
+                <h2 class="section-title">✅ 答案總覽</h2>
+                <div class="answer-overview">
+                    <div class="answer-grid">
+                        <div class="answer-cell"><div class="answer-cell-num">31</div><div class="answer-cell-ans">(I)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">32</div><div class="answer-cell-ans">(C)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">33</div><div class="answer-cell-ans">(J)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">34</div><div class="answer-cell-ans">(F)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">35</div><div class="answer-cell-ans">(H)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">36</div><div class="answer-cell-ans">(D)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">37</div><div class="answer-cell-ans">(B)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">38</div><div class="answer-cell-ans">(E)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">39</div><div class="answer-cell-ans">(A)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">40</div><div class="answer-cell-ans">(G)</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>🌀 學測英文文意選填 ｜ 專業教學分析版 ｜ 101年學測</p>
+            <p>主題：颱風命名 Typhoon Naming</p>
+        </div>
+    </div>
+</body>
+</html>
