@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學測文意選填 - 父親的記憶力 專業教學分析版</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif; line-height: 1.9; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: #fff; border-radius: 20px; box-shadow: 0 25px 80px rgba(0,0,0,0.4); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #6d4c41 0%, #8d6e63 100%); color: white; padding: 35px 40px; text-align: center; }
+        .header h1 { font-size: 2.4em; margin-bottom: 10px; }
+        .header .subtitle { font-size: 1.2em; opacity: 0.9; }
+        .header .theme-tag { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 20px; margin-top: 10px; }
+        .content { padding: 40px; }
+        .section { margin-bottom: 50px; }
+        .section-title { font-size: 1.6em; color: #5d4037; border-left: 6px solid #8d6e63; padding-left: 18px; margin-bottom: 25px; }
+        .structure-box { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 15px; padding: 25px; margin-bottom: 20px; border-left: 5px solid #8d6e63; }
+        .structure-function { background: #d7ccc8; display: inline-block; padding: 4px 12px; border-radius: 15px; font-size: 0.9em; color: #5d4037; font-weight: bold; margin-bottom: 10px; }
+        .article-box { background: #fafafa; border-radius: 15px; padding: 30px; border: 2px solid #e0e0e0; font-size: 1.08em; line-height: 2.2; }
+        .core-sentence { color: #c62828; font-weight: bold; background: linear-gradient(transparent 60%, #ffcdd2 60%); }
+        .transition-word { color: #6a1b9a; font-weight: bold; background: linear-gradient(transparent 60%, #e1bee7 60%); }
+        .theme-word { color: #2e7d32; font-weight: bold; }
+        .blank { display: inline-block; min-width: 70px; border-bottom: 3px solid #6d4c41; text-align: center; font-weight: bold; color: #6d4c41; margin: 0 5px; padding: 0 8px; }
+        .options-box { background: linear-gradient(135deg, #efebe9 0%, #d7ccc8 100%); border-radius: 15px; padding: 25px; margin: 25px 0; border: 2px solid #bcaaa4; }
+        .options-title { font-weight: bold; color: #5d4037; margin-bottom: 15px; font-size: 1.15em; }
+        .options-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+        .option-item { background: white; padding: 12px; border-radius: 10px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+        .option-item .letter { color: #c62828; font-weight: bold; font-size: 1.1em; }
+        .option-item .word { color: #1565c0; font-weight: 500; }
+        .option-item .pos { color: #757575; font-size: 0.85em; }
+        .question-card { background: white; border-radius: 18px; padding: 30px; margin-bottom: 30px; box-shadow: 0 6px 25px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; }
+        .question-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .question-number { background: linear-gradient(135deg, #5d4037 0%, #6d4c41 100%); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.3em; }
+        .difficulty-tag { padding: 5px 15px; border-radius: 20px; font-size: 0.85em; font-weight: bold; }
+        .difficulty-easy { background: #c8e6c9; color: #2e7d32; }
+        .difficulty-medium { background: #fff3e0; color: #ef6c00; }
+        .difficulty-hard { background: #ffcdd2; color: #c62828; }
+        .options-reminder { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border: 1px solid #90caf9; border-radius: 10px; padding: 12px 18px; margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .options-reminder-title { color: #1565c0; font-weight: bold; margin-right: 5px; }
+        .options-reminder .opt { background: white; padding: 4px 10px; border-radius: 15px; font-size: 0.9em; color: #1565c0; border: 1px solid #90caf9; }
+        .question-sentence { background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%); padding: 20px 25px; border-radius: 12px; margin: 20px 0; border-left: 5px solid #ffc107; font-size: 1.1em; }
+        .answer-row { display: flex; align-items: center; gap: 20px; margin: 20px 0; flex-wrap: wrap; }
+        .answer-tag { background: linear-gradient(135deg, #43a047 0%, #66bb6a 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: bold; }
+        .kill-point { background: linear-gradient(135deg, #c62828 0%, #e53935 100%); color: white; padding: 8px 20px; border-radius: 25px; font-weight: bold; font-size: 0.95em; }
+        .instant-kill { background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border: 2px solid #ff9800; border-radius: 12px; padding: 18px 22px; margin: 15px 0; }
+        .instant-kill-title { color: #e65100; font-weight: bold; margin-bottom: 8px; }
+        .logic-chain { background: #f5f5f5; border-radius: 12px; padding: 20px; margin: 15px 0; }
+        .logic-chain-title { color: #5d4037; font-weight: bold; margin-bottom: 12px; }
+        .logic-step { display: flex; align-items: flex-start; margin: 12px 0; padding-left: 10px; }
+        .logic-step-num { background: #8d6e63; color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85em; font-weight: bold; margin-right: 12px; flex-shrink: 0; }
+        .anchor-box { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px 20px; margin: 12px 0; border-radius: 0 10px 10px 0; }
+        .anchor-label { color: #2e7d32; font-weight: bold; font-size: 0.95em; margin-bottom: 5px; }
+        .anchor-text { color: #1b5e20; font-style: italic; }
+        .anchor-highlight { background: #a5d6a7; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-style: normal; }
+        .trap-analysis { background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%); border-radius: 12px; padding: 18px 22px; margin: 15px 0; border: 2px solid #ec407a; }
+        .trap-title { color: #c2185b; font-weight: bold; margin-bottom: 10px; }
+        .trap-item { margin: 8px 0; padding-left: 20px; position: relative; }
+        .trap-item::before { content: "✗"; position: absolute; left: 0; color: #c62828; font-weight: bold; }
+        .trap-option { color: #c62828; font-weight: bold; }
+        .trap-reason { color: #616161; }
+        .vocab-table { width: 100%; border-collapse: collapse; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 12px; overflow: hidden; }
+        .vocab-table th { background: linear-gradient(135deg, #5d4037 0%, #6d4c41 100%); color: white; padding: 15px; text-align: left; }
+        .vocab-table td { padding: 15px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+        .vocab-table tr:nth-child(even) { background: #f8f9fa; }
+        .vocab-table tr:hover { background: #efebe9; }
+        .vocab-word { color: #c62828; font-weight: bold; font-size: 1.1em; }
+        .trap-type { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+        .trap-type-multi { background: #ffcdd2; color: #c62828; }
+        .trap-type-collocation { background: #c8e6c9; color: #2e7d32; }
+        .trap-type-pos { background: #fff3e0; color: #ef6c00; }
+        .trap-type-context { background: #e1bee7; color: #6a1b9a; }
+        .exam-focus { background: #e3f2fd; padding: 3px 10px; border-radius: 12px; font-size: 0.85em; color: #1565c0; font-weight: 500; }
+        .eng-example { color: #1565c0; }
+        .eng-keyword { color: #c62828; font-weight: bold; }
+        .chi-example { color: #616161; }
+        .chi-keyword { color: #c62828; font-weight: bold; }
+        .transition-category { background: white; border-radius: 15px; padding: 25px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid #e0e0e0; }
+        .transition-category-header { display: flex; align-items: center; gap: 15px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 2px solid #e0e0e0; }
+        .category-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3em; color: white; }
+        .category-contrast { background: linear-gradient(135deg, #e91e63 0%, #f06292 100%); }
+        .category-cause { background: linear-gradient(135deg, #ff9800 0%, #ffb74d 100%); }
+        .category-addition { background: linear-gradient(135deg, #4caf50 0%, #81c784 100%); }
+        .category-example { background: linear-gradient(135deg, #2196f3 0%, #64b5f6 100%); }
+        .category-concession { background: linear-gradient(135deg, #9c27b0 0%, #ba68c8 100%); }
+        .category-title { font-size: 1.2em; font-weight: bold; color: #1b262c; }
+        .category-subtitle { color: #757575; font-size: 0.95em; }
+        .transition-words-list { display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0; }
+        .transition-word-tag { background: #f5f5f5; padding: 6px 14px; border-radius: 20px; font-weight: 500; border: 1px solid #e0e0e0; }
+        .strategy-action { background: linear-gradient(135deg, #efebe9 0%, #d7ccc8 100%); border-radius: 10px; padding: 15px 20px; margin: 15px 0; }
+        .strategy-action-title { color: #5d4037; font-weight: bold; margin-bottom: 8px; }
+        .strategy-action-steps { color: #6d4c41; font-weight: 500; }
+        .strategy-arrow { color: #8d6e63; margin: 0 8px; }
+        .real-example { background: #fafafa; border-left: 4px solid #6a1b9a; padding: 15px 20px; margin-top: 15px; border-radius: 0 10px 10px 0; }
+        .real-example-title { color: #6a1b9a; font-weight: bold; font-size: 0.95em; margin-bottom: 8px; }
+        .real-example-eng { color: #1565c0; }
+        .real-example-keyword { color: #6a1b9a; font-weight: bold; background: #f3e5f5; padding: 2px 6px; border-radius: 4px; }
+        .real-example-chi { color: #616161; margin-top: 5px; }
+        .real-example-chi-keyword { color: #6a1b9a; font-weight: bold; }
+        .sprint-section { background: linear-gradient(135deg, #fffbea 0%, #fff9c4 100%); border-radius: 18px; padding: 35px; margin: 25px 0; border: 3px solid #ffd54f; }
+        .sprint-main-title { color: #0d47a1; font-weight: bold; font-size: 1.5em; text-align: center; margin-bottom: 30px; }
+        .sprint-item { background: white; border-radius: 12px; padding: 22px; margin: 18px 0; box-shadow: 0 3px 10px rgba(0,0,0,0.08); }
+        .sprint-item h4 { color: #0d47a1; font-weight: bold; margin-bottom: 15px; font-size: 1.15em; }
+        .sprint-item ul { list-style: none; padding: 0; }
+        .sprint-item li { padding: 10px 0; padding-left: 28px; position: relative; color: #1565c0; font-weight: 500; }
+        .sprint-item li::before { content: "✓"; position: absolute; left: 0; color: #4caf50; font-weight: bold; }
+        .three-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 15px 0; }
+        .step-card { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: 12px; padding: 20px; text-align: center; }
+        .step-card-num { background: #0d47a1; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin: 0 auto 10px; }
+        .step-card-title { color: #0d47a1; font-weight: bold; font-size: 1.1em; margin-bottom: 8px; }
+        .step-card-desc { color: #1565c0; font-size: 0.95em; }
+        .danger-zone { background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); border-radius: 15px; padding: 25px; margin: 20px 0; border: 2px solid #e57373; }
+        .danger-title { color: #c62828; font-weight: bold; font-size: 1.2em; margin-bottom: 15px; }
+        .danger-item { background: white; border-radius: 10px; padding: 15px 20px; margin: 12px 0; border-left: 4px solid #c62828; }
+        .danger-q { color: #c62828; font-weight: bold; margin-bottom: 5px; }
+        .danger-reason { color: #616161; }
+        .danger-solution { color: #2e7d32; font-weight: 500; margin-top: 5px; }
+        .mantra-box { background: linear-gradient(135deg, #1a237e 0%, #283593 100%); border-radius: 18px; padding: 35px; text-align: center; margin-top: 30px; color: white; }
+        .mantra-title { font-size: 1.4em; margin-bottom: 20px; }
+        .mantra-text { font-size: 1.5em; font-weight: bold; line-height: 2.2; }
+        .mantra-highlight { background: rgba(255,255,255,0.2); padding: 3px 12px; border-radius: 8px; }
+        .answer-overview { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: 15px; padding: 30px; text-align: center; }
+        .answer-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; max-width: 700px; margin: 20px auto; }
+        .answer-cell { background: white; padding: 18px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+        .answer-cell-num { color: #5d4037; font-weight: bold; font-size: 1.1em; }
+        .answer-cell-ans { color: #2e7d32; font-weight: bold; font-size: 1.3em; margin-top: 5px; }
+        .footer { background: linear-gradient(135deg, #5d4037 0%, #6d4c41 100%); color: white; text-align: center; padding: 25px; }
+        .legend-box { display: flex; flex-wrap: wrap; gap: 20px; padding: 15px 20px; background: #f5f5f5; border-radius: 10px; margin-top: 20px; }
+        .legend-item { display: flex; align-items: center; gap: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 學測文意選填</h1>
+            <div class="subtitle">專業教學分析版 ｜ 108年學測</div>
+            <div class="theme-tag">🎯 主題：父親的記憶力 Father's Memory</div>
+        </div>
+        
+        <div class="content">
+            <!-- 選項總覽 -->
+            <div class="options-box">
+                <div class="options-title">📋 選項總覽 ｜ 先分類再作答</div>
+                <div class="options-grid">
+                    <div class="option-item"><div class="letter">(A)</div><div class="word">little</div><div class="pos">adv. 很少</div></div>
+                    <div class="option-item"><div class="letter">(B)</div><div class="word">purchases</div><div class="pos">n. 購買的東西</div></div>
+                    <div class="option-item"><div class="letter">(C)</div><div class="word">trusted</div><div class="pos">v. 信任</div></div>
+                    <div class="option-item"><div class="letter">(D)</div><div class="word">requests</div><div class="pos">n. 要求</div></div>
+                    <div class="option-item"><div class="letter">(E)</div><div class="word">insisted</div><div class="pos">v. 堅持</div></div>
+                    <div class="option-item"><div class="letter">(F)</div><div class="word">ready</div><div class="pos">adj. 準備好的</div></div>
+                    <div class="option-item"><div class="letter">(G)</div><div class="word">ruined</div><div class="pos">v. 毀掉</div></div>
+                    <div class="option-item"><div class="letter">(H)</div><div class="word">privilege</div><div class="pos">n. 特權</div></div>
+                    <div class="option-item"><div class="letter">(I)</div><div class="word">revealed</div><div class="pos">v. 揭露</div></div>
+                    <div class="option-item"><div class="letter">(J)</div><div class="word">obvious</div><div class="pos">adj. 明顯的</div></div>
+                </div>
+            </div>
+            
+            <!-- 文章結構分析 -->
+            <div class="section">
+                <h2 class="section-title">🏗️ 文章結構分析</h2>
+                <div class="structure-box">
+                    <div class="structure-function">第一段功能：記憶差的例子一 ─ 結婚紀念日</div>
+                    <p>父親婚後開始記憶衰退 → 記錯結婚日期 → <strong>毀掉</strong>了紀念日慶祝（玫瑰遲到一個月）</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第31題，測試動詞</p>
+                </div>
+                <div class="structure-box">
+                    <div class="structure-function">第二段功能：記憶差的例子二 ─ 購物清單</div>
+                    <p>媽媽很少讓爸爸去市場 → 爸爸<strong>堅持</strong>要去 → 清單<strong>準備好了</strong> → 但會忘記帶 → <strong>購買</strong>的東西與媽媽的<strong>要求</strong>不同</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第32-35題，測試動詞、形容詞、名詞</p>
+                </div>
+                <div class="structure-box">
+                    <div class="structure-function">第三段功能：記憶差的好處</div>
+                    <p>爸爸記憶差帶來優勢 → 被<strong>信任</strong>保守秘密 → 有<strong>特權</strong>聽私事 → 原因很<strong>明顯</strong>：他不會記得</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第36-38題，測試動詞、名詞、形容詞</p>
+                </div>
+                <div class="structure-box">
+                    <div class="structure-function">第四段功能：鄰居的信任 + 幽默結尾</div>
+                    <p>鄰居喜歡邀請爸爸吃飯 → 秘密不會被<strong>揭露</strong> → 爸爸<strong>很少</strong>在乎誰做了什麼 → 但絕不會忘記準時吃飯</p>
+                    <p style="color: #c62828; margin-top: 10px;">📍 <strong>出題熱區</strong>：第39-40題，測試動詞、副詞</p>
+                </div>
+            </div>
+            
+            <!-- 文章標示版 -->
+            <div class="section">
+                <h2 class="section-title">📖 文章標示版</h2>
+                <div class="article-box">
+                    <p>My father started to suffer from <span class="theme-word">memory</span> loss right after his marriage. <span class="transition-word">Or so</span> my mother told us. She said they were married on May 26, <span class="transition-word">while</span> my dad's <span class="theme-word">memory</span> told him it was June 25. This often <span class="blank">31</span> their anniversary celebration, <span class="transition-word">for</span> his rose bouquet always came one month late. Mom seldom asked Dad to go shopping in the traditional market for her. <span class="transition-word">But</span> whenever Dad <span class="blank">32</span> on going, she made sure that he brought a shopping list. Dad certainly had the list <span class="blank">33</span> when he left for the market, <span class="transition-word">but</span> he would somehow <span class="theme-word">forget</span> it, and then would find it again only after he returned home. <span class="transition-word">Of course</span>, the <span class="blank">34</span> that he made were based mainly on his <span class="theme-word">memory</span> of the list. <span class="transition-word">Unfortunately</span>, the items were usually different from Mom's <span class="blank">35</span>.</p>
+                    
+                    <p>My father's poor <span class="theme-word">memory</span> gave him certain advantages, <span class="transition-word">though</span>. <span class="transition-word">For instance</span>, he was <span class="blank">36</span> with many secrets in my family and our community. <span class="transition-word">Because of</span> his poor <span class="theme-word">memory</span>, he had the <span class="blank">37</span> of hearing everyone's private matters. The reason was <span class="blank">38</span>: Dad would not <span class="theme-word">remember</span> any of it, we thought. <span class="transition-word">As for</span> our neighbors, they liked to invite my father to dinner <span class="transition-word">so that</span> they could tell him stories about their children, parents, friends, and pets. They <span class="transition-word">also</span> believed the secrets in their families would never be <span class="blank">39</span>. They were quite right, <span class="transition-word">for</span> my father cared <span class="blank">40</span> about who did what to whom. <span class="transition-word">But</span> there is one thing he would never <span class="theme-word">forget</span>: showing up for dinner on time.</p>
+                </div>
+                <div class="legend-box">
+                    <div class="legend-item"><span class="core-sentence">紅色底線</span> = 核心句</div>
+                    <div class="legend-item"><span class="transition-word">紫色底線</span> = 轉折詞</div>
+                    <div class="legend-item"><span class="theme-word">綠色粗體</span> = 主題詞</div>
+                </div>
+            </div>
+            
+            <!-- 解題思維 -->
+            <div class="section">
+                <h2 class="section-title">🧠 解題思維 ｜ 逐題攻破</h2>
+                
+                <!-- 第31題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">31</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) little</span><span class="opt">(B) purchases</span><span class="opt">(C) trusted</span><span class="opt">(D) requests</span><span class="opt">(E) insisted</span><span class="opt">(F) ready</span><span class="opt">(G) ruined</span><span class="opt">(H) privilege</span><span class="opt">(I) revealed</span><span class="opt">(J) obvious</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>This often <u><strong>____</strong></u> their anniversary celebration, for his rose bouquet always came one month late.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(G) ruined</div><div class="kill-point">⚡ 秒殺點：玫瑰遲到一個月 = 毀掉慶祝</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>rose bouquet always came one month late</strong>（玫瑰總是遲到一個月）→ 「毀掉」了紀念日 → <strong>ruined</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：often ____ → 需要<strong>動詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：動詞有 (C)(E)(G)(I)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：遲到 → 毀掉慶祝 → ruined ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 因果關係</div><div class="anchor-text">"<span class="anchor-highlight">ruined</span>... <span class="anchor-highlight">for</span> his rose bouquet always came <span class="anchor-highlight">one month late</span>"</div></div>
+                </div>
+                
+                <!-- 第32題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">32</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) little</span><span class="opt">(B) purchases</span><span class="opt">(C) trusted</span><span class="opt">(D) requests</span><span class="opt">(E) insisted</span><span class="opt">(F) ready</span><span class="opt">(G) ruined</span><span class="opt">(H) privilege</span><span class="opt">(I) revealed</span><span class="opt">(J) obvious</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>But whenever Dad <u><strong>____</strong></u> on going, she made sure that he brought a shopping list.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(E) insisted</div><div class="kill-point">⚡ 秒殺點：____ on + Ving = 堅持</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>____ on going</strong> → 「堅持」要去 → <strong>insisted</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：Dad ____ on → 需要<strong>動詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘動詞有 (C)(E)(I)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配判斷：insist on = 堅持 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div><div class="anchor-text">"<span class="anchor-highlight">insisted</span> on going"</div></div>
+                </div>
+                
+                <!-- 第33題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">33</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) little</span><span class="opt">(B) purchases</span><span class="opt">(C) trusted</span><span class="opt">(D) requests</span><span class="opt">(E) insisted</span><span class="opt">(F) ready</span><span class="opt">(G) ruined</span><span class="opt">(H) privilege</span><span class="opt">(I) revealed</span><span class="opt">(J) obvious</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>Dad certainly had the list <u><strong>____</strong></u> when he left for the market...</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(F) ready</div><div class="kill-point">⚡ 秒殺點：have + N + ____ = 把某物準備好</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>had the list ____</strong> → 把清單「準備好」→ <strong>ready</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：had the list ____ → 需要<strong>形容詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：形容詞有 (F)(J)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>句型判斷：have + O + ready = 把某物準備好 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 使役動詞</div><div class="anchor-text">"had the list <span class="anchor-highlight">ready</span>"</div></div>
+                </div>
+                
+                <!-- 第34題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">34</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) little</span><span class="opt">(B) purchases</span><span class="opt">(C) trusted</span><span class="opt">(D) requests</span><span class="opt">(E) insisted</span><span class="opt">(F) ready</span><span class="opt">(G) ruined</span><span class="opt">(H) privilege</span><span class="opt">(I) revealed</span><span class="opt">(J) obvious</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>Of course, the <u><strong>____</strong></u> that he made were based mainly on his memory of the list.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(B) purchases</div><div class="kill-point">⚡ 秒殺點：shopping → make purchases = 購買</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p>前文說去 <strong>shopping</strong> → <strong>the ____ that he made</strong> → 他做的「購買」→ <strong>purchases</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：the ____ that → 需要<strong>名詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：名詞有 (B)(D)(H)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：shopping → purchases ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 前後呼應</div><div class="anchor-text">"shopping" → "the <span class="anchor-highlight">purchases</span> that he made"</div></div>
+                </div>
+                
+                <!-- 第35題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">35</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) little</span><span class="opt">(B) purchases</span><span class="opt">(C) trusted</span><span class="opt">(D) requests</span><span class="opt">(E) insisted</span><span class="opt">(F) ready</span><span class="opt">(G) ruined</span><span class="opt">(H) privilege</span><span class="opt">(I) revealed</span><span class="opt">(J) obvious</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>Unfortunately, the items were usually different from Mom's <u><strong>____</strong></u>.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(D) requests</div><div class="kill-point">⚡ 秒殺點：Mom's ____ = 媽媽的要求</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p>媽媽給爸爸清單 → <strong>different from Mom's ____</strong> → 與媽媽的「要求」不同 → <strong>requests</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：Mom's ____ → 需要<strong>名詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘名詞有 (D)(H)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意判斷：清單上的東西 = 要求 → requests ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"different from Mom's <span class="anchor-highlight">requests</span>"</div></div>
+                </div>
+                
+                <!-- 第36題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">36</div><span class="difficulty-tag difficulty-hard">困難</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) little</span><span class="opt">(B) purchases</span><span class="opt">(C) trusted</span><span class="opt">(D) requests</span><span class="opt">(E) insisted</span><span class="opt">(F) ready</span><span class="opt">(G) ruined</span><span class="opt">(H) privilege</span><span class="opt">(I) revealed</span><span class="opt">(J) obvious</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...he was <u><strong>____</strong></u> with many secrets in my family and our community.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(C) trusted</div><div class="kill-point">⚡ 秒殺點：be ____ with secrets = 被信任保守秘密</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>was ____ with many secrets</strong> → 被「信任」保守秘密 → <strong>trusted</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：was ____ with → 需要<strong>過去分詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘過去分詞有 (C)(I)</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配判斷：be trusted with = 被信任... ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div><div class="anchor-text">"was <span class="anchor-highlight">trusted</span> with many <span class="anchor-highlight">secrets</span>"</div></div>
+                    <div class="trap-analysis"><div class="trap-title">🚨 誘答分析 ｜ 高頻錯題</div><div class="trap-item"><span class="trap-option">be trusted with = 被信任（保管、處理）某事</span><span class="trap-reason"> → 這是固定搭配</span></div></div>
+                </div>
+                
+                <!-- 第37題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">37</div><span class="difficulty-tag difficulty-medium">中等</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) little</span><span class="opt">(B) purchases</span><span class="opt">(C) trusted</span><span class="opt">(D) requests</span><span class="opt">(E) insisted</span><span class="opt">(F) ready</span><span class="opt">(G) ruined</span><span class="opt">(H) privilege</span><span class="opt">(I) revealed</span><span class="opt">(J) obvious</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>Because of his poor memory, he had the <u><strong>____</strong></u> of hearing everyone's private matters.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(H) privilege</div><div class="kill-point">⚡ 秒殺點：have the ____ of = 有...的特權</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>had the ____ of hearing private matters</strong> → 有「特權」聽私事 → <strong>privilege</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：the ____ of → 需要<strong>名詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘名詞只有 (H) privilege</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意驗證：advantages → privilege（特權）✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"<span class="anchor-highlight">advantages</span>... had the <span class="anchor-highlight">privilege</span> of"</div></div>
+                </div>
+                
+                <!-- 第38題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">38</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) little</span><span class="opt">(B) purchases</span><span class="opt">(C) trusted</span><span class="opt">(D) requests</span><span class="opt">(E) insisted</span><span class="opt">(F) ready</span><span class="opt">(G) ruined</span><span class="opt">(H) privilege</span><span class="opt">(I) revealed</span><span class="opt">(J) obvious</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>The reason was <u><strong>____</strong></u>: Dad would not remember any of it, we thought.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(J) obvious</div><div class="kill-point">⚡ 秒殺點：The reason was ____ = 原因是明顯的</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>The reason was ____: 後面解釋原因</strong> → 原因很「明顯」→ <strong>obvious</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：reason was ____ → 需要<strong>形容詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘形容詞只有 (J) obvious</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>語意驗證：後面直接解釋 → 原因明顯 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"The reason was <span class="anchor-highlight">obvious</span>: Dad would not remember"</div></div>
+                </div>
+                
+                <!-- 第39題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">39</div><span class="difficulty-tag difficulty-easy">簡單</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) little</span><span class="opt">(B) purchases</span><span class="opt">(C) trusted</span><span class="opt">(D) requests</span><span class="opt">(E) insisted</span><span class="opt">(F) ready</span><span class="opt">(G) ruined</span><span class="opt">(H) privilege</span><span class="opt">(I) revealed</span><span class="opt">(J) obvious</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>They also believed the secrets in their families would never be <u><strong>____</strong></u>.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(I) revealed</div><div class="kill-point">⚡ 秒殺點：secrets would never be ____ = 秘密不會被揭露</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>secrets would never be ____</strong> → 秘密不會被「揭露」→ <strong>revealed</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：would be ____ → 需要<strong>過去分詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘過去分詞只有 (I) revealed</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配驗證：secrets + revealed = 秘密被揭露 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點</div><div class="anchor-text">"secrets... would never be <span class="anchor-highlight">revealed</span>"</div></div>
+                </div>
+                
+                <!-- 第40題 -->
+                <div class="question-card">
+                    <div class="question-header"><div class="question-number">40</div><span class="difficulty-tag difficulty-hard">困難</span></div>
+                    <div class="options-reminder"><span class="options-reminder-title">📋 選項：</span><span class="opt">(A) little</span><span class="opt">(B) purchases</span><span class="opt">(C) trusted</span><span class="opt">(D) requests</span><span class="opt">(E) insisted</span><span class="opt">(F) ready</span><span class="opt">(G) ruined</span><span class="opt">(H) privilege</span><span class="opt">(I) revealed</span><span class="opt">(J) obvious</span></div>
+                    <div class="question-sentence"><strong>完整句：</strong>...for my father cared <u><strong>____</strong></u> about who did what to whom.</div>
+                    <div class="answer-row"><div class="answer-tag">✓ 正解：(A) little</div><div class="kill-point">⚡ 秒殺點：cared ____ about = 很少在乎</div></div>
+                    <div class="instant-kill"><div class="instant-kill-title">⚡ 秒殺判斷</div><p><strong>cared ____ about</strong> → 「很少」在乎 → <strong>little</strong></p></div>
+                    <div class="logic-chain"><div class="logic-chain-title">🔗 解題邏輯鏈</div><div class="logic-step"><span class="logic-step-num">1</span><span>判斷詞性：cared ____ about → 需要<strong>副詞</strong></span></div><div class="logic-step"><span class="logic-step-num">2</span><span>篩選範圍：剩餘副詞只有 (A) little</span></div><div class="logic-step"><span class="logic-step-num">3</span><span>搭配驗證：care little about = 很少在乎 ✓</span></div></div>
+                    <div class="anchor-box"><div class="anchor-label">📍 原文錨點 ｜ 固定搭配</div><div class="anchor-text">"cared <span class="anchor-highlight">little</span> about"</div></div>
+                    <div class="trap-analysis"><div class="trap-title">🚨 誘答分析 ｜ 高頻錯題</div><div class="trap-item"><span class="trap-option">little 作副詞 = 很少</span><span class="trap-reason"> → care little about = 很少在乎，帶有否定意味</span></div></div>
+                </div>
+            </div>
+            
+            <!-- 單字戰略分類 -->
+            <div class="section">
+                <h2 class="section-title">📚 單字戰略分類 ｜ 依陷阱類型</h2>
+                <table class="vocab-table">
+                    <thead>
+                        <tr><th style="width: 15%;">單字</th><th style="width: 15%;">陷阱類型</th><th style="width: 15%;">高頻考法</th><th style="width: 55%;">實戰例句</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="vocab-word">ruined</span><br>(v.) 毀掉</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">ruined celebration</span></td><td><span class="eng-example">This often <span class="eng-keyword">ruined</span> their anniversary</span><br><span class="chi-example">這常<span class="chi-keyword">毀掉</span>他們的週年慶</span></td></tr>
+                        <tr><td><span class="vocab-word">insisted</span><br>(v.) 堅持</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">insist on + Ving</span></td><td><span class="eng-example">Dad <span class="eng-keyword">insisted</span> on going</span><br><span class="chi-example">爸爸<span class="chi-keyword">堅持</span>要去</span></td></tr>
+                        <tr><td><span class="vocab-word">ready</span><br>(adj.) 準備好的</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">have + O + ready</span></td><td><span class="eng-example">had the list <span class="eng-keyword">ready</span></span><br><span class="chi-example">把清單<span class="chi-keyword">準備好</span></span></td></tr>
+                        <tr><td><span class="vocab-word">purchases</span><br>(n.) 購買的東西</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">make purchases</span></td><td><span class="eng-example">the <span class="eng-keyword">purchases</span> that he made</span><br><span class="chi-example">他所做的<span class="chi-keyword">購買</span></span></td></tr>
+                        <tr><td><span class="vocab-word">requests</span><br>(n.) 要求</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">Mom's requests</span></td><td><span class="eng-example">different from Mom's <span class="eng-keyword">requests</span></span><br><span class="chi-example">與媽媽的<span class="chi-keyword">要求</span>不同</span></td></tr>
+                        <tr><td><span class="vocab-word">trusted</span><br>(v.) 信任</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">be trusted with</span></td><td><span class="eng-example">was <span class="eng-keyword">trusted</span> with secrets</span><br><span class="chi-example">被<span class="chi-keyword">信任</span>保守秘密</span></td></tr>
+                        <tr><td><span class="vocab-word">privilege</span><br>(n.) 特權</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">have the privilege of</span></td><td><span class="eng-example">had the <span class="eng-keyword">privilege</span> of hearing</span><br><span class="chi-example">有<span class="chi-keyword">特權</span>聽</span></td></tr>
+                        <tr><td><span class="vocab-word">obvious</span><br>(adj.) 明顯的</td><td><span class="trap-type trap-type-context">語境判斷</span></td><td><span class="exam-focus">reason was obvious</span></td><td><span class="eng-example">The reason was <span class="eng-keyword">obvious</span></span><br><span class="chi-example">原因很<span class="chi-keyword">明顯</span></span></td></tr>
+                        <tr><td><span class="vocab-word">revealed</span><br>(v.) 揭露</td><td><span class="trap-type trap-type-collocation">固定搭配</span></td><td><span class="exam-focus">secrets revealed</span></td><td><span class="eng-example">secrets would never be <span class="eng-keyword">revealed</span></span><br><span class="chi-example">秘密不會被<span class="chi-keyword">揭露</span></span></td></tr>
+                        <tr><td><span class="vocab-word">little</span><br>(adv.) 很少</td><td><span class="trap-type trap-type-multi">一詞多義</span></td><td><span class="exam-focus">care little about</span></td><td><span class="eng-example">cared <span class="eng-keyword">little</span> about</span><br><span class="chi-example"><span class="chi-keyword">很少</span>在乎</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- 轉折詞解題策略總表 -->
+            <div class="section">
+                <h2 class="section-title">🔄 轉折詞解題策略總表</h2>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-contrast">⚡</div><div><div class="category-title">1. 對比轉折類 Contrast</div><div class="category-subtitle">然而、但是、雖然</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">But</span> <span style="color: #616161;">但是</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">while</span> <span style="color: #616161;">然而</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">though</span> <span style="color: #616161;">雖然</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到轉折詞 <span class="strategy-arrow">→</span> 前後對比 <span class="strategy-arrow">→</span> 空格填與前文相反的概念</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"poor memory gave him certain advantages, <span class="real-example-keyword">though</span>"</p><p class="real-example-chi">記憶差卻給他一些優勢</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-cause">🔗</div><div><div class="category-title">2. 因果說明類 Cause/Result</div><div class="category-subtitle">因為</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">for</span> <span style="color: #616161;">因為</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Because of</span> <span style="color: #616161;">因為</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">so that</span> <span style="color: #616161;">以便</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到因果詞 <span class="strategy-arrow">→</span> 找因果關係 <span class="strategy-arrow">→</span> 空格填符合因果的詞</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"ruined their anniversary, <span class="real-example-keyword">for</span> his rose bouquet always came one month late"</p><p class="real-example-chi">毀了他們的週年慶，<span class="real-example-chi-keyword">因為</span>玫瑰總是遲到一個月</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-example">📌</div><div><div class="category-title">3. 舉例說明類 Example</div><div class="category-subtitle">例如</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">For instance</span> <span style="color: #616161;">例如</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到舉例詞 <span class="strategy-arrow">→</span> 後面是具體例子 <span class="strategy-arrow">→</span> 前面是抽象概念</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"gave him certain advantages. <span class="real-example-keyword">For instance</span>, he was trusted with secrets"</p><p class="real-example-chi">給了他一些優勢。<span class="real-example-chi-keyword">例如</span>，他被信任保守秘密</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-addition">➕</div><div><div class="category-title">4. 補充說明類 Addition</div><div class="category-subtitle">也、至於、當然</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">also</span> <span style="color: #616161;">也</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">As for</span> <span style="color: #616161;">至於</span></span><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Of course</span> <span style="color: #616161;">當然</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到補充詞 <span class="strategy-arrow">→</span> 後面是額外資訊 <span class="strategy-arrow">→</span> 空格填平行內容</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"<span class="real-example-keyword">As for</span> our neighbors, they liked to invite my father to dinner"</p><p class="real-example-chi"><span class="real-example-chi-keyword">至於</span>我們的鄰居，他們喜歡邀請我父親吃飯</p></div>
+                </div>
+                
+                <div class="transition-category">
+                    <div class="transition-category-header"><div class="category-icon category-concession">⚠️</div><div><div class="category-title">5. 不幸/負面類 Negative</div><div class="category-subtitle">不幸地</div></div></div>
+                    <div class="transition-words-list"><span class="transition-word-tag"><span style="color: #6a1b9a; font-weight: bold;">Unfortunately</span> <span style="color: #616161;">不幸地</span></span></div>
+                    <div class="strategy-action"><div class="strategy-action-title">🎯 解題動作</div><div class="strategy-action-steps">看到負面詞 <span class="strategy-arrow">→</span> 後面是負面結果 <span class="strategy-arrow">→</span> 空格填負面相關詞</div></div>
+                    <div class="real-example"><div class="real-example-title">📍 本篇實戰</div><p class="real-example-eng">"<span class="real-example-keyword">Unfortunately</span>, the items were usually different from Mom's requests"</p><p class="real-example-chi"><span class="real-example-chi-keyword">不幸地</span>，買的東西通常與媽媽的要求不同</p></div>
+                </div>
+            </div>
+            
+            <!-- 考前衝刺重點 -->
+            <div class="section">
+                <h2 class="section-title">🚀 考前衝刺重點整理</h2>
+                <div class="sprint-section">
+                    <div class="sprint-main-title">🏆 文意選填必勝攻略</div>
+                    <div class="sprint-item">
+                        <h4>🎯 解題三步驟</h4>
+                        <div class="three-steps">
+                            <div class="step-card"><div class="step-card-num">1</div><div class="step-card-title">判斷詞性</div><div class="step-card-desc">看空格前後結構<br>確定需要什麼詞性</div></div>
+                            <div class="step-card"><div class="step-card-num">2</div><div class="step-card-title">篩選選項</div><div class="step-card-desc">依詞性刪除選項<br>縮小作答範圍</div></div>
+                            <div class="step-card"><div class="step-card-num">3</div><div class="step-card-title">語意驗證</div><div class="step-card-desc">結合上下文邏輯<br>確認最佳答案</div></div>
+                        </div>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>📝 本篇重點片語</h4>
+                        <ul>
+                            <li><strong>insist on + Ving：</strong>堅持...</li>
+                            <li><strong>have + O + ready：</strong>把某物準備好</li>
+                            <li><strong>be trusted with：</strong>被信任（保管）某事</li>
+                            <li><strong>have the privilege of：</strong>有...的特權</li>
+                            <li><strong>care little about：</strong>很少在乎</li>
+                        </ul>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>📖 本篇重點句型</h4>
+                        <ul>
+                            <li><strong>Or so + S + V：</strong>至少...是這麼說的</li>
+                            <li><strong>A is different from B：</strong>A 與 B 不同</li>
+                            <li><strong>The reason was obvious:：</strong>原因很明顯：...</li>
+                            <li><strong>would never be + p.p.：</strong>永遠不會被...</li>
+                        </ul>
+                    </div>
+                    <div class="danger-zone">
+                        <div class="danger-title">🚨 本篇高頻錯題 TOP 3</div>
+                        <div class="danger-item"><div class="danger-q">第36題：was trusted with many secrets</div><div class="danger-reason">❌ 錯因：不熟悉 be trusted with 固定搭配</div><div class="danger-solution">✓ 破解：be trusted with = 被信任保管/處理某事</div></div>
+                        <div class="danger-item"><div class="danger-q">第40題：cared little about who did what</div><div class="danger-reason">❌ 錯因：不知道 little 作副詞表示「很少」</div><div class="danger-solution">✓ 破解：little（副詞）= 很少，帶否定意味</div></div>
+                        <div class="danger-item"><div class="danger-q">第33題：had the list ready</div><div class="danger-reason">❌ 錯因：不熟悉 have + O + adj. 結構</div><div class="danger-solution">✓ 破解：have + O + ready = 把某物準備好</div></div>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>🎨 主題詞辨識技巧</h4>
+                        <ul>
+                            <li><strong>核心主題詞：</strong>memory, forget, remember 出現超過 8 次</li>
+                            <li><strong>相關詞彙：</strong>secrets, private matters, anniversary</li>
+                            <li><strong>文章結構：</strong>缺點→優點（轉折結構）</li>
+                            <li><strong>幽默結尾：</strong>不會忘記準時吃飯（反差幽默）</li>
+                        </ul>
+                    </div>
+                    <div class="sprint-item">
+                        <h4>⚠️ 本篇特殊提醒</h4>
+                        <ul>
+                            <li><strong>一詞多義：</strong>little = 小的(adj.) / 很少(adv.)</li>
+                            <li><strong>敘事文體：</strong>第一人稱敘述家庭故事</li>
+                            <li><strong>幽默風格：</strong>用幽默方式描述父親記憶差的趣事</li>
+                        </ul>
+                    </div>
+                    <div class="mantra-box">
+                        <div class="mantra-title">🏆 考前終極口訣</div>
+                        <div class="mantra-text"><span class="mantra-highlight">詞性先行</span>，結構定位<br><span class="mantra-highlight">轉折必看</span>，前後對照<br><span class="mantra-highlight">搭配優先</span>，固定用法<br><span class="mantra-highlight">語境理解</span>，幽默辨識</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 答案總覽 -->
+            <div class="section">
+                <h2 class="section-title">✅ 答案總覽</h2>
+                <div class="answer-overview">
+                    <div class="answer-grid">
+                        <div class="answer-cell"><div class="answer-cell-num">31</div><div class="answer-cell-ans">(G)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">32</div><div class="answer-cell-ans">(E)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">33</div><div class="answer-cell-ans">(F)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">34</div><div class="answer-cell-ans">(B)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">35</div><div class="answer-cell-ans">(D)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">36</div><div class="answer-cell-ans">(C)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">37</div><div class="answer-cell-ans">(H)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">38</div><div class="answer-cell-ans">(J)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">39</div><div class="answer-cell-ans">(I)</div></div>
+                        <div class="answer-cell"><div class="answer-cell-num">40</div><div class="answer-cell-ans">(A)</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>🧠 學測英文文意選填 ｜ 專業教學分析版 ｜ 108年學測</p>
+            <p>主題：父親的記憶力 Father's Memory</p>
+        </div>
+    </div>
+</body>
+</html>
