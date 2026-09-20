@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日文學習｜平假名・片假名五十音</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    font-family:'Microsoft JhengHei','Yu Gothic','Hiragino Kaku Gothic ProN','Segoe UI',Arial,sans-serif;
+    line-height:1.8;
+    background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);
+    min-height:100vh;padding:20px;color:#263238;
+}
+.container{
+    max-width:1200px;margin:0 auto;background:#fff;border-radius:20px;
+    box-shadow:0 25px 80px rgba(0,0,0,.4);overflow:hidden;
+}
+.header{
+    background:linear-gradient(135deg,#f9a825 0%,#fbc02d 100%);
+    color:#333;padding:35px 40px;text-align:center;
+}
+.header h1{font-size:2.4em;margin-bottom:8px}
+.header .subtitle{font-size:1.15em;opacity:.82}
+.header .theme-tag{
+    display:inline-block;background:rgba(255,255,255,.45);
+    padding:7px 20px;border-radius:20px;margin-top:10px;font-weight:bold
+}
+.content{padding:40px}
+.section{margin-bottom:50px}
+.section-title{
+    font-size:1.6em;color:#f57f17;border-left:6px solid #fbc02d;
+    padding-left:18px;margin-bottom:25px
+}
+.intro{
+    background:linear-gradient(135deg,#fffde7,#fff8c4);
+    border:2px solid #ffeb3b;border-radius:15px;padding:20px 25px;margin-bottom:25px
+}
+.intro strong{color:#e65100}
+.table-wrap{overflow-x:auto;border-radius:15px;box-shadow:0 4px 18px rgba(0,0,0,.1)}
+.kana-table{
+    width:100%;min-width:760px;border-collapse:separate;border-spacing:0;
+    overflow:hidden;background:white
+}
+.kana-table th{
+    background:linear-gradient(135deg,#f57f17,#f9a825);
+    color:white;padding:13px 8px;text-align:center;font-size:1.05em
+}
+.kana-table th:first-child{width:105px}
+.kana-table td{
+    border-right:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;
+    text-align:center;padding:8px;min-width:120px;height:92px;
+    background:#fff;transition:.18s;
+}
+.kana-table td.clickable{
+    cursor:pointer;
+}
+.kana-table tr:nth-child(even) td{background:#fffdf7}
+.kana-table td.clickable:hover{
+    background:#fff3cd;transform:scale(1.02);
+}
+.row-label{
+    background:#f8f9fa!important;color:#f57f17;font-weight:bold;
+    font-size:1.1em;cursor:default!important;
+}
+.kana{
+    display:block;font-family:'Yu Gothic','Hiragino Kaku Gothic ProN',sans-serif;
+    font-size:2.25em;font-weight:700;color:#263238;line-height:1.15
+}
+.romaji{display:block;color:#6a1b9a;font-weight:bold;font-size:.92em;margin-top:2px}
+.meaning{display:block;color:#757575;font-size:.75em}
+.empty{color:#bdbdbd;font-size:1.2em;cursor:default!important;}
+.note{
+    margin-top:15px;color:#616161;font-size:.92em;
+    background:#f5f5f5;border-radius:10px;padding:12px 16px
+}
+.practice{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:22px
+}
+.practice-card{
+    background:linear-gradient(135deg,#e3f2fd,#bbdefb);
+    border-radius:12px;padding:18px;text-align:center
+}
+.practice-card h3{color:#0d47a1;margin-bottom:7px}
+.practice-card p{color:#1565c0;font-size:.94em}
+.footer{
+    background:linear-gradient(135deg,#f57f17,#f9a825);
+    color:white;text-align:center;padding:25px
+}
+
+/* 圖片彈窗 Modal 樣式 */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+.modal-overlay.active {
+    display: flex;
+}
+.modal-box {
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    border-radius: 16px;
+    max-width: 90%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    animation: popup .25s ease-out;
+}
+@keyframes popup {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.modal-box img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 10px;
+}
+.modal-close-btn {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 34px;
+    height: 34px;
+    background: #f44336;
+    color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.modal-countdown {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #666;
+    font-weight: 500;
+}
+
+@media(max-width:700px){
+    body{padding:8px}.content{padding:22px}.header{padding:28px 20px}
+    .header h1{font-size:1.9em}.section-title{font-size:1.35em}
+    .practice{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+    <div class="header">
+        <h1>🇯🇵 日文五十音學習</h1>
+        <div class="subtitle">平假名 Hiragana ｜ 片假名 Katakana</div>
+        <div class="theme-tag">🎯 先熟悉五十音，再開始單字與句型</div>
+    </div>
+
+    <div class="content">
+
+        <!-- 第一區：平假名 -->
+        <div class="section">
+            <h2 class="section-title">① 平假名 Hiragana</h2>
+
+            <div class="intro">
+                <strong>學習方式：</strong>
+                橫向是五個母音「a・i・u・e・o」，
+                縱向是不同的子音行。先從「あ行」開始，點擊發音格子可查看圖片教學。
+            </div>
+
+            <div class="table-wrap">
+                <table class="kana-table">
+                    <thead>
+                        <tr>
+                            <th>行＼母音</th>
+                            <th>あ段<br>a</th>
+                            <th>い段<br>i</th>
+                            <th>う段<br>u</th>
+                            <th>え段<br>e</th>
+                            <th>お段<br>o</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="row-label">あ行<br>母音</td>
+                            <!-- 點擊 あ 顯示 1-a.jpg -->
+                            <td class="clickable" onclick="showKanaImage('images/1-a.jpg')"><span class="kana">あ</span><span class="romaji">a</span><span class="meaning">阿</span></td>
+                            <td class="clickable" onclick="showKanaImage('1-i.jpg')"><span class="kana">い</span><span class="romaji">i</span><span class="meaning">伊</span></td>
+                            <td class="clickable" onclick="showKanaImage('1-u.jpg')"><span class="kana">う</span><span class="romaji">u</span><span class="meaning">宇</span></td>
+                            <td class="clickable" onclick="showKanaImage('1-e.jpg')"><span class="kana">え</span><span class="romaji">e</span><span class="meaning">江</span></td>
+                            <td class="clickable" onclick="showKanaImage('1-o.jpg')"><span class="kana">お</span><span class="romaji">o</span><span class="meaning">於</span></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">か行</td>
+                            <td class="clickable" onclick="showKanaImage('ka.jpg')"><span class="kana">か</span><span class="romaji">ka</span></td>
+                            <td class="clickable" onclick="showKanaImage('ki.jpg')"><span class="kana">き</span><span class="romaji">ki</span></td>
+                            <td class="clickable" onclick="showKanaImage('ku.jpg')"><span class="kana">く</span><span class="romaji">ku</span></td>
+                            <td class="clickable" onclick="showKanaImage('ke.jpg')"><span class="kana">け</span><span class="romaji">ke</span></td>
+                            <td class="clickable" onclick="showKanaImage('ko.jpg')"><span class="kana">こ</span><span class="romaji">ko</span></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">さ行</td>
+                            <td class="clickable" onclick="showKanaImage('sa.jpg')"><span class="kana">さ</span><span class="romaji">sa</span></td>
+                            <td class="clickable" onclick="showKanaImage('shi.jpg')"><span class="kana">し</span><span class="romaji">shi</span></td>
+                            <td class="clickable" onclick="showKanaImage('su.jpg')"><span class="kana">す</span><span class="romaji">su</span></td>
+                            <td class="clickable" onclick="showKanaImage('se.jpg')"><span class="kana">せ</span><span class="romaji">se</span></td>
+                            <td class="clickable" onclick="showKanaImage('so.jpg')"><span class="kana">そ</span><span class="romaji">so</span></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">た行</td>
+                            <td class="clickable" onclick="showKanaImage('ta.jpg')"><span class="kana">た</span><span class="romaji">ta</span></td>
+                            <td class="clickable" onclick="showKanaImage('chi.jpg')"><span class="kana">ち</span><span class="romaji">chi</span></td>
+                            <td class="clickable" onclick="showKanaImage('tsu.jpg')"><span class="kana">つ</span><span class="romaji">tsu</span></td>
+                            <td class="clickable" onclick="showKanaImage('te.jpg')"><span class="kana">て</span><span class="romaji">te</span></td>
+                            <td class="clickable" onclick="showKanaImage('to.jpg')"><span class="kana">と</span><span class="romaji">to</span></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">な行</td>
+                            <td class="clickable" onclick="showKanaImage('na.jpg')"><span class="kana">な</span><span class="romaji">na</span></td>
+                            <td class="clickable" onclick="showKanaImage('ni.jpg')"><span class="kana">に</span><span class="romaji">ni</span></td>
+                            <td class="clickable" onclick="showKanaImage('nu.jpg')"><span class="kana">ぬ</span><span class="romaji">nu</span></td>
+                            <td class="clickable" onclick="showKanaImage('ne.jpg')"><span class="kana">ね</span><span class="romaji">ne</span></td>
+                            <td class="clickable" onclick="showKanaImage('no.jpg')"><span class="kana">の</span><span class="romaji">no</span></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">は行</td>
+                            <td class="clickable" onclick="showKanaImage('ha.jpg')"><span class="kana">は</span><span class="romaji">ha</span></td>
+                            <td class="clickable" onclick="showKanaImage('hi.jpg')"><span class="kana">ひ</span><span class="romaji">hi</span></td>
+                            <td class="clickable" onclick="showKanaImage('fu.jpg')"><span class="kana">ふ</span><span class="romaji">fu</span></td>
+                            <td class="clickable" onclick="showKanaImage('he.jpg')"><span class="kana">へ</span><span class="romaji">he</span></td>
+                            <td class="clickable" onclick="showKanaImage('ho.jpg')"><span class="kana">ほ</span><span class="romaji">ho</span></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">ま行</td>
+                            <td class="clickable" onclick="showKanaImage('ma.jpg')"><span class="kana">ま</span><span class="romaji">ma</span></td>
+                            <td class="clickable" onclick="showKanaImage('mi.jpg')"><span class="kana">み</span><span class="romaji">mi</span></td>
+                            <td class="clickable" onclick="showKanaImage('mu.jpg')"><span class="kana">む</span><span class="romaji">mu</span></td>
+                            <td class="clickable" onclick="showKanaImage('me.jpg')"><span class="kana">め</span><span class="romaji">me</span></td>
+                            <td class="clickable" onclick="showKanaImage('mo.jpg')"><span class="kana">も</span><span class="romaji">mo</span></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">や行</td>
+                            <td class="clickable" onclick="showKanaImage('ya.jpg')"><span class="kana">や</span><span class="romaji">ya</span></td>
+                            <td class="empty">—</td>
+                            <td class="clickable" onclick="showKanaImage('yu.jpg')"><span class="kana">ゆ</span><span class="romaji">yu</span></td>
+                            <td class="empty">—</td>
+                            <td class="clickable" onclick="showKanaImage('yo.jpg')"><span class="kana">よ</span><span class="romaji">yo</span></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">ら行</td>
+                            <td class="clickable" onclick="showKanaImage('ra.jpg')"><span class="kana">ら</span><span class="romaji">ra</span></td>
+                            <td class="clickable" onclick="showKanaImage('ri.jpg')"><span class="kana">り</span><span class="romaji">ri</span></td>
+                            <td class="clickable" onclick="showKanaImage('ru.jpg')"><span class="kana">る</span><span class="romaji">ru</span></td>
+                            <td class="clickable" onclick="showKanaImage('re.jpg')"><span class="kana">れ</span><span class="romaji">re</span></td>
+                            <td class="clickable" onclick="showKanaImage('ro.jpg')"><span class="kana">ろ</span><span class="romaji">ro</span></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">わ行</td>
+                            <td class="clickable" onclick="showKanaImage('wa.jpg')"><span class="kana">わ</span><span class="romaji">wa</span></td>
+                            <td class="empty">—</td>
+                            <td class="empty">—</td>
+                            <td class="empty">—</td>
+                            <td class="clickable" onclick="showKanaImage('wo.jpg')"><span class="kana">を</span><span class="romaji">wo</span><span class="meaning">通常讀 o</span></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">ん</td>
+                            <td colspan="5" class="clickable" onclick="showKanaImage('n.jpg')"><span class="kana">ん</span><span class="romaji">n</span><span class="meaning">獨立的鼻音，不屬於母音行</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note">
+                💡 <strong>記憶重點：</strong>先把「あ・い・う・え・お」五個母音背熟，
+                再以「行」為單位記憶。例如：か行＝か・き・く・け・こ。
+            </div>
+        </div>
+
+        <!-- 第二區：片假名 -->
+        <div class="section">
+            <h2 class="section-title">② 片假名 Katakana</h2>
+
+            <div class="intro">
+                <strong>學習方式：</strong>
+                片假名的排列方式與平假名完全相同。
+                常用於<strong>外來語、外國人名、地名、商品名稱</strong>等。
+            </div>
+
+            <div class="table-wrap">
+                <table class="kana-table">
+                    <thead>
+                        <tr>
+                            <th>行＼母音</th>
+                            <th>ア段<br>a</th>
+                            <th>イ段<br>i</th>
+                            <th>ウ段<br>u</th>
+                            <th>エ段<br>e</th>
+                            <th>オ段<br>o</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="row-label">ア行<br>母音</td>
+                            <td class="clickable" onclick="showKanaImage('kata-a.jpg')"><span class="kana">ア</span><span class="romaji">a</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-i.jpg')"><span class="kana">イ</span><span class="romaji">i</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-u.jpg')"><span class="kana">ウ</span><span class="romaji">u</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-e.jpg')"><span class="kana">エ</span><span class="romaji">e</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-o.jpg')"><span class="kana">オ</span><span class="romaji">o</span></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">カ行</td>
+                            <td class="clickable" onclick="showKanaImage('kata-ka.jpg')"><span class="kana">カ</span><span class="romaji">ka</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-ki.jpg')"><span class="kana">キ</span><span class="romaji">ki</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-ku.jpg')"><span class="kana">ク</span><span class="romaji">ku</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-ke.jpg')"><span class="kana">ケ</span><span class="romaji">ke</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-ko.jpg')"><span class="kana">コ</span><span class="romaji">ko</span></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">サ行</td>
+                            <td class="clickable" onclick="showKanaImage('kata-sa.jpg')"><span class="kana">サ</span><span class="romaji">sa</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-shi.jpg')"><span class="kana">シ</span><span class="romaji">shi</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-su.jpg')"><span class="kana">ス</span><span class="romaji">su</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-se.jpg')"><span class="kana">セ</span><span class="romaji">se</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-so.jpg')"><span class="kana">ソ</span><span class="romaji">so</span></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">タ行</td>
+                            <td class="clickable" onclick="showKanaImage('kata-ta.jpg')"><span class="kana">タ</span><span class="romaji">ta</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-chi.jpg')"><span class="kana">チ</span><span class="romaji">chi</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-tsu.jpg')"><span class="kana">ツ</span><span class="romaji">tsu</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-te.jpg')"><span class="kana">テ</span><span class="romaji">te</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-to.jpg')"><span class="kana">ト</span><span class="romaji">to</span></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">ナ行</td>
+                            <td class="clickable" onclick="showKanaImage('kata-na.jpg')"><span class="kana">ナ</span><span class="romaji">na</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-ni.jpg')"><span class="kana">ニ</span><span class="romaji">ni</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-nu.jpg')"><span class="kana">ヌ</span><span class="romaji">nu</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-ne.jpg')"><span class="kana">ネ</span><span class="romaji">ne</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-no.jpg')"><span class="kana">ノ</span><span class="romaji">no</span></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">ハ行</td>
+                            <td class="clickable" onclick="showKanaImage('kata-ha.jpg')"><span class="kana">ハ</span><span class="romaji">ha</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-hi.jpg')"><span class="kana">ヒ</span><span class="romaji">hi</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-fu.jpg')"><span class="kana">フ</span><span class="romaji">fu</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-he.jpg')"><span class="kana">ヘ</span><span class="romaji">he</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-ho.jpg')"><span class="kana">ホ</span><span class="romaji">ho</span></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">マ行</td>
+                            <td class="clickable" onclick="showKanaImage('kata-ma.jpg')"><span class="kana">マ</span><span class="romaji">ma</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-mi.jpg')"><span class="kana">ミ</span><span class="romaji">mi</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-mu.jpg')"><span class="kana">ム</span><span class="romaji">mu</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-me.jpg')"><span class="kana">メ</span><span class="romaji">me</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-mo.jpg')"><span class="kana">モ</span><span class="romaji">mo</span></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">ヤ行</td>
+                            <td class="clickable" onclick="showKanaImage('kata-ya.jpg')"><span class="kana">ヤ</span><span class="romaji">ya</span></td>
+                            <td class="empty">—</td>
+                            <td class="clickable" onclick="showKanaImage('kata-yu.jpg')"><span class="kana">ユ</span><span class="romaji">yu</span></td>
+                            <td class="empty">—</td>
+                            <td class="clickable" onclick="showKanaImage('kata-yo.jpg')"><span class="kana">ヨ</span><span class="romaji">yo</span></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">ラ行</td>
+                            <td class="clickable" onclick="showKanaImage('kata-ra.jpg')"><span class="kana">ラ</span><span class="romaji">ra</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-ri.jpg')"><span class="kana">リ</span><span class="romaji">ri</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-ru.jpg')"><span class="kana">ル</span><span class="romaji">ru</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-re.jpg')"><span class="kana">レ</span><span class="romaji">re</span></td>
+                            <td class="clickable" onclick="showKanaImage('kata-ro.jpg')"><span class="kana">ロ</span><span class="romaji">ro</span></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">ワ行</td>
+                            <td class="clickable" onclick="showKanaImage('kata-wa.jpg')"><span class="kana">ワ</span><span class="romaji">wa</span></td>
+                            <td class="empty">—</td>
+                            <td class="empty">—</td>
+                            <td class="empty">—</td>
+                            <td class="clickable" onclick="showKanaImage('kata-wo.jpg')"><span class="kana">ヲ</span><span class="romaji">wo</span><span class="meaning">通常讀 o</span></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">ン</td>
+                            <td colspan="5" class="clickable" onclick="showKanaImage('kata-n.jpg')"><span class="kana">ン</span><span class="romaji">n</span><span class="meaning">獨立的鼻音</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note">
+                💡 <strong>快速對照：</strong>あ＝ア、か＝カ、さ＝サ、た＝タ……
+                平假名與片假名是<strong>同一個發音系統</strong>，只是字形與使用場合不同。
+            </div>
+        </div>
+
+        <!-- 第三區：學習提示 -->
+        <div class="section">
+            <h2 class="section-title">③ 五十音學習順序</h2>
+            <div class="practice">
+                <div class="practice-card">
+                    <h3>STEP 1</h3>
+                    <p>先背熟<br><strong>あ・い・う・え・お</strong></p>
+                </div>
+                <div class="practice-card">
+                    <h3>STEP 2</h3>
+                    <p>一次一行<br><strong>か行 → さ行 → た行...</strong></p>
+                </div>
+                <div class="practice-card">
+                    <h3>STEP 3</h3>
+                    <p>平假名熟悉後<br><strong>再對照片假名</strong></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>🇯🇵 日文學習 ｜ 五十音基礎</p>
+        <p>平假名 Hiragana × 片假名 Katakana</p>
+    </div>
+</div>
+
+<!-- 圖片顯示彈窗 -->
+<div class="modal-overlay" id="imageModal" onclick="closeKanaImage(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+        <span class="modal-close-btn" onclick="closeKanaImage()">&times;</span>
+        <img id="modalImage" src="" alt="假名示意圖">
+        <div class="modal-countdown" id="modalCountdown">即將於 10 秒後自動關閉...</div>
+    </div>
+</div>
+
+<script>
+let autoCloseTimer = null;
+let countdownInterval = null;
+let remainingSeconds = 10;
+
+// 開啟圖片彈窗並啟動 10 秒計時
+function showKanaImage(imageSrc) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const countdownText = document.getElementById('modalCountdown');
+
+    // 清除上一次的計時器
+    clearTimers();
+
+    modalImg.src = imageSrc;
+    modal.classList.add('active');
+
+    // 初始化倒數計時
+    remainingSeconds = 10;
+    countdownText.textContent = `即將於 ${remainingSeconds} 秒後自動關閉...`;
+
+    countdownInterval = setInterval(() => {
+        remainingSeconds--;
+        if (remainingSeconds > 0) {
+            countdownText.textContent = `即將於 ${remainingSeconds} 秒後自動關閉...`;
+        }
+    }, 1000);
+
+    // 10 秒後自動關閉
+    autoCloseTimer = setTimeout(() => {
+        closeKanaImage();
+    }, 10000);
+}
+
+// 關閉圖片彈窗
+function closeKanaImage(event) {
+    if (event && event.target !== event.currentTarget && !event.target.classList.contains('modal-close-btn')) {
+        return;
+    }
+    const modal = document.getElementById('imageModal');
+    modal.classList.remove('active');
+    document.getElementById('modalImage').src = '';
+    clearTimers();
+}
+
+// 清除計時器
+function clearTimers() {
+    if (autoCloseTimer) {
+        clearTimeout(autoCloseTimer);
+        autoCloseTimer = null;
+    }
+    if (countdownInterval) {
+        clearInterval(countdownInterval);
+        countdownInterval = null;
+    }
+}
+
+// 支援鍵盤 ESC 鍵關閉
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeKanaImage();
+    }
+});
+</script>
+</body>
+</html>
