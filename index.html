@@ -479,6 +479,696 @@
                         </div>
                         <div class="sub-submenu">
                             <!-- 改用 loadFrame 載入，不跳離主頁面 -->
+                            <div class="sub-submenu-item" onclick="loadFrame('japan/japanese_kana.html')">japanese_kana</div>
+                            <div class="sub-submenu-item" onclick="loadFrame('pages/exam_q13-15_analysis.html')">111-13to15</div>
+
+					   </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 其他選單 -->
+            <div class="menu-item">
+                <div class="menu-title" onclick="toggleMenu(this)">
+                    <span>📅 其他</span>
+                    <span class="menu-arrow">▼</span>
+                </div>
+                <div class="submenu">
+                    <div class="submenu-item has-children">
+                        <div class="submenu-title" onclick="toggleSubMenu(this)">
+                            <span>國綜-模</span>
+                            <span class="submenu-arrow">▼</span>
+                        </div>
+                        <div class="sub-submenu">
+                            <div class="sub-submenu-item" onclick="loadFrame('pages/exam_q13-15_analysis.html')">111-13to15</div>
+                            <div class="sub-submenu-item" onclick="loadPage('假期活動')">假期活動</div>
+                            <div class="sub-submenu-item" onclick="loadPage('聚會活動')">聚會活動</div>
+                        </div>
+                    </div>
+                    <div class="submenu-item has-children">
+                        <div class="submenu-title" onclick="toggleSubMenu(this)">
+                            <span>重要日期</span>
+                            <span class="submenu-arrow">▼</span>
+                        </div>
+                        <div class="sub-submenu">
+                            <div class="sub-submenu-item" onclick="loadPage('生日紀念')">生日紀念</div>
+                            <div class="sub-submenu-item" onclick="loadPage('結婚紀念')">結婚紀念</div>
+                            <div class="sub-submenu-item" onclick="loadPage('其他紀念日')">其他紀念日</div>
+                        </div>
+                    </div>
+                    <div class="submenu-item has-children">
+                        <div class="submenu-title" onclick="toggleSubMenu(this)">
+                            <span>提醒事項</span>
+                            <span class="submenu-arrow">▼</span>
+                        </div>
+                        <div class="sub-submenu">
+                            <div class="sub-submenu-item" onclick="loadPage('每日提醒')">每日提醒</div>
+                            <div class="sub-submenu-item" onclick="loadPage('每週提醒')">每週提醒</div>
+                            <div class="sub-submenu-item" onclick="loadPage('每月提醒')">每月提醒</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 內容區域 -->
+        <div class="content">
+            <!-- 預設純文字內容方塊 -->
+            <div class="content-box" id="contentBox">
+                <h2>歡迎回來！</h2>
+                <p>請從左側選單選擇您要查看的項目。</p>
+                <p>這是一個為家人設計的簡約網站，您可以在這裡管理照片、記事、食譜等內容。</p>
+            </div>
+            <!-- 外部頁面 iframe 顯示區域 -->
+            <iframe id="pageFrame" src=""></iframe>
+        </div>
+    </div>
+
+    <script>
+        const encryptedCredentials = [
+            'YWRtaW46MTIzNDU2',           // admin:123456
+            'ZmFtaWx5OnBhc3N3b3Jk',       // family:password
+            'ZmFuOmZhbjEyMw==',           // fan:fan123
+            'bW9tOm1vbTIwMjQ=',           // mom:mom2024
+            'ZGFkOmRhZDIwMjQ='            // dad:dad2024
+        ];
+
+        function simpleHash(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                const char = str.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash = hash & hash;
+            }
+            return hash.toString(36);
+        }
+
+        function validateLogin(username, password) {
+            const inputCredential = btoa(username + ':' + password);
+            const isValid = encryptedCredentials.includes(inputCredential);
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(isValid);
+                }, 500);
+            });
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const loginBtn = document.getElementById('loginBtn');
+            
+            loginBtn.disabled = true;
+            loginBtn.textContent = '驗證中...';
+            errorMessage.style.display = 'none';
+            
+            const isValid = await validateLogin(username, password);
+            
+            if (isValid) {
+                sessionStorage.setItem('isLoggedIn', 'true');
+                sessionStorage.setItem('loginTime', Date.now());
+                sessionStorage.setItem('username', username);
+                
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('mainPage').classList.add('active');
+            } else {
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('errorPage').style.display = 'flex';
+            }
+            
+            loginBtn.disabled = false;
+            loginBtn.textContent = '登入';
+        });
+
+        window.addEventListener('load', function() {
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+            const loginTime = sessionStorage.getItem('loginTime');
+            
+            if (isLoggedIn === 'true' && loginTime) {
+                const hoursPassed = (Date.now() - parseInt(loginTime)) / (1000 * 60 * 60);
+                if (hoursPassed < 24) {
+                    document.getElementById('loginPage').style.display = 'none';
+                    document.getElementById('mainPage').classList.add('active');
+                } else {
+                    sessionStorage.clear();
+                }
+            }
+        });
+
+        function backToLogin() {
+            document.getElementById('errorPage').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'flex';
+            document.getElementById('password').value = '';
+            document.getElementById('username').focus();
+        }
+
+        function logout() {
+            sessionStorage.clear();
+            document.getElementById('mainPage').classList.remove('active');
+            document.getElementById('loginPage').style.display = 'flex';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        function toggleMenu(element) {
+            const menuItem = element.parentElement;
+            const wasActive = menuItem.classList.contains('active');
+            
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelectorAll('.submenu-item.has-children').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            if (!wasActive) {
+                menuItem.classList.add('active');
+            }
+        }
+
+        function toggleSubMenu(element) {
+            const submenuItem = element.parentElement;
+            const wasActive = submenuItem.classList.contains('active');
+            
+            const parentSubmenu = submenuItem.parentElement;
+            parentSubmenu.querySelectorAll('.submenu-item.has-children').forEach(item => {
+                if (item !== submenuItem) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            if (wasActive) {
+                submenuItem.classList.remove('active');
+            } else {
+                submenuItem.classList.add('active');
+            }
+        }
+
+        // 載入純文字內容頁
+        function loadPage(pageName) {
+            const contentBox = document.getElementById('contentBox');
+            const iframe = document.getElementById('pageFrame');
+
+            // 隱藏 iframe，顯示內容方塊
+            iframe.style.display = 'none';
+            iframe.src = '';
+            contentBox.style.display = 'block';
+
+            contentBox.innerHTML = `
+                <h2>${pageName}</h2>
+                <p>這是「${pageName}」的內容頁面。</p>
+                <p>您可以在這裡添加相關的內容，或連結到獨立的 HTML 檔案。</p>
+            `;
+            
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.remove('active');
+                document.getElementById('overlay').classList.remove('active');
+            }
+        }
+
+        // 載入外部 HTML 頁面至右側 iframe
+        function loadFrame(url) {
+            const contentBox = document.getElementById('contentBox');
+            const iframe = document.getElementById('pageFrame');
+
+            // 隱藏內容方塊，顯示 iframe
+            contentBox.style.display = 'none';
+            iframe.style.display = 'block';
+            iframe.src = url;
+
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.remove('active');
+                document.getElementById('overlay').classList.remove('active');
+            }
+        }
+
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.add('active');
+            document.getElementById('overlay').classList.add('active');
+        });
+
+        document.getElementById('overlay').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+        });
+
+        setInterval(function() {
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+            const mainPage = document.getElementById('mainPage');
+            if (mainPage.classList.contains('active') && isLoggedIn !== 'true') {
+                logout();
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
+        .login-box h1 {
+            color: #E2C6C4;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            color: #555;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #E2C6C4;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #E2C6C4 0%, #ead8d6 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .login-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .error-message {
+            color: #f44336;
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-align: center;
+            display: none;
+            padding: 10px;
+            background: #ffebee;
+            border-radius: 8px;
+        }
+
+        /* 錯誤頁面樣式 */
+        .error-page {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .error-box {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .error-box h1 {
+            color: #f44336;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .error-box p {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .back-btn {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #E2C6C4 0%, #ead8d6 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* 主頁面樣式 */
+        .main-container {
+            display: none;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .main-container.active {
+            display: flex;
+        }
+
+        /* 側邊欄 */
+        .sidebar {
+            width: 280px;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+            overflow-y: auto;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            background: linear-gradient(135deg, #E2C6C4 0%, #ead8d6 100%);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-header h2 {
+            font-size: 20px;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid white;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .menu-item {
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .menu-title {
+            padding: 16px 20px;
+            background: #f8fdf9;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .menu-title:hover {
+            background: #f5ebe9;
+        }
+
+        .menu-title span {
+            color: #E2C6C4;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .menu-arrow {
+            transition: transform 0.3s;
+        }
+
+        .menu-item.active .menu-arrow {
+            transform: rotate(180deg);
+        }
+
+        .submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #fafafa;
+        }
+
+        .menu-item.active .submenu {
+            max-height: 500px;
+        }
+
+        .submenu-item {
+            padding: 12px 20px 12px 40px;
+            cursor: pointer;
+            color: #666;
+            font-size: 14px;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .submenu-item:hover {
+            background: #fff9e6;
+            border-left-color: #ffeb3b;
+            color: #333;
+        }
+
+        /* 第二層選單 */
+        .submenu-title {
+            padding: 12px 20px 12px 40px;
+            cursor: pointer;
+            color: #666;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fafafa;
+        }
+
+        .submenu-title:hover {
+            background: #fff9e6;
+            color: #333;
+        }
+
+        .submenu-arrow {
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+
+        .submenu-item.has-children.active .submenu-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* 第三層選單 */
+        .sub-submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #f5f5f5;
+        }
+
+        .submenu-item.has-children.active .sub-submenu {
+            max-height: 300px;
+        }
+
+        .sub-submenu-item {
+            padding: 10px 20px 10px 60px;
+            cursor: pointer;
+            color: #777;
+            font-size: 13px;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .sub-submenu-item:hover {
+            background: #e8f5e9;
+            border-left-color: #66bb6a;
+            color: #333;
+        }
+
+        /* 內容區域 */
+        .content {
+            flex: 1;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-box {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            min-height: 400px;
+        }
+
+        .content-box h2 {
+            color: #E2C6C4;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .content-box p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        /* 內嵌外部網頁 iframe 樣式 */
+        #pageFrame {
+            display: none;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 手機版樣式 */
+        .mobile-header {
+            display: none;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #E2C6C4 0%, #ead8d6 100%);
+            color: white;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .mobile-header {
+                display: flex;
+            }
+
+            .sidebar {
+                position: fixed;
+                left: 0;
+                top: 0;
+                height: 100vh;
+                z-index: 1000;
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .sidebar-header {
+                padding-top: 60px;
+            }
+
+            .content {
+                padding: 15px;
+                height: calc(100vh - 60px);
+            }
+
+            .content-box {
+                padding: 20px;
+            }
+
+            .overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+            }
+
+            .overlay.active {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 登入頁面 -->
+    <div class="login-container" id="loginPage">
+        <div class="login-box">
+            <h1>🏠 帆</h1>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">帳號</label>
+                    <input type="text" id="username" required autocomplete="username">
+                </div>
+                <div class="input-group">
+                    <label for="password">密碼</label>
+                    <input type="password" id="password" required autocomplete="current-password">
+                </div>
+                <div class="error-message" id="errorMessage"></div>
+                <button type="submit" class="login-btn" id="loginBtn">登入</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 錯誤頁面 -->
+    <div class="error-page" id="errorPage">
+        <div class="error-box">
+            <h1>❌</h1>
+            <p>帳號或密碼錯誤</p>
+            <p style="font-size: 14px; color: #999;">請確認您輸入的帳號和密碼是否正確</p>
+            <button class="back-btn" onclick="backToLogin()">返回登入頁面</button>
+        </div>
+    </div>
+
+    <!-- 主頁面 -->
+    <div class="main-container" id="mainPage">
+        <!-- 手機版頂部 -->
+        <div class="mobile-header">
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <h2>帆</h2>
+            <button class="logout-btn" onclick="logout()">登出</button>
+        </div>
+
+        <!-- 遮罩層 -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- 側邊欄 -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>選單</h2>
+                <button class="logout-btn" onclick="logout()">登出</button>
+            </div>
+
+            <!-- 日文選單 -->
+            <div class="menu-item">
+                <div class="menu-title" onclick="toggleMenu(this)">
+                    <span>💰 日文 </span>
+                    <span class="menu-arrow">▼</span>
+                </div>
+                <div class="submenu">
+                    <div class="submenu-item has-children">
+                        <div class="submenu-title" onclick="toggleSubMenu(this)">
+                            <span>音名</span>
+                            <span class="submenu-arrow">▼</span>
+                        </div>
+                        <div class="sub-submenu">
+                            <!-- 改用 loadFrame 載入，不跳離主頁面 -->
                             <div class="sub-submenu-item" onclick="loadFrame('janpan/japanese_kana.html')">japanese_kana</div>
                         </div>
                     </div>
